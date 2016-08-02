@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 using SQLite;
 using SQLite.Net.Attributes;
 
-namespace Inzynierka.Models
+namespace ApplicationToSupportAndControlDiet.Models
 {
     [Table("Products")]
     public class Product
     {
-        [PrimaryKey][AutoIncrement]
-        public long Id { set; get; }
+        [PrimaryKey]
+        [AutoIncrement]
+        [Column("id")]
+        public long ProductId { set; get; }
 
-        public string name { set; get; }
+        [Column("name")]
+        public string Name { set; get; }
     }
 }

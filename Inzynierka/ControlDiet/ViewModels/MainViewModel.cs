@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationToSupportAndControlDiet.Models;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
@@ -17,6 +18,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                     Current.LocalFolder.Path, "db.sqlite");
             SQLite.Net.SQLiteConnection connetionToDatabase = new SQLite.Net.SQLiteConnection(
                 new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
+            connetionToDatabase.CreateTable<Product>();
 
         }
         private string _welcomeMessage;
