@@ -13,32 +13,19 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
+//namespace Inzynierka.Views
 namespace ApplicationToSupportAndControlDiet
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class CalendarPage : Page
     {
-        public MainPage()
+        public CalendarPage()
         {
             this.InitializeComponent();
-        }
-
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
-        }
-
-        private void ButtonPaneItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        public void SelectedDay_Click(object sender, RoutedEventArgs e)
-        {
-            this.WorkSpace.Navigate(typeof(CalendarPage));
         }
     }
 }

@@ -8,6 +8,102 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="{Binding WelcomeMessage}"/>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.DisplayMode" Value="Overlay" />
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Compact">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline" />
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <SplitView x:Name="MySplitView" DisplayMode="Inline" IsPaneOpen="True"  Margin="0 10 0 0">
+            <SplitView.PaneBackground>
+                <SolidColorBrush Color="White" Opacity="0.4" />
+            </SplitView.PaneBackground>
+            <SplitView.Pane>
+                <StackPanel Margin="0,20,174,0">
+                    <Button Tag="Add"  Click="ButtonPaneItem_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Add" Foreground="White" />
+                            <TextBlock Text="Add" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Search" Click="ButtonPaneItem_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Find" Foreground="White" />
+                            <TextBlock Text="Search" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Settings" Click="ButtonPaneItem_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Setting" Foreground="White" />
+                            <TextBlock Text="Settings" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </SplitView.Pane>
+
+
+            <Grid x:Name="Content" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+                <RelativePanel>
+                    <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="Gray"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                    <Border x:Name="Border" BorderBrush="Gray" BorderThickness="1" Width="600" Height="1" Margin="0,0,0,-5" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ApplicationName"/>
+                    <Button x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border"  Margin="0,15,0,0" Click="SelectedDay_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="CalendarDay" Foreground="White" />
+                            <TextBlock Text="Actual Day" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0" Click="SelectedDay_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Previous" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Click="SelectedDay_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Next" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Border x:Name="Border2" BorderBrush="Gray" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
+                </RelativePanel>
+                <Frame x:Name="WorkSpace" Margin="0,90,0,0" />
+
+
+            </Grid>
+
+
+        </SplitView>
+        <Button x:Name="HamburgerButton" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength}" VerticalAlignment="Top" Click="HamburgerButton_Click">
+            <StackPanel>
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>
