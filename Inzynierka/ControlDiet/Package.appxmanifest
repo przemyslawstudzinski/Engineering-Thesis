@@ -3,7 +3,7 @@
   <Identity Name="29b47930-dc0d-43d7-a4a5-27ed76962372" Publisher="CN=Przemo" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="29b47930-dc0d-43d7-a4a5-27ed76962372" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Inzynierka</DisplayName>
+    <DisplayName>ApplicationToSupportAndControlDiet</DisplayName>
     <PublisherDisplayName>Przemo</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

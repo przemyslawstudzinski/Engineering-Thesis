@@ -95,7 +95,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Sex.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserGoal.cs" />
+    <Compile Include="ViewModels\DatabaseConnection.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
