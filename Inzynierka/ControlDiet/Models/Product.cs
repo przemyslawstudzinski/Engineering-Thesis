@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
@@ -40,6 +41,12 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         [Column("sugar")]
         public float Sugar { set; get; }
+
+        [ForeignKey(typeof(Meal))]
+        public long DayId { set; get; }
+
+        [ManyToOne]
+        public Meal Meal { set; get; }
 
         [Column("category")]
         public ProductCategory Category { set; get; }
