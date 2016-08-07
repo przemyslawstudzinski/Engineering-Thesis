@@ -31,14 +31,38 @@ namespace ApplicationToSupportAndControlDiet
         {
             this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
         }
-
-        private void ButtonPaneItem_Click(object sender, RoutedEventArgs e)
+       
+        private void HomePaneItem_Click(object sender, RoutedEventArgs e)
         {
+            ApplicationName.Text = "CONTROL DIET";
+            this.WorkSpace.Navigate(typeof(CalendarPage));
+        }
 
+        private void AddMealPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "ADD MEAL";
+        }
+        private void SearchPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "SEARCH";
+        }
+        private void ProfilePaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "YOUR PROFILE";
+            WorkSpace.Navigate(typeof(YourProfile));
+        }
+        private void SettingsPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "SETTINGS";
         }
         public void SelectedDay_Click(object sender, RoutedEventArgs e)
         {
             this.WorkSpace.Navigate(typeof(CalendarPage));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

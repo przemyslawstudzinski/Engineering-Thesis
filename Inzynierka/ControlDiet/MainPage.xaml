@@ -47,19 +47,31 @@
             <SplitView.Pane>
                 
                 <StackPanel Margin="0,30,120,-10" Width="200" Background="Black">
-                    <Button Tag="Add"  Click="ButtonPaneItem_Click" >
+                    <Button Tag="Home"  Click="HomePaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Add" Foreground="White" />
-                            <TextBlock Text="Add" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Home" Foreground="White" />
+                            <TextBlock Text="Home" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Search" Click="ButtonPaneItem_Click">
+                    <Button Tag="AddMeal"  Click="AddMealPaneItem_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Add" Foreground="White" />
+                            <TextBlock Text="Add Meal" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Search" Click="SearchPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Find" Foreground="White" />
                             <TextBlock Text="Search" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Settings" Click="ButtonPaneItem_Click">
+                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Contact" Foreground="White" />
+                            <TextBlock Text="Your Profile" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Settings" Click="SettingsPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Setting" Foreground="White" />
                             <TextBlock Text="Settings" Width="75" Margin="30,0,0,0" Foreground="White" />
@@ -74,30 +86,10 @@
                 <RelativePanel>
                     <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="Black"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
                     <Border x:Name="Border" BorderBrush="BLACK" BorderThickness="1" Width="600" Height="1" Margin="0,0,0,-5" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ApplicationName"/>
-                    <Button x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border"  Margin="0,15,0,0" Click="SelectedDay_Click" Background="Black">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="CalendarDay" Foreground="White" />
-                            <TextBlock Text="Actual Day" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0" Click="SelectedDay_Click" Background="Black">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Previous" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Click="SelectedDay_Click" Background="Black">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Next" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Border x:Name="Border2" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
                 </RelativePanel>
-                <Frame x:Name="WorkSpace" Margin="0,90,0,0" />
-
+                <Frame x:Name="WorkSpace" Margin="0,34,0,0" />
 
             </Grid>
-
-
         </SplitView>
         <Button x:Name="HamburgerButton" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength}" VerticalAlignment="Top" Click="HamburgerButton_Click" Background="Black">
             <StackPanel>
