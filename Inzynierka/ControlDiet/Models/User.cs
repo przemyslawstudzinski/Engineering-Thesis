@@ -32,5 +32,11 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         [Column("goal")]
         public UserGoal Goal { set; get; }
+
+        [Column("activity")]
+        public ActivityLevel Activity { set; get; }
+
+        [Column("total_daily_energy_expenditure")]
+        public int TotalDailyEnergyExpenditure { set; get; }
     }
 }

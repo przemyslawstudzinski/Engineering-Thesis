@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityLevel.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Product.cs" />
@@ -111,6 +112,9 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\YourProfile.xaml.cs">
+      <DependentUpon>YourProfile.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
