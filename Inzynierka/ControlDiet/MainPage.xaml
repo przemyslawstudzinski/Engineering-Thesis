@@ -45,7 +45,7 @@
                 <SolidColorBrush Color="White" Opacity="0.0" />
             </SplitView.PaneBackground>
             <SplitView.Pane>
-
+                
                 <StackPanel Margin="0,0,120,-10" Width="200" Background="Black">
                     <Button Tag="Home" Margin="0,30,0,0"  Click="HomePaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
