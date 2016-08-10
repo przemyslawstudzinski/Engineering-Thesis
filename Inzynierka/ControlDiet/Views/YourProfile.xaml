@@ -9,10 +9,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <RelativePanel>
-            <TextBlock x:Name="Sex" Text="Sex" FontSize="20" Foreground="Black" RenderTransformOrigin="0.719,2.642" />
-            <RadioButton x:Name="Male" Content="Male" GroupName="Sex" RelativePanel.RightOf="Sex" />
-            <RadioButton x:Name="Female" Content="Female" GroupName="Sex" RelativePanel.RightOf="Male"/>
-
+            <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
+                    <RadioButton x:Name="Male" Content="Male" GroupName="SexChoose"/>
+                    <RadioButton x:Name="Female" Content="Female" GroupName="SexChoose" RelativePanel.RightOf="Male"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                    <TextBlock x:Name="Age" Text="Age:" FontSize="20" Foreground="Black"/>
+                </StackPanel>
+            </StackPanel>
         </RelativePanel>
+      
     </Grid>
 </Page>
