@@ -27,11 +27,12 @@
             </Button>
             <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
             <CalendarView x:Name="calendar" Background="Black" DisplayMode="Month" IsTodayHighlighted="True" RelativePanel.Below="Border" RelativePanel.AlignHorizontalCenterWithPanel="True" />
-            <Border x:Name="Tile" BorderBrush="Black" BorderThickness="2" Width="600" Height="100" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="calendar">
+            
+            <Border x:Name="Tile" BorderBrush="Black" BorderThickness="2" Width="640" Height="100" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="calendar">
                 <Grid >
                     <RelativePanel x:Name="Top">
                         <TextBlock x:Name="MealName" Text="Meal Name" FontSize="30"/>
-                        <TextBlock x:Name="Hour" Text="Hour"  FontSize="30"   RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+                        <TextBlock x:Name="Hour" Text="Hour"  FontSize="30"   RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="300,0,0,0"/>
                         <Button x:Name="Edit" Tag="EditMeal"  Background="White" HorizontalAlignment="Center" RelativePanel.AlignRightWithPanel="True">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Edit" Foreground="Black" />
@@ -39,11 +40,11 @@
                         </Button>
                     </RelativePanel >
                     <RelativePanel x:Name="Bottom" VerticalAlignment="Bottom"  >
-                        <TextBlock x:Name="total" Text="Total:" FontSize="20"/>
-                        <TextBlock x:Name="kcal" Text="kcal:xxxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="total"/>
-                        <TextBlock x:Name="carb" Text="carb:xxxx" FontSize="20" Margin="10,0,0,0" RelativePanel.RightOf="kcal"/>
-                        <TextBlock x:Name="protein" Text="protein:xxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="carb"/>
-                        <TextBlock x:Name="fat" Text="fat:xxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="protein"/>
+                        <TextBlock x:Name="total" Text="Total of " FontSize="20"/>
+                        <TextBlock x:Name="kcal" Text="Kcal: xxxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="total"/>
+                        <TextBlock x:Name="carb" Text="Carbohydrate: xxxxx" FontSize="20" Margin="10,0,0,0" RelativePanel.RightOf="kcal"/>
+                        <TextBlock x:Name="protein" Text="Protein: xxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="carb"/>
+                        <TextBlock x:Name="fat" Text="Fat: xxxxx" FontSize="20" Margin="10,0,0,0"  RelativePanel.RightOf="protein"/>
                         <Button x:Name="Delete" Tag="DeleteMeal"  Background="White"  RelativePanel.AlignRightWithPanel="True">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Delete" Foreground="Black" />
