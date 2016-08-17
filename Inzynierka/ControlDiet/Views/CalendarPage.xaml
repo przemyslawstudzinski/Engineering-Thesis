@@ -26,7 +26,32 @@
                 </StackPanel>
             </Button>
             <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
-            <CalendarView Background="Black" DisplayMode="Month" IsTodayHighlighted="True" RelativePanel.Below="Border" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+            <CalendarView x:Name="calendar" Background="Black" DisplayMode="Month" IsTodayHighlighted="True" RelativePanel.Below="Border" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+            <Border x:Name="Tile" BorderBrush="Black" BorderThickness="2" Width="400" Height="100" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="calendar">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel x:Name="Top" Orientation="Horizontal" >
+                        <TextBlock x:Name="MealName" Text="Meal Name" FontSize="30"/>
+                        <TextBlock x:Name="Hour" Text="Hour"  FontSize="30" Margin="10,0,0,0"/>
+                        <Button x:Name="Edit" Tag="EditMeal"  Background="White" Margin="10,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Edit" Foreground="Black" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="0,30,0,0"  >
+                        <TextBlock Text="Total:" FontSize="20"/>
+                        <TextBlock x:Name="kcal" Text="kcal:x" FontSize="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="carb" Text="carb:x" FontSize="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="protein" Text="protein:x" FontSize="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="fat" Text="fat:x" FontSize="20" Margin="10,0,0,0"/>
+                        <Button x:Name="Delete" Tag="DeleteMeal"  Background="White" Margin="10,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Delete" Foreground="Black" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
         </RelativePanel>
     </Grid>
 

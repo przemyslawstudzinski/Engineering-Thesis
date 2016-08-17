@@ -43,9 +43,9 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             if (!TableExists("Products", connetionToDatabase))
             {
                 connetionToDatabase.CreateTable<Product>();
-                string insertproducts = System.IO.File.ReadAllText(Path.Combine(
-                    Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
-                connetionToDatabase.Execute(insertproducts);
+               // string insertproducts = System.IO.File.ReadAllText(Path.Combine(
+                //    Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
+                //connetionToDatabase.Execute(insertproducts);
 
             }
             if (!TableExists("Users", connetionToDatabase))
