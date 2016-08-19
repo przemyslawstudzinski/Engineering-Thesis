@@ -11,7 +11,7 @@
     <AssemblyName>ApplicationToSupportAndControlDiet</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -103,6 +103,7 @@
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGoal.cs" />
+    <Compile Include="ViewModels\CalculateRequisitionOfCalories.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
