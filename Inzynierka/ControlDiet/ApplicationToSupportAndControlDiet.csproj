@@ -103,6 +103,7 @@
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGoal.cs" />
+    <Compile Include="ViewModels\CalculateRequisitionOfCalories.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
