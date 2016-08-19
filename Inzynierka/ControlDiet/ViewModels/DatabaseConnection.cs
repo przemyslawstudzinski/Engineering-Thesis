@@ -14,6 +14,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
     {
         private const string NAME_OF_DATABASE_FILE = "db.sqlite";
         private const string NAME_OF_DIRECTORY = "Resources";
+
         public static void ConnectToSqliteDatabase()
         {
             //StorageFolder appInstalledFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
@@ -24,33 +25,41 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
             string databaseFilePath = Path.Combine(Windows.Storage.ApplicationData.
                     Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
-            SQLite.Net.SQLiteConnection connetionToDatabase = new SQLiteConnection(
+            SQLiteConnection connectionToDatabase = new SQLiteConnection(
                 new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
 
-            CreateTables(connetionToDatabase);
+            CreateTables(connectionToDatabase);
         }
 
-        public static void CreateTables(SQLiteConnection connetionToDatabase)
+        public static SQLiteConnection GetConnection() {
+            string databaseFilePath = Path.Combine(Windows.Storage.ApplicationData.
+        Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
+            SQLiteConnection connectionToDatabase = new SQLiteConnection(
+                new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
+            return connectionToDatabase;
+        }
+
+        public static void CreateTables(SQLiteConnection connectionToDatabase)
         {
-            if(!TableExists("Days", connetionToDatabase))
+            if(!TableExists("Days", connectionToDatabase))
             {
-                connetionToDatabase.CreateTable<Day>();
+                connectionToDatabase.CreateTable<Day>();
             }
-            if (!TableExists("Meals", connetionToDatabase))
+            if (!TableExists("Meals", connectionToDatabase))
             {
-                connetionToDatabase.CreateTable<Meal>();
+                connectionToDatabase.CreateTable<Meal>();
             }
-            if (!TableExists("Products", connetionToDatabase))
+            if (!TableExists("Products", connectionToDatabase))
             {
-                connetionToDatabase.CreateTable<Product>();
+                connectionToDatabase.CreateTable<Product>();
                // string insertproducts = System.IO.File.ReadAllText(Path.Combine(
                 //    Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
                 //connetionToDatabase.Execute(insertproducts);
 
             }
-            if (!TableExists("Users", connetionToDatabase))
+            if (!TableExists("Users", connectionToDatabase))
             {
-                connetionToDatabase.CreateTable<User>();
+                connectionToDatabase.CreateTable<User>();
             }
 
         }
