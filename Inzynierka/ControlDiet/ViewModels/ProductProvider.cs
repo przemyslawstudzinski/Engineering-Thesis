@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Data;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class ProductProvider
     {
-        private SQLiteConnection connectionToDatabase { set; get; }
+        private static SQLiteConnection connectionToDatabase { set; get; }
 
         public ProductProvider() {
             connectionToDatabase = DatabaseConnection.GetConnection();

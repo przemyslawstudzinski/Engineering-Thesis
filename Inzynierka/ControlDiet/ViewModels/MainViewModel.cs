@@ -15,6 +15,8 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             WelcomeMessage = "Hi, it's main page";
             DatabaseConnection.ConnectToSqliteDatabase();
+            ProductProvider p = new ProductProvider();
+            p.getAllProducts();
         }
         private string _welcomeMessage;
         public string WelcomeMessage

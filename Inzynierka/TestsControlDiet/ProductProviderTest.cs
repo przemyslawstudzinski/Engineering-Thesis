@@ -1,10 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+﻿using ApplicationToSupportAndControlDiet.Models;
 using ApplicationToSupportAndControlDiet.ViewModels;
-using ApplicationToSupportAndControlDiet.Models;
+using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Tests_for_ATSACD
+namespace TestsControlDiet
 {
     [TestClass]
     public class ProductProviderTest
@@ -14,7 +17,7 @@ namespace Tests_for_ATSACD
         {
             var productProvider = new ProductProvider();
             List<Product> allProducts = productProvider.getAllProducts();
-            Assert.IsTrue(allProducts.Count == 960);
+            Assert.Equals(allProducts.Count, 960);
         }
     }
 }
