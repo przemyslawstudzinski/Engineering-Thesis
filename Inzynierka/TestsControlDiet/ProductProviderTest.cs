@@ -12,12 +12,28 @@ namespace TestsControlDiet
     [TestClass]
     public class ProductProviderTest
     {
+            [AssemblyInitialize]
+            public static void AssemblyInit(TestContext context)
+            {
+            DatabaseConnection.ConnectToSqliteDatabase();
+            }
+
         [TestMethod]
         public void getAllProductsTest()
         {
             var productProvider = new ProductProvider();
             List<Product> allProducts = productProvider.getAllProducts();
-            Assert.Equals(allProducts.Count, 960);
+            Assert.AreEqual(allProducts.Count, 960, "There should be 960 products in database");
         }
+
+        [TestMethod]
+        public void getProductsWithPatternTest()
+        {
+            var productProvider = new ProductProvider();
+            List<Product> allProducts = productProvider.getProductsLike("bev");
+            Assert.AreEqual(allProducts.Count, 49, "There should be only 49 records with substring 'bev' in name");
+        }
+
+
     }
 }
