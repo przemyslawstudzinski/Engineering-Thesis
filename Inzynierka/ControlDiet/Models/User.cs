@@ -38,5 +38,16 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         [Column("total_daily_energy_expenditure")]
         public int TotalDailyEnergyExpenditure { set; get; }
+
+        public User(string name, Sex sex, int age, float height, float weight, UserGoal goal, ActivityLevel activity) {
+            this.Name = name;
+            this.Sex = sex;
+            this.Age = age;
+            this.Height = height;
+            this.Weight = weight;
+            this.Goal = goal;
+            this.Activity = activity;
+        }
+
     }
 }

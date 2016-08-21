@@ -1,4 +1,5 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
+using ApplicationToSupportAndControlDiet.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -49,7 +50,6 @@ namespace ApplicationToSupportAndControlDiet
             Int32 selectionStart = textBox.SelectionStart;
             Int32 selectionLength = textBox.SelectionLength;
             String newText = String.Empty;
-            int count = 0;
             foreach (Char c in textBox.Text.ToCharArray())
             {
                 if (Char.IsDigit(c) || Char.IsControl(c))
@@ -60,6 +60,7 @@ namespace ApplicationToSupportAndControlDiet
             textBox.Text = newText;
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
         }
+
         public T SelectedRadioValue<T>(T defaultValue, params RadioButton[] buttons)
         {
             foreach (RadioButton button in buttons)
@@ -86,13 +87,36 @@ namespace ApplicationToSupportAndControlDiet
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
         {
+            string userName = NameBox.Text;
             int ageValue = Int32.Parse(AgeBox.Text);
             float heightValue = float.Parse(HeightBox.Text);
             float weightValue = float.Parse(weightBox.Text);
             string sexValue = SelectedRadioValue<string>("Male", Male, Female);
-            string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
+            string activityValue = ActivityBox.Text;
+            string goalValue = GoalBox.Text;
             Sex sexChoice;
             Enum.TryParse(sexValue, out sexChoice);
+            //TODO
+            //Slider doesn't work so for now I assume that user inputs correct enum type. 
+            ActivityLevel activityChoice;
+            Enum.TryParse(activityValue, out activityChoice);
+            UserGoal userGoalChoice;
+            Enum.TryParse(goalValue, out userGoalChoice);
+            User user = new User(userName, sexChoice, ageValue, heightValue, weightValue, userGoalChoice, activityChoice);
+            string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
+            int totalDailyEnergyExpenditure;
+            if (caloriesValue.Equals("Automatic"))
+            {
+                totalDailyEnergyExpenditure = RequisitionOfCalories.CalculateRequisitionOfCalories(user);
+            }
+            else
+            {
+                totalDailyEnergyExpenditure = int.Parse(CaloriesBox.Text);                
+            }
+            user.TotalDailyEnergyExpenditure = totalDailyEnergyExpenditure;
+
+            UserCreator userCreator = new UserCreator();
+            userCreator.SaveUser(user);
         }
     }
 }
