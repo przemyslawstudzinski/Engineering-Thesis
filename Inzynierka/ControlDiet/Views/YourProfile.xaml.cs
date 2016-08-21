@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationToSupportAndControlDiet.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,76 @@ namespace ApplicationToSupportAndControlDiet
     /// </summary>
     public sealed partial class YourProfile : Page
     {
+        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            int count = 0;
+            foreach (Char c in textBox.Text.ToCharArray())
+            {
+                if (Char.IsDigit(c) || Char.IsControl(c) || (c == '.' && count == 0))
+                {
+                    newText += c;
+                    if (c == '.')
+                        count += 1;
+                }
+            }
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+
+        private void TextBoxInteger_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            int count = 0;
+            foreach (Char c in textBox.Text.ToCharArray())
+            {
+                if (Char.IsDigit(c) || Char.IsControl(c))
+                {
+                    newText += c;
+                }
+            }
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+        public T SelectedRadioValue<T>(T defaultValue, params RadioButton[] buttons)
+        {
+            foreach (RadioButton button in buttons)
+            {
+                if (button.IsChecked == true)
+                {
+                    if (button.Tag is string && typeof(T) != typeof(string))
+                    {
+                        string value = (string)button.Tag;
+                        return (T)Convert.ChangeType(value, typeof(T));
+                    }
+
+                    return (T)button.Tag;
+                }
+            }
+
+            return defaultValue;
+        }
+
         public YourProfile()
         {
             this.InitializeComponent();
+        }
+
+        private void SaveProfile_Click(object sender, RoutedEventArgs e)
+        {
+            int ageValue = Int32.Parse(AgeBox.Text);
+            float heightValue = float.Parse(HeightBox.Text);
+            float weightValue = float.Parse(weightBox.Text);
+            string sexValue = SelectedRadioValue<string>("Male", Male, Female);
+            string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
+            Sex sexChoice;
+            Enum.TryParse(sexValue, out sexChoice);
         }
     }
 }

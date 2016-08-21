@@ -12,20 +12,20 @@
                 <TextBlock x:Name="Title" Text="Complete your profile" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,0"  />
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
-                    <RadioButton x:Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0"/>
-                    <RadioButton x:Name="Female" Content="Female" GroupName="SexChoose" RelativePanel.RightOf="Male" Margin="30,0,0,0"/>
+                    <RadioButton Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0" IsChecked="True" Tag="Male"/>
+                    <RadioButton Name="Female" Content="Female" GroupName="SexChoose" RelativePanel.RightOf="Male" Margin="30,0,0,0" Tag="Female"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock x:Name="Age" Text="Age:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
-                    <TextBox  Name="AgeBox" />
+                    <TextBox TextChanged="TextBoxInteger_TextChanged" Name="AgeBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock x:Name="Height" Text="Height:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox  Name="HeightBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="HeightBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock x:Name="weight" Text="Weight:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox  Name="weightBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="weightBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
@@ -41,12 +41,12 @@
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock Text="Way to calculate calories :" FontSize="20" Foreground="Black" Margin="0,0,40,0"/>
-                    <RadioButton x:Name="Automatic" Content="Automatic" GroupName="CaloriesChoose"/>
-                    <RadioButton x:Name="Manual" Content="Manual" GroupName="CaloriesChoose"/>
+                    <RadioButton Name="Automatic" Content="Automatic" GroupName="CaloriesChoose" IsChecked="True" Tag="Automatic"/>
+                    <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual"/>
                     <TextBox x:Name="Calories" Text="Wynik"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Tag="SaveProfile" x:Name="SaveProfile" Background="Black">
+                    <Button Tag="SaveProfile" x:Name="SaveProfile" Background="Black" Click="SaveProfile_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Save" Foreground="White" />
                             <TextBlock Text="Save" Width="100" Margin="30,0,0,0" Foreground="White" />
