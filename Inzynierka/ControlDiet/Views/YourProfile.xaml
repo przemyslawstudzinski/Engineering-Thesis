@@ -49,7 +49,7 @@
                     <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual"/>
                     <TextBox x:Name="CaloriesBox" Text="Wynik"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <Button Tag="SaveProfile" x:Name="SaveProfile" Background="Black" Click="SaveProfile_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Save" Foreground="White" />

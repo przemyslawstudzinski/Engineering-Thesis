@@ -29,6 +29,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         SoupsAndSaucesAndGravies,
         SpicesAndHerbs,
         Sweets,
-        VegetablesAndVegetableProducts
+        VegetablesAndVegetableProducts,
+        UserProducts
     }
 }

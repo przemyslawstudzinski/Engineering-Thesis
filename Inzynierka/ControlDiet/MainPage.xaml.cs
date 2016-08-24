@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationToSupportAndControlDiet.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -50,6 +51,11 @@ namespace ApplicationToSupportAndControlDiet
         {
             ApplicationName.Text = "YOUR PROFILE";
             WorkSpace.Navigate(typeof(YourProfile));
+        }
+        private void AddNewProductPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "ADD NEW PRODUCT";
+            WorkSpace.Navigate(typeof(AddNewProduct));
         }
         private void SettingsPaneItem_Click(object sender, RoutedEventArgs e)
         {
