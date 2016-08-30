@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
+
     public enum ProductCategory
     {
         BakedProducts,

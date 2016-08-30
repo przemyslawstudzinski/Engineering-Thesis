@@ -42,6 +42,7 @@ namespace ApplicationToSupportAndControlDiet
         private void AddMealPaneItem_Click(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "ADD MEAL";
+            WorkSpace.Navigate(typeof(AddMeal));
         }
         private void SearchPaneItem_Click(object sender, RoutedEventArgs e)
         {

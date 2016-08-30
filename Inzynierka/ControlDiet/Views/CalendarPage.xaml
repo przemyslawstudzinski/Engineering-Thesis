@@ -9,12 +9,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel>
-            <Button x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="Black">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="CalendarDay" Foreground="White" />
-                    <TextBlock Text="Actual Day" Margin="30,0,0,0" Foreground="White" />
-                </StackPanel>
-            </Button>
+            <RelativePanel x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="White">
+                <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True"/>
+            </RelativePanel>
             <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Previous" Foreground="White" />
@@ -26,9 +23,8 @@
                 </StackPanel>
             </Button>
             <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
-            <CalendarView x:Name="calendar" Background="Black" DisplayMode="Month" IsTodayHighlighted="True" RelativePanel.Below="Border" RelativePanel.AlignHorizontalCenterWithPanel="True" />
             
-            <Border x:Name="Tile" BorderBrush="Black" BorderThickness="2" Width="640" Height="100" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="calendar">
+            <Border x:Name="Tile" BorderBrush="Black" BorderThickness="2" Width="640" Height="100" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Border">
                 <Grid >
                     <RelativePanel x:Name="Top">
                         <TextBlock x:Name="MealName" Text="Meal Name" FontSize="30"/>
