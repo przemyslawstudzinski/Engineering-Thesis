@@ -27,5 +27,10 @@ namespace ApplicationToSupportAndControlDiet
         {
             this.InitializeComponent();
         }
+
+        private void ShowCalendar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
