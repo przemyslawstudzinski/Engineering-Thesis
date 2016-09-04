@@ -15,7 +15,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         [PrimaryKey]
         [AutoIncrement]
         [Column("id")]
-        public long ProductId { set; get; }
+        public long? ProductId { set; get; }
 
         [Unique]
         [Column("code")]
@@ -50,5 +50,15 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         [Column("category")]
         public ProductCategory Category { set; get; }
+
+        public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue, float fatValue, float fiberValue, float sugarValue) {
+            this.Name = name;
+            this.Energy = kcalValue;
+            this.Protein = proteinValue;
+            this.Carbohydrate = carbohydrateValue;
+            this.Fat = fatValue;
+            this.Fiber = fiberValue;
+            this.Sugar = sugarValue;
+        }
     }
 }

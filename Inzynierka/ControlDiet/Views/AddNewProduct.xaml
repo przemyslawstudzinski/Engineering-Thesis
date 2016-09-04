@@ -20,21 +20,21 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox Name="KcalBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="KcalBox" />
                     <TextBlock x:Name="Protein" Text="Protein:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox Name="ProteinBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="ProteinBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Carbohydrate" Text="Carbohydrate:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox Name="CarbohydrateBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="CarbohydrateBox" />
                     <TextBlock x:Name="Fat" Text="Fat:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox Name="FatBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FatBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Fiber" Text="Fiber:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox Name="FiberBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FiberBox" />
                     <TextBlock x:Name="Sugar" Text="Sugar:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox Name="SugarBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="SugarBox" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <Button Tag="SaveProduct" x:Name="SaveProduct" Background="Black" Click="SaveProduct_Click">
