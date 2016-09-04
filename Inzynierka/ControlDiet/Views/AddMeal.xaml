@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel>
             <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                <TextBlock x:Name="Title" Text="Add your food product to database" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
+                <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBox Name="NameBox" Width="370" Header="Name: "/>
                     <TimePicker x:Name = "TimePicker" Header = "Time:" Margin="100, 0, 0, 0"/>
