@@ -17,9 +17,9 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public static void ConnectToSqliteDatabase()
         {
-            //StorageFolder appInstalledFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            //StorageFolder resources = await appInstalledFolder.GetFolderAsync(NAME_OF_DIRECTORY);
-            //var database = await resources.GetFileAsync(NAME_OF_DATABASE_FILE);
+           // StorageFolder appInstalledFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+           // StorageFolder resources = await appInstalledFolder.GetFolderAsync(NAME_OF_DIRECTORY);
+           // var database = await resources.GetFileAsync(NAME_OF_DATABASE_FILE);
 
             //StorageFolder storageFile = ApplicationData.Current.LocalFolder;
 
