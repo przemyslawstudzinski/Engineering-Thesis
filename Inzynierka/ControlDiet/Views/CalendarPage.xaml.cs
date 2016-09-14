@@ -48,6 +48,8 @@ namespace ApplicationToSupportAndControlDiet
            // Tile2.BorderBrush = new SolidColorBrush(Colors.Red);
             //Test.Children.Add(Tile2);
             RelativePanel Meal = new RelativePanel();
+            Meal.BorderThickness= new Thickness(2, 2, 2, 2);
+            Meal.BorderBrush = new SolidColorBrush(Colors.Black);
             Test.Children.Add(Meal);
 
             RelativePanel PanelTop = new RelativePanel();
