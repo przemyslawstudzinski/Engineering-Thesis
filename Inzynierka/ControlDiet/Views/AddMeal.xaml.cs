@@ -1,5 +1,9 @@
-﻿using System;
+﻿using ApplicationToSupportAndControlDiet.Models;
+using ApplicationToSupportAndControlDiet.ViewModels;
+using SQLite.Net;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,11 +24,19 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddMeal : Page
+    public partial class AddMeal : Page
     {
+        ObservableCollection<Product> items;
+
         public AddMeal()
         {
             this.InitializeComponent();
+
+            ProductProvider productProvider = new ProductProvider();
+            items = new ObservableCollection<Product>(productProvider.GetAllProducts());
+           
+            this.ProductsView.ItemsSource = items;
+
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)

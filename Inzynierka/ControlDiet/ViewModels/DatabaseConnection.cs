@@ -15,7 +15,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         private const string NAME_OF_DATABASE_FILE = "db.sqlite";
         private const string NAME_OF_DIRECTORY = "Resources";
 
-        public static void ConnectToSqliteDatabase()
+        public static void CreateSqliteDatabase()
         {
            // StorageFolder appInstalledFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
            // StorageFolder resources = await appInstalledFolder.GetFolderAsync(NAME_OF_DIRECTORY);

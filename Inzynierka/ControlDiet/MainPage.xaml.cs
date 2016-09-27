@@ -27,7 +27,7 @@ namespace ApplicationToSupportAndControlDiet
         public MainPage()
         {
             this.InitializeComponent();
-            DatabaseConnection.ConnectToSqliteDatabase();
+            DatabaseConnection.CreateSqliteDatabase();
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

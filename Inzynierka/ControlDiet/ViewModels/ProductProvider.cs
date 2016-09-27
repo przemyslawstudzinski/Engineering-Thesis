@@ -18,13 +18,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             connectionToDatabase = DatabaseConnection.GetConnection();
         }
 
-        public List<Product> getAllProducts() {
+        public List<Product> GetAllProducts() {
             string query = @"SELECT * FROM Products";
             List<Product> allProducts = connectionToDatabase.Query<Product>(query);
             return allProducts;
         }
 
-        public List<Product> getProductsLike(string input) {
+        public List<Product> GetProductsLike(string input) {
             string query = @"SELECT * FROM Products product where product.name LIKE '%" + input + "%'" ;
             List<Product> allProducts = connectionToDatabase.Query<Product>(query);
             return allProducts;

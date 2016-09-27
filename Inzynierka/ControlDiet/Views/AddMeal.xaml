@@ -2,14 +2,15 @@
     x:Class="ApplicationToSupportAndControlDiet.Views.AddMeal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet.Views"
+    xmlns:local="using:ApplicationToSupportAndControlDiet.Models"
+    xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <RelativePanel>
-            <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+        <RelativePanel >
+
+            <StackPanel Tag="panel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                 <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBox Name="NameBox" Width="370" Header="Name: "/>
@@ -18,8 +19,48 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="FoodProducts" Text="Food products:" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
-
                 </StackPanel>
+            </StackPanel>
+
+            <Grid RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Above="">
+                <GridView x:Name="ProductsView" IsItemClickEnabled="True" RelativePanel.Below="panel">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal"
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                            ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    <GridView.ItemTemplate>
+
+                        <DataTemplate x:DataType="data:Product" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <!--<Image Width="150" Source="{x:Bind Image }" HorizontalAlignment="Center"></Image>-->
+                                <StackPanel Margin="20,20,0,0">
+                                    <TextBlock FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBlock FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </Grid>
+            
+            <!--<ListView x:Name="ProductsView" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <GridView Width="500" VerticalAlignment="Center">
+
+
+
+                                <TextBlock Grid.Column="0" Text="{Binding Name }" />
+                                <TextBlock Grid.Column="1" Text="{Binding Energy}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Fat}" />
+                            </GridView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+
                 <StackPanel>
                 <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
                     <StackPanel Orientation="Horizontal">
@@ -34,7 +75,7 @@
                         <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
                     </StackPanel>
                 </Button>
-            </StackPanel>
+            <!--</StackPanel>-->
         </RelativePanel>
     </Grid>
 </Page>

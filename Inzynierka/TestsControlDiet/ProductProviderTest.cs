@@ -15,14 +15,14 @@ namespace TestsControlDiet
             [AssemblyInitialize]
             public static void AssemblyInit(TestContext context)
             {
-            DatabaseConnection.ConnectToSqliteDatabase();
+            DatabaseConnection.CreateSqliteDatabase();
             }
 
         [TestMethod]
         public void getAllProductsTest()
         {
             var productProvider = new ProductProvider();
-            List<Product> allProducts = productProvider.getAllProducts();
+            List<Product> allProducts = productProvider.GetAllProducts();
             Assert.AreEqual(allProducts.Count, 960, "There should be 960 products in database");
         }
 
@@ -30,7 +30,7 @@ namespace TestsControlDiet
         public void getProductsWithPatternTest()
         {
             var productProvider = new ProductProvider();
-            List<Product> allProducts = productProvider.getProductsLike("bev");
+            List<Product> allProducts = productProvider.GetProductsLike("bev");
             Assert.AreEqual(allProducts.Count, 49, "There should be only 49 records with substring 'bev' in name");
         }
 

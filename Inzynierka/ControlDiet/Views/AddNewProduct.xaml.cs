@@ -64,7 +64,8 @@ namespace ApplicationToSupportAndControlDiet.Views
             float.TryParse(FiberBox.Text, out fiberValue);
             float sugarvalue;
             float.TryParse(SugarBox.Text, out sugarvalue);
-            Product product = new Product(userName, kcalValue,proteinValue,carbohydrateValue,fatValue,fiberValue,sugarvalue);
+            Product product = new Product(userName, kcalValue, proteinValue, carbohydrateValue, fatValue, 
+                fiberValue, sugarvalue, ProductCategory.UserProducts);
             ProductCreator productCreator = new ProductCreator();
             productCreator.SaveProduct(product);
         }
