@@ -10,7 +10,9 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel >
 
-            <StackPanel Tag="panel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+            <!-- <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">-->
+
+            <StackPanel  Name="panel" Tag="panel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                 <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBox Name="NameBox" Width="370" Header="Name: "/>
@@ -20,62 +22,66 @@
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="FoodProducts" Text="Food products:" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 </StackPanel>
+                <StackPanel>
+                    <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Add" Foreground="White" />
+                            <TextBlock Text="Add Product" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel>
+                    <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SubmitButton_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Accept" Foreground="White" />
+                            <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </StackPanel>
 
-            <Grid RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Above="">
-                <GridView x:Name="ProductsView" IsItemClickEnabled="True" RelativePanel.Below="panel">
-                    <GridView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ItemsWrapGrid Orientation="Horizontal"
-                            ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                            ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-                        </ItemsPanelTemplate>
-                    </GridView.ItemsPanel>
-                    <GridView.ItemTemplate>
 
-                        <DataTemplate x:DataType="data:Product" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <!--<Image Width="150" Source="{x:Bind Image }" HorizontalAlignment="Center"></Image>-->
-                                <StackPanel Margin="20,20,0,0">
-                                    <TextBlock FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
-                                    <TextBlock FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
+            <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="-175,377,-356,-627" RenderTransformOrigin="0.512,0.837" Height="250" >
+                <ScrollViewer x:Name="TEST" ZoomMode="Disabled" MaxZoomFactor="5" MinZoomFactor="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible"  VerticalScrollMode="Enabled" >
+                    <GridView x:Name="ProductsView" IsItemClickEnabled="True" RelativePanel.Below="panel" >
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                        <GridView.ItemTemplate>
+
+                            <DataTemplate x:DataType="data:Product" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <StackPanel Margin="20,20,0,0">
+                                        <TextBlock FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
+                                        <TextBlock FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            </Grid>
-            
-            <!--<ListView x:Name="ProductsView" HorizontalContentAlignment="Stretch">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <GridView Width="500" VerticalAlignment="Center">
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </ScrollViewer>
+            </RelativePanel>
+            <!--
+            <ListView x:Name="ProductsView2" HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <GridView Width="500" VerticalAlignment="Center">
 
 
 
-                                <TextBlock Grid.Column="0" Text="{Binding Name }" />
-                                <TextBlock Grid.Column="1" Text="{Binding Energy}" />
-                                <TextBlock Grid.Column="2" Text="{Binding Fat}" />
-                            </GridView>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+                            <TextBlock Grid.Column="0" Text="{Binding Name }" />
+                            <TextBlock Grid.Column="1" Text="{Binding Energy}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Fat}" />
+                        </GridView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+-->
 
-                <StackPanel>
-                <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
-                    <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Add" Foreground="White" />
-                        <TextBlock Text="Add Product" Width="100" Margin="30,0,0,0" Foreground="White" />
-                    </StackPanel>
-                </Button>
-                </StackPanel>
-                <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SubmitButton_Click" >
-                    <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Accept" Foreground="White" />
-                        <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
-                    </StackPanel>
-                </Button>
-            <!--</StackPanel>-->
+
+            <!--  </StackPanel> -->
         </RelativePanel>
     </Grid>
 </Page>
