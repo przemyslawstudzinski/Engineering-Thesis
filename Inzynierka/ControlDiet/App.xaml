@@ -7,5 +7,9 @@
     RequestedTheme="Light">
     <Application.Resources>
         <viewModels:ViewModelLocator x:Key="Locator" />
+            <Style x:Key="TextBoxError" TargetType="TextBox">
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderBrush" Value="Red" />
+            </Style>
     </Application.Resources>
 </Application>
