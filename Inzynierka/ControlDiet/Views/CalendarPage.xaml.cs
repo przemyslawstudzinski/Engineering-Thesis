@@ -49,10 +49,13 @@ namespace ApplicationToSupportAndControlDiet
             //Test.Children.Add(Tile2);
             RelativePanel Meal = new RelativePanel();
             Meal.BorderThickness= new Thickness(2, 2, 2, 2);
+            Meal.Margin = new Thickness(0, 10, 0, 0);
             Meal.BorderBrush = new SolidColorBrush(Colors.Black);
             Test.Children.Add(Meal);
 
             RelativePanel PanelTop = new RelativePanel();
+            PanelTop.Width = 700;
+            PanelTop.Margin = new Thickness(0, 0, 0, 25);
             Meal.Children.Add(PanelTop);
 
             TextBlock MealName = new TextBlock();
@@ -64,11 +67,21 @@ namespace ApplicationToSupportAndControlDiet
             MealHour.Text = "Godzina";
             MealHour.FontSize = 30;
             MealHour.HorizontalAlignment=HorizontalAlignment.Center;
-            MealHour.Margin =new Thickness (300,0,0,0);
-            MealHour.SetValue(RelativePanel.AlignHorizontalCenterWithPanelProperty, true);
+            MealHour.SetValue(RelativePanel.AlignHorizontalCenterWithPanelProperty, true);    
             PanelTop.Children.Add(MealHour);
+           
+            
+            Button Edit = new Button();
+            Edit.Background = new SolidColorBrush(Colors.White);
+            Edit.Foreground = new SolidColorBrush(Colors.Black);
+            Edit.FontSize = 25;
+            Edit.SetValue(RelativePanel.AlignRightWithPanelProperty, true);
+            Edit.FontFamily = new FontFamily("Segoe MDL2 Assets");
+            Edit.Content = "\uE104";
+            PanelTop.Children.Add(Edit);
 
             RelativePanel PanelBottom = new RelativePanel();
+            PanelBottom.Width = 700;
             PanelBottom.SetValue(RelativePanel.BelowProperty, PanelTop);
     
             Meal.Children.Add(PanelBottom);
@@ -106,6 +119,14 @@ namespace ApplicationToSupportAndControlDiet
             Fat.SetValue(RelativePanel.RightOfProperty, Protein);
             PanelBottom.Children.Add(Fat);
 
+            Button Delete = new Button();
+            Delete.Background = new SolidColorBrush(Colors.White);
+            Delete.Foreground = new SolidColorBrush(Colors.Black);
+            Delete.FontSize = 20;
+            Delete.SetValue(RelativePanel.AlignRightWithPanelProperty, true);
+            Delete.FontFamily = new FontFamily("Segoe MDL2 Assets");
+            Delete.Content = "\uE107";
+            PanelBottom.Children.Add(Delete);
 
         }
     }
