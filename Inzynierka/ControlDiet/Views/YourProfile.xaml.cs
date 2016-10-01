@@ -24,6 +24,14 @@ namespace ApplicationToSupportAndControlDiet
     /// </summary>
     public sealed partial class YourProfile : Page
     {
+
+        private Boolean IsEmptyMessageSet;
+        private const string EMPTYMESSAGE = "Fill all the blank fields.";
+        private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
+        private Style RedBorderStyle;
+        private Style DefaultStyle;
+
+
         private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -83,14 +91,36 @@ namespace ApplicationToSupportAndControlDiet
         public YourProfile()
         {
             this.InitializeComponent();
+            RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
+            DefaultStyle = null;
         }
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
         {
-            string userName = NameBox.Text;
-            int ageValue = Int32.Parse(AgeBox.Text);
-            float heightValue = float.Parse(HeightBox.Text);
-            float weightValue = float.Parse(weightBox.Text);
+            ClearTextBoxesAndMessages();
+            string userName="";
+            if (ValidateEmpty(NameBox))
+            {
+                userName = NameBox.Text;
+            }
+
+            int ageValue=0;
+            if (ValidateAndCheckInRange(AgeBox, 5, 120))
+            {
+                ageValue = int.Parse(AgeBox.Text);
+            }
+
+            float heightValue=0;
+            if(ValidateAndCheckInRange(HeightBox,40,300))
+            {
+                heightValue = float.Parse(HeightBox.Text);
+            }
+            float weightValue=0;
+            if (ValidateAndCheckInRange(weightBox, 15, 500))
+            {
+                float.Parse(weightBox.Text);
+            }
+
             string sexValue = SelectedRadioValue<string>("Male", Male, Female);
             string activityValue = ActivityBox.Text;
             string goalValue = GoalBox.Text;
@@ -117,6 +147,62 @@ namespace ApplicationToSupportAndControlDiet
 
             UserCreator userCreator = new UserCreator();
             userCreator.SaveUser(user);
+        }
+
+        private Boolean ValidateEmpty(TextBox textBox)
+        {
+            if (textBox.Text.Length == 0)
+            {
+                if (!IsEmptyMessageSet)
+                {
+                    IsEmptyMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                textBox.Style = RedBorderStyle;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean ValidateAndCheckInRange(TextBox textBox, float min, float max) {
+            if (textBox.Text.Length == 0)
+            {
+                if (!IsEmptyMessageSet)
+                {
+                    IsEmptyMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                textBox.Style = RedBorderStyle;
+                return false;
+            }
+            float value = float.Parse(textBox.Text);     
+            if (value >= min && value <= max)
+            {
+                return true;
+            }
+            else {
+                textBox.Style = RedBorderStyle;
+                AppendToMessages(String.Format(VALUESMESSAGE,textBox.Tag,min,max));
+                return false;
+            }
+        }
+
+        private void ClearTextBoxesAndMessages()
+        {
+            IsEmptyMessageSet = false;
+            ValidationMessages.Text = String.Empty;
+            NameBox.Style = DefaultStyle;
+            AgeBox.Style = DefaultStyle;
+            HeightBox.Style = DefaultStyle;
+            weightBox.Style = DefaultStyle;
+        }
+
+        private void AppendToMessages(string message)
+        {
+            ValidationMessages.Text += (message + Environment.NewLine);
         }
     }
 }

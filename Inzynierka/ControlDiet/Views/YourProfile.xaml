@@ -10,6 +10,7 @@
         <RelativePanel>
             <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                 <TextBlock x:Name="Title" Text="Complete your profile" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,0"  />
+                <TextBlock x:Name="ValidationMessages" Foreground="Red" />
                 <StackPanel Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
                     <RadioButton Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0" IsChecked="True" Tag="Male"/>
@@ -17,19 +18,19 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
-                    <TextBox Name="NameBox" />
+                    <TextBox Name="NameBox" Tag="Name"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Age" Text="Age:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
-                    <TextBox TextChanged="TextBoxInteger_TextChanged" Name="AgeBox" />
+                    <TextBox TextChanged="TextBoxInteger_TextChanged" Name="AgeBox" Tag="Age"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Height" Text="Height:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="HeightBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="HeightBox" Tag="Height" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="weight" Text="Weight:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="weightBox" />
+                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="weightBox" Tag="Weight" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                    <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
