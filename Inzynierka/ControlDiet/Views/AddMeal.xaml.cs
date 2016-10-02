@@ -28,18 +28,32 @@ namespace ApplicationToSupportAndControlDiet.Views
     {
         ObservableCollection<Product> items;
 
+        ProductProvider productProvider;
+
         public AddMeal()
         {
             this.InitializeComponent();
 
-            ProductProvider productProvider = new ProductProvider();
-            items = new ObservableCollection<Product>(productProvider.GetAllProducts());
-           
-            this.ProductsView.ItemsSource = items;
+            productProvider = new ProductProvider();
+            items = new ObservableCollection<Product>();
+            SuggestProductsBox.ItemsSource = items;
+            //this.ProductsView.ItemsSource = items;
 
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            Product selectedProduct = args.SelectedItem as Product;
+        }
+
+        private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            items.Clear();
+            List<Product> result = productProvider.GetProductsLike(sender.Text);
+            result.ForEach(x => items.Add(x));
+        }
+    
+    private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (VerifyTimeIsAvailable(TimePicker.Time) == true)
             {

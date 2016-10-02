@@ -64,5 +64,10 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Sugar = sugarValue;
             this.Category = categoryValue;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
