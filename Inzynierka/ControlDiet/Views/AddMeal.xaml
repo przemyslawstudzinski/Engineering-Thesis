@@ -10,9 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel >
 
-            <!-- <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">-->
-
-            <StackPanel  Name="panel" Tag="panel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
+            <StackPanel  Name="MainStackPanel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
                 <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBox Name="NameBox" Width="370" Header="Name: "/>
@@ -36,29 +34,45 @@
             </StackPanel>
             
 
-            <RelativePanel Name="products" RelativePanel.Below="panel" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="200" Width="800" >
-                <ScrollViewer x:Name="TEST" VerticalScrollBarVisibility="Visible"  VerticalScrollMode="Enabled" >
-                    <GridView x:Name="ProductsView" IsItemClickEnabled="True">
+            <RelativePanel Name="Products" RelativePanel.Below="MainStackPanel" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="200" Width="800" >
+                <ScrollViewer VerticalScrollBarVisibility="Visible"  VerticalScrollMode="Enabled" >
+
+                    <GridView x:Name="ProductsView" IsItemClickEnabled="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center"
+                  IsSwipeEnabled="True" SelectionMode="Single">
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
                         <GridView.ItemTemplate>
-
                             <DataTemplate x:DataType="data:Product" >
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <StackPanel Margin="20,20,0,0">
-                                        <TextBlock FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
-                                        <TextBlock FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
-                                    </StackPanel>
-                                </StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Energy"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
+                                </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
                 </ScrollViewer>
             </RelativePanel>
-            <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="products" Orientation="Horizontal">
+
+
+
+
+
+
+            <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Products" Orientation="Horizontal">
                 <StackPanel>
                     <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
                         <StackPanel Orientation="Horizontal">
@@ -76,25 +90,7 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <!--
-            <ListView x:Name="ProductsView2" HorizontalContentAlignment="Stretch">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <GridView Width="500" VerticalAlignment="Center">
-
-
-
-                            <TextBlock Grid.Column="0" Text="{Binding Name }" />
-                            <TextBlock Grid.Column="1" Text="{Binding Energy}" />
-                            <TextBlock Grid.Column="2" Text="{Binding Fat}" />
-                        </GridView>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
--->
-
-
-            <!--  </StackPanel> -->
+            
         </RelativePanel>
     </Grid>
 </Page>

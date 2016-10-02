@@ -36,9 +36,9 @@ namespace ApplicationToSupportAndControlDiet.Views
 
             productProvider = new ProductProvider();
             items = new ObservableCollection<Product>();
-            SuggestProductsBox.ItemsSource = items;
-            //this.ProductsView.ItemsSource = items;
+            this.SuggestProductsBox.ItemsSource = items;
 
+            this.ProductsView.ItemsSource = items;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -52,8 +52,8 @@ namespace ApplicationToSupportAndControlDiet.Views
             List<Product> result = productProvider.GetProductsLike(sender.Text);
             result.ForEach(x => items.Add(x));
         }
-    
-    private void SubmitButton_Click(object sender, RoutedEventArgs e)
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (VerifyTimeIsAvailable(TimePicker.Time) == true)
             {
