@@ -28,18 +28,63 @@ namespace ApplicationToSupportAndControlDiet.Views
     {
         ObservableCollection<Product> items;
 
+        ProductProvider productProvider;
+
         public AddMeal()
         {
             this.InitializeComponent();
 
-            ProductProvider productProvider = new ProductProvider();
-            items = new ObservableCollection<Product>(productProvider.GetAllProducts());
-           
-            this.ProductsView.ItemsSource = items;
+            productProvider = new ProductProvider();
+            items = new ObservableCollection<Product>();
+            SuggestProductsBox.ItemsSource = items;
+            //this.ProductsView.ItemsSource = items;
 
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        //private void txtPesquisa_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        //{
+        //    var lista = fonteDados.Where(it => (it.nome ?? "").ToLower().Contains(args.QueryText.ToLower()));
+
+
+
+        //    listaResultado.Clear();
+        //    foreach (var item in lista)
+        //    {
+        //        listaResultado.Add(item);
+        //    }
+        //}
+
+        //private void txtPesquisa_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        //{
+        //    var p = args.SelectedItem as Pessoa;
+
+        //    txtInfo.Text = "Selecionado: " + p.id + " - " + p.nome;
+
+        //}
+
+        private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+
+        }
+
+        private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            items.Clear();
+            List<Product> result = productProvider.GetProductsLike(sender.Text);
+            result.ForEach(x => items.Add(x));
+        }
+    
+
+
+
+
+
+
+
+
+
+
+    private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (VerifyTimeIsAvailable(TimePicker.Time) == true)
             {
@@ -64,5 +109,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             return false; // Closed 
         }
+
+
     }
 }

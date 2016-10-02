@@ -22,7 +22,17 @@
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="FoodProducts" Text="Food products:" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                 </StackPanel>
-                
+                <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                Width="500" Height="Auto" Header="Search products" PlaceholderText="Search products..." 
+                                TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
+                    <AutoSuggestBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Name}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
+                </AutoSuggestBox>
             </StackPanel>
             
 
