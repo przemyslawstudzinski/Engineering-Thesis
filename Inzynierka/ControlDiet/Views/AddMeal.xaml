@@ -11,21 +11,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <StackPanel x:Name="MainStackPanel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
 
                 <StackPanel x:Name="Header">
-                    <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBox x:Name="NameBox" Width="370" Header="Name: "/>
                         <TimePicker x:Name = "TimePicker" Header = "Time:" Margin="100, 0, 0, 0"/>
                         <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                        <TextBlock x:Name="FoodProducts" Text="Food products:" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
-                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
-                                Width="500" Height="Auto" Header="Search products" PlaceholderText="Search products..." 
+                                Width="500" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
                                 TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
                             <AutoSuggestBox.ItemTemplate>
                                 <DataTemplate>
@@ -35,16 +31,18 @@
                                 </DataTemplate>
                             </AutoSuggestBox.ItemTemplate>
                         </AutoSuggestBox>
-
                         <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0"/>
                         <ComboBox Header="Measue:" Margin="10, 0, 20, 0">
-
+                            <!--TODO-->
                         </ComboBox>
                         <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click">
                             <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
                                 <SymbolIcon Symbol="Add" Foreground="White" />
                             </StackPanel>
                         </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
+                        <TextBlock x:Name="FoodProducts" Text="Food products:" FontStretch="Expanded" Foreground="Black" Margin="0" />
                     </StackPanel>
                 </StackPanel>
 
@@ -91,30 +89,25 @@
                                             Background="Black" Click="DeleteProduct_Click">
                                     <SymbolIcon Symbol="Delete" Foreground="White" />
                                 </Button>
-
                             </Grid>
-
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Add" Foreground="White" />
-                                <TextBlock Text="Add Product" Width="100" Margin="30,0,0,0" Foreground="White" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel>
-                        <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SubmitButton_Click" >
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Accept" Foreground="White" />
-                                <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SaveMeal_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Accept" Foreground="White" />
+                            <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="CancelMeal" x:Name="CancelMeal" Background="Black" Click="CancelMeal_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Cancel" Foreground="White" />
+                            <TextBlock Text="Cancel" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
 
             </StackPanel>

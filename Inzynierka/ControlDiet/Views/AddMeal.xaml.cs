@@ -96,6 +96,14 @@ namespace ApplicationToSupportAndControlDiet.Views
             return false; // Closed 
         }
 
+        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void CancelMeal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
