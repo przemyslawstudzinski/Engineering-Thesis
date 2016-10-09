@@ -11,7 +11,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
 
                 <StackPanel x:Name="Header">
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">

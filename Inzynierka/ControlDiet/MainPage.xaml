@@ -83,13 +83,13 @@
                             <TextBlock Text="Settings" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Help" Click="SettingsPaneItem_Click">
+                    <Button Tag="Help" Click="HelpPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Help" Foreground="White" />
                             <TextBlock Text="Help" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="About" Click="SettingsPaneItem_Click">
+                    <Button Tag="About" Click="AboutPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="People" Foreground="White" />
                             <TextBlock Text="About" Width="75" Margin="30,0,0,0" Foreground="White" />
