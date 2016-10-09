@@ -4,93 +4,113 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ApplicationToSupportAndControlDiet.Models"
     xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
+    xmlns:view="using:ApplicationToSupportAndControlDiet.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <RelativePanel >
+        <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
 
-            <StackPanel  Name="MainStackPanel" Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
-                <TextBlock x:Name="Title" Text="Create new meal" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBox Name="NameBox" Width="370" Header="Name: "/>
-                    <TimePicker x:Name = "TimePicker" Header = "Time:" Margin="100, 0, 0, 0"/>
-                    <TextBlock x:Name = "Control1Output" FontSize = "24"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="FoodProducts" Text="Food products:" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20" />
-                </StackPanel>
-                <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                Width="500" Height="Auto" Header="Search products" PlaceholderText="Search products..." 
+                <StackPanel x:Name="Header">
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBox x:Name="NameBox" Width="370" Header="Name: "/>
+                        <TimePicker x:Name = "TimePicker" Header = "Time:" Margin="100, 0, 0, 0"/>
+                        <TextBlock x:Name = "Control1Output" FontSize = "24"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
+                                Width="500" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
                                 TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
-                    <AutoSuggestBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
+                            <AutoSuggestBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
                                 <Run Text="{Binding Name}" />
-                            </TextBlock>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </AutoSuggestBox.ItemTemplate>
+                        </AutoSuggestBox>
+                        <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0"/>
+                        <ComboBox Header="Measue:" Margin="10, 0, 20, 0">
+                            <!--TODO-->
+                        </ComboBox>
+                        <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click">
+                            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
+                                <SymbolIcon Symbol="Add" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
+                        <TextBlock x:Name="FoodProducts" Text="Food products:" FontStretch="Expanded" Foreground="Black" Margin="0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <ListView Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0, 20, 0, 0" MaxHeight="400"
+                              SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="data:DefinedProduct">
+                            <Grid  Padding="5" Margin="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5,0" />
+                                    </Style>
+                                </Grid.Resources>
+                                <TextBox Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind Name}" FontWeight="Bold" IsReadOnly="True"/>
+                                <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy}" Header="Energy" FontWeight="Light" IsReadOnly="True"/>
+                                <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein}" Header="Protein" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate}" Header="Carb" IsReadOnly="True"/>
+                                <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat}" Header="Fat" IsReadOnly="True"/>
+                                <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber}" Header="Fiber" IsReadOnly="True"/>
+                                <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar}" Header="Sugar" IsReadOnly="True"/>
+                                <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.RowSpan="2"
+                                             Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
+                                <Button Grid.Column="7" Grid.RowSpan="2" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" 
+                                            Background="Black" Click="DeleteProduct_Click">
+                                    <SymbolIcon Symbol="Delete" Foreground="White" />
+                                </Button>
+                            </Grid>
                         </DataTemplate>
-                    </AutoSuggestBox.ItemTemplate>
-                </AutoSuggestBox>
-            </StackPanel>
-            
-
-            <RelativePanel Name="Products" RelativePanel.Below="MainStackPanel" RelativePanel.AlignHorizontalCenterWithPanel="True" Height="200" Width="800" >
-                <ScrollViewer VerticalScrollBarVisibility="Visible"  VerticalScrollMode="Enabled" >
-
-                    <GridView x:Name="ProductsView" IsItemClickEnabled="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center"
-                  IsSwipeEnabled="True" SelectionMode="Single">
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Vertical"/>
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
-                        <GridView.ItemTemplate>
-                            <DataTemplate x:DataType="data:Product" >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" Text="{x:Bind Name}" HorizontalAlignment="Right"></TextBlock>
-                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Energy"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="10" Text="{x:Bind Energy }" HorizontalAlignment="Right"></TextBlock>
-                                </Grid>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
-                </ScrollViewer>
-            </RelativePanel>
+                    </ListView.ItemTemplate>
+                </ListView>
 
 
-
-
-
-
-            <StackPanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Products" Orientation="Horizontal">
-                <StackPanel>
-                    <Button Tag="AddProduct" x:Name="AddProduct" Background="Black" >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Add" Foreground="White" />
-                            <TextBlock Text="Add Product" Width="100" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-                <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                     <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SubmitButton_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Accept" Foreground="White" />
-                            <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Accept" Foreground="White" />
+                                <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                    <Button Tag="CancelMeal" x:Name="CancelMeal" Background="Black" >
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Cancel" Foreground="White" />
+                                <TextBlock Text="Cancel" Width="100" Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
             </StackPanel>
-            
         </RelativePanel>
     </Grid>
 </Page>
