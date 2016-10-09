@@ -64,6 +64,16 @@ namespace ApplicationToSupportAndControlDiet
         {
             ApplicationName.Text = "SETTINGS";
         }
+        private void HelpPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "HELP";
+            WorkSpace.Navigate(typeof(Help));
+        }
+        private void AboutPaneItem_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationName.Text = "ABOUT";
+            WorkSpace.Navigate(typeof(About));
+        }
         public void SelectedDay_Click(object sender, RoutedEventArgs e)
         {
             this.WorkSpace.Navigate(typeof(CalendarPage));
