@@ -30,6 +30,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         ObservableCollection<DefinedProduct> choosenProducts;
 
         ProductProvider productProvider;
+        Meal newMeal;
         Product selectedProduct;
 
         public AddMeal()
@@ -41,6 +42,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
             this.ItemsList.ItemsSource = choosenProducts;
+            newMeal = new Meal();
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -61,6 +63,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
+            newMeal.ProductsInMeal.Add(definedProduct);
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -98,7 +101,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
-
+            Meal p = newMeal;
         }
 
         private void CancelMeal_Click(object sender, RoutedEventArgs e)
