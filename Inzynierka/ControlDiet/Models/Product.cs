@@ -43,16 +43,17 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("sugar")]
         public float Sugar { set; get; }
 
+        [Column("category")]
+        public ProductCategory Category { set; get; }
+
         [ForeignKey(typeof(Meal))]
         public long DayId { set; get; }
 
         [ManyToOne]
         public Meal Meal { set; get; }
 
-        [Column("category")]
-        public ProductCategory Category { set; get; }
-
         public Product() { }
+
         public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue,
             float fatValue, float fiberValue, float sugarValue, ProductCategory categoryValue)
         {

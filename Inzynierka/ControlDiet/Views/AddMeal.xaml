@@ -11,7 +11,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
 
                 <StackPanel x:Name="Header">
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
@@ -96,19 +97,19 @@
 
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SubmitButton_Click" >
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Accept" Foreground="White" />
-                                <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
-                            </StackPanel>
-                        </Button>
-                    <Button Tag="CancelMeal" x:Name="CancelMeal" Background="Black" >
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Cancel" Foreground="White" />
-                                <TextBlock Text="Cancel" Width="100" Margin="30,0,0,0" Foreground="White" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+                    <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SaveMeal_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Accept" Foreground="White" />
+                            <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="CancelMeal" x:Name="CancelMeal" Background="Black" Click="CancelMeal_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Cancel" Foreground="White" />
+                            <TextBlock Text="Cancel" Width="100" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
 
             </StackPanel>
         </RelativePanel>

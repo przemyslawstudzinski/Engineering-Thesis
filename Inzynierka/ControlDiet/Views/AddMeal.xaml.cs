@@ -30,6 +30,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         ObservableCollection<DefinedProduct> choosenProducts;
 
         ProductProvider productProvider;
+        Meal newMeal;
         Product selectedProduct;
 
         public AddMeal()
@@ -41,6 +42,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
             this.ItemsList.ItemsSource = choosenProducts;
+            newMeal = new Meal();
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -61,6 +63,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
+            newMeal.ProductsInMeal.Add(definedProduct);
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -84,7 +87,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         }
         private bool VerifyTimeIsAvailable(TimeSpan time)
         {
-
             // Set open (8AM) and close (5PM) times. 
             TimeSpan openTime = new TimeSpan(8, 0, 0);
             TimeSpan closeTime = new TimeSpan(17, 0, 0);
@@ -96,6 +98,15 @@ namespace ApplicationToSupportAndControlDiet.Views
             return false; // Closed 
         }
 
+        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        {
+            newMeal.Name = this.NameBox.Text;
 
+        }
+
+        private void CancelMeal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
