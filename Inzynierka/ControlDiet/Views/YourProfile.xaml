@@ -46,10 +46,11 @@
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal" Margin="0,30,0,20">
                     <TextBlock Text="Way to calculate calories :" FontSize="20" Foreground="Black" Margin="0,0,40,0"/>
-                    <RadioButton Name="Automatic" Content="Automatic" GroupName="CaloriesChoose" IsChecked="True" Tag="Automatic"/>
-                    <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual"/>
-                    <TextBox x:Name="CaloriesBox" Text="Wynik"/>
+                    <RadioButton Name="Automatic" Content="Automatic" GroupName="CaloriesChoose" IsChecked="True" Tag="Automatic" Click="Automatic_Click"/>
+                    <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual" Click="Manual_Click"/>
+                    <TextBox x:Name="CaloriesBox" Visibility="Collapsed" Tag="Manual calories"/>
                 </StackPanel>
+                <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <Button Tag="SaveProfile" x:Name="SaveProfile" Background="Black" Click="SaveProfile_Click">
                         <StackPanel Orientation="Horizontal">

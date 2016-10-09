@@ -25,9 +25,10 @@ namespace ApplicationToSupportAndControlDiet
     public sealed partial class YourProfile : Page
     {
 
-        private Boolean IsEmptyMessageSet;
+        private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
+        private const string CONFIRMMESSAGE = "Adding user info successful.";
         private Style RedBorderStyle;
         private Style DefaultStyle;
 
@@ -134,28 +135,35 @@ namespace ApplicationToSupportAndControlDiet
             Enum.TryParse(goalValue, out userGoalChoice);
             User user = new User(userName, sexChoice, ageValue, heightValue, weightValue, userGoalChoice, activityChoice);
             string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
-            int totalDailyEnergyExpenditure;
+            int totalDailyEnergyExpenditure=0;
             if (caloriesValue.Equals("Automatic"))
             {
+                if (IsFailMessageSet == true) return;
                 totalDailyEnergyExpenditure = RequisitionOfCalories.CalculateRequisitionOfCalories(user);
             }
             else
             {
-                totalDailyEnergyExpenditure = int.Parse(CaloriesBox.Text);                
+                if (ValidateAndCheckInRange(CaloriesBox, 50, 10000))
+                {
+                    totalDailyEnergyExpenditure = int.Parse(CaloriesBox.Text);
+                }        
             }
+            if (IsFailMessageSet == true) return;
             user.TotalDailyEnergyExpenditure = totalDailyEnergyExpenditure;
 
             UserCreator userCreator = new UserCreator();
-            userCreator.SaveUser(user);
+            if (userCreator.SaveUser(user) > -1) {
+                ClearTextBoxesAndSetConfirmMessage();
+            }
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
         {
             if (textBox.Text.Length == 0)
             {
-                if (!IsEmptyMessageSet)
+                if (!IsFailMessageSet)
                 {
-                    IsEmptyMessageSet = true;
+                    IsFailMessageSet = true;
                     AppendToMessages(EMPTYMESSAGE);
                 }
                 textBox.Style = RedBorderStyle;
@@ -170,9 +178,9 @@ namespace ApplicationToSupportAndControlDiet
         private Boolean ValidateAndCheckInRange(TextBox textBox, float min, float max) {
             if (textBox.Text.Length == 0)
             {
-                if (!IsEmptyMessageSet)
+                if (!IsFailMessageSet)
                 {
-                    IsEmptyMessageSet = true;
+                    IsFailMessageSet = true;
                     AppendToMessages(EMPTYMESSAGE);
                 }
                 textBox.Style = RedBorderStyle;
@@ -186,23 +194,58 @@ namespace ApplicationToSupportAndControlDiet
             else {
                 textBox.Style = RedBorderStyle;
                 AppendToMessages(String.Format(VALUESMESSAGE,textBox.Tag,min,max));
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                }
                 return false;
             }
         }
 
         private void ClearTextBoxesAndMessages()
         {
-            IsEmptyMessageSet = false;
+            IsFailMessageSet = false;
             ValidationMessages.Text = String.Empty;
+            ClearStyles();
+        }
+
+        private void ClearTextBoxesAndSetConfirmMessage()
+        {
+            ClearText();
+            ClearStyles();
+            AddConfirm.Text = CONFIRMMESSAGE;
+        }
+
+        private void ClearStyles()
+        {
             NameBox.Style = DefaultStyle;
             AgeBox.Style = DefaultStyle;
             HeightBox.Style = DefaultStyle;
             weightBox.Style = DefaultStyle;
         }
 
+        private void ClearText() {
+            ValidationMessages.Text = String.Empty;
+            AddConfirm.Text = String.Empty;
+            NameBox.Text = String.Empty;
+            AgeBox.Text = String.Empty;
+            HeightBox.Text = String.Empty;
+            weightBox.Text = String.Empty;
+        }
+
         private void AppendToMessages(string message)
         {
             ValidationMessages.Text += (message + Environment.NewLine);
+        }
+
+        private void Manual_Click(object sender, RoutedEventArgs e)
+        {
+            CaloriesBox.Visibility = Visibility.Visible;
+        }
+
+        private void Automatic_Click(object sender, RoutedEventArgs e)
+        {
+            CaloriesBox.Visibility = Visibility.Collapsed;
         }
     }
 }

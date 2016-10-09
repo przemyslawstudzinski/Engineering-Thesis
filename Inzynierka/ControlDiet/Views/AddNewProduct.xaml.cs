@@ -25,8 +25,9 @@ namespace ApplicationToSupportAndControlDiet.Views
     public sealed partial class AddNewProduct : Page
     {
 
-        private Boolean IsEmptyMessageSet;
+        private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
+        private const string CONFIRMMESSAGE = "Adding product successful.";
         private Style RedBorderStyle;
         private Style DefaultStyle;
 
@@ -59,7 +60,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SaveProduct_Click(object sender, RoutedEventArgs e)
         {
-            ClearTextBoxesAndMessages();
+            ClearTextBoxesStylesAndMessages();
             string userName="";
             if (ValidateEmpty(NameBox))
             {
@@ -95,20 +96,22 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 float.TryParse(SugarBox.Text, out sugarvalue);
             }
-            if (IsEmptyMessageSet) return;
+            if (IsFailMessageSet) return;
             Product product = new Product(userName, kcalValue, proteinValue, carbohydrateValue, fatValue,
                 fiberValue, sugarvalue, ProductCategory.UserProducts);
             ProductCreator productCreator = new ProductCreator();
-            productCreator.SaveProduct(product);
+            if (productCreator.SaveProduct(product) > -1) {
+                ClearTextBoxesAndSetConfirmMessage();
+            };
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
         {
             if (textBox.Text.Length == 0)
             {
-                if (!IsEmptyMessageSet)
+                if (!IsFailMessageSet)
                 {
-                    IsEmptyMessageSet = true;
+                    IsFailMessageSet = true;
                     AppendToMessages(EMPTYMESSAGE);
                 }
                 textBox.Style = RedBorderStyle;
@@ -120,9 +123,20 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void ClearTextBoxesAndMessages() {
-            IsEmptyMessageSet = false;
-            ValidationMessages.Text = "";
+        private void ClearTextBoxesStylesAndMessages() {
+            ClearStyles();
+            IsFailMessageSet = false;
+            AddConfirm.Text = String.Empty;
+            ValidationMessages.Text = String.Empty;
+        }
+
+        private void ClearTextBoxesAndSetConfirmMessage() {
+            ClearText();
+            ClearStyles();
+            AddConfirm.Text = CONFIRMMESSAGE;
+        }
+
+        private void ClearStyles() {
             NameBox.Style = DefaultStyle;
             KcalBox.Style = DefaultStyle;
             ProteinBox.Style = DefaultStyle;
@@ -130,6 +144,19 @@ namespace ApplicationToSupportAndControlDiet.Views
             FatBox.Style = DefaultStyle;
             FiberBox.Style = DefaultStyle;
             SugarBox.Style = DefaultStyle;
+        }
+
+        private void ClearText()
+        {
+            AddConfirm.Text = String.Empty;
+            ValidationMessages.Text = String.Empty;
+            NameBox.Text = String.Empty;
+            KcalBox.Text = String.Empty;
+            ProteinBox.Text = String.Empty;
+            CarbohydrateBox.Text = String.Empty;
+            FatBox.Text = String.Empty;
+            FiberBox.Text = String.Empty;
+            SugarBox.Text = String.Empty;
         }
 
         private void AppendToMessages(string message)
