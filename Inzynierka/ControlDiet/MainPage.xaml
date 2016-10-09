@@ -89,6 +89,12 @@
                             <TextBlock Text="Help" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
+                    <Button Tag="About" Click="SettingsPaneItem_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="People" Foreground="White" />
+                            <TextBlock Text="About" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </SplitView.Pane>
 
