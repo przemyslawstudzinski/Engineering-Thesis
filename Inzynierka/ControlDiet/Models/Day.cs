@@ -25,7 +25,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         [OneToMany]
         public List<Meal> MealsInDay { set; get; }
 
-        public float energy;
+        private float energy;
 
         public float Energy
         {
@@ -40,7 +40,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        public float protein;
+        private float protein;
 
         public float Protein
         {
@@ -55,7 +55,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        public float carbohydrate;
+        private float carbohydrate;
 
         public float Carbohydrate
         {
@@ -70,7 +70,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        public float fat;
+        private float fat;
 
         public float Fat
         {
@@ -85,7 +85,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        public float sugar;
+        private float sugar;
 
         public float Sugar
         {
@@ -100,7 +100,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        public float fiber;
+        private float fiber;
 
         public float Fiber
         {

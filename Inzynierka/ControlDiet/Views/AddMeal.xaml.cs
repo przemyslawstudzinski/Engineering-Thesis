@@ -87,7 +87,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         }
         private bool VerifyTimeIsAvailable(TimeSpan time)
         {
-
             // Set open (8AM) and close (5PM) times. 
             TimeSpan openTime = new TimeSpan(8, 0, 0);
             TimeSpan closeTime = new TimeSpan(17, 0, 0);
@@ -101,7 +100,8 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
-            Meal p = newMeal;
+            newMeal.Name = this.NameBox.Text;
+
         }
 
         private void CancelMeal_Click(object sender, RoutedEventArgs e)
