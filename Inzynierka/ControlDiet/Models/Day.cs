@@ -114,5 +114,10 @@ namespace ApplicationToSupportAndControlDiet.Models
                 return fiber;
             }
         }
+
+        public Day()
+        {
+            MealsInDay = new List<Meal>();
+        }
     }
 }

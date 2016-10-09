@@ -17,6 +17,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         public int Quantity { set; get; }
 
         public DefinedProduct() { }
+
         public DefinedProduct(Product product, int quantity)
         {
             this.Name = product.Name;
