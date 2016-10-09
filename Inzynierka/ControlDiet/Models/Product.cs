@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SQLite;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
+using System.Collections.ObjectModel;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {

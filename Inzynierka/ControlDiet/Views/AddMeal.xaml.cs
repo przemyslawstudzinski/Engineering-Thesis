@@ -27,8 +27,10 @@ namespace ApplicationToSupportAndControlDiet.Views
     public partial class AddMeal : Page
     {
         ObservableCollection<Product> items;
+        ObservableCollection<DefinedProduct> choosenProducts;
 
         ProductProvider productProvider;
+        Product selectedProduct;
 
         public AddMeal()
         {
@@ -36,14 +38,14 @@ namespace ApplicationToSupportAndControlDiet.Views
 
             productProvider = new ProductProvider();
             items = new ObservableCollection<Product>();
+            choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
-
-            this.ProductsView.ItemsSource = items;
+            this.ItemsList.ItemsSource = choosenProducts;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            Product selectedProduct = args.SelectedItem as Product;
+            selectedProduct = args.SelectedItem as Product;
         }
 
         private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -51,6 +53,21 @@ namespace ApplicationToSupportAndControlDiet.Views
             items.Clear();
             List<Product> result = productProvider.GetProductsLike(sender.Text);
             result.ForEach(x => items.Add(x));
+        }
+
+        private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
+        {
+            int quantity;
+            Int32.TryParse(this.QuantityBox.Text, out quantity);
+            DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
+            choosenProducts.Add(definedProduct);
+        }
+
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var productToDelete = baseObject.DataContext as DefinedProduct;
+            choosenProducts.Remove(productToDelete);
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -78,5 +95,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             return false; // Closed 
         }
+
+
     }
 }
