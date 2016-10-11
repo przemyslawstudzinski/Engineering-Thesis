@@ -9,9 +9,33 @@
     mc:Ignorable="d"
     >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Charting:Chart x:Name="BarChart" Height="300" Width="600" Title="Dzienne spożycie makroskładników"  HorizontalAlignment="Center">
-            <Charting:BarSeries Margin="0" Title="Day summary" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
-        </Charting:Chart>
+        <RelativePanel HorizontalAlignment="Center" >
+            <RelativePanel x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="White">
+                <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True"/>
+            </RelativePanel>
+            <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Previous" Foreground="White" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Next" Foreground="White" />
+                </StackPanel>
+            </Button>
+            <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical" RelativePanel.Below="Border">
+                <TextBlock Text="Day energy(kcal):"/>
+                <Grid>
+                    <ProgressBar x:Name="EnergyBar" Height="25" Width="600" Minimum="0" Value="50" />
+                    <TextBlock x:Name="EnergyText" Text="100/2000" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+                <Charting:Chart x:Name="PieChart" Height="300" Width="600" Title="Dzienne spożycie makroskładników"  HorizontalAlignment="Center">
+                    <Charting:PieSeries Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+                </Charting:Chart>
+            </StackPanel>
+        </RelativePanel>
+        
 
 
 
