@@ -20,6 +20,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         public string Name { set; get; }
 
         [Column("date")]
+        [Unique]
         public DateTime Date { set; get; }
 
         [OneToMany]

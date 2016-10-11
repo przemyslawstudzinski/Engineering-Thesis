@@ -102,6 +102,21 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             newMeal.Name = this.NameBox.Text;
 
+            TimeSpan time = this.TimePicker.Time;
+            DateTimeOffset date = this.DataPicker.Date.Value;
+            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+
+            newMeal.TimeOfMeal = dateTime;
+
+            DayService serviceOfDays = new DayService();
+            Day d1 = new Day();
+            d1.Date = dateTime;
+            serviceOfDays.SaveDay(d1);
+
+
+
+            Day d2 = serviceOfDays.FindDay(dateTime);
+
         }
 
         private void CancelMeal_Click(object sender, RoutedEventArgs e)
