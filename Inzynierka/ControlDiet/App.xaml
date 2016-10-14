@@ -11,5 +11,13 @@
                 <Setter Property="BorderThickness" Value="2" />
                 <Setter Property="BorderBrush" Value="Red" />
             </Style>
+        <Style x:Key="CalendarError" TargetType="CalendarDatePicker">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="Red" />
+        </Style>
+        <Style x:Key="AutoSuggestError" TargetType="AutoSuggestBox">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="Red" />
+        </Style>
     </Application.Resources>
 </Application>

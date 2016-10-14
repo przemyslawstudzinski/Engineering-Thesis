@@ -62,7 +62,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             ClearTextBoxesStylesAndMessages();
             string userName="";
-            if (ValidateEmpty(NameBox))
+            if (ValidateEmpty(NameBox))            
             {
                 userName = NameBox.Text;
             }
@@ -136,6 +136,13 @@ namespace ApplicationToSupportAndControlDiet.Views
             AddConfirm.Text = CONFIRMMESSAGE;
         }
 
+        private void ClearTextBoxesAndStyles()
+        {
+            ClearText();
+            ClearStyles();
+            IsFailMessageSet = false;
+        }
+
         private void ClearStyles() {
             NameBox.Style = DefaultStyle;
             KcalBox.Style = DefaultStyle;
@@ -164,5 +171,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text += (message + Environment.NewLine);
         }
 
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBoxesAndStyles();
+        }
     }
 }

@@ -22,6 +22,13 @@ namespace ApplicationToSupportAndControlDiet
     /// </summary>
     sealed partial class App : Application
     {
+
+        public Nullable<DateTimeOffset> Date 
+        {
+            get;
+            set;
+        }
+    
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -30,6 +37,7 @@ namespace ApplicationToSupportAndControlDiet
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.Date = DateTimeOffset.Now;
         }
 
         /// <summary>

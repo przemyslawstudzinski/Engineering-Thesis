@@ -32,6 +32,19 @@ namespace ApplicationToSupportAndControlDiet.Views
         ProductProvider productProvider;
         Meal newMeal;
         Product selectedProduct;
+        private Boolean IsFailMessageSet;
+        private const string EMPTYMESSAGE = "Fill all the blank fields.";
+        private const string CONFIRMMESSAGE = "Adding meal successful.";
+        private Style RedBorderStyleTextbox;
+        private Style RedBorderStyleDate;
+        private Style RedBorderStyleAutoSuggest;
+        private Style DefaultStyle;
+
+        public Nullable<DateTimeOffset> Date
+        {
+            get;
+            set;
+        }
 
         public AddMeal()
         {
@@ -43,6 +56,11 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.SuggestProductsBox.ItemsSource = items;
             this.ItemsList.ItemsSource = choosenProducts;
             newMeal = new Meal();
+            RedBorderStyleTextbox = Application.Current.Resources["TextBoxError"] as Style;
+            RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
+            RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
+            DefaultStyle = null;
+            this.Date = DateTimeOffset.Now;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -63,7 +81,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
-            newMeal.ProductsInMeal.Add(definedProduct);
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -100,28 +117,158 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
-            newMeal.Name = this.NameBox.Text;
-
-            TimeSpan time = this.TimePicker.Time;
-            DateTimeOffset date = this.DataPicker.Date.Value;
-            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-
-            newMeal.TimeOfMeal = dateTime;
-
-            DayService serviceOfDays = new DayService();
-            Day d1 = new Day();
-            d1.Date = dateTime;
-            serviceOfDays.SaveDay(d1);
-
-
-
-            Day d2 = serviceOfDays.FindDay(dateTime);
-
+            ClearTextBoxesStylesAndMessages();
+            Meal meal = new Meal();
+            if (ValidateEmpty(NameBox))
+            {
+                meal.Name = NameBox.Text;
+            }
+            if (ValidateEmptyDate(DataPicker))
+            {
+                TimeSpan time = this.TimePicker.Time;
+                DateTimeOffset date = this.DataPicker.Date.Value;
+                DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+                meal.TimeOfMeal = dateTime;
+                DayService serviceOfDays = new DayService();
+                Day d1 = new Day();
+                d1.Date = dateTime;
+                //Its probably better to save the date if all fields are succesfuly validated
+                serviceOfDays.SaveDay(d1);
+                Day d2 = serviceOfDays.FindDay(dateTime);
+            }
+            if (ValidateChoosenProducts())
+            {
+                meal.ProductsInMeal = new List<DefinedProduct>(choosenProducts);
+            }
+            if (IsFailMessageSet) return;
+            MealService mealService = new MealService();
+            if (mealService.SaveMeal(meal) > -1)
+            {
+                ClearTextBoxesAndSetConfirmMessage();
+            }
         }
 
-        private void CancelMeal_Click(object sender, RoutedEventArgs e)
+        private bool ValidateChoosenProducts()
         {
-
+            if (choosenProducts.Count == 0)
+            {
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                SuggestProductsBox.Style = RedBorderStyleAutoSuggest;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
+
+        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            Int32 selectionStart = textBox.SelectionStart;
+            Int32 selectionLength = textBox.SelectionLength;
+            String newText = String.Empty;
+            int count = 0;
+            foreach (Char c in textBox.Text.ToCharArray())
+            {
+                if (Char.IsDigit(c) || Char.IsControl(c) || (c == '.' && count == 0))
+                {
+                    newText += c;
+                    if (c == '.')
+                        count += 1;
+                }
+            }
+            textBox.Text = newText;
+            textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+
+        private Boolean ValidateEmpty(TextBox textBox)
+        {
+            if (textBox.Text.Length == 0)
+            {
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                textBox.Style = RedBorderStyleTextbox;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean ValidateEmptyDate(CalendarDatePicker datePicker)
+        {
+            if (datePicker.Date == null)
+            {
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                datePicker.Style = RedBorderStyleDate;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ClearTextBoxesStylesAndMessages()
+        {
+            ClearStyles();
+            IsFailMessageSet = false;
+            AddConfirm.Text = String.Empty;
+            ValidationMessages.Text = String.Empty;
+        }
+
+        private void ClearTextBoxesAndSetConfirmMessage()
+        {
+            ClearTextAndList();
+            ClearStyles();
+            AddConfirm.Text = CONFIRMMESSAGE;
+        }
+
+        private void ClearTextBoxesAndStyles()
+        {
+            ClearTextAndList();
+            ClearStyles();
+            IsFailMessageSet = false;
+        }
+
+        private void ClearStyles()
+        {
+            NameBox.Style = DefaultStyle;
+            DataPicker.Style = DefaultStyle;
+            SuggestProductsBox.Style = DefaultStyle;
+        }
+
+        private void ClearTextAndList()
+        {
+            AddConfirm.Text = String.Empty;
+            ValidationMessages.Text = String.Empty;
+            NameBox.Text = String.Empty;
+            choosenProducts = new ObservableCollection<DefinedProduct>();
+            this.ItemsList.ItemsSource = choosenProducts;
+        }
+
+        private void ClearMeal_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBoxesAndStyles();
+        }
+
+        private void AppendToMessages(string message)
+        {
+            ValidationMessages.Text += (message + Environment.NewLine);
+        }
+
     }
 }

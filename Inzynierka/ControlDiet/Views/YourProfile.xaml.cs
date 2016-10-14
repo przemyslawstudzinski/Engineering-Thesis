@@ -216,6 +216,14 @@ namespace ApplicationToSupportAndControlDiet
             AddConfirm.Text = CONFIRMMESSAGE;
         }
 
+        private void ClearTextBoxesAndStyles()
+        {
+            ClearText();
+            ClearStyles();
+            IsFailMessageSet = false;
+        }
+
+
         private void ClearStyles()
         {
             NameBox.Style = DefaultStyle;
@@ -246,6 +254,11 @@ namespace ApplicationToSupportAndControlDiet
         private void Automatic_Click(object sender, RoutedEventArgs e)
         {
             CaloriesBox.Visibility = Visibility.Collapsed;
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBoxesAndStyles();
         }
     }
 }
