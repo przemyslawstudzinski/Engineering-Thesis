@@ -8,8 +8,8 @@ namespace ApplicationToSupportAndControlDiet.Models
 {
     public enum UserGoal
     {
-        LoseWieght,
+        LoseWeight,
         MaintainWeight,
-        GainWight
+        GainWeight
     }
 }
