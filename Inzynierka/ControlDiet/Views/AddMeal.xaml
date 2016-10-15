@@ -13,16 +13,18 @@
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
             <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
                         RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
-
-                <StackPanel x:Name="Header" Width="600">
+                <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                <StackPanel x:Name="Header">
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                        <TextBox x:Name="NameBox" Width="350" Header="Name: "/>
-                        <TimePicker x:Name = "TimePicker" Header = "Time:" Margin="25, 0, 0, 0"/>
+                        <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
+                        <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
+                                            DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Date, Mode=TwoWay}"/>
+                        <TimePicker x:Name = "TimePicker" Header = "Time"  Padding="5"/>
                         <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
-                                Width="350" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
+                                Width="500" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
                                 TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
                             <AutoSuggestBox.ItemTemplate>
                                 <DataTemplate>
@@ -32,7 +34,7 @@
                                 </DataTemplate>
                             </AutoSuggestBox.ItemTemplate>
                         </AutoSuggestBox>
-                        <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0"/>
+                        <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
                         <ComboBox Header="Measue:" Margin="10, 0, 20, 0">
                             <!--TODO-->
                         </ComboBox>
@@ -103,12 +105,13 @@
                             <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="CancelMeal" x:Name="CancelMeal" Background="Black" Click="CancelMeal_Click">
+                    <Button Tag="CancelMeal" x:Name="ClearMeal" Background="Black" Click="ClearMeal_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Cancel" Foreground="White" />
-                            <TextBlock Text="Cancel" Width="100" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
+                    <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
                 </StackPanel>
 
             </StackPanel>

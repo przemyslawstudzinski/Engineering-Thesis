@@ -12,7 +12,7 @@
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
                     <VisualState.StateTriggers>
-                        <!-- <AdaptiveTrigger MinWindowWidth="720" /> -->
+                        <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="Overlay" />
@@ -77,10 +77,10 @@
                             <TextBlock Text="Add New Product"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
+                    <Button Tag="Settings" Click="SettingsPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Highlight" Foreground="White" />
-                            <TextBlock Text="Statistics" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Setting" Foreground="White" />
+                            <TextBlock Text="Settings" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Help" Click="HelpPaneItem_Click">
