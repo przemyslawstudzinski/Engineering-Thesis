@@ -49,9 +49,9 @@
                     <TextBlock Text="Goal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
                     <TextBox  Name="GoalBox" />
                     <ComboBox Name="GoalBox1" SelectedValuePath="Tag" >
-                        <ComboBoxItem Content="Lose weight" Tag="LoseWieght" />
+                        <ComboBoxItem Content="Lose weight" Tag="LoseWeight" />
                         <ComboBoxItem Content="Maintain weight" Tag="MaintainWeight" />
-                        <ComboBoxItem Content="Gain wight" Tag="GainWight" />
+                        <ComboBoxItem Content="Gain weight" Tag="GainWeight" />
                     </ComboBox>
                     <!--<Slider x:Name="targetSlider" Minimum="0" Maximum="2" Width="100" IntermediateValue="1" Margin="0,0,17,0"/>
                     <TextBlock x:Name="goalBox" Text="{Binding ElementName=targetSlider,Path=Value}"/>-->
