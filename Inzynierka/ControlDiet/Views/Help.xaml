@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <Pivot x:Name="rootPivot" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+        <RelativePanel HorizontalAlignment="Center">
+        <Pivot x:Name="rootPivot" HorizontalAlignment="Center" >
             <PivotItem Header="Add meal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="In this section you can Add Meal to day"/>
@@ -80,6 +80,6 @@ housewives/househusbands without mechanical appliances.
                 </StackPanel>
             </PivotItem>
         </Pivot>
-
+        </RelativePanel>
     </Grid>
 </Page>

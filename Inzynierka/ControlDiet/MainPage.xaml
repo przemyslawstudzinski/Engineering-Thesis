@@ -39,24 +39,24 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
-        <SplitView x:Name="MySplitView" DisplayMode="Inline" IsPaneOpen="True"  Margin="0,0,0,0">
+        
+        <SplitView x:Name="MySplitView" Margin="0,0,0,0" DisplayMode="CompactInline" IsPaneOpen="True" OpenPaneLength="200" > 
             <SplitView.PaneBackground>
                 <SolidColorBrush Color="White" Opacity="0.0" />
             </SplitView.PaneBackground>
-            <SplitView.Pane>
-                
-                <StackPanel Margin="0,0,120,0" Width="200" Background="Black">
+            <SplitView.Pane >
+
+                <StackPanel Background="Black" HorizontalAlignment="Left" Width="200" >
                     <Button Tag="Home" Margin="0,50,0,0"  Click="HomePaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Home" Foreground="White" />
-                            <TextBlock Text="Home" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Home"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="AddMeal"  Click="AddMealPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Add" Foreground="White" />
-                            <TextBlock Text="Add Meal" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Add Meal"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
@@ -68,39 +68,38 @@
                     <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Highlight" Foreground="White" />
-                            <TextBlock Text="Statistics" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Statistics" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Search" Click="SearchPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Find" Foreground="White" />
-                            <TextBlock Text="Search" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Search"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Help" Click="HelpPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Help" Foreground="White" />
-                            <TextBlock Text="Help" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Help"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Contact" Foreground="White" />
-                            <TextBlock Text="Your Profile" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="About" Click="AboutPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="People" Foreground="White" />
-                            <TextBlock Text="About" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="About"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
             </SplitView.Pane>
 
 
-            <Grid x:Name="Content" Background="White" Margin="-119,0,0,0">
-
+            <Grid x:Name="Content"  Background="White"  Margin="0,0,0,0">
                 <RelativePanel Background="Black">
                     <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="White"  RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,10,0,0"/>
                 </RelativePanel>
