@@ -82,6 +82,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
+            ClearText();
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -229,14 +230,16 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void ClearTextBoxesAndSetConfirmMessage()
         {
-            ClearTextAndList();
+            ClearText();
+            ClearList();
             ClearStyles();
             AddConfirm.Text = CONFIRMMESSAGE;
         }
 
         private void ClearTextBoxesAndStyles()
         {
-            ClearTextAndList();
+            ClearText();
+            ClearList();
             ClearStyles();
             IsFailMessageSet = false;
         }
@@ -248,11 +251,17 @@ namespace ApplicationToSupportAndControlDiet.Views
             SuggestProductsBox.Style = DefaultStyle;
         }
 
-        private void ClearTextAndList()
+        private void ClearText()
         {
             AddConfirm.Text = String.Empty;
             ValidationMessages.Text = String.Empty;
             NameBox.Text = String.Empty;
+            this.QuantityBox.Text = String.Empty;
+            this.SuggestProductsBox.Text = String.Empty;
+        }
+
+        private void ClearList()
+        {
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.ItemsList.ItemsSource = choosenProducts;
         }
