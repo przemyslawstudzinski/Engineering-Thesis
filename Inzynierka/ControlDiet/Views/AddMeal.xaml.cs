@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLiteNetExtensions.Extensions;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -90,61 +91,57 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts.Remove(productToDelete);
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (VerifyTimeIsAvailable(TimePicker.Time) == true)
-            {
-                Control1Output.Text = string.Format("Thank you. Your appointment is set for {0}.",
-                   TimePicker.Time.ToString());
-            }
-            else
-            {
-                Control1Output.Text = "Sorry, we're only open from 8AM to 5PM.";
-            }
-        }
-        private bool VerifyTimeIsAvailable(TimeSpan time)
-        {
-            // Set open (8AM) and close (5PM) times. 
-            TimeSpan openTime = new TimeSpan(8, 0, 0);
-            TimeSpan closeTime = new TimeSpan(17, 0, 0);
-
-            if (time >= openTime && time < closeTime)
-            {
-                return true; // Open 
-            }
-            return false; // Closed 
-        }
-
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
+            Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
             Meal meal = new Meal();
             if (ValidateEmpty(NameBox))
             {
                 meal.Name = NameBox.Text;
             }
+            if (ValidateChoosenProducts())
+            {
+                foreach (DefinedProduct element in choosenProducts)
+                {
+                    meal.ProductsInMeal.Add(element);
+                    element.Meal = meal;
+                    element.MealId = meal.Id;
+                }
+            }
+            Day day = null;
+            bool newItem = false;
             if (ValidateEmptyDate(DataPicker))
             {
                 TimeSpan time = this.TimePicker.Time;
                 DateTimeOffset date = this.DataPicker.Date.Value;
                 DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-                meal.TimeOfMeal = dateTime;
-                DayService serviceOfDays = new DayService();
-                Day d1 = new Day();
-                d1.Date = dateTime;
-                //Its probably better to save the date if all fields are succesfuly validated
-                serviceOfDays.SaveDay(d1);
-                Day d2 = serviceOfDays.FindDay(dateTime);
-            }
-            if (ValidateChoosenProducts())
-            {
-                meal.ProductsInMeal = new List<DefinedProduct>(choosenProducts);
+                meal.TimeOfMeal = dateTime;           
+                day = repository.FindDayByDate(dateTime);
+                if(day == null)
+                {
+                    day = new Day();
+                    day.Date = dateTime;
+                    newItem = true;                
+                }
+                day.MealsInDay.Add(meal);
+                meal.Day = day;
+                meal.DayId = day.Id;
             }
             if (IsFailMessageSet) return;
-            MealService mealService = new MealService();
-            if (mealService.SaveMeal(meal) > -1)
+            if (newItem == true)
             {
-                ClearTextBoxesAndSetConfirmMessage();
+                if (repository.Save(day) > -1)
+                {
+                    ClearTextBoxesAndSetConfirmMessage();
+                }
+            }
+            else
+            {
+                if (repository.Update(day) > -1)
+                {
+                    ClearTextBoxesAndSetConfirmMessage();
+                }
             }
         }
 

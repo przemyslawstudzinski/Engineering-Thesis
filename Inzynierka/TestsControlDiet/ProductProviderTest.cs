@@ -12,11 +12,11 @@ namespace TestsControlDiet
     [TestClass]
     public class ProductProviderTest
     {
-            [AssemblyInitialize]
-            public static void AssemblyInit(TestContext context)
-            {
+        [AssemblyInitialize]
+        public static void AssemblyInit(TestContext context)
+        {
             DatabaseConnection.CreateSqliteDatabase();
-            }
+        }
 
         [TestMethod]
         public void getAllProductsTest()
@@ -33,7 +33,5 @@ namespace TestsControlDiet
             List<Product> allProducts = productProvider.GetProductsLike("bev");
             Assert.AreEqual(allProducts.Count, 49, "There should be only 49 records with substring 'bev' in name");
         }
-
-
     }
 }

@@ -15,8 +15,9 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
+        [NotNull]
         [Column("id")]
-        public long Id { set; get; }
+        public int Id { set; get; }
 
         [Unique]
         [Column("code")]
@@ -47,7 +48,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         public ProductCategory Category { set; get; }
 
         [ForeignKey(typeof(Meal))]
-        public long DayId { set; get; }
+        public int MealId { set; get; }
 
         [ManyToOne]
         public Meal Meal { set; get; }

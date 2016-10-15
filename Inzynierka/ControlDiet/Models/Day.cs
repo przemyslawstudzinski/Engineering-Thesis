@@ -13,17 +13,15 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
+        [NotNull]
         [Column("id")]
-        public long Id { set; get; }
-
-        [Column("name")]
-        public string Name { set; get; }
+        public int Id { set; get; }
 
         [Column("date")]
         [Unique]
         public DateTime Date { set; get; }
 
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Meal> MealsInDay { set; get; }
 
         private float energy;
