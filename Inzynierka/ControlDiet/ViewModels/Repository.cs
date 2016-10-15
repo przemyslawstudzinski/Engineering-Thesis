@@ -7,8 +7,6 @@ using ApplicationToSupportAndControlDiet.Models;
 using SQLite.Net;
 using SQLiteNetExtensions.Extensions;
 
-
-
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class Repository<T>
