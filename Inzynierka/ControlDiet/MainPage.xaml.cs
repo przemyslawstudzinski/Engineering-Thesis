@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ApplicationToSupportAndControlDiet.ViewModels;
+using Windows.UI.ViewManagement;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,6 +28,7 @@ namespace ApplicationToSupportAndControlDiet
         public MainPage()
         {
             this.InitializeComponent();
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             DatabaseConnection.CreateSqliteDatabase();
         }
 
@@ -60,9 +62,10 @@ namespace ApplicationToSupportAndControlDiet
             ApplicationName.Text = "ADD NEW PRODUCT";
             WorkSpace.Navigate(typeof(AddNewProduct));
         }
-        private void SettingsPaneItem_Click(object sender, RoutedEventArgs e)
+        private void StatisticsPaneItem_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationName.Text = "SETTINGS";
+            ApplicationName.Text = "STATISTICS";
+            WorkSpace.Navigate(typeof(Statistics));
         }
         private void HelpPaneItem_Click(object sender, RoutedEventArgs e)
         {
