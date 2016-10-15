@@ -29,7 +29,5 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             List<Product> allProducts = connectionToDatabase.Query<Product>(query);
             return allProducts;
         }
-
-
     }
 }
