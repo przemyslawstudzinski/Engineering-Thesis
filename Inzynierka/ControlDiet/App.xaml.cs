@@ -38,6 +38,7 @@ namespace ApplicationToSupportAndControlDiet
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.Date = DateTimeOffset.Now;
+           
         }
 
         /// <summary>
@@ -57,11 +58,11 @@ namespace ApplicationToSupportAndControlDiet
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
+
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
+               rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

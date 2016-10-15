@@ -60,9 +60,10 @@ namespace ApplicationToSupportAndControlDiet
             ApplicationName.Text = "ADD NEW PRODUCT";
             WorkSpace.Navigate(typeof(AddNewProduct));
         }
-        private void SettingsPaneItem_Click(object sender, RoutedEventArgs e)
+        private void StatisticsPaneItem_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationName.Text = "SETTINGS";
+            ApplicationName.Text = "STATISTICS";
+            WorkSpace.Navigate(typeof(Statistics));
         }
         private void HelpPaneItem_Click(object sender, RoutedEventArgs e)
         {

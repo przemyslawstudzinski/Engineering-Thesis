@@ -59,34 +59,34 @@
                             <TextBlock Text="Add Meal" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Search" Click="SearchPaneItem_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Find" Foreground="White" />
-                            <TextBlock Text="Search" Width="75" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Contact" Foreground="White" />
-                            <TextBlock Text="Your Profile" Width="75" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
                     <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Add" Foreground="White" />
                             <TextBlock Text="Add New Product"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Settings" Click="SettingsPaneItem_Click">
+                    <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Setting" Foreground="White" />
-                            <TextBlock Text="Settings" Width="75" Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Highlight" Foreground="White" />
+                            <TextBlock Text="Statistics" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Search" Click="SearchPaneItem_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Find" Foreground="White" />
+                            <TextBlock Text="Search" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Help" Click="HelpPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Help" Foreground="White" />
                             <TextBlock Text="Help" Width="75" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Contact" Foreground="White" />
+                            <TextBlock Text="Your Profile" Width="75" Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="About" Click="AboutPaneItem_Click">
