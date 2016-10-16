@@ -112,6 +112,7 @@
     <Compile Include="Models\UserGoal.cs" />
     <Compile Include="ViewModels\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\CalculateRequisitionOfCalories.cs" />
+    <Compile Include="ViewModels\Converters.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
     <Compile Include="ViewModels\Globals.cs" />
     <Compile Include="ViewModels\Repository.cs" />

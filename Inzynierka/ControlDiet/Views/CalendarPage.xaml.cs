@@ -144,5 +144,15 @@ namespace ApplicationToSupportAndControlDiet
             PanelBottom.Children.Add(Delete);
 
         }
+
+        private void NextDay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PreviousDay_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
