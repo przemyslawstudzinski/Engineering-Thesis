@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Media;
 using ApplicationToSupportAndControlDiet.Models;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using Windows.UI;
+using ApplicationToSupportAndControlDiet.ViewModels;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -20,6 +21,20 @@ namespace ApplicationToSupportAndControlDiet.Views
 
     public sealed partial class Statistics : Page
     {
+
+        public Nullable<DateTimeOffset> Date
+        {
+            get
+            {
+                return Globals.Date;
+            }
+            set
+            {
+                Globals.Date = value;
+            }
+
+        }
+
         public Statistics()
         {
 
