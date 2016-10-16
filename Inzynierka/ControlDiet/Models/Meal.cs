@@ -13,8 +13,9 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
+        [NotNull]
         [Column("id")]
-        public long Id { set; get; }
+        public int Id { set; get; }
 
         [Column("name")]
         public string Name { set; get; }
@@ -23,12 +24,12 @@ namespace ApplicationToSupportAndControlDiet.Models
         public DateTime TimeOfMeal { set; get; }
 
         [ForeignKey(typeof(Day))]
-        public long DayId { set; get; }
+        public int DayId { set; get; }
 
         [ManyToOne]
         public Day Day { set; get; }
 
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<DefinedProduct> ProductsInMeal { set; get; }
 
         private float energy;

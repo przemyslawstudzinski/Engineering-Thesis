@@ -151,8 +151,8 @@ namespace ApplicationToSupportAndControlDiet
             if (IsFailMessageSet == true) return;
             user.TotalDailyEnergyExpenditure = totalDailyEnergyExpenditure;
 
-            UserCreator userCreator = new UserCreator();
-            if (userCreator.SaveUser(user) > -1) {
+            Repository<User> userCreator = new Repository<User>();
+            if (userCreator.Save(user) > -1) {
                 ClearTextBoxesAndSetConfirmMessage();
             }
         }

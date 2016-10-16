@@ -47,7 +47,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 return totalDailyEnergyExpenditure;
             }
-            else if (goal.Equals(UserGoal.LoseWieght))
+            else if (goal.Equals(UserGoal.LoseWeight))
             {
                 return totalDailyEnergyExpenditure - (totalDailyEnergyExpenditure * CHANGE_WEIGHT_FACTOR);
             }

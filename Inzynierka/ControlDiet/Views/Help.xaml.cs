@@ -5,8 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using ApplicationToSupportAndControlDiet.Models;
-using ApplicationToSupportAndControlDiet.ViewModels;
-using System.ComponentModel;
+using Windows.UI.Xaml;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -14,73 +13,43 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public class Microelements
-    {
-        public string Name { get; set; }
-        public float Amount { get; set; }
-    }
+   
     public sealed partial class Help : Page
     {
-
-        public Nullable<DateTimeOffset> Date
-        {
-            get
-            {
-                return Globals.Date;
-            }
-            set
-            {
-                Globals.Date = value;
-
-            }
-
-        }
         public Help()
         {
-            Day day = new Day();
-            //User user = new User();
-            //PIECHART
+          
             this.InitializeComponent();
-            Random rand = new Random();
-            List<Microelements> financialStuffList = new List<Microelements>();
-            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein  * 4 });    //rand.Next(0, 200)
-            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });          
-            (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
+        }
 
-            //PROGRESSBAR
-            
-            float maxValue = 2000;
-            float dayValue = day.Energy;
-            EnergyBar.Maximum = maxValue;
-            EnergyBar.Value = dayValue;
-            EnergyText.Text = Convert.ToString(dayValue) + "/" + Convert.ToString(maxValue);
-            float difference = maxValue - dayValue;
-            if (difference>100)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (rootPivot.SelectedIndex > 0)
             {
-                EnergyBar.Foreground = new SolidColorBrush(Colors.Yellow);
-            }
-            else if ( difference<=100 && difference>=-100)
-            {
-                EnergyBar.Foreground = new SolidColorBrush(Colors.Green);
+                // If not at the first item, go back to the previous one.
+                rootPivot.SelectedIndex -= 1;
             }
             else
             {
-                EnergyBar.Foreground = new SolidColorBrush(Colors.Red);
+                // The first PivotItem is selected, so loop around to the last item.
+                rootPivot.SelectedIndex = rootPivot.Items.Count - 1;
             }
-
         }
 
-        private void PreviousDay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            Date = Date.Value.AddDays(-1);
-        }
-
-        private void NextDay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            Date = Date.Value.AddDays(1);
-            
+            if (rootPivot.SelectedIndex < rootPivot.Items.Count - 1)
+            {
+                // If not at the last item, go to the next one.
+                rootPivot.SelectedIndex += 1;
+            }
+            else
+            {
+                // The last PivotItem is selected, so loop around to the first item.
+                rootPivot.SelectedIndex = 0;
+            }
         }
     }
+   
 
 }

@@ -15,8 +15,9 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
+        [NotNull]
         [Column("id")]
-        public long Id { set; get; }
+        public int Id { set; get; }
 
         [Unique]
         [Column("code")]
@@ -46,8 +47,14 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("category")]
         public ProductCategory Category { set; get; }
 
+        [Column("favourite")]
+        public bool Favourite { set; get; }
+
+        [Column("like")]
+        public bool DisLike { set; get; }
+
         [ForeignKey(typeof(Meal))]
-        public long DayId { set; get; }
+        public int MealId { set; get; }
 
         [ManyToOne]
         public Meal Meal { set; get; }
@@ -65,6 +72,8 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Fiber = fiberValue;
             this.Sugar = sugarValue;
             this.Category = categoryValue;
+            this.Favourite = false;
+            this.DisLike = false;
         }
 
         public override string ToString()

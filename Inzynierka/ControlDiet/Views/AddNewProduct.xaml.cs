@@ -99,10 +99,10 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (IsFailMessageSet) return;
             Product product = new Product(userName, kcalValue, proteinValue, carbohydrateValue, fatValue,
                 fiberValue, sugarvalue, ProductCategory.UserProducts);
-            ProductCreator productCreator = new ProductCreator();
-            if (productCreator.SaveProduct(product) > -1) {
+            Repository<Product> productCreator = new Repository<Product>();
+            if (productCreator.Save(product) > -1) {
                 ClearTextBoxesAndSetConfirmMessage();
-            };
+            }
         }
 
         private Boolean ValidateEmpty(TextBox textBox)

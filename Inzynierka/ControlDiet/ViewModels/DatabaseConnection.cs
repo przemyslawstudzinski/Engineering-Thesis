@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using SQLite.Net;
+using SQLiteNetExtensions.Extensions;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {

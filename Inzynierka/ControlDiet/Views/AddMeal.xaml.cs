@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLiteNetExtensions.Extensions;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,7 +26,7 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public partial class AddMeal : Page
+    public sealed partial class AddMeal : Page
     {
         ObservableCollection<Product> items;
         ObservableCollection<DefinedProduct> choosenProducts;
@@ -39,6 +41,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
+
+        Repository<Product> productRepository = new Repository<Product>();
 
         public Nullable<DateTimeOffset> Date
         {
@@ -87,6 +91,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
+            ClearText();
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -96,58 +101,111 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts.Remove(productToDelete);
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (VerifyTimeIsAvailable(TimePicker.Time) == true)
-            {
-                Control1Output.Text = string.Format("Thank you. Your appointment is set for {0}.",
-                   TimePicker.Time.ToString());
-            }
-            else
-            {
-                Control1Output.Text = "Sorry, we're only open from 8AM to 5PM.";
-            }
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.Favourite = true;
+            selectedProduct.Favourite = true;
+            RefreshListView();
+            productRepository.Update(selectedProduct.Product);
+            
         }
-        private bool VerifyTimeIsAvailable(TimeSpan time)
-        {
-            // Set open (8AM) and close (5PM) times. 
-            TimeSpan openTime = new TimeSpan(8, 0, 0);
-            TimeSpan closeTime = new TimeSpan(17, 0, 0);
 
-            if (time >= openTime && time < closeTime)
-            {
-                return true; // Open 
-            }
-            return false; // Closed 
+        private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.Favourite = false;
+            selectedProduct.Favourite = false;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();           
+        }
+
+        private void DislikeProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.DisLike = true;
+            selectedProduct.DisLike = true;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();
+        }
+
+        private void LikeProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.DisLike = false;
+            selectedProduct.DisLike = false;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();
+        }
+
+        private void RefreshListView()
+        {
+            this.ItemsList.ItemsSource = null;
+            this.ItemsList.ItemsSource = choosenProducts;
+        }
+
+        private void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            //ListView listView = (ListView)sender;
+            //allContactsMenuFlyout.ShowAt(listView, e.GetPosition(listView));
+            //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
+            Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
             Meal meal = new Meal();
             if (ValidateEmpty(NameBox))
             {
                 meal.Name = NameBox.Text;
             }
+            if (ValidateChoosenProducts())
+            {
+                foreach (DefinedProduct element in choosenProducts)
+                {
+                    meal.ProductsInMeal.Add(element);
+                    element.Meal = meal;
+                    element.MealId = meal.Id;
+                }
+            }
+            Day day = null;
+            bool newItem = false;
+            if (ValidateEmptyDate(DataPicker))
+            {
                 TimeSpan time = this.TimePicker.Time;
                 DateTimeOffset date = this.DataPicker.Date.Value;
                 DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-                meal.TimeOfMeal = dateTime;
-                DayService serviceOfDays = new DayService();
-                Day d1 = new Day();
-                d1.Date = dateTime;
-                //Its probably better to save the date if all fields are succesfuly validated
-                serviceOfDays.SaveDay(d1);
-                Day d2 = serviceOfDays.FindDay(dateTime);
-            if (ValidateChoosenProducts())
-            {
-                meal.ProductsInMeal = new List<DefinedProduct>(choosenProducts);
+                meal.TimeOfMeal = dateTime;           
+                day = repository.FindDayByDate(dateTime);
+                if(day == null)
+                {
+                    day = new Day();
+                    day.Date = dateTime;
+                    newItem = true;                
+                }
+                day.MealsInDay.Add(meal);
+                meal.Day = day;
+                meal.DayId = day.Id;
             }
             if (IsFailMessageSet) return;
-            MealService mealService = new MealService();
-            if (mealService.SaveMeal(meal) > -1)
+            if (newItem == true)
             {
-                ClearTextBoxesAndSetConfirmMessage();
+                if (repository.Save(day) > -1)
+                {
+                    ClearTextBoxesAndSetConfirmMessage();
+                }
+            }
+            else
+            {
+                if (repository.Update(day) > -1)
+                {
+                    ClearTextBoxesAndSetConfirmMessage();
+                }
             }
         }
 
@@ -217,14 +275,16 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void ClearTextBoxesAndSetConfirmMessage()
         {
-            ClearTextAndList();
+            ClearText();
+            ClearList();
             ClearStyles();
             AddConfirm.Text = CONFIRMMESSAGE;
         }
 
         private void ClearTextBoxesAndStyles()
         {
-            ClearTextAndList();
+            ClearText();
+            ClearList();
             ClearStyles();
             IsFailMessageSet = false;
         }
@@ -235,11 +295,17 @@ namespace ApplicationToSupportAndControlDiet.Views
             SuggestProductsBox.Style = DefaultStyle;
         }
 
-        private void ClearTextAndList()
+        private void ClearText()
         {
             AddConfirm.Text = String.Empty;
             ValidationMessages.Text = String.Empty;
             NameBox.Text = String.Empty;
+            this.QuantityBox.Text = String.Empty;
+            this.SuggestProductsBox.Text = String.Empty;
+        }
+
+        private void ClearList()
+        {
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.ItemsList.ItemsSource = choosenProducts;
         }
