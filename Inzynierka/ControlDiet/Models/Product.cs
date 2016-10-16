@@ -47,6 +47,12 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("category")]
         public ProductCategory Category { set; get; }
 
+        [Column("favourite")]
+        public bool Favourite { set; get; }
+
+        [Column("skip")]
+        public bool Skip { set; get; }
+
         [ForeignKey(typeof(Meal))]
         public int MealId { set; get; }
 
@@ -66,6 +72,8 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Fiber = fiberValue;
             this.Sugar = sugarValue;
             this.Category = categoryValue;
+            this.Favourite = false;
+            this.Skip = false;
         }
 
         public override string ToString()
