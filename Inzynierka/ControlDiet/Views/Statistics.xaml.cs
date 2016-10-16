@@ -6,6 +6,7 @@ using ApplicationToSupportAndControlDiet.Models;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using Windows.UI;
 using ApplicationToSupportAndControlDiet.ViewModels;
+using Windows.UI.Xaml;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -37,8 +38,9 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         public Statistics()
         {
-
-            Day day = new Day();
+            Repository<Day> repo = new Repository<Day>();
+            DateTime dateTime = Converters.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
+            Day day = repo.FindDayByDate(dateTime);
             //User user = new User();
             //PIECHART
             this.InitializeComponent();
@@ -74,5 +76,18 @@ namespace ApplicationToSupportAndControlDiet.Views
                 WarningCal.Text = "You eat too many calories";
             }
         }
+
+        private void NextDay_Click(object sender, RoutedEventArgs e)
+        {
+            Date = Date.Value.AddDays(1);
+            Globals.MainPage.NavigateTo(this);
+        }
+
+        private void PreviousDay_Click(object sender, RoutedEventArgs e)
+        {
+            Date = Date.Value.AddDays(-1);
+            Globals.MainPage.NavigateTo(this);
+        }
+
     }
 }

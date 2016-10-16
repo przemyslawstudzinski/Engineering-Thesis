@@ -13,12 +13,12 @@
             <RelativePanel x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="White">
                 <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True"  Date="{x:Bind Path=Date, Mode=TwoWay}"/>
             </RelativePanel>
-            <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black">
+            <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black" Click="PreviousDay_Click">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Previous" Foreground="White" />
                 </StackPanel>
             </Button>
-            <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black">
+            <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black" Click="NextDay_Click">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Next" Foreground="White" />
                 </StackPanel>

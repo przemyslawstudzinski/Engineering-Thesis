@@ -99,12 +99,6 @@ namespace ApplicationToSupportAndControlDiet
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndMessages();
-            string userName="";
-            if (ValidateEmpty(NameBox))
-            {
-                userName = NameBox.Text;
-            }
-
             int ageValue=0;
             if (ValidateAndCheckInRange(AgeBox, 5, 120))
             {
@@ -119,21 +113,19 @@ namespace ApplicationToSupportAndControlDiet
             float weightValue=0;
             if (ValidateAndCheckInRange(weightBox, 15, 500))
             {
-                float.Parse(weightBox.Text);
+                weightValue = float.Parse(weightBox.Text);
             }
 
             string sexValue = SelectedRadioValue<string>("Male", Male, Female);
-            string activityValue = ActivityBox.Text;
-            string goalValue = GoalBox.Text;
+            string activityValue = (string)ActivityBox.SelectedValue;
+            string goalValue = (string)GoalBox.SelectedValue;
             Sex sexChoice;
             Enum.TryParse(sexValue, out sexChoice);
-            //TODO
-            //Slider doesn't work so for now I assume that user inputs correct enum type. 
             ActivityLevel activityChoice;
             Enum.TryParse(activityValue, out activityChoice);
             UserGoal userGoalChoice;
             Enum.TryParse(goalValue, out userGoalChoice);
-            User user = new User(userName, sexChoice, ageValue, heightValue, weightValue, userGoalChoice, activityChoice);
+            User user = new User(1,sexChoice, ageValue, heightValue, weightValue, userGoalChoice, activityChoice);
             string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
             int totalDailyEnergyExpenditure=0;
             if (caloriesValue.Equals("Automatic"))
@@ -152,7 +144,7 @@ namespace ApplicationToSupportAndControlDiet
             user.TotalDailyEnergyExpenditure = totalDailyEnergyExpenditure;
 
             Repository<User> userCreator = new Repository<User>();
-            if (userCreator.Save(user) > -1) {
+            if (userCreator.SaveOneOrReplace(user) > -1) {
                 ClearTextBoxesAndSetConfirmMessage();
             }
         }
@@ -226,7 +218,6 @@ namespace ApplicationToSupportAndControlDiet
 
         private void ClearStyles()
         {
-            NameBox.Style = DefaultStyle;
             AgeBox.Style = DefaultStyle;
             HeightBox.Style = DefaultStyle;
             weightBox.Style = DefaultStyle;
@@ -235,7 +226,6 @@ namespace ApplicationToSupportAndControlDiet
         private void ClearText() {
             ValidationMessages.Text = String.Empty;
             AddConfirm.Text = String.Empty;
-            NameBox.Text = String.Empty;
             AgeBox.Text = String.Empty;
             HeightBox.Text = String.Empty;
             weightBox.Text = String.Empty;

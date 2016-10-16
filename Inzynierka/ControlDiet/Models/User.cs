@@ -15,9 +15,6 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("id")]
         public int Id { set; get; }
 
-        [Column("name")]
-        public string Name { set; get; }
-
         [Column("sex")]
         public Sex Sex { set; get; }
 
@@ -39,8 +36,8 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("total_daily_energy_expenditure")]
         public int TotalDailyEnergyExpenditure { set; get; }
 
-        public User(string name, Sex sex, int age, float height, float weight, UserGoal goal, ActivityLevel activity) {
-            this.Name = name;
+        public User(int id, Sex sex, int age, float height, float weight, UserGoal goal, ActivityLevel activity) {
+            this.Id = id;
             this.Sex = sex;
             this.Age = age;
             this.Height = height;

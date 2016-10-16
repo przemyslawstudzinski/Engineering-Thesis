@@ -14,5 +14,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             set;
         }
 
+        public static MainPage MainPage {
+            get; 
+            set;
+        }
+
     }
 }

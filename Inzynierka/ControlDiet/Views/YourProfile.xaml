@@ -17,10 +17,6 @@
                     <RadioButton Name="Female" Content="Female" GroupName="SexChoose" RelativePanel.RightOf="Male" Margin="30,0,0,0" Tag="Female"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
-                    <TextBox Name="NameBox" Tag="Name"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock x:Name="Age" Text="Age:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
                     <TextBox TextChanged="TextBoxInteger_TextChanged" Name="AgeBox" Tag="Age"/>
                 </StackPanel>
@@ -34,11 +30,10 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox  Name="ActivityBox"  />
-                    <ComboBox Name="ActivityBox1" SelectedValuePath="Tag" >
+                    <ComboBox Name="ActivityBox" SelectedValuePath="Tag" >
                         <ComboBoxItem Content="Sedentary" Tag="Sedentary" />
                         <ComboBoxItem Content="Lightly active" Tag="LightlyActive" />
-                        <ComboBoxItem Content="Moderately active" Tag="ModeratelyActive" />
+                        <ComboBoxItem Content="Moderately active" Tag="ModeratelyActive" IsSelected="True"/>
                         <ComboBoxItem Content="Very active" Tag="VeryActive" />
                         <ComboBoxItem Content="Extremely active" Tag="ExtremelyActive" />
                     </ComboBox>
@@ -47,10 +42,9 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                     <TextBlock Text="Goal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                    <TextBox  Name="GoalBox" />
-                    <ComboBox Name="GoalBox1" SelectedValuePath="Tag" >
+                    <ComboBox Name="GoalBox" SelectedValuePath="Tag" >
                         <ComboBoxItem Content="Lose weight" Tag="LoseWeight" />
-                        <ComboBoxItem Content="Maintain weight" Tag="MaintainWeight" />
+                        <ComboBoxItem Content="Maintain weight" Tag="MaintainWeight" IsSelected="True"/>
                         <ComboBoxItem Content="Gain weight" Tag="GainWeight" />
                     </ComboBox>
                     <!--<Slider x:Name="targetSlider" Minimum="0" Maximum="2" Width="100" IntermediateValue="1" Margin="0,0,17,0"/>

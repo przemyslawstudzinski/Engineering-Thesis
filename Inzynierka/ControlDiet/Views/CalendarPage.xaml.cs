@@ -147,12 +147,14 @@ namespace ApplicationToSupportAndControlDiet
 
         private void NextDay_Click(object sender, RoutedEventArgs e)
         {
-
+            Date = Date.Value.AddDays(1);
+            Globals.MainPage.NavigateTo(this);
         }
 
         private void PreviousDay_Click(object sender, RoutedEventArgs e)
         {
-
+            Date = Date.Value.AddDays(-1);
+            Globals.MainPage.NavigateTo(this);
         }
     }
 }
