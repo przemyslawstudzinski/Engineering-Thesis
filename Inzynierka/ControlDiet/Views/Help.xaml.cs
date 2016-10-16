@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using ApplicationToSupportAndControlDiet.Models;
+using ApplicationToSupportAndControlDiet.ViewModels;
+using System.ComponentModel;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -19,6 +21,20 @@ namespace ApplicationToSupportAndControlDiet.Views
     }
     public sealed partial class Help : Page
     {
+
+        public Nullable<DateTimeOffset> Date
+        {
+            get
+            {
+                return Globals.Date;
+            }
+            set
+            {
+                Globals.Date = value;
+
+            }
+
+        }
         public Help()
         {
             Day day = new Day();
@@ -53,6 +69,17 @@ namespace ApplicationToSupportAndControlDiet.Views
                 EnergyBar.Foreground = new SolidColorBrush(Colors.Red);
             }
 
+        }
+
+        private void PreviousDay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Date = Date.Value.AddDays(-1);
+        }
+
+        private void NextDay_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Date = Date.Value.AddDays(1);
+            
         }
     }
 

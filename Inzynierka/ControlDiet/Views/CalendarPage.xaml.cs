@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ApplicationToSupportAndControlDiet.Views;
+using ApplicationToSupportAndControlDiet.ViewModels;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 //namespace Inzynierka.Views
@@ -25,6 +26,20 @@ namespace ApplicationToSupportAndControlDiet
     /// </summary>
     public sealed partial class CalendarPage : Page
     {
+
+        public Nullable<DateTimeOffset> Date
+        {
+            get
+            {
+                return Globals.Date;
+            }
+            set
+            {
+                Globals.Date = value;
+            }
+
+        }
+
         public CalendarPage()
         {
             this.InitializeComponent();

@@ -42,8 +42,15 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         public Nullable<DateTimeOffset> Date
         {
-            get;
-            set;
+            get
+            {
+                return Globals.Date;
+            }
+            set
+            {
+                Globals.Date = value;
+            }
+                
         }
 
         public AddMeal()
@@ -60,7 +67,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
-            this.Date = DateTimeOffset.Now;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -123,8 +129,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 meal.Name = NameBox.Text;
             }
-            if (ValidateEmptyDate(DataPicker))
-            {
                 TimeSpan time = this.TimePicker.Time;
                 DateTimeOffset date = this.DataPicker.Date.Value;
                 DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
@@ -135,7 +139,6 @@ namespace ApplicationToSupportAndControlDiet.Views
                 //Its probably better to save the date if all fields are succesfuly validated
                 serviceOfDays.SaveDay(d1);
                 Day d2 = serviceOfDays.FindDay(dateTime);
-            }
             if (ValidateChoosenProducts())
             {
                 meal.ProductsInMeal = new List<DefinedProduct>(choosenProducts);
@@ -145,6 +148,24 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (mealService.SaveMeal(meal) > -1)
             {
                 ClearTextBoxesAndSetConfirmMessage();
+            }
+        }
+
+        private Boolean ValidateEmpty(TextBox textBox)
+        {
+            if (textBox.Text.Length == 0)
+            {
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                textBox.Style = RedBorderStyleTextbox;
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -186,42 +207,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
         }
 
-        private Boolean ValidateEmpty(TextBox textBox)
-        {
-            if (textBox.Text.Length == 0)
-            {
-                if (!IsFailMessageSet)
-                {
-                    IsFailMessageSet = true;
-                    AppendToMessages(EMPTYMESSAGE);
-                }
-                textBox.Style = RedBorderStyleTextbox;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private Boolean ValidateEmptyDate(CalendarDatePicker datePicker)
-        {
-            if (datePicker.Date == null)
-            {
-                if (!IsFailMessageSet)
-                {
-                    IsFailMessageSet = true;
-                    AppendToMessages(EMPTYMESSAGE);
-                }
-                datePicker.Style = RedBorderStyleDate;
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         private void ClearTextBoxesStylesAndMessages()
         {
             ClearStyles();
@@ -247,7 +232,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void ClearStyles()
         {
             NameBox.Style = DefaultStyle;
-            DataPicker.Style = DefaultStyle;
             SuggestProductsBox.Style = DefaultStyle;
         }
 

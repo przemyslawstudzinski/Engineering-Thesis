@@ -18,7 +18,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
                         <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
-                                            DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Date, Mode=TwoWay}"/>
+                                            DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
                         <TimePicker x:Name = "TimePicker" Header = "Time"  Padding="5"/>
                         <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                     </StackPanel>
