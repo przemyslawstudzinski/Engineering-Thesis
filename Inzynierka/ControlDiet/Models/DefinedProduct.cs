@@ -16,6 +16,12 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("quantity")]
         public int Quantity { set; get; }
 
+        [ForeignKey(typeof(Product))]
+        public int ProductId { set; get; }
+
+        [OneToOne]
+        public Product Product { set; get; }
+
         public DefinedProduct() { }
 
         public DefinedProduct(Product product, int quantity)
@@ -28,7 +34,11 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Fiber = product.Fiber;
             this.Sugar = product.Sugar;
             this.Category = product.Category;
+            this.Favourite = product.Favourite;
+            this.DisLike = product.DisLike;
 
+            this.ProductId = product.Id;
+            this.Product = product;
             this.Quantity = quantity;
         }
     }
