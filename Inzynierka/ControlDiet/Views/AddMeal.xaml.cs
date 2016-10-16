@@ -91,7 +91,8 @@ namespace ApplicationToSupportAndControlDiet.Views
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
-            ClearText();
+            this.QuantityBox.Text = String.Empty;
+            this.SuggestProductsBox.Text = String.Empty;
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
