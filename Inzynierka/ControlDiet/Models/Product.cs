@@ -50,8 +50,8 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("favourite")]
         public bool Favourite { set; get; }
 
-        [Column("skip")]
-        public bool Skip { set; get; }
+        [Column("like")]
+        public bool DisLike { set; get; }
 
         [ForeignKey(typeof(Meal))]
         public int MealId { set; get; }
@@ -73,7 +73,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Sugar = sugarValue;
             this.Category = categoryValue;
             this.Favourite = false;
-            this.Skip = false;
+            this.DisLike = false;
         }
 
         public override string ToString()

@@ -27,6 +27,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public List<Product> GetProductsLike(string input) {
             string query = @"SELECT * FROM Products product where product.name LIKE '%" + input + "%'" ;
             List<Product> allProducts = connectionToDatabase.Query<Product>(query);
+            var query2 = from d in allProducts
+                         orderby d.Favourite descending, d.DisLike descending
+                         select d;
+            List<Product> sortedProducts = allProducts.OrderBy(o => o.Favourite ? 0 : 1).ToList();
             return allProducts;
         }
     }

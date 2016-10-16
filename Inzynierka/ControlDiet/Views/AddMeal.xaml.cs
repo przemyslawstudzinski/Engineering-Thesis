@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using SQLiteNetExtensions.Extensions;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +26,7 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public partial class AddMeal : Page
+    public sealed partial class AddMeal : Page
     {
         ObservableCollection<Product> items;
         ObservableCollection<DefinedProduct> choosenProducts;
@@ -40,6 +41,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
+
+        Repository<Product> productRepository = new Repository<Product>();
 
         public Nullable<DateTimeOffset> Date
         {
@@ -90,6 +93,60 @@ namespace ApplicationToSupportAndControlDiet.Views
             var baseObject = sender as FrameworkElement;
             var productToDelete = baseObject.DataContext as DefinedProduct;
             choosenProducts.Remove(productToDelete);
+        }
+
+        private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.Favourite = true;
+            selectedProduct.Favourite = true;
+            RefreshListView();
+            productRepository.Update(selectedProduct.Product);
+            
+        }
+
+        private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.Favourite = false;
+            selectedProduct.Favourite = false;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();           
+        }
+
+        private void DislikeProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.DisLike = false;
+            selectedProduct.DisLike = false;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();
+        }
+
+        private void LikeProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            selectedProduct.Product.DisLike = true;
+            selectedProduct.DisLike = true;
+            productRepository.Update(selectedProduct.Product);
+            RefreshListView();
+        }
+
+        private void RefreshListView()
+        {
+            this.ItemsList.ItemsSource = null;
+            this.ItemsList.ItemsSource = choosenProducts;
+        }
+
+        private void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            //ListView listView = (ListView)sender;
+            //allContactsMenuFlyout.ShowAt(listView, e.GetPosition(listView));
+            //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
