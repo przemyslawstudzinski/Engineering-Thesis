@@ -8,8 +8,7 @@
     mc:Ignorable="d"
     >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <RelativePanel HorizontalAlignment="Center">
-        <Pivot x:Name="rootPivot" HorizontalAlignment="Center" >
+        <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="700" >
             <PivotItem Header="Add meal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="In this section you can Add Meal to day"/>
@@ -25,7 +24,7 @@
                     <TextBlock>Yes, You can remove product by pressing bin button next to the product</TextBlock>
                     <TextBlock Text="Can I change product quantity?" FontSize="25" FontWeight="Bold" />
                     <TextBlock>Yes, You can change quantity.
-                    <LineBreak/> You should only enter new value next to the product list </TextBlock>
+                    <LineBreak/> You should only enter new value next to the product list</TextBlock>
                     <TextBlock Text="Can I leave some box empty?" FontSize="25" FontWeight="Bold" />
                     <TextBlock Foreground="Red"> No, You have to fill all fields</TextBlock>
                 </StackPanel>
@@ -38,7 +37,7 @@
                         Go to -->  Add New Product<LineBreak/>Enter product name<LineBreak/>Enter all informations about the product<LineBreak/>Click Save button<LineBreak/>If everything is ok, You will see information about that
                     </TextBlock>
                     <TextBlock Text="Where I find information about product?" FontSize="25" FontWeight="Bold" />
-                    <TextBlock>Product informations are usually located on the packaging </TextBlock>
+                    <TextBlock>Product informations are usually located on the packaging</TextBlock>
                     <TextBlock Text="Can I leave some box empty?" FontSize="25" FontWeight="Bold" />
                     <TextBlock Foreground="Red"> No, You have to fill all fields</TextBlock>
                 </StackPanel>
@@ -80,6 +79,5 @@ housewives/househusbands without mechanical appliances.
                 </StackPanel>
             </PivotItem>
         </Pivot>
-        </RelativePanel>
     </Grid>
 </Page>
