@@ -28,6 +28,7 @@ namespace ApplicationToSupportAndControlDiet
         {
             this.InitializeComponent();
             DatabaseConnection.CreateSqliteDatabase();
+            Globals.MainPage = this;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -83,6 +84,10 @@ namespace ApplicationToSupportAndControlDiet
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void NavigateTo<T>(T sourcePage) {
+            this.WorkSpace.Navigate(typeof(T));
         }
     }
 }
