@@ -175,8 +175,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             Day day = null;
             bool newItem = false;
-            if (ValidateEmptyDate(DataPicker))
-            {
+
                 TimeSpan time = this.TimePicker.Time;
                 DateTimeOffset date = this.DataPicker.Date.Value;
                 DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
@@ -191,7 +190,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                 day.MealsInDay.Add(meal);
                 meal.Day = day;
                 meal.DayId = day.Id;
-            }
+            
             if (IsFailMessageSet) return;
             if (newItem == true)
             {
