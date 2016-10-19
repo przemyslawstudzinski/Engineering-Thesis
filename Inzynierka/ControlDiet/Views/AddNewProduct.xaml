@@ -10,50 +10,51 @@
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
+            <RelativePanel>
+                <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+                    <TextBlock x:Name="Title" Text="Add your food product to database" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20"  />
+                    <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140"/>
+                        <TextBox Name="NameBox" Width="370"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="KcalBox" />
+                        <TextBlock x:Name="Protein" Text="Protein:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="ProteinBox" />
+                    </StackPanel>
 
-        <RelativePanel>
-            <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                <TextBlock x:Name="Title" Text="Add your food product to database" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20"  />
-                <TextBlock x:Name="ValidationMessages" Foreground="Red" />
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140"/>
-                    <TextBox Name="NameBox" Width="370"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBlock x:Name="Carbohydrate" Text="Carbohydrate:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="CarbohydrateBox" />
+                        <TextBlock x:Name="Fat" Text="Fat:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FatBox" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBlock x:Name="Fiber" Text="Fiber:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FiberBox" />
+                        <TextBlock x:Name="Sugar" Text="Sugar:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
+                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="SugarBox" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Tag="SaveProduct" x:Name="SaveProduct" Width="150" Background="Black" Click="SaveProduct_Click">
+                            <StackPanel Orientation="Horizontal" >
+                                <SymbolIcon Symbol="Accept" Foreground="White" />
+                                <TextBlock Text="Save" Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                        <Button Tag="Clear" Background="Black" Width="150"   Margin="100,0,0,0" Click="Clear_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Cancel" Foreground="White" />
+                                <TextBlock Text="Clear"  Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="KcalBox" />
-                    <TextBlock x:Name="Protein" Text="Protein:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="ProteinBox" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="Carbohydrate" Text="Carbohydrate:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="CarbohydrateBox" />
-                    <TextBlock x:Name="Fat" Text="Fat:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FatBox" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <TextBlock x:Name="Fiber" Text="Fiber:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="FiberBox" />
-                    <TextBlock x:Name="Sugar" Text="Sugar:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
-                    <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="SugarBox" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                    <Button Tag="SaveProduct" x:Name="SaveProduct" Background="Black" Click="SaveProduct_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Save" Foreground="White" />
-                            <TextBlock Text="Save" Width="100" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button Tag="Clear" Background="Black" RelativePanel.RightOf="SaveProduct" Margin="170,0,0,0" Click="Clear_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Clear" Width="100" Margin="50,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-                <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
-            </StackPanel>
-        </RelativePanel>
-
+            </RelativePanel>
+        </ScrollViewer>
     </Grid>
 </Page>
