@@ -95,6 +95,9 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateCaloriesTest.cs" />
+    <Compile Include="CalculatingCaloriesFromMeal.cs" />
+    <Compile Include="UserProfileTest.cs" />
     <Compile Include="ProductProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveDayWithMealsAndProductsTest.cs" />

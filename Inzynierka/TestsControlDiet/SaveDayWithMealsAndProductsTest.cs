@@ -17,26 +17,38 @@ namespace TestsControlDiet
         {
             Repository<Day> repository = new Repository<Day>();
 
-            Product product = new Product();
-            product.Name = "name";
-            DefinedProduct definiedProduct = new DefinedProduct(product, 5);
+            Product productOne = new Product();
+            productOne.Name = "name 1";
+            DefinedProduct definiedProductOne = new DefinedProduct(productOne, 5);
 
-            Meal meal = new Meal();
-            meal.Name = "mealname";
-            definiedProduct.Meal = meal;
-            definiedProduct.MealId = meal.Id;
-            meal.ProductsInMeal.Add(definiedProduct);
+            Product productTwo = new Product();
+            productTwo.Name = "name 2";
+            DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 5);
+
+            Meal mealOne = new Meal();
+            mealOne.Name = "mealname 1";
+            definiedProductOne.Meal = mealOne;
+            definiedProductOne.MealId = mealOne.Id;
+            mealOne.ProductsInMeal.Add(definiedProductOne);
+
+            Meal mealTwo = new Meal();
+            mealTwo.Name = "mealname 2";
+            definiedProductTwo.Meal = mealTwo;
+            definiedProductTwo.MealId = mealTwo.Id;
+            mealTwo.ProductsInMeal.Add(definiedProductTwo);
 
             Day day = new Day();
-            meal.DayId = day.Id;
-            meal.Day = day;
-            day.MealsInDay.Add(meal);
-            Repository<Day> sv = new Repository<Day>();
-            sv.Save(day);
+            mealOne.DayId = day.Id;
+            mealOne.Day = day;
+            mealTwo.DayId = day.Id;
+            mealTwo.Day = day;
+            day.MealsInDay.Add(mealOne);
+            day.MealsInDay.Add(mealTwo);
+            repository.Save(day);
 
             Day dayAfterSave = repository.FindDay(day);
-            Assert.AreEqual(dayAfterSave.MealsInDay.Count, 1, "There should be 1 meal in database");
-            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).ProductsInMeal.Count, 1, "There should be 1 definied product in database");
+            Assert.AreEqual(dayAfterSave.MealsInDay.Count, 2, "There should be 2 meals binded to the day");
+            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).ProductsInMeal.Count, 1, "There should be 1 definied product in meal");
         }
     }
 }

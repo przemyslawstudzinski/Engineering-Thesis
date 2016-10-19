@@ -56,5 +56,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             }
             return null;
         }
+
+        public User FindUser() {
+            User user = connectionToDatabase.Table<User>().FirstOrDefault();
+            return user;
+        }
     }
 }
