@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Reflection;
 using Windows.Storage;
 using ApplicationToSupportAndControlDiet.Models;
 using Windows.Storage.Pickers;
@@ -24,7 +23,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             saveWindow.SuggestedFileName = "products.csv";
             saveWindow.DefaultFileExtension = ".csv";
             saveWindow.FileTypeChoices.Add("Raw file", new List<String> { ".csv" });
-            Windows.Storage.StorageFile file = await saveWindow.PickSaveFileAsync();
+            StorageFile file = await saveWindow.PickSaveFileAsync();
             if (file != null)
             {
                 await FileIO.WriteTextAsync(file, ExportMeal());

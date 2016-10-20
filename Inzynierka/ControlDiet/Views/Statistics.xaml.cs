@@ -51,15 +51,15 @@ namespace ApplicationToSupportAndControlDiet.Views
 
             Random rand = new Random();
             List<Microelements> financialStuffList = new List<Microelements>();
-            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein * 4 });    //rand.Next(0, 200)
-            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });
+            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = rand.Next(0, 200) }); //day.Protein * 4 });    //rand.Next(0, 200)
+            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = rand.Next(0, 200) }); //day.Fat * 9 });
+            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = rand.Next(0, 200) });// day.Carbohydrate * 4 });
             (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
 
             //PROGRESSBAR
 
             float maxValue = 2000; //user.day .....
-            float dayValue = day.Energy;
+            float dayValue = rand.Next(1500, 2000);// day.Energy;
             EnergyBar.Maximum = maxValue;
             EnergyBar.Value = dayValue;
             EnergyText.Text = Convert.ToString(dayValue) + "/" + Convert.ToString(maxValue);

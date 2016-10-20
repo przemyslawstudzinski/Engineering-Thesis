@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ApplicationToSupportAndControlDiet.ViewModels;
+using Windows.System.Profile;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -45,7 +46,8 @@ namespace ApplicationToSupportAndControlDiet
         private void AddMealPaneItem_Click(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "ADD MEAL";
-            WorkSpace.Navigate(typeof(AddMeal));
+
+           this.WorkSpace.Navigate(typeof(AddMeal));
         }
         private void SearchPaneItem_Click(object sender, RoutedEventArgs e)
         {
