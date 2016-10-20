@@ -176,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddMeal.DeviceFamily-Mobile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddMeal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
