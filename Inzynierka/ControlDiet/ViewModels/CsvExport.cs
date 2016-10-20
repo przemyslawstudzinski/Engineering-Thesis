@@ -33,13 +33,14 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         private string ExportMeal()
         {
             var sb = new StringBuilder();
-            sb.Append("List of products in " + meal.Name + ": ").Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-            sb.Remove(sb.Length - 1, 1).AppendLine();
-            sb.Remove(sb.Length - 1, 1).AppendLine();
+            sb.Append("List of products in " + meal.Name + ": ");
+            sb.AppendLine();
+            sb.AppendLine();
             foreach (DefinedProduct product in meal.ProductsInMeal)
             {
-                sb.Append(EditValue(product.Name)).Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-                sb.Remove(sb.Length - 1, 1).AppendLine();
+                sb.Append(EditValue(product.Name));
+                sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
+                sb.AppendLine();
             }           
             return sb.ToString();
         }
@@ -50,6 +51,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             if (value.Contains("&"))
             {
                 value = value.Replace("&", " ");
+            }
+            if (value.Contains(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator))
+            {
+                value = value.Replace(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator, " -");
             }
             return value;
         }
