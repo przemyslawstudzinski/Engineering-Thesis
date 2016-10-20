@@ -207,6 +207,12 @@ namespace ApplicationToSupportAndControlDiet.Views
                     ClearTextBoxesAndSetConfirmMessage();
                 }
             }
+            //List<Day> list = new List<Day>();
+            //list.Add(day);
+            //CsvExport<Day> daycsv = new CsvExport<Day>(list);
+            //daycsv.ExportToFile(Path.Combine(Windows.Storage.ApplicationData.
+            //        Current.LocalFolder.Path, "file.csv"));
+
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
