@@ -4,21 +4,10 @@ using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using SQLiteNetExtensions.Extensions;
-using System.Threading.Tasks;
-using Windows.System.Profile;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,13 +24,13 @@ namespace ApplicationToSupportAndControlDiet.Views
         ProductProvider productProvider;
         Meal newMeal;
         Product selectedProduct;
-        public Boolean IsFailMessageSet;
-        public const string EMPTYMESSAGE = "Fill all the blank fields.";
-        public const string CONFIRMMESSAGE = "Adding meal successful.";
-        public Style RedBorderStyleTextbox;
-        public Style RedBorderStyleDate;
-        public Style RedBorderStyleAutoSuggest;
-        public Style DefaultStyle;
+        private Boolean IsFailMessageSet;
+        private const string EMPTYMESSAGE = "Fill all the blank fields.";
+        private const string CONFIRMMESSAGE = "Adding meal successful.";
+        private Style RedBorderStyleTextbox;
+        private Style RedBorderStyleDate;
+        private Style RedBorderStyleAutoSuggest;
+        private Style DefaultStyle;
 
         Repository<Product> productRepository = new Repository<Product>();
 
@@ -60,19 +49,18 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         public AddMeal()
         {
-           
-                this.InitializeComponent();
+            this.InitializeComponent();
 
-                productProvider = new ProductProvider();
-                items = new ObservableCollection<Product>();
-                choosenProducts = new ObservableCollection<DefinedProduct>();
-                this.SuggestProductsBox.ItemsSource = items;
-                this.ItemsList.ItemsSource = choosenProducts;
-                newMeal = new Meal();
-                RedBorderStyleTextbox = Application.Current.Resources["TextBoxError"] as Style;
-                RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
-                RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
-                DefaultStyle = null;
+            productProvider = new ProductProvider();
+            items = new ObservableCollection<Product>();
+            choosenProducts = new ObservableCollection<DefinedProduct>();
+            this.SuggestProductsBox.ItemsSource = items;
+            this.ItemsList.ItemsSource = choosenProducts;
+            newMeal = new Meal();
+            RedBorderStyleTextbox = Application.Current.Resources["TextBoxError"] as Style;
+            RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
+            RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
+            DefaultStyle = null;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -112,7 +100,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             selectedProduct.Favourite = true;
             RefreshListView();
             productRepository.Update(selectedProduct.Product);
-
+            
         }
 
         private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
@@ -122,7 +110,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             selectedProduct.Product.Favourite = false;
             selectedProduct.Favourite = false;
             productRepository.Update(selectedProduct.Product);
-            RefreshListView();
+            RefreshListView();           
         }
 
         private void DislikeProduct_Click(object sender, RoutedEventArgs e)
@@ -158,7 +146,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
-        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private async void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
             Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
@@ -209,6 +197,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                     ClearTextBoxesAndSetConfirmMessage();
                 }
             }
+
+            CsvExport daycsv = new CsvExport(meal);
+            daycsv.ExportMealToCsvFile();
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
