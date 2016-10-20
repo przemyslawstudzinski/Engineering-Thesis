@@ -75,19 +75,19 @@ namespace ApplicationToSupportAndControlDiet.Views
                 DefaultStyle = null;
         }
 
-        public void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             selectedProduct = args.SelectedItem as Product;
         }
 
-        public void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             items.Clear();
             List<Product> result = productProvider.GetProductsLike(sender.Text);
             result.ForEach(x => items.Add(x));
         }
 
-        public void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
+        private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
         {
             int quantity;
             Int32.TryParse(this.QuantityBox.Text, out quantity);
@@ -97,14 +97,14 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.SuggestProductsBox.Text = String.Empty;
         }
 
-        public void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var productToDelete = baseObject.DataContext as DefinedProduct;
             choosenProducts.Remove(productToDelete);
         }
 
-        public void FavouriteProduct_Click(object sender, RoutedEventArgs e)
+        private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
@@ -112,20 +112,20 @@ namespace ApplicationToSupportAndControlDiet.Views
             selectedProduct.Favourite = true;
             RefreshListView();
             productRepository.Update(selectedProduct.Product);
-            
+
         }
 
-        public void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
+        private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
             selectedProduct.Product.Favourite = false;
             selectedProduct.Favourite = false;
             productRepository.Update(selectedProduct.Product);
-            RefreshListView();           
+            RefreshListView();
         }
 
-        public void DislikeProduct_Click(object sender, RoutedEventArgs e)
+        private void DislikeProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
@@ -135,7 +135,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             RefreshListView();
         }
 
-        public void LikeProduct_Click(object sender, RoutedEventArgs e)
+        private void LikeProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
@@ -145,20 +145,20 @@ namespace ApplicationToSupportAndControlDiet.Views
             RefreshListView();
         }
 
-        public void RefreshListView()
+        private void RefreshListView()
         {
             this.ItemsList.ItemsSource = null;
             this.ItemsList.ItemsSource = choosenProducts;
         }
 
-        public void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        private void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             //ListView listView = (ListView)sender;
             //allContactsMenuFlyout.ShowAt(listView, e.GetPosition(listView));
             //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
-        public void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
             Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
@@ -179,21 +179,21 @@ namespace ApplicationToSupportAndControlDiet.Views
             Day day = null;
             bool newItem = false;
 
-                TimeSpan time = this.TimePicker.Time;
-                DateTimeOffset date = this.DataPicker.Date.Value;
-                DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-                meal.TimeOfMeal = dateTime;           
-                day = repository.FindDayByDate(dateTime);
-                if(day == null)
-                {
-                    day = new Day();
-                    day.Date = dateTime;
-                    newItem = true;                
-                }
-                day.MealsInDay.Add(meal);
-                meal.Day = day;
-                meal.DayId = day.Id;
-            
+            TimeSpan time = this.TimePicker.Time;
+            DateTimeOffset date = this.DataPicker.Date.Value;
+            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+            meal.TimeOfMeal = dateTime;
+            day = repository.FindDayByDate(dateTime);
+            if (day == null)
+            {
+                day = new Day();
+                day.Date = dateTime;
+                newItem = true;
+            }
+            day.MealsInDay.Add(meal);
+            meal.Day = day;
+            meal.DayId = day.Id;
+
             if (IsFailMessageSet) return;
             if (newItem == true)
             {
@@ -211,7 +211,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        public Boolean ValidateEmpty(TextBox textBox)
+        private Boolean ValidateEmpty(TextBox textBox)
         {
             if (textBox.Text.Length == 0)
             {
@@ -229,7 +229,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        public bool ValidateChoosenProducts()
+        private bool ValidateChoosenProducts()
         {
             if (choosenProducts.Count == 0)
             {
@@ -247,7 +247,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        public void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             Int32 selectionStart = textBox.SelectionStart;
@@ -267,7 +267,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
         }
 
-        public void ClearTextBoxesStylesAndMessages()
+        private void ClearTextBoxesStylesAndMessages()
         {
             ClearStyles();
             IsFailMessageSet = false;
@@ -275,7 +275,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text = String.Empty;
         }
 
-        public void ClearTextBoxesAndSetConfirmMessage()
+        private void ClearTextBoxesAndSetConfirmMessage()
         {
             ClearText();
             ClearList();
@@ -283,7 +283,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             AddConfirm.Text = CONFIRMMESSAGE;
         }
 
-        public void ClearTextBoxesAndStyles()
+        private void ClearTextBoxesAndStyles()
         {
             ClearText();
             ClearList();
@@ -291,13 +291,13 @@ namespace ApplicationToSupportAndControlDiet.Views
             IsFailMessageSet = false;
         }
 
-        public void ClearStyles()
+        private void ClearStyles()
         {
             NameBox.Style = DefaultStyle;
             SuggestProductsBox.Style = DefaultStyle;
         }
 
-        public void ClearText()
+        private void ClearText()
         {
             AddConfirm.Text = String.Empty;
             ValidationMessages.Text = String.Empty;
@@ -306,18 +306,18 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.SuggestProductsBox.Text = String.Empty;
         }
 
-        public void ClearList()
+        private void ClearList()
         {
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.ItemsList.ItemsSource = choosenProducts;
         }
 
-        public void ClearMeal_Click(object sender, RoutedEventArgs e)
+        private void ClearMeal_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
         }
 
-        public void AppendToMessages(string message)
+        private void AppendToMessages(string message)
         {
             ValidationMessages.Text += (message + Environment.NewLine);
         }
