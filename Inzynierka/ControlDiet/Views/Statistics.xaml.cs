@@ -42,24 +42,35 @@ namespace ApplicationToSupportAndControlDiet.Views
             Repository<Day> repo = new Repository<Day>();
             DateTime dateTime = Converters.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
             Day day = repo.FindDayByDate(dateTime);
+
+            Repository<User> repo2 = new Repository<User>();
+            User user = repo2.FindUser();
+            float maxValue;
+            if (user ==null)
+            {
+                maxValue = 0;
+            }
+            else
+            {
+                maxValue = user.TotalDailyEnergyExpenditure;
+            }
+
             if (day == null) {
                 EnergyBar.Value = 0;
+                EnergyText.Text = "0 /" + Convert.ToString(maxValue);
                 return;
-            }        
+            }
             //User user = new User();
             //PIECHART
-
-            Random rand = new Random();
+            float dayValue = day.Energy;
             List<Microelements> financialStuffList = new List<Microelements>();
-            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = rand.Next(0, 200) }); //day.Protein * 4 });    //rand.Next(0, 200)
-            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = rand.Next(0, 200) }); //day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = rand.Next(0, 200) });// day.Carbohydrate * 4 });
+            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein * 4 });    
+            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
+            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });
             (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
 
             //PROGRESSBAR
 
-            float maxValue = 2000; //user.day .....
-            float dayValue = rand.Next(1500, 2000);// day.Energy;
             EnergyBar.Maximum = maxValue;
             EnergyBar.Value = dayValue;
             EnergyText.Text = Convert.ToString(dayValue) + "/" + Convert.ToString(maxValue);
