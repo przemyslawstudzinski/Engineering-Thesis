@@ -38,12 +38,17 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         public Statistics()
         {
+            this.InitializeComponent();
             Repository<Day> repo = new Repository<Day>();
             DateTime dateTime = Converters.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
             Day day = repo.FindDayByDate(dateTime);
+            if (day == null) {
+                EnergyBar.Value = 0;
+                return;
+            }        
             //User user = new User();
             //PIECHART
-            this.InitializeComponent();
+
             Random rand = new Random();
             List<Microelements> financialStuffList = new List<Microelements>();
             financialStuffList.Add(new Microelements() { Name = "Protein", Amount = rand.Next(0, 200) }); //day.Protein * 4 });    //rand.Next(0, 200)

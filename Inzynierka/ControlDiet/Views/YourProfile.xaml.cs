@@ -28,7 +28,7 @@ namespace ApplicationToSupportAndControlDiet
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
-        private const string CONFIRMMESSAGE = "Adding user info successful.";
+        private const string CONFIRMMESSAGE = "Adding user info successful. Daily calories requisition set: {0}";
         private Style RedBorderStyle;
         private Style DefaultStyle;
 
@@ -145,7 +145,7 @@ namespace ApplicationToSupportAndControlDiet
 
             Repository<User> userCreator = new Repository<User>();
             if (userCreator.SaveOneOrReplace(user) > -1) {
-                ClearTextBoxesAndSetConfirmMessage();
+                ClearTextBoxesAndSetConfirmMessage(totalDailyEnergyExpenditure);
             }
         }
 
@@ -201,11 +201,11 @@ namespace ApplicationToSupportAndControlDiet
             ClearStyles();
         }
 
-        private void ClearTextBoxesAndSetConfirmMessage()
+        private void ClearTextBoxesAndSetConfirmMessage(int dailyCaloriesExpenditure)
         {
             ClearText();
             ClearStyles();
-            AddConfirm.Text = CONFIRMMESSAGE;
+            AddConfirm.Text = String.Format(CONFIRMMESSAGE,dailyCaloriesExpenditure);
         }
 
         private void ClearTextBoxesAndStyles()
