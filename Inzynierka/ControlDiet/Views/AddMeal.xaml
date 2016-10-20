@@ -17,19 +17,19 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
             <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
-                        RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,-150,0,0">
+                        RelativePanel.AlignVerticalCenterWithPanel="True" >
                 <TextBlock x:Name="ValidationMessages" Foreground="Red" />
                 <StackPanel x:Name="Header">
-                    <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                         <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
                         <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
-                                            DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
+                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
                         <TimePicker x:Name = "TimePicker" Header = "Time"  Padding="5"/>
                         <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
-                                Width="500" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
+                                Width="450" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
                                 TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
                             <AutoSuggestBox.ItemTemplate>
                                 <DataTemplate>
@@ -158,14 +158,14 @@
                 </ListView>
 
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <Button Tag="SaveMeal" x:Name="SaveMeal" Background="Black" Click="SaveMeal_Click" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Accept" Foreground="White" />
-                            <TextBlock Text="Save Meal" Width="100" Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="CancelMeal" x:Name="ClearMeal" Background="Black" Click="ClearMeal_Click">
+                    <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMeal_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Cancel" Foreground="White" />
                             <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />

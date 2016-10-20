@@ -31,7 +31,7 @@
                     <TextBlock x:Name="EnergyText" Text="100/2000" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Grid>
                 <Charting:Chart x:Name="PieChart" Height="300" Width="600" Title="Daily intake of macronutrients"  HorizontalAlignment="Center">
-                    <Charting:PieSeries Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="True"/>
+                    <Charting:PieSeries Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="False"/>
                 </Charting:Chart>
             </StackPanel>
             <TextBlock Name="WarningCal" Text="" FontSize="20" Foreground="Red" RelativePanel.Below="chart" RelativePanel.AlignHorizontalCenterWithPanel="True"/>

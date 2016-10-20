@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using SQLiteNetExtensions.Extensions;
 using System.Threading.Tasks;
+using Windows.Storage.Pickers;
+using System.Collections;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -156,7 +158,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
-        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private async void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
             Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
@@ -177,21 +179,21 @@ namespace ApplicationToSupportAndControlDiet.Views
             Day day = null;
             bool newItem = false;
 
-                TimeSpan time = this.TimePicker.Time;
-                DateTimeOffset date = this.DataPicker.Date.Value;
-                DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-                meal.TimeOfMeal = dateTime;           
-                day = repository.FindDayByDate(dateTime);
-                if(day == null)
-                {
-                    day = new Day();
-                    day.Date = dateTime;
-                    newItem = true;                
-                }
-                day.MealsInDay.Add(meal);
-                meal.Day = day;
-                meal.DayId = day.Id;
-            
+            TimeSpan time = this.TimePicker.Time;
+            DateTimeOffset date = this.DataPicker.Date.Value;
+            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+            meal.TimeOfMeal = dateTime;
+            day = repository.FindDayByDate(dateTime);
+            if (day == null)
+            {
+                day = new Day();
+                day.Date = dateTime;
+                newItem = true;
+            }
+            day.MealsInDay.Add(meal);
+            meal.Day = day;
+            meal.DayId = day.Id;
+
             if (IsFailMessageSet) return;
             if (newItem == true)
             {
@@ -207,12 +209,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                     ClearTextBoxesAndSetConfirmMessage();
                 }
             }
-            //List<Day> list = new List<Day>();
-            //list.Add(day);
-            //CsvExport<Day> daycsv = new CsvExport<Day>(list);
-            //daycsv.ExportToFile(Path.Combine(Windows.Storage.ApplicationData.
-            //        Current.LocalFolder.Path, "file.csv"));
 
+            CsvExport daycsv = new CsvExport(meal);
+            daycsv.ExportMealToCsvFile();
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
