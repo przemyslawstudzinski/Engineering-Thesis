@@ -105,5 +105,11 @@ namespace ApplicationToSupportAndControlDiet.Views
             Globals.MainPage.NavigateTo(this);
         }
 
+        private void DataPicker2_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            if (!sender.Date.Equals(Globals.Date)) { 
+            Globals.MainPage.NavigateTo(this);
+            }
+        }
     }
 }
