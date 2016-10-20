@@ -22,7 +22,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             FileSavePicker saveWindow = new FileSavePicker();
             saveWindow.SuggestedFileName = "products.csv";
             saveWindow.DefaultFileExtension = ".csv";
-            saveWindow.FileTypeChoices.Add("Raw file", new List<String> { ".csv" });
+            saveWindow.FileTypeChoices.Add(".csv", new List<String> { ".csv" });
             StorageFile file = await saveWindow.PickSaveFileAsync();
             if (file != null)
             {
