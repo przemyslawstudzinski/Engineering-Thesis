@@ -15,54 +15,55 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+        <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
+            <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
                         RelativePanel.AlignVerticalCenterWithPanel="True" >
-                <TextBlock x:Name="ValidationMessages" Foreground="Red" />
-                <StackPanel x:Name="Header">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                        <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
-                        <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
+                    <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                    <StackPanel x:Name="Header">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
+                            <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
                                             DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
-                        <TimePicker x:Name = "TimePicker" Header = "Time"  Padding="5"/>
-                        <TextBlock x:Name = "Control1Output" FontSize = "24"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
+                            <TimePicker x:Name = "TimePicker" Header = "Time"  Padding="5"/>
+                            <TextBlock x:Name = "Control1Output" FontSize = "24"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
                                 Width="450" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
                                 TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
-                            <AutoSuggestBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock TextWrapping="Wrap">
+                                <AutoSuggestBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextWrapping="Wrap">
                                         <Run Text="{Binding Name}" />
-                                    </TextBlock>
-                                </DataTemplate>
-                            </AutoSuggestBox.ItemTemplate>
-                        </AutoSuggestBox>
-                        <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
-                        <ComboBox Header="Measure:" Margin="10, 0, 20, 0">
-                            <!--TODO-->
-                        </ComboBox>
-                        <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click">
-                            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
-                                <SymbolIcon Symbol="Add" Foreground="White" />
-                            </StackPanel>
-                        </Button>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </AutoSuggestBox.ItemTemplate>
+                            </AutoSuggestBox>
+                            <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
+                            <ComboBox Header="Measure:" Margin="10, 0, 20, 0">
+                                <!--TODO-->
+                            </ComboBox>
+                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click">
+                                <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
+                                    <SymbolIcon Symbol="Add" Foreground="White" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
+                            <TextBlock x:Name="FoodProducts" Text="Food products:" FontStretch="Expanded" Foreground="Black" Margin="0" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
-                        <TextBlock x:Name="FoodProducts" Text="Food products:" FontStretch="Expanded" Foreground="Black" Margin="0" />
-                    </StackPanel>
-                </StackPanel>
 
-                <ListView Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0, 20, 0, 0" MaxHeight="400"
+                    <ListView Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0, 20, 0, 0" MaxHeight="400"
                               SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled"
                             RightTapped="ListView_RightTapped">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <!--<ListView.Resources>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <!--<ListView.Resources>
                         <MenuFlyout x:Name="allContactsMenuFlyout">
                             <MenuFlyout.Items>
                                 <MenuFlyoutItem x:Name="Edit"  Text="Edit"/>
@@ -70,111 +71,112 @@
                             </MenuFlyout.Items>
                         </MenuFlyout>
                     </ListView.Resources>-->
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:DefinedProduct">
-                            <Grid  Padding="5" Margin="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Margin" Value="5,0" />
-                                    </Style>
-                                </Grid.Resources>
-                                <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Name}" FontWeight="Bold" TextWrapping="Wrap" 
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:DefinedProduct">
+                                <Grid  Padding="5" Margin="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Margin" Value="5,0" />
+                                        </Style>
+                                    </Grid.Resources>
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Name}" FontWeight="Bold" TextWrapping="Wrap" 
                                             MaxLines="2" HorizontalAlignment="Left" />
-                                <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Energy" FontWeight="Light" IsReadOnly="True" />
-                                <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
-                                <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
-                                <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
-                                <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
-                                <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
-                                <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.Row="1" FontWeight="Bold"
+                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Energy" FontWeight="Light" IsReadOnly="True" />
+                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
+                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.Row="1" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
-                                <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
-                                    <SymbolIcon Symbol="Favorite" Foreground="Black" />
-                                    <Button.Flyout>
-                                        <Flyout>
-                                            <TextBlock Text="Added to fovourite products!"/>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                                <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                        <SymbolIcon Symbol="Favorite" Foreground="Black" />
+                                        <Button.Flyout>
+                                            <Flyout>
+                                                <TextBlock Text="Added to fovourite products!"/>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
-                                    <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
-                                    <Button.Flyout>
-                                        <Flyout>
-                                            <TextBlock Text="Removed from fovourite products!"/>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                                <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                        <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
+                                        <Button.Flyout>
+                                            <Flyout>
+                                                <TextBlock Text="Removed from fovourite products!"/>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
-                                    <SymbolIcon Symbol="Dislike" Foreground="Black" />
-                                    <Button.Flyout>
-                                        <Flyout>
-                                            <TextBlock Text="Added to dislike products!"/>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                                <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                        <SymbolIcon Symbol="Dislike" Foreground="Black" />
+                                        <Button.Flyout>
+                                            <Flyout>
+                                                <TextBlock Text="Added to dislike products!"/>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
-                                    <SymbolIcon Symbol="Like" Foreground="Black" />
-                                    <Button.Flyout>
-                                        <Flyout>
-                                            <TextBlock Text="Added to like products!"/>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                                <Button Grid.Column="7" Grid.Row="1" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                                        <SymbolIcon Symbol="Like" Foreground="Black" />
+                                        <Button.Flyout>
+                                            <Flyout>
+                                                <TextBlock Text="Added to like products!"/>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                    <Button Grid.Column="7" Grid.Row="1" VerticalContentAlignment="Center" VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" 
                                             Background="Black" Click="DeleteProduct_Click">
-                                    <SymbolIcon Symbol="Delete" Foreground="White" />
-                                    <Button.Flyout>
-                                        <Flyout>
-                                            <TextBlock Text="Deleted product from meal!"/>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                        <SymbolIcon Symbol="Delete" Foreground="White" />
+                                        <Button.Flyout>
+                                            <Flyout>
+                                                <TextBlock Text="Deleted product from meal!"/>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Accept" Foreground="White" />
-                            <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMeal_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Cancel" Foreground="White" />
-                            <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Accept" Foreground="White" />
+                                <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                        <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMeal_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Cancel" Foreground="White" />
+                                <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
+                    </StackPanel>
+
                 </StackPanel>
-
-            </StackPanel>
-        </RelativePanel>
+            </RelativePanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -89,7 +89,16 @@ namespace ApplicationToSupportAndControlDiet.Views
             else
             {
                 EnergyBar.Foreground = new SolidColorBrush(Colors.Red);
-                WarningCal.Text = "You eat too many calories";
+                if (user == null)
+                {
+                    WarningCal.Text = "Complete information about your profile";
+                }
+                else
+                {
+                    WarningCal.Text = "You eat too many calories";
+                }
+                
+               
             }
         }
 
