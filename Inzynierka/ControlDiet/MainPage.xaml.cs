@@ -37,10 +37,10 @@ namespace ApplicationToSupportAndControlDiet
             this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
         }
        
-        private void HomePaneItem_Click(object sender, RoutedEventArgs e)
+        private void MealsPaneItem_Click(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "CONTROL DIET";
-            this.WorkSpace.Navigate(typeof(CalendarPage));
+            this.WorkSpace.Navigate(typeof(MealsPage));
         }
 
         private void AddMealPaneItem_Click(object sender, RoutedEventArgs e)
@@ -80,12 +80,7 @@ namespace ApplicationToSupportAndControlDiet
         }
         public void SelectedDay_Click(object sender, RoutedEventArgs e)
         {
-            this.WorkSpace.Navigate(typeof(CalendarPage));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            this.WorkSpace.Navigate(typeof(MealsPage));
         }
 
         public void NavigateTo<T>(T sourcePage) {

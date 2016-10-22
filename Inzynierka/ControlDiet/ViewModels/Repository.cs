@@ -9,7 +9,7 @@ using SQLiteNetExtensions.Extensions;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
-    public class Repository<T>
+    public class Repository<T> where T : class
     {
         private static SQLiteConnection connectionToDatabase { set; get; }
 
@@ -26,13 +26,19 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public int SaveOneOrReplace(T item)
         {
-           return connectionToDatabase.InsertOrReplace(item);
+            return connectionToDatabase.InsertOrReplace(item);
         }
 
         public int Update(T item)
         {
             connectionToDatabase.InsertOrReplaceWithChildren(item, recursive: true);
             return 1;
+        }
+
+        public List<T> FindAll()
+        {
+            List<T> items = connectionToDatabase.GetAllWithChildren<T>().ToList();
+            return items;
         }
 
         public Day FindDayByDate(DateTime dateTime)

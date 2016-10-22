@@ -47,10 +47,10 @@
             <SplitView.Pane >
 
                 <StackPanel Background="Black" HorizontalAlignment="Left" Width="200" >
-                    <Button Tag="Home" Margin="0,50,0,0"  Click="HomePaneItem_Click" >
+                    <Button Tag="Meals" Margin="0,50,0,0"  Click="MealsPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Home" Foreground="White" />
-                            <TextBlock Text="Home"  Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Meals"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="AddMeal"  Click="AddMealPaneItem_Click" >

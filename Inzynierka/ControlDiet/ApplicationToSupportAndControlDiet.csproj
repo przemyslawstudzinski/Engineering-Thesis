@@ -133,8 +133,8 @@
     <Compile Include="Views\AddNewProduct.xaml.cs">
       <DependentUpon>AddNewProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CalendarPage.xaml.cs">
-      <DependentUpon>CalendarPage.xaml</DependentUpon>
+    <Compile Include="Views\Meals.xaml.cs">
+      <DependentUpon>Meals.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -188,7 +188,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CalendarPage.xaml">
+    <Page Include="Views\Meals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

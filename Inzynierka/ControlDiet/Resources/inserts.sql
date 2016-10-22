@@ -1,147 +1,94 @@
 INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) VALUES 
-('14007','Alcoholic beverage, beer, light, BUD LIGHT',29,0.25,0,1.3,0,'--
-'),
- ('14009','Alcoholic beverage, daiquiri, canned',125,0,'--',15.7,0,'--
-'),
- ('14534','Alcoholic beverage, liqueur, coffee, 63 proof',308,0.1,0.3,32.2,0,'--
-'),
- ('14015','Alcoholic beverage, pina colada, canned',237,0.6,7.6,27.6,0.1,'--
-'),
- ('14019','Alcoholic beverage, tequila sunrise, canned',110,0.3,0.1,11.3,0,'--
-'),
- ('14027','Alcoholic beverage, whiskey sour, canned',119,0,'--',13.4,0.1,'--
-'),
- ('14098','Alcoholic Beverage, wine, table, red, Cabernet Franc',83,0.07,0,2.45,'--','--
-'),
- ('14097','Alcoholic Beverage, wine, table, red, Cabernet Sauvignon',83,0.07,0,2.6,'--','--
-'),
- ('14105','Alcoholic Beverage, wine, table, red, Claret',83,0.07,0,3.01,'--','--
-'),
- ('14107','Alcoholic Beverage, wine, table, red, Lemberger',80,0.07,0,2.46,'--','--
-'),
- ('14103','Alcoholic Beverage, wine, table, red, Petite Sirah',85,0.07,0,2.68,'--','--
-'),
+('14007','Alcoholic beverage, beer, light, BUD LIGHT',29,0.25,0,1.3,0,'--'),
+ ('14009','Alcoholic beverage, daiquiri, canned',125,0,'--',15.7,0,'--'),
+ ('14534','Alcoholic beverage, liqueur, coffee, 63 proof',308,0.1,0.3,32.2,0,'--'),
+ ('14015','Alcoholic beverage, pina colada, canned',237,0.6,7.6,27.6,0.1,'--'),
+ ('14019','Alcoholic beverage, tequila sunrise, canned',110,0.3,0.1,11.3,0,'--'),
+ ('14027','Alcoholic beverage, whiskey sour, canned',119,0,'--',13.4,0.1,'--'),
+ ('14098','Alcoholic Beverage, wine, table, red, Cabernet Franc',83,0.07,0,2.45,'--','--'),
+ ('14097','Alcoholic Beverage, wine, table, red, Cabernet Sauvignon',83,0.07,0,2.6,'--','--'),
+ ('14105','Alcoholic Beverage, wine, table, red, Claret',83,0.07,0,3.01,'--','--'),
+ ('14107','Alcoholic Beverage, wine, table, red, Lemberger',80,0.07,0,2.46,'--','--'),
+ ('14103','Alcoholic Beverage, wine, table, red, Petite Sirah',85,0.07,0,2.68,'--','--'),
  ('14106','Alcoholic beverage, wine, table, white',82,0.07,0,2.6,0,0.96),
  ('14160','Alcoholic beverage, wine, table, white, Chardonnay',84,0.07,0,2.16,0,0.96),
- ('14116','Alcoholic beverage, wine, table, white, Chenin Blanc',80,0.07,0,3.31,'--','--
-'),
- ('14140','Alcoholic beverage, wine, table, white, Muscat',82,0.07,0,5.23,'--','--
-'),
- ('14138','Alcoholic beverage, wine, table, white, Pinot Blanc',81,0.07,0,1.94,'--','--
-'),
- ('14132','Alcoholic beverage, wine, table, white, Riesling',80,0.07,0,3.74,'--','--
-'),
- ('14134','Alcoholic beverage, wine, table, white, Sauvignon Blanc',81,0.07,0,2.05,'--','--
-'),
- ('14126','Alcoholic beverage, wine, table, white, Semillon',82,0.07,0,3.12,'--','--
-'),
- ('11004','Amaranth leaves, cooked, boiled, drained, without salt',21,2.11,0.18,4.11,'--','--
-'),
+ ('14116','Alcoholic beverage, wine, table, white, Chenin Blanc',80,0.07,0,3.31,'--','--'),
+ ('14140','Alcoholic beverage, wine, table, white, Muscat',82,0.07,0,5.23,'--','--'),
+ ('14138','Alcoholic beverage, wine, table, white, Pinot Blanc',81,0.07,0,1.94,'--','--'),
+ ('14132','Alcoholic beverage, wine, table, white, Riesling',80,0.07,0,3.74,'--','--'),
+ ('14134','Alcoholic beverage, wine, table, white, Sauvignon Blanc',81,0.07,0,2.05,'--','--'),
+ ('14126','Alcoholic beverage, wine, table, white, Semillon',82,0.07,0,3.12,'--','--'),
+ ('11004','Amaranth leaves, cooked, boiled, drained, without salt',21,2.11,0.18,4.11,'--','--'),
  ('9014','Apples, frozen, unsweetened, unheated',48,0.28,0.32,12.31,1.3,10.1),
  ('9004','Apples, raw, without skin',48,0.27,0.13,12.76,1.3,10.1),
  ('9020','Applesauce, canned, sweetened, without salt (includes USDA commodity)',68,0.16,0.17,17.49,1.2,14.67),
  ('9027','Apricots, canned, heavy syrup pack, with skin, solids and liquids',83,0.53,0.08,21.47,1.6,19.87),
  ('9357','Apricots, canned, heavy syrup, drained',83,0.64,0.11,21.31,2.7,18.65),
- ('9030','Apricots, dehydrated (low-moisture), sulfured, uncooked',320,4.9,0.62,82.89,'--','--
-'),
+ ('9030','Apricots, dehydrated (low-moisture), sulfured, uncooked',320,4.9,0.62,82.89,'--','--'),
  ('9033','Apricots, dried, sulfured, stewed, without added sugar',85,1.2,0.18,22.15,2.6,19.57),
  ('18527','ARCHWAY Home Style Cookies, Date Filled Oatmeal',400,4.67,12.05,68.16,2.1,34.27),
  ('18532','ARCHWAY Home Style Cookies, Iced Molasses',420,3.5,14.43,69.12,1,38.43),
  ('18533','ARCHWAY Home Style Cookies, Iced Oatmeal',435,4.89,16.53,66.76,2,37.2),
  ('18535','ARCHWAY Home Style Cookies, Molasses',403,4.25,12.06,69.41,1.2,36.35),
  ('18544','ARCHWAY Home Style Cookies, Raspberry Filled',400,4.35,13.26,65.92,2.2,31.76),
- ('11006','Arrowhead, cooked, boiled, drained, without salt',78,4.49,0.1,16.14,'--','--
-'),
- ('18566','Artificial Blueberry Muffin Mix, dry',407,4.7,8.7,77.45,'--','--
-'),
+ ('11006','Arrowhead, cooked, boiled, drained, without salt',78,4.49,0.1,16.14,'--','--'),
+ ('18566','Artificial Blueberry Muffin Mix, dry',407,4.7,8.7,77.45,'--','--'),
  ('11959','Arugula, raw',25,2.58,0.66,3.65,1.6,2.05),
  ('11015','Asparagus, canned, drained solids',19,2.14,0.65,2.46,1.6,1.06),
- ('11013','Asparagus, canned, regular pack, solids and liquids',15,1.8,0.18,2.48,1,'--
-'),
+ ('11013','Asparagus, canned, regular pack, solids and liquids',15,1.8,0.18,2.48,1,'--'),
  ('11012','Asparagus, cooked, boiled, drained',22,2.4,0.22,4.11,2,1.3),
  ('11019','Asparagus, frozen, cooked, boiled, drained, without salt',18,2.95,0.42,1.92,1.6,0.32),
  ('18986','AUSTIN, Grilled Cheese on Wafer Crackers, sandwich-type',493,7.9,23.8,62,1.3,12.6),
  ('18989','AUSTIN, Peanut Butter on Toasty Crackers, sandwich-type, reduced fat',463,9.5,18,67.2,2.7,11.8),
- ('7921','Bacon and beef sticks',517,29.1,44.2,0.8,0,'--
-'),
+ ('7921','Bacon and beef sticks',517,29.1,44.2,0.8,0,'--'),
  ('18007','Bagels, oat bran',255,10.7,1.2,53.3,3.6,1.63),
  ('18001','Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)',264,10.56,1.32,52.38,1.6,8.43),
  ('18002','Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame), toasted',287,11.14,1.43,57.39,1.8,9.14),
  ('19146','Baking chocolate, MARS SNACKFOOD US, M & M''s Milk Chocolate Mini Baking Bits',502,4.78,23.36,68.4,2.7,62.54),
  ('19139','Baking chocolate, MARS SNACKFOOD US, M & M''s Semisweet Chocolate Mini Baking Bits',517,4.44,26.15,65.96,6.7,53.07),
- ('11024','Balsam-pear (bitter gourd), pods, raw',17,1,0.17,3.7,2.8,'--
-'),
+ ('11024','Balsam-pear (bitter gourd), pods, raw',17,1,0.17,3.7,2.8,'--'),
  ('11026','Bamboo shoots, raw',27,2.6,0.3,5.2,2.2,3),
- ('7001','Barbecue loaf, pork, beef',173,15.84,8.9,6.4,0,'--
-'),
+ ('7001','Barbecue loaf, pork, beef',173,15.84,8.9,6.4,0,'--'),
  ('20130','Barley flour or meal',345,10.5,1.6,74.52,10.1,0.8),
- ('16001','Beans, adzuki, mature seeds, raw',329,19.87,0.53,62.9,12.7,'--
-'),
- ('16009','Beans, baked, canned, with pork',106,5.19,1.55,19.99,5.5,'--
-'),
+ ('16001','Beans, adzuki, mature seeds, raw',329,19.87,0.53,62.9,12.7,'--'),
+ ('16009','Beans, baked, canned, with pork',106,5.19,1.55,19.99,5.5,'--'),
  ('16018','Beans, black turtle, mature seeds, canned',91,6.03,0.29,16.55,6.9,0.23),
  ('16017','Beans, black turtle, mature seeds, cooked, boiled, without salt',130,8.18,0.35,24.35,8.3,0.32),
  ('16014','Beans, black, mature seeds, raw',341,21.6,1.42,62.36,15.5,2.12),
- ('11029','Beans, kidney, mature seeds, sprouted, raw',29,4.2,0.5,4.1,'--','--
-'),
+ ('11029','Beans, kidney, mature seeds, sprouted, raw',29,4.2,0.5,4.1,'--','--'),
  ('16040','Beans, pink, mature seeds, raw',343,20.96,1.13,64.19,12.7,2.14),
- ('11048','Beans, pinto, immature seeds, frozen, unprepared',170,9.8,0.5,32.5,5.7,'--
-'),
+ ('11048','Beans, pinto, immature seeds, frozen, unprepared',170,9.8,0.5,32.5,5.7,'--'),
  ('11061','Beans, snap, green, frozen, cooked, boiled, drained without salt',28,1.49,0.17,6.45,3,1.88),
  ('18993','BEAR NAKED, Double Chocolate Cookies',423,6.6,16.9,66.9,7,35.2),
  ('18994','BEAR NAKED, Fruit  &  Nut Cookies',443,7.5,21.4,61.6,7.1,29.4),
  ('23302','Beef, Australian, imported, grass-fed, loin, tenderloin steak/roast, boneless, separable lean and fat, raw',151,20.53,7.63,0.01,'--',0),
  ('23297','Beef, Australian, imported, grass-fed, seam fat, raw',562,9.58,57.73,1.06,'--',0),
- ('13975','Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0" fat, choice, raw',169,20.15,9.86,0,'--','--
-'),
- ('13950','Beef, brisket, flat half, separable lean and fat, trimmed to 0" fat, select, cooked, braised',205,33.59,6.77,0,'--','--
-'),
- ('13786','Beef, chuck eye roast, boneless, America''s Beef Roast, separable lean and fat, trimmed to 0" fat, all grades, raw',180,19.18,11.48,0,'--','--
-'),
- ('13980','Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0" fat, choice, cooked, braised',250,28.84,14.95,0,'--','--
-'),
- ('13967','Beef, chuck, top blade, separable lean only, trimmed to 0" fat, select, cooked, broiled',184,26.16,8,0,'--','--
-'),
- ('13970','Beef, flank, steak, separable lean and fat, trimmed to 0" fat, all grades, raw',155,21.22,7.17,0,'--','--
-'),
- ('23563','Beef, ground, 90% lean meat / 10% fat, patty, cooked, broiled',217,26.11,11.75,0,'--','--
-'),
- ('13985','Beef, loin, bottom sirloin butt, tri-tip roast, separable lean only, trimmed to 0" fat, all grades, cooked, roasted',182,26.75,8.34,0,'--','--
-'),
- ('13913','Beef, loin, top loin, separable lean and fat, trimmed to 1/8" fat, select, raw',224,20.59,15.04,0,'--','--
-'),
- ('23260','Beef, loin, top sirloin petite roast, boneless, separable lean only, trimmed to 0" fat, select, cooked, roasted',165,29.35,5.25,0,'--','--
-'),
- ('13855','Beef, rib, small end (ribs 10-12), separable lean and fat, trimmed to 1/8" fat, choice, cooked, roasted',359,22.28,29.21,0,'--','--
-'),
- ('23265','Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0" fat, select, raw',125,22.89,3.72,0,'--','--
-'),
+ ('13975','Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0" fat, choice, raw',169,20.15,9.86,0,'--','--'),
+ ('13950','Beef, brisket, flat half, separable lean and fat, trimmed to 0" fat, select, cooked, braised',205,33.59,6.77,0,'--','--'),
+ ('13786','Beef, chuck eye roast, boneless, America''s Beef Roast, separable lean and fat, trimmed to 0" fat, all grades, raw',180,19.18,11.48,0,'--','--'),
+ ('13980','Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0" fat, choice, cooked, braised',250,28.84,14.95,0,'--','--'),
+ ('13967','Beef, chuck, top blade, separable lean only, trimmed to 0" fat, select, cooked, broiled',184,26.16,8,0,'--','--'),
+ ('13970','Beef, flank, steak, separable lean and fat, trimmed to 0" fat, all grades, raw',155,21.22,7.17,0,'--','--'),
+ ('23563','Beef, ground, 90% lean meat / 10% fat, patty, cooked, broiled',217,26.11,11.75,0,'--','--'),
+ ('13985','Beef, loin, bottom sirloin butt, tri-tip roast, separable lean only, trimmed to 0" fat, all grades, cooked, roasted',182,26.75,8.34,0,'--','--'),
+ ('13913','Beef, loin, top loin, separable lean and fat, trimmed to 1/8" fat, select, raw',224,20.59,15.04,0,'--','--'),
+ ('23260','Beef, loin, top sirloin petite roast, boneless, separable lean only, trimmed to 0" fat, select, cooked, roasted',165,29.35,5.25,0,'--','--'),
+ ('13855','Beef, rib, small end (ribs 10-12), separable lean and fat, trimmed to 1/8" fat, choice, cooked, roasted',359,22.28,29.21,0,'--','--'),
+ ('23265','Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0" fat, select, raw',125,22.89,3.72,0,'--','--'),
  ('23270','Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0" fat, choice, raw',187,19.46,11.4,1.75,'--',0),
- ('13959','Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0" fat, all grades, cooked, grilled',167,29.96,4.28,0,'--','--
-'),
- ('13968','Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0" fat, choice, cooked, grilled',170,30.12,4.62,0,'--','--
-'),
- ('13899','Beef, round, top round, separable lean and fat, trimmed to 1/8" fat, select, cooked, braised',225,34.6,8.54,0,'--','--
-'),
- ('13896','Beef, round, top round, steak, separable lean and fat, trimmed to 1/8" fat, choice, cooked, broiled',224,30.7,10.27,0,'--','--
-'),
- ('13902','Beef, round, top round, steak, separable lean and fat, trimmed to 1/8" fat, prime, cooked, broiled',225,31.27,10.1,0,'--','--
-'),
- ('13228','Beef, shank crosscuts, separable lean only, trimmed to 1/4" fat, choice, cooked, simmered',201,33.68,6.36,0,'--','--
-'),
- ('13905','Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8" fat, choice, raw',218,20.36,14.58,0,'--','--
-'),
- ('13467','Beef, short loin, porterhouse steak, separable lean only, trimmed to 0" fat, choice, cooked, broiled',224,25.51,12.8,0,'--','--
-'),
- ('13918','Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8" fat, all grades, cooked, broiled',267,26.46,17.12,0,'--','--
-'),
- ('13923','Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8" fat, select, raw',249,19.37,18.46,0,'--','--
-'),
+ ('13959','Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0" fat, all grades, cooked, grilled',167,29.96,4.28,0,'--','--'),
+ ('13968','Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0" fat, choice, cooked, grilled',170,30.12,4.62,0,'--','--'),
+ ('13899','Beef, round, top round, separable lean and fat, trimmed to 1/8" fat, select, cooked, braised',225,34.6,8.54,0,'--','--'),
+ ('13896','Beef, round, top round, steak, separable lean and fat, trimmed to 1/8" fat, choice, cooked, broiled',224,30.7,10.27,0,'--','--'),
+ ('13902','Beef, round, top round, steak, separable lean and fat, trimmed to 1/8" fat, prime, cooked, broiled',225,31.27,10.1,0,'--','--'),
+ ('13228','Beef, shank crosscuts, separable lean only, trimmed to 1/4" fat, choice, cooked, simmered',201,33.68,6.36,0,'--','--'),
+ ('13905','Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8" fat, choice, raw',218,20.36,14.58,0,'--','--'),
+ ('13467','Beef, short loin, porterhouse steak, separable lean only, trimmed to 0" fat, choice, cooked, broiled',224,25.51,12.8,0,'--','--'),
+ ('13918','Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8" fat, all grades, cooked, broiled',267,26.46,17.12,0,'--','--'),
+ ('13923','Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8" fat, select, raw',249,19.37,18.46,0,'--','--'),
  ('23290','Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8" fat, all grades, raw',187,21.1,11.3,0.3,'--',0),
- ('13932','Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8" fat, choice, cooked, broiled',257,26.8,15.75,0,'--','--
-'),
- ('13455','Beef, top sirloin, steak, separable lean only, trimmed to 0" fat, choice, cooked, broiled',188,30.29,6.55,0,'--','--
-'),
+ ('13932','Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8" fat, choice, cooked, broiled',257,26.8,15.75,0,'--','--'),
+ ('13455','Beef, top sirloin, steak, separable lean only, trimmed to 0" fat, choice, cooked, broiled',188,30.29,6.55,0,'--','--'),
  ('7002','Beerwurst, beer salami, pork and beef',277,14,22.53,3.76,0.9,0),
  ('7931','Beerwurst, pork and beef',276,14,22.53,4.27,0.9,0),
  ('11086','Beet greens, raw',22,2.2,0.13,4.33,3.7,0.5),
@@ -149,48 +96,35 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('11080','Beets, raw',43,1.61,0.17,9.56,2.8,6.76),
  ('14054','Beverages, almond milk, chocolate, ready-to-drink',50,0.63,1.25,9.38,0.4,8.75),
  ('14016','Beverages, almond milk, sweetened, vanilla flavor, ready-to-drink',38,0.42,1.04,6.59,0.4,6.25),
- ('14121','Beverages, carbonated, club soda','--',0,'--',0,'--','--
-'),
+ ('14121','Beverages, carbonated, club soda','--',0,'--',0,'--','--'),
  ('14416','Beverages, carbonated, low calorie, cola or pepper-type, with aspartame, contains caffeine',2,0.11,0.03,0.29,'--',0),
- ('14151','Beverages, carbonated, low calorie, other than cola or pepper, with aspartame, contains caffeine','--',0.1,0,0,'--','--
-'),
- ('14149','Beverages, carbonated, reduced sugar, cola, contains caffeine and sweeteners',20,0,'--',5.16,0,'--
-'),
+ ('14151','Beverages, carbonated, low calorie, other than cola or pepper, with aspartame, contains caffeine','--',0.1,0,0,'--','--'),
+ ('14149','Beverages, carbonated, reduced sugar, cola, contains caffeine and sweeteners',20,0,'--',5.16,0,'--'),
  ('14063','Beverages, chocolate powder, no sugar added',373,9.09,'--',63.64,9.1,27.27),
  ('14237','Beverages, coffee substitute, cereal grain beverage, prepared with water',6,0.1,0.04,1.3,0.4,0.08),
  ('14218','Beverages, coffee, instant, decaffeinated, powder',351,11.6,0.2,76,'--',0),
- ('14240','Beverages, cranberry-apricot juice drink, bottled',64,0.2,0,16.2,0.1,'--
-'),
- ('14241','Beverages, cranberry-grape juice drink, bottled',56,0.2,0.1,14,0.1,'--
-'),
+ ('14240','Beverages, cranberry-apricot juice drink, bottled',64,0.2,0,16.2,0.1,'--'),
+ ('14241','Beverages, cranberry-grape juice drink, bottled',56,0.2,0.1,14,0.1,'--'),
  ('14628','Beverages, Energy drink, AMP, sugar free',2,0,'--',1.03,'--',0),
  ('14630','Beverages, Energy drink, ROCKSTAR, sugar free',4,0.25,0.08,0.7,'--',0),
- ('14632','Beverages, Meal supplement drink, canned, peanut flavor',101,3.5,3.07,14.74,'--','--
-'),
+ ('14632','Beverages, Meal supplement drink, canned, peanut flavor',101,3.5,3.07,14.74,'--','--'),
  ('14426','Beverages, Orange drink, breakfast type, with juice and pulp, frozen concentrate',153,0.4,0,39,0.1,38.05),
  ('14462','Beverages, Propel Zero, fruit-flavored, non-carbonated',5,0,'--',1.14,'--',0),
  ('14067','Beverages, Protein powder soy based',388,55.56,5.56,28.89,6.7,22.22),
  ('14366','Beverages, tea, instant, unsweetened, powder',315,20.21,0,58.66,8.5,5.53),
- ('14065','Beverages, The COCA-COLA company, Hi-C Flashin'' Fruit Punch',45,0,'--',12.5,0,'--
-'),
- ('14030','Beverages, THE COCA-COLA COMPANY, NOS energy drink, Original, grape, loaded cherry, charged citrus, fortified with vitamins B6 and B12',44,0,'--',11.25,0,'--
-'),
+ ('14065','Beverages, The COCA-COLA company, Hi-C Flashin'' Fruit Punch',45,0,'--',12.5,0,'--'),
+ ('14030','Beverages, THE COCA-COLA COMPANY',44,0,'--',11.25,0,'--'),
  ('14045','Beverages, UNILEVER, SLIMFAST, meal replacement, regular, ready-to-drink,  3-2-1 Plan',57,3.32,1.93,7.74,1.6,5.95),
  ('14610','Beverages, V8 SPLASH Juice Drinks, Diet Tropical Blend',4,0,'--',1.26,'--',0.42),
- ('14614','Beverages, V8 SPLASH Juice Drinks, Mango Peach',33,0,'--',8.23,'--','--
-'),
+ ('14614','Beverages, V8 SPLASH Juice Drinks, Mango Peach',33,0,'--',8.23,'--','--'),
  ('14086','Beverages, V8 SPLASH Smoothies, Peach Mango',37,1.22,0,7.76,0,7.35),
  ('14087','Beverages, V8 SPLASH Smoothies, Strawberry Banana',37,1.22,0,8.16,0,7.35),
  ('14620','Beverages, V8 V-FUSION Juices, Peach Mango',49,0.41,0,11.38,0,10.57),
- ('14437','Beverages, water, bottled, non-carbonated, CALISTOGA','--',0,'--',0,'--','--
-'),
- ('14559','Beverages, water, bottled, non-carbonated, EVIAN','--',0,'--',0,'--','--
-'),
+ ('14437','Beverages, water, bottled, non-carbonated, CALISTOGA','--',0,'--',0,'--','--'),
+ ('14559','Beverages, water, bottled, non-carbonated, EVIAN','--',0,'--',0,'--','--'),
  ('14058','Beverages, Whey protein powder isolate',359,58.14,1.16,29.07,0,1.16),
- ('14028','Beverages, Whiskey sour mix, bottled',87,0.1,'--',21.4,0,'--
-'),
- ('18017','Biscuits, mixed grain, refrigerated dough',263,6.1,5.6,47.4,'--','--
-'),
+ ('14028','Beverages, Whiskey sour mix, bottled',87,0.1,'--',21.4,0,'--'),
+ ('18017','Biscuits, mixed grain, refrigerated dough',263,6.1,5.6,47.4,'--','--'),
  ('18010','Biscuits, plain or buttermilk, dry mix',428,8,15.4,63.4,2.1,11.65),
  ('18009','Biscuits, plain or buttermilk, frozen, baked',338,6.2,11.03,53.87,1.3,3.48),
  ('18014','Biscuits, plain or buttermilk, refrigerated dough, higher fat',307,6.66,10.58,46.32,0.7,7.4),
@@ -202,8 +136,7 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('7971','Bologna, meat and poultry',281,10.34,23.77,6.31,0,1.97),
  ('7936','Bologna, pork and turkey, lite',211,13.06,16.06,3.45,'--',0),
  ('7937','Bologna, pork, turkey and beef',336,11.56,29.25,6.66,0,1.35),
- ('9056','Boysenberries, canned, heavy syrup',88,0.99,0.12,22.31,2.6,'--
-'),
+ ('9056','Boysenberries, canned, heavy syrup',88,0.99,0.12,22.31,2.6,'--'),
  ('9057','Boysenberries, frozen, unsweetened',50,1.1,0.26,12.19,5.3,6.89),
  ('7924','Bratwurst, pork, beef and turkey, lite, smoked',186,14.45,13.53,1.62,0,1.57),
  ('7014','Braunschweiger (a liver sausage), pork',327,14.5,28.5,3.1,'--',0),
@@ -212,21 +145,17 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('18085','Bread stuffing, cornbread, dry mix, prepared',179,2.9,8.8,21.9,2.9,0),
  ('18972','Bread, cheese',408,10.42,20.83,44.83,2.1,2.08),
  ('18023','Bread, cornbread, dry mix, prepared with 2% milk, 80% margarine, and eggs',330,6.59,9.58,54.46,2.3,16.05),
- ('18024','Bread, cornbread, prepared from recipe, made with low fat (2%) milk',266,6.7,7.1,43.5,'--','--
-'),
- ('18025','Bread, cracked-wheat',260,8.7,3.9,49.5,5.5,'--
-'),
+ ('18024','Bread, cornbread, prepared from recipe, made with low fat (2%) milk',266,6.7,7.1,43.5,'--','--'),
+ ('18025','Bread, cracked-wheat',260,8.7,3.9,49.5,5.5,'--'),
  ('18030','Bread, french or vienna, toasted (includes sourdough)',319,13,2.14,61.93,3.1,3.59),
- ('18032','Bread, irish soda, prepared from recipe',290,6.6,5,56,2.6,'--
-'),
+ ('18032','Bread, irish soda, prepared from recipe',290,6.6,5,56,2.6,'--'),
  ('18037','Bread, oat bran',236,10.4,4.4,39.8,4.5,7.7),
  ('18040','Bread, oatmeal, toasted',292,9.2,4.8,52.7,4.3,8.84),
  ('18955','Bread, pan dulce, sweet yeast bread',367,9.42,11.58,56.38,2.3,12.5),
  ('18041','Bread, pita, white, enriched',275,9.1,1.2,55.7,2.2,1.3),
  ('18954','Bread, pound cake type, pan de torta salvadoran',390,7.06,17.45,51.29,1.7,18.1),
  ('18043','Bread, protein (includes gluten)',245,12.1,2.2,43.8,3,1.44),
- ('18051','Bread, reduced-calorie, oatmeal',210,7.6,3.5,43.3,'--','--
-'),
+ ('18051','Bread, reduced-calorie, oatmeal',210,7.6,3.5,43.3,'--','--'),
  ('18055','Bread, reduced-calorie, wheat',217,13.32,2.92,42.47,11.1,3.71),
  ('18057','Bread, reduced-calorie, white',207,8.7,2.5,44.3,9.7,4.76),
  ('18060','Bread, rye',259,8.5,3.3,48.3,5.8,3.85),
@@ -243,26 +172,20 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('11092','Broccoli, frozen, chopped, unprepared',26,2.81,0.29,4.78,3,1.35),
  ('11098','Brussels sprouts, raw',43,3.38,0.3,8.95,3.8,2.2),
  ('11105','Burdock root, cooked, boiled, drained, without salt',88,2.09,0.14,21.15,1.8,3.55),
- ('1001','Butter, salted',717,0.85,81.11,0.06,0,'--
-'),
+ ('1001','Butter, salted',717,0.85,81.11,0.06,0,'--'),
  ('11754','Cabbage, chinese (pak-choi), cooked, boiled, drained, with salt',12,1.56,0.16,1.78,1,0.83),
  ('11117','Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt',12,1.56,0.16,1.78,1,0.83),
  ('11119','Cabbage, chinese (pe-tsai), raw',16,1.2,0.2,3.23,1.2,1.41),
- ('18086','Cake, angelfood, commercially prepared',258,5.9,0.8,57.8,1.5,'--
-'),
+ ('18086','Cake, angelfood, commercially prepared',258,5.9,0.8,57.8,1.5,'--'),
  ('18088','Cake, angelfood, dry mix, prepared',257,6.1,0.3,58.7,0.2,30.51),
  ('18095','Cake, cherry fudge with chocolate frosting',264,2.4,12.5,38,0.5,32.94),
- ('18101','Cake, chocolate, prepared from recipe without frosting',371,5.3,15.1,53.4,1.6,'--
-'),
+ ('18101','Cake, chocolate, prepared from recipe without frosting',371,5.3,15.1,53.4,1.6,'--'),
  ('18112','Cake, pudding-type, german chocolate, dry mix',350,4.17,3.24,81.25,2.1,42.13),
- ('18126','Cake, shortcake, biscuit-type, prepared from recipe',346,6.1,14.2,48.5,'--','--
-'),
+ ('18126','Cake, shortcake, biscuit-type, prepared from recipe',346,6.1,14.2,48.5,'--','--'),
  ('18128','Cake, snack cakes, creme-filled, sponge',374,3.47,11.54,64.03,1,37.3),
  ('18133','Cake, sponge, commercially prepared',290,5.4,2.7,61,0.5,36.66),
- ('18131','Cake, white, dry mix, special dietary (includes lemon-flavored)',397,3,8.4,79.6,'--','--
-'),
- ('18146','Cake, yellow, prepared from recipe without frosting',361,5.3,14.6,53,0.7,'--
-'),
+ ('18131','Cake, white, dry mix, special dietary (includes lemon-flavored)',397,3,8.4,79.6,'--','--'),
+ ('18146','Cake, yellow, prepared from recipe without frosting',361,5.3,14.6,53,0.7,'--'),
  ('6393','CAMPBELL''S CHUNKY Soups, Chicken Corn Chowder',82,2.86,4.08,8.16,0.8,1.22),
  ('6395','CAMPBELL''S CHUNKY, Classic Chicken Noodle Soup',47,3.41,1.3,5.41,1,0.41),
  ('6041','CAMPBELL''S Red and White, Chicken and Dumplings Soup, condensed',56,2.38,1.98,7.94,0.8,0.79),
@@ -288,15 +211,12 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('19913','Candies, NESTLE, BUTTERFINGER Crisp',465,6.67,18.33,68.45,1.7,48.33),
  ('19145','Candies, NESTLE, CRUNCH Bar and Dessert Topping',500,5,26,67,1.9,55),
  ('19138','Candies, truffles, prepared-from-recipe',510,6.21,33.76,44.88,2.5,38.31),
- ('19067','Candies, TWIZZLERS CHERRY BITES',338,2.97,1.7,79.38,0.1,'--
-'),
+ ('19067','Candies, TWIZZLERS CHERRY BITES',338,2.97,1.7,79.38,0.1,'--'),
  ('19181','Candies, YORK BITES',394,1.78,7.32,81.64,2,75),
  ('19091','Candies, YORK Peppermint Pattie',384,2.19,7.17,80.99,2,63.78),
  ('9060','Carambola, (starfruit), raw',31,1.04,0.33,6.73,2.8,3.98),
- ('11122','Cardoon, raw',17,0.7,0.1,4.07,1.6,'--
-'),
- ('9061','Carissa, (natal-plum), raw',62,0.5,1.3,13.63,'--','--
-'),
+ ('11122','Cardoon, raw',17,0.7,0.1,4.07,1.6,'--'),
+ ('9061','Carissa, (natal-plum), raw',62,0.5,1.3,13.63,'--','--'),
  ('11758','Carrots, canned, no salt added, solids and liquids',23,0.59,0.14,5.36,1.8,2.46),
  ('11128','Carrots, canned, regular pack, drained solids',25,0.64,0.19,5.54,1.5,2.48),
  ('11130','Carrots, frozen, unprepared',36,0.78,0.46,7.9,3.3,4.76),
@@ -328,8 +248,7 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('8018','Cereals ready-to-eat, QUAKER, QUAKER CRUNCHY BRAN',331,6.37,4.06,83.68,15.3,20.66),
  ('8049','Cereals ready-to-eat, QUAKER, QUAKER OAT LIFE, plain',374,9.98,4.43,77.74,6.6,19.43),
  ('8146','Cereals ready-to-eat, QUAKER, QUAKER Puffed Wheat',366,16.26,2.15,76.39,9.4,1.37),
- ('8156','Cereals ready-to-eat, rice, puffed, fortified',402,6.3,0.5,89.8,1.7,'--
-'),
+ ('8156','Cereals ready-to-eat, rice, puffed, fortified',402,6.3,0.5,89.8,1.7,'--'),
  ('8161','Cereals, corn grits, white, regular and quick, enriched, cooked with water, with salt',71,1.71,0.46,14.76,0.8,0.12),
  ('8091','Cereals, corn grits, white, regular and quick, enriched, cooked with water, without salt',71,1.71,0.46,14.76,0.8,0.12),
  ('8164','Cereals, corn grits, yellow, regular and quick, enriched, cooked with water, without salt',65,1.23,0.39,13.86,0.7,0.09),
@@ -342,32 +261,25 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('8640','Cereals, QUAKER, Instant Oatmeal Organic, Regular',367,16,6.3,67,9.8,1),
  ('8200','Cereals, QUAKER, QUAKER MultiGrain Oatmeal, dry',334,12.64,2.73,72.62,11.9,2.46),
  ('8673','Cereals, ready-to-eat, MALT-O-MEAL, Blueberry Mini SPOONERS',350,8.81,1.92,79.4,10.3,18.44),
- ('8143','Cereals, WHEATENA, cooked with water',56,2,0.5,11.8,2.7,'--
-'),
+ ('8143','Cereals, WHEATENA, cooked with water',56,2,0.5,11.8,2.7,'--'),
  ('1046','Cheese food, pasteurized process, American, vitamin D fortified',330,16.86,25.63,8.56,0,5.59),
  ('1048','Cheese spread, pasteurized process, American',290,16.41,21.23,8.73,0,7.32),
- ('1161','Cheese substitute, mozzarella',248,11.47,12.22,23.67,0,'--
-'),
+ ('1161','Cheese substitute, mozzarella',248,11.47,12.22,23.67,0,'--'),
  ('1061','Cheese, American, nonfat or fat free',126,21.05,0,10.53,0,5.26),
  ('1004','Cheese, blue',353,21.4,28.74,2.34,0,0.5),
- ('1007','Cheese, camembert',300,19.8,24.26,0.46,0,'--
-'),
+ ('1007','Cheese, camembert',300,19.8,24.26,0.46,0,'--'),
  ('1009','Cheese, cheddar',404,22.87,33.31,3.09,0,0.48),
  ('1012','Cheese, cottage, creamed, large or small curd',98,11.12,4.3,3.38,0,2.67),
  ('1013','Cheese, cottage, creamed, with fruit',97,10.69,3.85,4.61,0.2,2.38),
- ('1016','Cheese, cottage, lowfat, 1% milkfat',72,12.39,1.02,2.72,0,'--
-'),
+ ('1016','Cheese, cottage, lowfat, 1% milkfat',72,12.39,1.02,2.72,0,'--'),
  ('1015','Cheese, cottage, lowfat, 2% milkfat',81,10.45,2.27,4.76,0,4),
  ('1014','Cheese, cottage, nonfat, uncreamed, dry, large or small curd',72,10.34,0.29,6.66,0,1.85),
  ('1017','Cheese, cream',350,6.15,34.44,5.52,0,3.76),
- ('1019','Cheese, feta',264,14.21,21.28,4.09,0,'--
-'),
- ('1167','Cheese, mexican, queso chihuahua',374,21.56,29.68,5.56,0,'--
-'),
+ ('1019','Cheese, feta',264,14.21,21.28,4.09,0,'--'),
+ ('1167','Cheese, mexican, queso chihuahua',374,21.56,29.68,5.56,0,'--'),
  ('1029','Cheese, mozzarella, low moisture, part-skim',295,23.75,19.78,5.58,0,1.9),
  ('1026','Cheese, mozzarella, whole milk',300,22.17,22.35,2.19,0,1.03),
- ('1030','Cheese, muenster',368,23.41,30.04,1.12,0,'--
-'),
+ ('1030','Cheese, muenster',368,23.41,30.04,1.12,0,'--'),
  ('1031','Cheese, neufchatel',253,9.15,22.78,3.59,0,3.19),
  ('1032','Cheese, parmesan, grated',420,28.42,27.84,13.91,0,0.07),
  ('1042','Cheese, pasteurized process, American, fortified with vitamin D',366,18.13,30.71,4.78,0,2.26),
@@ -377,64 +289,41 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('1036','Cheese, ricotta, whole milk',174,11.26,12.98,3.04,0,0.27),
  ('1040','Cheese, swiss',393,26.96,30.99,1.44,'--',0),
  ('18147','Cheesecake commercially prepared',321,5.5,22.5,25.5,0.4,21.8),
- ('9065','Cherries, sour, red, canned, light syrup pack, solids and liquids',75,0.74,0.1,19.3,0.8,'--
-'),
+ ('9065','Cherries, sour, red, canned, light syrup pack, solids and liquids',75,0.74,0.1,19.3,0.8,'--'),
  ('9068','Cherries, sour, red, frozen, unsweetened',46,0.92,0.44,11.02,1.6,9.02),
  ('9071','Cherries, sweet, canned, water pack, solids and liquids',46,0.77,0.13,11.76,1.5,10.26),
  ('9070','Cherries, sweet, raw',63,1.06,0.2,16.01,2.1,12.82),
  ('7933','Chicken breast, oven-roasted, fat-free, sliced',79,16.79,0.39,2.17,0,0.1),
- ('5693','Chicken, broiler, rotisserie, BBQ, back meat only',212,21.85,13.87,0.31,0,'--
-'),
- ('5048','Chicken, broilers or fryers, back, meat and skin, raw',319,14.05,28.74,0,'--','--
-'),
- ('5053','Chicken, broilers or fryers, back, meat only, raw',137,19.56,5.92,0,'--','--
-'),
- ('5038','Chicken, broilers or fryers, dark meat, meat and skin, cooked, stewed',233,23.5,14.66,0,'--','--
-'),
- ('5044','Chicken, broilers or fryers, dark meat, meat only, cooked, fried',239,28.99,11.62,2.59,0,'--
-'),
- ('5070','Chicken, broilers or fryers, drumstick, meat and skin, cooked, stewed',204,25.32,10.64,0,'--','--
-'),
- ('5072','Chicken, broilers or fryers, drumstick, meat only, cooked, fried',195,28.62,8.08,0,'--','--
-'),
- ('5020','Chicken, broilers or fryers, giblets, raw',124,17.88,4.47,1.8,0,'--
-'),
- ('5078','Chicken, broilers or fryers, leg, meat and skin, cooked, roasted',184,24.03,8.99,0,'--','--
-'),
- ('5081','Chicken, broilers or fryers, leg, meat only, cooked, fried',208,28.38,9.32,0.65,0,'--
-'),
- ('5039','Chicken, broilers or fryers, light meat, meat only, raw',114,23.2,1.65,0,'--','--
-'),
- ('5002','Chicken, broilers or fryers, meat and skin and giblets and neck, cooked, fried, batter',291,22.84,17.53,9.03,'--','--
-'),
+ ('5693','Chicken, broiler, rotisserie, BBQ, back meat only',212,21.85,13.87,0.31,0,'--'),
+ ('5048','Chicken, broilers or fryers, back, meat and skin, raw',319,14.05,28.74,0,'--','--'),
+ ('5053','Chicken, broilers or fryers, back, meat only, raw',137,19.56,5.92,0,'--','--'),
+ ('5038','Chicken, broilers or fryers, dark meat, meat and skin, cooked, stewed',233,23.5,14.66,0,'--','--'),
+ ('5044','Chicken, broilers or fryers, dark meat, meat only, cooked, fried',239,28.99,11.62,2.59,0,'--'),
+ ('5070','Chicken, broilers or fryers, drumstick, meat and skin, cooked, stewed',204,25.32,10.64,0,'--','--'),
+ ('5072','Chicken, broilers or fryers, drumstick, meat only, cooked, fried',195,28.62,8.08,0,'--','--'),
+ ('5020','Chicken, broilers or fryers, giblets, raw',124,17.88,4.47,1.8,0,'--'),
+ ('5078','Chicken, broilers or fryers, leg, meat and skin, cooked, roasted',184,24.03,8.99,0,'--','--'),
+ ('5081','Chicken, broilers or fryers, leg, meat only, cooked, fried',208,28.38,9.32,0.65,0,'--'),
+ ('5039','Chicken, broilers or fryers, light meat, meat only, raw',114,23.2,1.65,0,'--','--'),
+ ('5002','Chicken, broilers or fryers, meat and skin and giblets and neck, cooked, fried, batter',291,22.84,17.53,9.03,'--','--'),
  ('5008','Chicken, broilers or fryers, meat and skin, cooked, fried, flour',269,28.56,14.92,3.15,0.1,0),
- ('5047','Chicken, broilers or fryers, separable fat, raw',629,3.73,67.95,0,'--','--
-'),
- ('5105','Chicken, broilers or fryers, wing, meat only, raw',126,21.97,3.54,0,'--','--
-'),
- ('5682','Chicken, dark meat, thigh, meat only, with added solution, raw',110,19.11,3.69,0,'--','--
-'),
- ('5024','Chicken, gizzard, all classes, cooked, simmered',154,30.39,2.68,0,'--','--
-'),
+ ('5047','Chicken, broilers or fryers, separable fat, raw',629,3.73,67.95,0,'--','--'),
+ ('5105','Chicken, broilers or fryers, wing, meat only, raw',126,21.97,3.54,0,'--','--'),
+ ('5682','Chicken, dark meat, thigh, meat only, with added solution, raw',110,19.11,3.69,0,'--','--'),
+ ('5024','Chicken, gizzard, all classes, cooked, simmered',154,30.39,2.68,0,'--','--'),
  ('5674','Chicken, skin (drumsticks and thighs), raw',440,9.58,44.23,0.79,'--',0),
- ('5122','Chicken, stewing, meat and skin, and giblets and neck, cooked, stewed',214,24.88,11.91,0,'--','--
-'),
+ ('5122','Chicken, stewing, meat and skin, and giblets and neck, cooked, stewed',214,24.88,11.91,0,'--','--'),
  ('11154','Chicory roots, raw',72,1.4,0.2,17.51,1.5,8.73),
- ('11151','Chicory, witloof, raw',17,0.9,0.1,4,3.1,'--
-'),
+ ('11151','Chicory, witloof, raw',17,0.9,0.1,4,3.1,'--'),
  ('19903','Chocolate, dark, 60-69% cacao solids',579,6.12,38.31,52.42,8,36.71),
  ('19125','Chocolate-flavored hazelnut spread',541,5.41,29.73,62.16,5.4,54.05),
  ('18107','Coffeecake, cinnamon with crumb topping, dry mix',436,4.8,12,77.7,1.8,42.52),
  ('18108','Coffeecake, cinnamon with crumb topping, dry mix, prepared',318,5.5,9.6,52.8,1.2,29.53),
- ('18105','Coffeecake, creme-filled with chocolate frosting',331,5,10.8,53.8,2,'--
-'),
- ('11163','Collards, frozen, chopped, unprepared',33,2.69,0.37,6.46,3.6,'--
-'),
+ ('18105','Coffeecake, creme-filled with chocolate frosting',331,5,10.8,53.8,2,'--'),
+ ('11163','Collards, frozen, chopped, unprepared',33,2.69,0.37,6.46,3.6,'--'),
  ('18610','CONTINENTAL MILLS, KRUSTEAZ Almond Poppyseed Muffin Mix, Artificially Flavored, dry',418,5.6,10.3,75.6,1.7,40),
- ('18196','Cookies, brownies, dry mix, sugar free',426,2.9,12.5,80.4,4.2,'--
-'),
- ('18154','Cookies, brownies, prepared from recipe',466,6.2,29.1,50.2,'--','--
-'),
+ ('18196','Cookies, brownies, dry mix, sugar free',426,2.9,12.5,80.4,4.2,'--'),
+ ('18154','Cookies, brownies, prepared from recipe',466,6.2,29.1,50.2,'--','--'),
  ('18159','Cookies, chocolate chip, commercially prepared, regular, higher fat, enriched',492,5.1,24.72,65.36,2,32.9),
  ('18158','Cookies, chocolate chip, commercially prepared, regular, lower fat',451,5.97,17.91,67.49,3,32.84),
  ('18163','Cookies, chocolate chip, refrigerated dough',451,3.98,21.33,61.02,1.5,38.04),
@@ -446,151 +335,108 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
  ('18177','Cookies, molasses',430,5.6,12.8,73.8,1,17.6),
  ('18178','Cookies, oatmeal, commercially prepared, regular',450,6.2,18.1,68.7,2.8,24.66),
  ('18200','Cookies, oatmeal, commercially prepared, special dietary',449,4.8,18,69.9,2.9,31.65),
- ('18184','Cookies, oatmeal, prepared from recipe, with raisins',435,6.5,16.2,68.4,'--','--
-'),
- ('18182','Cookies, oatmeal, refrigerated dough',424,5.4,18.9,59.1,2.5,'--
-'),
- ('18183','Cookies, oatmeal, refrigerated dough, baked',471,6,21,65.7,2.8,'--
-'),
+ ('18184','Cookies, oatmeal, prepared from recipe, with raisins',435,6.5,16.2,68.4,'--','--'),
+ ('18182','Cookies, oatmeal, refrigerated dough',424,5.4,18.9,59.1,2.5,'--'),
+ ('18183','Cookies, oatmeal, refrigerated dough, baked',471,6,21,65.7,2.8,'--'),
  ('18190','Cookies, peanut butter sandwich, regular',478,8.8,21.1,65.6,1.9,35.44),
- ('18201','Cookies, peanut butter sandwich, special dietary',535,10,34,50.8,'--','--
-'),
+ ('18201','Cookies, peanut butter sandwich, special dietary',535,10,34,50.8,'--','--'),
  ('18185','Cookies, peanut butter, commercially prepared, regular',473,8.92,23.82,58.15,2.1,28.58),
- ('18186','Cookies, peanut butter, commercially prepared, soft-type',457,5.3,24.4,57.7,1.7,'--
-'),
- ('18193','Cookies, shortbread, commercially prepared, pecan',542,4.9,32.5,58.3,1.8,'--
-'),
+ ('18186','Cookies, peanut butter, commercially prepared, soft-type',457,5.3,24.4,57.7,1.7,'--'),
+ ('18193','Cookies, shortbread, commercially prepared, pecan',542,4.9,32.5,58.3,1.8,'--'),
  ('18192','Cookies, shortbread, commercially prepared, plain',514,5.37,26.22,63.78,1.3,21.65),
  ('18202','Cookies, sugar wafer, with creme filling, sugar free',531,3.57,28.57,66.26,14.3,0),
  ('18209','Cookies, sugar wafers with creme filling, regular',502,3.84,23.24,70.64,1.6,42.95),
  ('18204','Cookies, sugar, commercially prepared, regular (includes vanilla)',464,5.35,19.55,67.34,1.3,27.31),
  ('18210','Cookies, vanilla sandwich with creme filling',483,4.5,20,72.1,1.5,39.3),
- ('20317','Corn flour, yellow, masa, enriched',363,8.46,3.69,76.59,6.4,'--
-'),
- ('20314','Corn grain, white',365,9.42,4.74,74.26,'--','--
-'),
+ ('20317','Corn flour, yellow, masa, enriched',363,8.46,3.69,76.59,6.4,'--'),
+ ('20314','Corn grain, white',365,9.42,4.74,74.26,'--','--'),
  ('11170','Corn, sweet, yellow, canned, brine pack, regular pack, solids and liquids',61,1.95,0.77,13.86,1.7,4.15),
  ('11177','Corn, sweet, yellow, canned, drained solids, rinsed with tap water',74,2.18,1.43,13.02,1.7,4.11),
  ('11176','Corn, sweet, yellow, canned, vacuum pack, regular pack',79,2.41,0.5,19.44,2,5.59),
  ('11179','Corn, sweet, yellow, frozen, kernels cut off cob, boiled, drained, without salt',81,2.55,0.67,19.3,2.4,3.07),
  ('11178','Corn, sweet, yellow, frozen, kernels cut off cob, unprepared',88,3.02,0.78,20.71,2.1,2.5),
- ('20324','Cornmeal, white, self-rising, bolted, with wheat flour added, enriched',348,8.41,2.85,73.43,6.3,'--
-'),
- ('20325','Cornmeal, white, self-rising, degermed, enriched',355,8.41,1.72,74.79,7.1,'--
-'),
+ ('20324','Cornmeal, white, self-rising, bolted, with wheat flour added, enriched',348,8.41,2.85,73.43,6.3,'--'),
+ ('20325','Cornmeal, white, self-rising, degermed, enriched',355,8.41,1.72,74.79,7.1,'--'),
  ('20320','Cornmeal, whole-grain, white',362,8.12,3.59,76.89,7.3,0.64),
  ('11192','Cowpeas (blackeyes), immature seeds, cooked, boiled, drained, without salt',97,3.17,0.38,20.32,5,3.23),
  ('11196','Cowpeas (blackeyes), immature seeds, frozen, cooked, boiled, drained, without salt',132,8.49,0.66,23.76,6.4,4.46),
  ('11191','Cowpeas (blackeyes), immature seeds, raw',90,2.95,0.35,18.83,5,3),
- ('11201','Cowpeas, leafy tips, raw',29,4.1,0.25,4.82,'--','--
-'),
+ ('11201','Cowpeas, leafy tips, raw',29,4.1,0.25,4.82,'--','--'),
  ('18236','Cracker meal',383,9.3,1.7,80.9,2.6,0.33),
  ('18214','Crackers, cheese, regular',489,10.93,22.74,59.42,2.3,4.53),
  ('18927','Crackers, cheese, sandwich-type with cheese filling',490,8.92,24.41,58.76,1.9,12.33),
  ('18961','Crackers, cream, GAMESA SABROSAS',484,7.01,20.37,64.55,2.4,9.37),
- ('18221','Crackers, melba toast, rye (includes pumpernickel)',389,11.6,3.4,77.3,8,'--
-'),
- ('18224','Crackers, rusk toast',407,13.5,7.2,72.3,'--','--
-'),
- ('18227','Crackers, rye, wafers, seasoned',381,9,9.2,73.8,20.9,'--
-'),
+ ('18221','Crackers, melba toast, rye (includes pumpernickel)',389,11.6,3.4,77.3,8,'--'),
+ ('18224','Crackers, rusk toast',407,13.5,7.2,72.3,'--','--'),
+ ('18227','Crackers, rye, wafers, seasoned',381,9,9.2,73.8,20.9,'--'),
  ('18966','Crackers, saltines, whole wheat (includes multi-grain)',398,7.14,10.71,68.25,6.7,0),
  ('18229','Crackers, standard snack-type, regular',510,6.64,26.43,61.3,2.3,8.18),
  ('18230','Crackers, standard snack-type, sandwich, with cheese filling',477,9.3,21.1,61.7,1.9,3.18),
  ('18231','Crackers, standard snack-type, sandwich, with peanut butter filling',494,11.47,24.54,58.38,2.3,10.5),
  ('18232','Crackers, wheat, regular',455,7.3,16.4,70.73,6.9,15.48),
- ('18233','Crackers, wheat, sandwich, with cheese filling',497,9.8,25,58.2,3.1,'--
-'),
- ('18234','Crackers, wheat, sandwich, with peanut butter filling',495,13.5,26.7,53.8,4.4,'--
-'),
+ ('18233','Crackers, wheat, sandwich, with cheese filling',497,9.8,25,58.2,3.1,'--'),
+ ('18234','Crackers, wheat, sandwich, with peanut butter filling',495,13.5,26.7,53.8,4.4,'--'),
  ('9081','Cranberry sauce, canned, sweetened',159,0.9,0.15,40.4,1.1,31.75),
  ('18969','Cream puff, eclair, custard or cream filled, iced',334,4.41,18.52,37.43,0.9,22.05),
- ('1068','Cream substitute, liquid, with lauric acid oil and sodium caseinate',136,1,9.97,11.38,0,'--
-'),
+ ('1068','Cream substitute, liquid, with lauric acid oil and sodium caseinate',136,1,9.97,11.38,0,'--'),
  ('1049','Cream, fluid, half and half',123,3.13,10.39,4.73,0,4.13),
  ('1053','Cream, fluid, heavy whipping',340,2.84,36.08,2.74,0,2.92),
  ('1050','Cream, fluid, light (coffee cream or table cream)',191,2.96,19.1,2.82,0,3.67),
- ('1052','Cream, fluid, light whipping',292,2.17,30.91,2.96,0,'--
-'),
+ ('1052','Cream, fluid, light whipping',292,2.17,30.91,2.96,0,'--'),
  ('1056','Cream, sour, cultured',198,2.44,19.35,4.63,0,3.41),
  ('1055','Cream, sour, reduced fat, cultured',135,2.94,12,4.26,0,0.16),
  ('1054','Cream, whipped, cream topping, pressurized',257,3.2,22.22,12.49,0,8),
  ('11203','Cress, garden, raw',32,2.6,0.7,5.5,1.1,4.4),
- ('18240','Croissants, apple',254,7.4,8.7,37.1,2.5,'--
-'),
+ ('18240','Croissants, apple',254,7.4,8.7,37.1,2.5,'--'),
  ('18239','Croissants, butter',406,8.2,21,45.8,2.6,11.26),
  ('18241','Croissants, cheese',414,9.2,20.9,47,2.6,11.35),
- ('18242','Croutons, plain',407,11.9,6.6,73.5,5.1,'--
-'),
+ ('18242','Croutons, plain',407,11.9,6.6,73.5,5.1,'--'),
  ('18243','Croutons, seasoned',465,10.8,18.3,63.5,5,4.41),
- ('15227','Crustaceans, crab, queen, cooked, moist heat',115,23.72,1.51,0,'--','--
-'),
- ('15228','Crustaceans, spiny lobster, mixed species, cooked, moist heat',143,26.41,1.94,3.12,0,'--
-'),
- ('9083','Currants, european black, raw',63,1.4,0.41,15.38,'--','--
-'),
+ ('15227','Crustaceans, crab, queen, cooked, moist heat',115,23.72,1.51,0,'--','--'),
+ ('15228','Crustaceans, spiny lobster, mixed species, cooked, moist heat',143,26.41,1.94,3.12,0,'--'),
+ ('9083','Currants, european black, raw',63,1.4,0.41,15.38,'--','--'),
  ('9084','Currants, red and white, raw',56,1.4,0.2,13.8,4.3,7.37),
  ('9085','Currants, zante, dried',283,4.08,0.27,74.08,6.8,67.28),
  ('18245','Danish pastry, cheese',374,8,21.9,37.2,1,6.95),
  ('18244','Danish pastry, cinnamon, enriched',403,7,22.4,44.6,1.3,19.78),
- ('1070','Dessert topping, powdered',577,4.9,39.92,52.54,0,'--
-'),
- ('1071','Dessert topping, powdered, 1.5 ounce prepared with 1/2 cup milk',194,3.61,12.72,17.13,0,'--
-'),
- ('1072','Dessert topping, pressurized',264,0.98,22.3,16.07,0,'--
-'),
+ ('1070','Dessert topping, powdered',577,4.9,39.92,52.54,0,'--'),
+ ('1071','Dessert topping, powdered, 1.5 ounce prepared with 1/2 cup milk',194,3.61,12.72,17.13,0,'--'),
+ ('1072','Dessert topping, pressurized',264,0.98,22.3,16.07,0,'--'),
  ('19182','Desserts, mousse, chocolate, prepared-from-recipe',225,4.14,16,16.07,0.6,14.81),
  ('21474','DIGIORNO Pizza, cheese topping, rising crust, frozen, baked',256,12.8,8.6,31.78,2.4,5),
- ('2045','Dill weed, fresh',43,3.46,1.12,7.02,2.1,'--
-'),
- ('11620','Drumstick pods, raw',37,2.1,0.2,8.53,3.2,'--
-'),
+ ('2045','Dill weed, fresh',43,3.46,1.12,7.02,2.1,'--'),
+ ('11620','Drumstick pods, raw',37,2.1,0.2,8.53,3.2,'--'),
  ('11211','Edamame, frozen, unprepared',109,11.22,4.73,7.61,4.8,2.48),
- ('1144','Egg substitute, powder',444,55.5,13,21.8,0,'--
-'),
+ ('1144','Egg substitute, powder',444,55.5,13,21.8,0,'--'),
  ('1124','Egg, white, raw, fresh',52,10.9,0.17,0.73,0,0.71),
  ('1128','Egg, whole, cooked, fried',196,13.61,14.84,0.83,0,0.4),
  ('1130','Egg, whole, cooked, omelet',154,10.57,11.66,0.64,0,0.31),
  ('1131','Egg, whole, cooked, poached',143,12.51,9.47,0.71,0,0.37),
  ('1123','Egg, whole, raw, fresh',143,12.56,9.51,0.72,0,0.37),
  ('1127','Egg, yolk, raw, frozen, sugared, pasteurized',307,13.87,22.82,10.95,0,10.3),
- ('1057','Eggnog',88,4.55,4.19,8.05,0,'--
-'),
+ ('1057','Eggnog',88,4.55,4.19,8.05,0,'--'),
  ('11213','Endive, raw',17,1.25,0.2,3.35,3.1,0.25),
  ('18260','English muffins, mixed-grain (includes granola)',235,9.1,1.8,46.3,2.8,0.81),
- ('21006','Fast foods, biscuit with egg and steak',277,12.12,19.21,14.37,'--','--
-'),
- ('21002','Fast foods, biscuit, with egg',274,8.53,16.23,23.46,0.6,'--
-'),
+ ('21006','Fast foods, biscuit with egg and steak',277,12.12,19.21,14.37,'--','--'),
+ ('21002','Fast foods, biscuit, with egg',274,8.53,16.23,23.46,0.6,'--'),
  ('21003','Fast foods, biscuit, with egg and bacon',305,11.33,20.73,19.06,0.5,2.19),
  ('21005','Fast Foods, biscuit, with egg and sausage',312,11.13,20.77,21.05,0.2,0.95),
  ('21013','Fast foods, croissant, with egg, cheese, and ham',261,12.45,14.95,18.98,0.9,5.42),
  ('21014','Fast foods, croissant, with egg, cheese, and sausage',308,12.09,21.78,15.9,1.8,3.12),
  ('21021','Fast foods, english muffin, with egg, cheese, and canadian bacon',228,13.64,9.66,21.67,0.4,2.13),
- ('21023','Fast foods, french toast with butter',264,7.66,13.9,26.7,'--','--
-'),
- ('4001','Fat, beef tallow',902,0,100,0,'--','--
-'),
+ ('21023','Fast foods, french toast with butter',264,7.66,13.9,26.7,'--','--'),
+ ('4001','Fat, beef tallow',902,0,100,0,'--','--'),
  ('9090','Figs, canned, water pack, solids and liquids',53,0.4,0.1,13.99,2.2,11.79),
  ('9089','Figs, raw',74,0.75,0.3,19.18,2.9,16.26),
- ('15189','Fish, bluefish, cooked, dry heat',159,25.69,5.44,0,'--','--
-'),
- ('15005','Fish, bluefish, raw',124,20.04,4.24,0,'--','--
-'),
- ('15190','Fish, burbot, cooked, dry heat',115,24.76,1.04,0,'--','--
-'),
- ('15013','Fish, cisco, raw',98,18.99,1.91,0,'--','--
-'),
- ('15014','Fish, cisco, smoked',177,16.36,11.9,0,'--','--
-'),
- ('15017','Fish, cod, Atlantic, canned, solids and liquid',105,22.76,0.86,0,'--','--
-'),
- ('15019','Fish, cod, Pacific, raw (may have been previously frozen)',69,15.27,0.41,0,'--','--
-'),
- ('15029','Fish, flatfish (flounder and sole species), cooked, dry heat',86,15.24,2.37,0,'--','--
-'),
- ('15028','Fish, flatfish (flounder and sole species), raw',70,12.41,1.93,0,'--','--
-'),
+ ('15189','Fish, bluefish, cooked, dry heat',159,25.69,5.44,0,'--','--'),
+ ('15005','Fish, bluefish, raw',124,20.04,4.24,0,'--','--'),
+ ('15190','Fish, burbot, cooked, dry heat',115,24.76,1.04,0,'--','--'),
+ ('15013','Fish, cisco, raw',98,18.99,1.91,0,'--','--'),
+ ('15014','Fish, cisco, smoked',177,16.36,11.9,0,'--','--'),
+ ('15017','Fish, cod, Atlantic, canned, solids and liquid',105,22.76,0.86,0,'--','--'),
+ ('15019','Fish, cod, Pacific, raw (may have been previously frozen)',69,15.27,0.41,0,'--','--'),
+ ('15029','Fish, flatfish (flounder and sole species), cooked, dry heat',86,15.24,2.37,0,'--','--'),
+ ('15028','Fish, flatfish (flounder and sole species), raw',70,12.41,1.93,0,'--','--'),
  ('15032','Fish, grouper, mixed species, cooked, dry heat',118,24.84,1.3,0,'--','--
 '),
  ('15031','Fish, grouper, mixed species, raw',92,19.38,1.02,0,'--','--
@@ -1347,11 +1193,7 @@ INSERT INTO `Products` (Code,Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar) V
 '),
  ('11200','Yardlong bean, cooked, boiled, drained, without salt',47,2.53,0.1,9.18,'--','--
 '),
- ('1122','Yogurt, fruit, low fat, 11 grams protein per 8 ounce',105,4.86,1.41,18.6,0,'--
-'),
- ('1120','Yogurt, fruit, low fat, 9 grams protein per 8 ounce',99,3.98,1.15,18.64,0,'--
-'),
- ('1117','Yogurt, plain, low fat, 12 grams protein per 8 ounce',63,5.25,1.55,7.04,0,'--
-'),
- ('1116','Yogurt, plain, whole milk, 8 grams protein per 8 ounce',61,3.47,3.25,4.66,0,'--
-');
+ ('1122','Yogurt, fruit, low fat, 11 grams protein per 8 ounce',105,4.86,1.41,18.6,0,'--'),
+ ('1120','Yogurt, fruit, low fat, 9 grams protein per 8 ounce',99,3.98,1.15,18.64,0,'--'),
+ ('1117','Yogurt, plain, low fat, 12 grams protein per 8 ounce',63,5.25,1.55,7.04,0,'--'),
+ ('1116','Yogurt, plain, whole milk, 8 grams protein per 8 ounce',61,3.47,3.25,4.66,0,'--');

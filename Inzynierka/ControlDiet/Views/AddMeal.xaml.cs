@@ -18,12 +18,12 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// </summary>
     public sealed partial class AddMeal : Page
     {
-        ObservableCollection<Product> items;
-        ObservableCollection<DefinedProduct> choosenProducts;
+        private ObservableCollection<Product> items;
+        private ObservableCollection<DefinedProduct> choosenProducts;
 
-        ProductProvider productProvider;
-        Meal newMeal;
-        Product selectedProduct;
+        private ProductProvider productProvider;
+        private Meal newMeal;
+        private Product selectedProduct;
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string CONFIRMMESSAGE = "Adding meal successful.";
@@ -32,7 +32,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
 
-        Repository<Product> productRepository = new Repository<Product>();
+        private Repository<Product> productRepository = new Repository<Product>();
 
         public Nullable<DateTimeOffset> Date
         {
