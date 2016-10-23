@@ -27,14 +27,12 @@ namespace TestsControlDiet
 
             Meal mealOne = new Meal();
             mealOne.Name = "mealname 1";
-            definiedProductOne.Meal = mealOne;
-            definiedProductOne.MealId = mealOne.Id;
+            definiedProductOne.Meals.Add(mealOne);
             mealOne.ProductsInMeal.Add(definiedProductOne);
 
             Meal mealTwo = new Meal();
             mealTwo.Name = "mealname 2";
-            definiedProductTwo.Meal = mealTwo;
-            definiedProductTwo.MealId = mealTwo.Id;
+            definiedProductTwo.Meals.Add(mealTwo);
             mealTwo.ProductsInMeal.Add(definiedProductTwo);
 
             Day day = new Day();

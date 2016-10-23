@@ -18,12 +18,6 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public static void CreateSqliteDatabase()
         {
-           // StorageFolder appInstalledFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-           // StorageFolder resources = await appInstalledFolder.GetFolderAsync(NAME_OF_DIRECTORY);
-           // var database = await resources.GetFileAsync(NAME_OF_DATABASE_FILE);
-
-            //StorageFolder storageFile = ApplicationData.Current.LocalFolder;
-
             string databaseFilePath = Path.Combine(Windows.Storage.ApplicationData.
                     Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
             SQLiteConnection connectionToDatabase = new SQLiteConnection(

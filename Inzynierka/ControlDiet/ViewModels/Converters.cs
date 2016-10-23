@@ -8,7 +8,6 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class Converters
     {
-
         public static DateTimeOffset ConvertDateTimeToDateTimeOffset(DateTime dateTime) {
             return new DateTimeOffset(dateTime);
         }
