@@ -175,5 +175,20 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             ClearTextBoxesAndStyles();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+            {
+                Meal mealFromMealsPage = e.Parameter as Meal;
+                this.NameBox.Text = mealFromMealsPage.Name;
+                this.CarbohydrateBox.Text = mealFromMealsPage.Carbohydrate.ToString();
+                this.FatBox.Text = mealFromMealsPage.Fat.ToString();
+                this.ProteinBox.Text = mealFromMealsPage.Protein.ToString();
+                this.KcalBox.Text = mealFromMealsPage.Energy.ToString();
+                this.SugarBox.Text = mealFromMealsPage.Sugar.ToString();
+                this.FiberBox.Text = mealFromMealsPage.Fiber.ToString();
+            }
+        }
     }
 }

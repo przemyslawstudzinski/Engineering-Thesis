@@ -22,11 +22,18 @@ namespace ApplicationToSupportAndControlDiet.Models
         [OneToOne]
         public Product Product { set; get; }
 
-        public DefinedProduct() { }
+        [ManyToMany(typeof(DefinedProductMeal))]
+        public List<Meal> Meals { set; get; }
+
+        public DefinedProduct()
+        { 
+            Meals = new List<Meal>();
+        }
 
         public DefinedProduct(Product product, int quantity)
         {
             this.Name = product.Name;
+            this.Code = product.Code;
             this.Energy = product.Energy;
             this.Protein = product.Protein;
             this.Carbohydrate = product.Carbohydrate;
@@ -40,6 +47,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.ProductId = product.Id;
             this.Product = product;
             this.Quantity = quantity;
+            Meals = new List<Meal>();
         }
     }
 }

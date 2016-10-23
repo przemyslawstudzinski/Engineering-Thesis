@@ -104,6 +104,7 @@
     <Compile Include="Models\ActivityLevel.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\DefinedProduct.cs" />
+    <Compile Include="Models\DefinedProductMeal.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,7 +23,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         private ObservableCollection<DefinedProduct> choosenProducts;
 
         private ProductProvider productProvider;
-        private Meal newMeal;
         private Product selectedProduct;
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
@@ -31,6 +31,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
+        Meal newMeal;
 
         private Repository<Product> productRepository = new Repository<Product>();
 
@@ -56,7 +57,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
             this.ItemsList.ItemsSource = choosenProducts;
-            newMeal = new Meal();
             RedBorderStyleTextbox = Application.Current.Resources["TextBoxError"] as Style;
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
@@ -146,22 +146,30 @@ namespace ApplicationToSupportAndControlDiet.Views
             //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
-        private async void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private Meal FindMeal()
+        {
+            if(newMeal == null)
+            {
+                newMeal = new Meal();
+            }
+            return newMeal;
+        }
+
+        private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
             Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
-            Meal meal = new Meal();
+            FindMeal();
             if (ValidateEmpty(NameBox))
             {
-                meal.Name = NameBox.Text;
+                newMeal.Name = NameBox.Text;
             }
             if (ValidateChoosenProducts())
             {
                 foreach (DefinedProduct element in choosenProducts)
                 {
-                    meal.ProductsInMeal.Add(element);
-                    element.Meal = meal;
-                    element.MealId = meal.Id;
+                    newMeal.ProductsInMeal.Add(element);
+                    element.Meals.Add(newMeal); 
                 }
             }
             Day day = null;
@@ -170,7 +178,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             TimeSpan time = this.TimePicker.Time;
             DateTimeOffset date = this.DataPicker.Date.Value;
             DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-            meal.TimeOfMeal = dateTime;
+            newMeal.DateTimeOfMeal = dateTime;
             day = repository.FindDayByDate(dateTime);
             if (day == null)
             {
@@ -178,9 +186,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                 day.Date = dateTime;
                 newItem = true;
             }
-            day.MealsInDay.Add(meal);
-            meal.Day = day;
-            meal.DayId = day.Id;
+            day.MealsInDay.Add(newMeal);
+            newMeal.Day = day;
+            newMeal.DayId = day.Id;
 
             if (IsFailMessageSet) return;
             if (newItem == true)
@@ -197,9 +205,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                     ClearTextBoxesAndSetConfirmMessage();
                 }
             }
-
-            CsvExport daycsv = new CsvExport(meal);
-            daycsv.ExportMealToCsvFile();
+            newMeal = null;
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
@@ -313,5 +319,29 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text += (message + Environment.NewLine);
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+            {
+                KeyValuePair<bool, Meal> parameters = (KeyValuePair<bool, Meal>)e.Parameter;
+                bool itsNewMeal = parameters.Key;
+                Meal mealFromMealsPage = parameters.Value;
+                this.choosenProducts.Clear();
+                foreach(DefinedProduct product in mealFromMealsPage.ProductsInMeal)
+                {
+                    this.choosenProducts.Add(product);
+                }
+                this.NameBox.Text = mealFromMealsPage.Name;
+                TimeSpan time = new TimeSpan(mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Hour, mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Minute,
+                    mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Second);
+                this.TimePicker.Time = time;
+                DateTimeOffset date = new DateTimeOffset(mealFromMealsPage.DateTimeOfMeal.Date);
+                this.DataPicker.Date = date;
+                if (itsNewMeal == false)
+                {
+                    newMeal = mealFromMealsPage;
+                }
+            }
+        }
     }
 }

@@ -50,14 +50,8 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("favourite")]
         public bool Favourite { set; get; }
 
-        [Column("like")]
+        [Column("dislike")]
         public bool DisLike { set; get; }
-
-        [ForeignKey(typeof(Meal))]
-        public int MealId { set; get; }
-
-        [ManyToOne]
-        public Meal Meal { set; get; }
 
         public Product() { }
 
