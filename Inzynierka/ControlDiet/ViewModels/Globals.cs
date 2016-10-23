@@ -18,6 +18,5 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             get; 
             set;
         }
-
     }
 }

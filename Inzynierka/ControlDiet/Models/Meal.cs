@@ -21,7 +21,15 @@ namespace ApplicationToSupportAndControlDiet.Models
         public string Name { set; get; }
 
         [Column("time")]
-        public DateTime TimeOfMeal { set; get; }
+        public DateTime DateTimeOfMeal { set; get; }
+
+        public String Time
+        {
+            get
+            {
+                return DateTimeOfMeal.ToLocalTime().TimeOfDay.ToString(@"hh\:mm");
+            }
+        }
 
         [ForeignKey(typeof(Day))]
         public int DayId { set; get; }
@@ -29,7 +37,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         [ManyToOne]
         public Day Day { set; get; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        [ManyToMany(typeof(DefinedProductMeal), CascadeOperations = CascadeOperation.All)]
         public List<DefinedProduct> ProductsInMeal { set; get; }
 
         private float energy;

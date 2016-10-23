@@ -65,6 +65,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 connectionToDatabase.CreateTable<DefinedProduct>();
             }
+            if (!TableExists("DefinedProductMeal", connectionToDatabase))
+            {
+                connectionToDatabase.CreateTable<DefinedProductMeal>();
+            }
 
         }
         public static bool TableExists(string tableName, SQLiteConnection connetionToDatabase)

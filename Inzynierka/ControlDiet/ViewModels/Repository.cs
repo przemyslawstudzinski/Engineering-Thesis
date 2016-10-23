@@ -29,6 +29,12 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             return connectionToDatabase.InsertOrReplace(item);
         }
 
+        public int Delete(T item)
+        {
+            connectionToDatabase.Delete(item, recursive: true);
+            return 1;
+        }
+
         public int Update(T item)
         {
             connectionToDatabase.InsertOrReplaceWithChildren(item, recursive: true);
