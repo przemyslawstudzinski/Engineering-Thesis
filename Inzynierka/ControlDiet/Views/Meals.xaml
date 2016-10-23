@@ -48,10 +48,10 @@
                             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                 <Grid Padding="5" Margin="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="3.5*"/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
@@ -80,7 +80,7 @@
                                             MaxLines="2" HorizontalAlignment="Right" FontSize="18"/>
                                     <Viewbox Grid.Row="1"  Grid.Column="0" Stretch="None">
                                         <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
-                                            Energy <LineBreak/>
+                                            Kcal <LineBreak/>
                                             <Run  Text="{x:Bind Energy, TargetNullValue=0}" FontStyle="Normal" />
                                         </TextBlock>
                                     </Viewbox>

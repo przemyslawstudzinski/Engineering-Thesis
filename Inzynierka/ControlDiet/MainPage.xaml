@@ -62,13 +62,19 @@
                     <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="SaveLocal" Foreground="White" />
-                            <TextBlock Text="Save your product"  Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Save New Product"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Highlight" Foreground="White" />
+                            <SymbolIcon Symbol="FourBars" Foreground="White" />
                             <TextBlock Text="Statistics" Margin="30,0,0,0" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Contact" Foreground="White" />
+                            <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Search" Click="SearchPaneItem_Click">
@@ -81,12 +87,6 @@
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Help" Foreground="White" />
                             <TextBlock Text="Help"  Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
-                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Contact" Foreground="White" />
-                            <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="About" Click="AboutPaneItem_Click">

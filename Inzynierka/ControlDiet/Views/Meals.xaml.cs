@@ -17,7 +17,7 @@ namespace ApplicationToSupportAndControlDiet
         private ObservableCollection<Meal> items;
         private Repository<Day> dayRepository;
         private Repository<Meal> mealRepository;
-        Day choosenDay;
+        private Day choosenDay;
 
         public Nullable<DateTimeOffset> Date
         {
