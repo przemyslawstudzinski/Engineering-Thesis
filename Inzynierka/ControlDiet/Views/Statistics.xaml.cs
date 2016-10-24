@@ -49,6 +49,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (user ==null)
             {
                 maxValue = 0;
+                WarningCal.Text = "Complete information about your profile";
             }
             else
             {

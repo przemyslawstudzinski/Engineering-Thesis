@@ -11,7 +11,7 @@
             <RelativePanel>
                 <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                     <TextBlock x:Name="Title" Text="Complete your profile" FontSize="20" FontStretch="Expanded" Foreground="Black"  />
-                    <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                    <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel Orientation="Horizontal" Margin="0,30,0,15">
                         <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
                         <RadioButton Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0" IsChecked="True" Tag="Male"/>
@@ -53,8 +53,12 @@
                         <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual" Click="Manual_Click"/>
                         <TextBox x:Name="CaloriesBox" Visibility="Collapsed" Tag="Manual calories"/>
                     </StackPanel>
-                    <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" HorizontalAlignment="Center" Height="25"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                        <TextBlock Name="AddConfirm" Text=""  Foreground="Green"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <Button Tag="SaveProfile" x:Name="SaveProfile" Width="150"  Background="Black" Click="SaveProfile_Click">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Accept" Foreground="White" />

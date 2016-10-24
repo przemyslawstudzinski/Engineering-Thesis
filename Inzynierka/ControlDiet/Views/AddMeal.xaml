@@ -19,7 +19,7 @@
             <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
                         RelativePanel.AlignVerticalCenterWithPanel="True" >
-                    <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                    <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel x:Name="Header">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                             <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
@@ -157,7 +157,10 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                        <TextBlock Name="AddConfirm" Text="" Foreground="Green"/>
+                    </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
@@ -172,7 +175,7 @@
                                 <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />
                             </StackPanel>
                         </Button>
-                        <TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>
+                        <!--<TextBlock Name="AddConfirm" Text="" FontSize="20" Foreground="Green" Margin="50,0,0,0"/>-->
                     </StackPanel>
 
                 </StackPanel>

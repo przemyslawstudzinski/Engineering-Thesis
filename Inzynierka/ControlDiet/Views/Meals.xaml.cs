@@ -42,6 +42,13 @@ namespace ApplicationToSupportAndControlDiet
             {
                 items = new ObservableCollection<Meal>(choosenDay.MealsInDay);
             }
+
+            Repository<User> repo2 = new Repository<User>();
+            User user = repo2.FindUser();
+            if (user == null)
+            {
+                WarningCal.Text = "Complete information about your profile";
+            }
             this.ItemsList.ItemsSource = items;
         }
 
