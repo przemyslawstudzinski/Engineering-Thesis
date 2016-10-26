@@ -37,11 +37,13 @@
                         <GridView.ItemContainerStyle>
                             <Style TargetType="GridViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                <Setter Property="Background" Value="Black" />
-                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="Black" />
                                 <Setter Property="Padding" Value="10" />
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                                 <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="BorderThickness" Value="2"/>
                             </Style>
                         </GridView.ItemContainerStyle>
                         <GridView.ItemTemplate>
@@ -75,42 +77,42 @@
                                                 <Setter Property="Margin" Value="5"/>
                                             </Style>
                                         </Grid.Resources>
-                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind Name}" FontWeight="Bold" TextWrapping="Wrap" Foreground="White" Visibility="Visible"
+                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind Name}" FontWeight="Bold" TextWrapping="Wrap" Foreground="Black" Visibility="Visible"
                                             MaxLines="2" HorizontalAlignment="Left" FontSize="20" />
-                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind Time}" FontWeight="Bold" TextWrapping="Wrap" Visibility="Visible" Foreground="White"
+                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind Time}" FontWeight="Bold" TextWrapping="Wrap" Visibility="Visible" Foreground="Black"
                                             MaxLines="2" HorizontalAlignment="Right" FontSize="18"/>
                                         <Viewbox Grid.Row="1"  Grid.Column="0" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Kcal <LineBreak/>
                                             <Run  Text="{x:Bind Energy, TargetNullValue=0}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="1" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Protein <LineBreak/>
                                             <Run  Text="{x:Bind Protein, TargetNullValue=0}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="2" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Carbohydrate <LineBreak/>
                                             <Run  Text="{x:Bind Carbohydrate, TargetNullValue=0}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="3" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Fat <LineBreak/>
                                             <Run  Text="{x:Bind Fat, TargetNullValue=0}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="4" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Fiber <LineBreak/>
                                             <Run  Text="{x:Bind Fiber, TargetNullValue=0}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="5" Stretch="None">
-                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
+                                            <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Sugar 
                                             <LineBreak/>
                                             <Run  Text="{x:Bind Sugar, TargetNullValue=0}" FontStyle="Normal" />
@@ -118,24 +120,24 @@
                                         </Viewbox>
 
                                         <Button Grid.Column="0" Grid.Row="2" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="SaveAsProduct_Click"
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="SaveAsProduct" x:Name="SaveAsProduct">
-                                            <SymbolIcon Symbol="SetTile" Foreground="White"/>
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="SaveAsProduct" x:Name="SaveAsProduct" Background="White">
+                                            <SymbolIcon Symbol="SetTile"  Foreground="Black"/>
                                         </Button>
                                         <Button Grid.Column="1" Grid.Row="2" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="CreateNewFromThisMeal_Click"
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="CreateNewFromThisMeal" x:Name="CreateNewFromThisMeal">
-                                            <SymbolIcon Symbol="Send" Foreground="White" />
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="CreateNewFromThisMeal" x:Name="CreateNewFromThisMeal" Background="White">
+                                            <SymbolIcon Symbol="Send" Foreground="Black" />
                                         </Button>
                                         <Button Grid.Column="2" Grid.Row="2" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="SaveAsCsv_Click"
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="SaveAsCsv" x:Name="SaveAsCsv">
-                                            <SymbolIcon Symbol="Download" Foreground="White" />
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="SaveAsCsv" x:Name="SaveAsCsv" Background="White">
+                                            <SymbolIcon Symbol="Download" Foreground="Black" />
                                         </Button>
                                         <Button Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="EditMeal_Click"
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="EditMeal" x:Name="EditMeal">
-                                            <SymbolIcon Symbol="Edit" Foreground="White" />
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="EditMeal" x:Name="EditMeal" Background="White">
+                                            <SymbolIcon Symbol="Edit" Foreground="Black" />
                                         </Button>
                                         <Button Grid.Column="6" Grid.Row="2" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="DeleteMeal_Click"
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteMeal" x:Name="DeleteMeal" >
-                                            <SymbolIcon Symbol="Delete" Foreground="White" />
+                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteMeal" x:Name="DeleteMeal" Background="White" >
+                                            <SymbolIcon Symbol="Delete" Foreground="Black" />
                                         </Button>
                                     </Grid>
                                 </StackPanel>
