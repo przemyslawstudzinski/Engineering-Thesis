@@ -145,6 +145,13 @@
                         </GridView.ItemTemplate>
                     </GridView>
 
+                    <Viewbox Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList" >
+                        <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
+                                            <LineBreak/>
+                                            <Run  x:Name="TotalText" FontStyle="Normal" />
+                        </TextBlock>
+                    </Viewbox>
+
                 </StackPanel>
             </RelativePanel>
         </ScrollViewer>

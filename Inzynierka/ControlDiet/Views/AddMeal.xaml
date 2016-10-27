@@ -162,6 +162,14 @@
                         <TextBlock Name="AddConfirm" Text="" Foreground="Green"/>
                     </StackPanel>
 
+                    <Viewbox Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList" >
+                        <TextBlock TextWrapping="WrapWholeWords" Foreground="Black">
+                            <LineBreak/>
+                            <Run  x:Name="TotalText" FontStyle="Normal" FontStretch="Expanded" FontWeight="Black"/>
+                            <LineBreak/>
+                        </TextBlock>
+                    </Viewbox>
+
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
                             <StackPanel Orientation="Horizontal">

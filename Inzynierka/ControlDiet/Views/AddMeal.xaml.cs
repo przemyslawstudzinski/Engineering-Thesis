@@ -32,6 +32,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
         Meal newMeal;
+        String totalValues;
 
         private Repository<Product> productRepository = new Repository<Product>();
 
@@ -61,6 +62,8 @@ namespace ApplicationToSupportAndControlDiet.Views
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
+            totalValues = "Total:\tkcal =" + 0 + "\tprotein =" + 0 + "\tcarbohydrate =" + 0 + "\tfat =" + 0;
+            this.TotalText.Text = totalValues;
         }
 
         private void CalculateValuesFromAllChoosenProducts()
@@ -69,6 +72,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
+            totalValues = "Total:\tkcal =" + abstractFutureMeal.Energy + "\tprotein= " + abstractFutureMeal.Protein +
+                "\tcarbohydrate= " + abstractFutureMeal.Carbohydrate + "\tfat= " + abstractFutureMeal.Fat;
+            this.TotalText.Text = totalValues;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
