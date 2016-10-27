@@ -99,7 +99,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             var baseObject = sender as FrameworkElement;
             var productToDelete = baseObject.DataContext as DefinedProduct;
             choosenProducts.Remove(productToDelete);
-            CalculateValuesFromAllChoosenProducts
+            CalculateValuesFromAllChoosenProducts();
         }
 
         private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
