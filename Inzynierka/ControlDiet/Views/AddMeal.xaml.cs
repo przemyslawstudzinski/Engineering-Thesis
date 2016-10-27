@@ -62,9 +62,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
-            totalValues = "Total in meal: \tkcal =" + 0 + "\tprotein =" + 0 + "\tcarbohydrate =" + 0 + "\tfat =" + 0 +
-                "\tsugar =" + 0 + "\tfiber =" + 0;
-            this.TotalText.Text = totalValues;
+            this.TotalRunText.Text = "0";
         }
 
         private void CalculateValuesFromAllChoosenProducts()
@@ -73,10 +71,10 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
-            totalValues = "Total in meal: \tkcal =" + abstractFutureMeal.Energy + "\tprotein =" + abstractFutureMeal.Protein +
-                "\tcarbohydrate =" + abstractFutureMeal.Carbohydrate + "\tfat =" + abstractFutureMeal.Fat + "\tsugar =" + abstractFutureMeal.Sugar
-                 + "\tfiber =" + abstractFutureMeal.Fiber;
-            this.TotalText.Text = totalValues;
+            totalValues = "  kcal =  " + abstractFutureMeal.Energy + "  protein =  " + abstractFutureMeal.Protein +
+                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate + "  fat =  " + abstractFutureMeal.Fat + "  sugar =  " + 
+                abstractFutureMeal.Sugar + "  fiber =  " + abstractFutureMeal.Fiber;
+            this.TotalRunText.Text = totalValues;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
-    public class Converters
+    public class DateTimeOffsetToDateTimeConverter
     {
         public static DateTimeOffset ConvertDateTimeToDateTimeOffset(DateTime dateTime) {
             return new DateTimeOffset(dateTime);

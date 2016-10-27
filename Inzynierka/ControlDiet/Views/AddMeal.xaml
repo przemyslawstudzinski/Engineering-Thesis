@@ -163,9 +163,10 @@
                         <TextBlock Name="AddConfirm" Text="" Foreground="Green"/>
                     </StackPanel>
 
-                        <TextBlock TextWrapping="WrapWholeWords" Foreground="Black" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
-                            <LineBreak/>
-                            <Run  x:Name="TotalText" FontStyle="Normal" FontStretch="Expanded" FontWeight="Black"/>
+                        <TextBlock x:Name="TotalText" TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"
+                                   RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
+                            <LineBreak/>Total in meal: 
+                            <Run  x:Name="TotalRunText" />
                             <LineBreak/>
                         </TextBlock>
 

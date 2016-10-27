@@ -42,7 +42,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             this.InitializeComponent();
             Repository<Day> repo = new Repository<Day>();
-            DateTime dateTime = Converters.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
+            DateTime dateTime = DateTimeOffsetToDateTimeConverter.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
             Day day = repo.FindDayByDate(dateTime);
 
             Repository<User> repo2 = new Repository<User>();

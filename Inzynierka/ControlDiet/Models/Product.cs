@@ -71,6 +71,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Category = categoryValue;
             this.Favourite = false;
             this.DisLike = false;
+            this.WeightInTeaspoon = 0;
         }
 
         public override string ToString()
