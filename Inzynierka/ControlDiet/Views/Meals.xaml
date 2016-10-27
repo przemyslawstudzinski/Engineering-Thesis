@@ -38,10 +38,10 @@
                
                <StackPanel x:Name="MainStackPanel" RelativePanel.Below="WarningCal" Orientation="Vertical" 
                         RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                    
-                   <GridView RelativePanel.Below="MainStackPanel" Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="40, 40, 40, 40"  HorizontalContentAlignment="Stretch"
+
+                    <GridView RelativePanel.Below="MainStackPanel" Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="40, 40, 40, 40"  HorizontalContentAlignment="Stretch"
                               SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled">
-                       
+
                         <GridView.ItemContainerStyle>
                             <Style TargetType="GridViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -152,13 +152,6 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-
-                    <Viewbox Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList" >
-                        <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
-                                            <LineBreak/>
-                                            <Run  x:Name="TotalText" FontStyle="Normal" />
-                        </TextBlock>
-                    </Viewbox>
 
                 </StackPanel>
             </RelativePanel>
