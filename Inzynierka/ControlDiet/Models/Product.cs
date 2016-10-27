@@ -53,6 +53,9 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("dislike")]
         public bool DisLike { set; get; }
 
+        [Column("weight_in_teaspoon")]
+        public float WeightInTeaspoon { set; get; }
+
         public Product() { }
 
         public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue,

@@ -63,6 +63,14 @@ namespace ApplicationToSupportAndControlDiet.Views
             DefaultStyle = null;
         }
 
+        private void CalculateValuesFromAllChoosenProducts()
+        {
+            Meal abstractFutureMeal = new Meal();
+            abstractFutureMeal.ProductsInMeal.Clear();
+            List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
+            abstractFutureMeal.ProductsInMeal = nowProductList;
+        }
+
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             selectedProduct = args.SelectedItem as Product;
@@ -83,6 +91,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts.Add(definedProduct);
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
+            CalculateValuesFromAllChoosenProducts();
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
