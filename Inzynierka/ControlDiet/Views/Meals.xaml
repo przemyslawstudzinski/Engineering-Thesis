@@ -6,7 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
+    xmlns:converters="using:ApplicationToSupportAndControlDiet.ViewModels"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:FloatToStringConverter x:Key="FloatToString"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
@@ -30,10 +35,13 @@
                 <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" 
                     RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
                 <TextBlock Name="WarningCal" RelativePanel.Below="Border" Text="" FontSize="20" Foreground="Red" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                <StackPanel x:Name="MainStackPanel" RelativePanel.Below="WarningCal" Orientation="Vertical" 
+               
+               <StackPanel x:Name="MainStackPanel" RelativePanel.Below="WarningCal" Orientation="Vertical" 
                         RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                    <GridView RelativePanel.Below="MainStackPanel" Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="40, 40, 40, 40"  HorizontalContentAlignment="Stretch"
+                    
+                   <GridView RelativePanel.Below="MainStackPanel" Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="40, 40, 40, 40"  HorizontalContentAlignment="Stretch"
                               SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled">
+                       
                         <GridView.ItemContainerStyle>
                             <Style TargetType="GridViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -51,10 +59,10 @@
                                 <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <Grid Padding="5" Margin="10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="3.5*"/>
-                                            <ColumnDefinition Width="1.5*"/>
                                             <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="2*"/>
@@ -84,38 +92,38 @@
                                         <Viewbox Grid.Row="1"  Grid.Column="0" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Kcal <LineBreak/>
-                                            <Run  Text="{x:Bind Energy, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="1" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Protein <LineBreak/>
-                                            <Run  Text="{x:Bind Protein, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="2" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Carbohydrate <LineBreak/>
-                                            <Run  Text="{x:Bind Carbohydrate, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="3" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Fat <LineBreak/>
-                                            <Run  Text="{x:Bind Fat, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="4" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Fiber <LineBreak/>
-                                            <Run  Text="{x:Bind Fiber, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
                                         <Viewbox Grid.Row="1"  Grid.Column="5" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="Black">
                                             Sugar 
                                             <LineBreak/>
-                                            <Run  Text="{x:Bind Sugar, TargetNullValue=0}" FontStyle="Normal" />
+                                            <Run  Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" FontStyle="Normal" />
                                             </TextBlock>
                                         </Viewbox>
 

@@ -116,6 +116,7 @@
     <Compile Include="ViewModels\Converters.cs" />
     <Compile Include="ViewModels\CsvExport.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
+    <Compile Include="ViewModels\FloatToStringConverter.cs" />
     <Compile Include="ViewModels\Globals.cs" />
     <Compile Include="ViewModels\Repository.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />

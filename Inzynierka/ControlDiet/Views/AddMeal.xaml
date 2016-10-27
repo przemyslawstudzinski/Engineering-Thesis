@@ -12,6 +12,7 @@
 
     <Page.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+        <converters:FloatToStringConverter x:Key="FloatToString"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -95,12 +96,12 @@
                                     </Grid.Resources>
                                     <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Name}" FontWeight="Bold" TextWrapping="Wrap" 
                                             MaxLines="2" HorizontalAlignment="Left" />
-                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
-                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource FloatToString}}"  MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
+                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
                                     <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.Row="1" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
                                     <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
@@ -162,15 +163,13 @@
                         <TextBlock Name="AddConfirm" Text="" Foreground="Green"/>
                     </StackPanel>
 
-                    <Viewbox Stretch="None" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList" >
-                        <TextBlock TextWrapping="WrapWholeWords" Foreground="Black">
+                        <TextBlock TextWrapping="WrapWholeWords" Foreground="Black" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
                             <LineBreak/>
                             <Run  x:Name="TotalText" FontStyle="Normal" FontStretch="Expanded" FontWeight="Black"/>
                             <LineBreak/>
                         </TextBlock>
-                    </Viewbox>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Accept" Foreground="White" />
