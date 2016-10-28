@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("DefinedProductMeal")]
+    [Table("DefinedProduct_Meal")]
     public class DefinedProductMeal
     {
         [PrimaryKey]
@@ -17,11 +17,11 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("productId")]
+        [Column("product_id")]
         [ForeignKey(typeof(DefinedProduct))]
         public int DefinedProductId { get; set; }
 
-        [Column("mealId")]
+        [Column("meal_id")]
         [ForeignKey(typeof(Meal))]
         public int MealId { get; set; }
 
