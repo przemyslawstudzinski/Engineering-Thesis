@@ -6,7 +6,8 @@
     xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting" xmlns:DataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting" 
+    xmlns:DataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
