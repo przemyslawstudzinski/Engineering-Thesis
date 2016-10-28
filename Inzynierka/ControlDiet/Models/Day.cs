@@ -13,12 +13,10 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [NotNull]
         [Column("id")]
         public int Id { set; get; }
 
         [Column("date")]
-        [Unique]
         public DateTime Date { set; get; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
