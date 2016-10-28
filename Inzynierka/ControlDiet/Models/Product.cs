@@ -18,7 +18,6 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("id")]
         public int Id { set; get; }
 
-        [Unique]
         [Column("code")]
         public string Code { get; set; }
 

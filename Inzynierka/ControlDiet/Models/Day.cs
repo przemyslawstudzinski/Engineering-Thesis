@@ -13,7 +13,6 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [NotNull]
         [Column("id")]
         public int Id { set; get; }
 
