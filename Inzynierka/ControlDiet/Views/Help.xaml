@@ -37,7 +37,7 @@
                         <TextBlock>
                         Go to -->  Add New Product<LineBreak/>Enter product name<LineBreak/>Enter all informations about the product<LineBreak/>Click Save button<LineBreak/>If everything is ok, You will see information about that
                         </TextBlock>
-                        <TextBlock Text="Where I find information about product?" FontSize="25" FontWeight="Bold" />
+                        <TextBlock Text="Where I find information about product?"  FontWeight="Bold" />
                         <TextBlock>Product informations are usually located on the packaging</TextBlock>
                         <TextBlock Text="Can I leave some box empty?"  FontWeight="Bold" />
                         <TextBlock> No, You have to fill all fields</TextBlock>

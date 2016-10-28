@@ -77,12 +77,6 @@
                             <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="Search" Click="SearchPaneItem_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Find" Foreground="White" />
-                            <TextBlock Text="Search"  Margin="30,0,0,0" Foreground="White" />
-                        </StackPanel>
-                    </Button>
                     <Button Tag="Help" Click="HelpPaneItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Help" Foreground="White" />
