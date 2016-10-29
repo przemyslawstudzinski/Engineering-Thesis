@@ -17,7 +17,6 @@ namespace ApplicationToSupportAndControlDiet.Models
         public int Id { set; get; }
 
         [Column("date")]
-        [Unique]
         public DateTime Date { set; get; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
