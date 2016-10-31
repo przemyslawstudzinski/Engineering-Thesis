@@ -101,17 +101,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActivityLevel.cs" />
+    <Compile Include="Models\Enums\ActivityLevel.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\DefinedProduct.cs" />
     <Compile Include="Models\DefinedProductMeal.cs" />
     <Compile Include="Models\Meal.cs" />
-    <Compile Include="Models\Measure.cs" />
+    <Compile Include="Models\Enums\Measure.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\Sex.cs" />
+    <Compile Include="Models\Enums\ProductCategory.cs" />
+    <Compile Include="Models\Enums\Sex.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserGoal.cs" />
+    <Compile Include="Models\Enums\UserGoal.cs" />
     <Compile Include="ViewModels\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\CalculateRequisitionOfCalories.cs" />
     <Compile Include="ViewModels\Converters\DateTimeOffsetToDateTimeConverter.cs" />

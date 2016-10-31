@@ -12,8 +12,10 @@ namespace TestsControlDiet
     [TestClass]
     public class SaveDayWithMealsAndProductsTest
     {
-        [TestMethod]
-        public void GetDayWithMealsAndProductsTest()
+        Day dayAfterSave;
+
+        [TestInitialize]
+        public void SetUp()
         {
             Repository<Day> repository = new Repository<Day>();
 
@@ -42,11 +44,21 @@ namespace TestsControlDiet
             mealTwo.Day = day;
             day.MealsInDay.Add(mealOne);
             day.MealsInDay.Add(mealTwo);
-            repository.Save(day);
 
-            Day dayAfterSave = repository.FindDay(day);
-            Assert.AreEqual(dayAfterSave.MealsInDay.Count, 2, "There should be 2 meals binded to the day");
-            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).ProductsInMeal.Count, 1, "There should be 1 definied product in meal");
+            repository.Save(day);
+            dayAfterSave = repository.FindDay(day);
+        }
+
+        [TestMethod]
+        public void GetDayWithMealsAndProductsTest()
+        {
+            Assert.AreEqual(dayAfterSave.MealsInDay.Count, 2);
+        }
+
+        [TestMethod]
+        public void GetMealWithProductsTest()
+        {
+            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).ProductsInMeal.Count, 1);
         }
     }
 }
