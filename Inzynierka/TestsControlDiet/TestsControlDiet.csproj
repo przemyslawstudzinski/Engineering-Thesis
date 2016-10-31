@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test\CalculateCaloriesTest.cs" />
+    <Compile Include="Test\MeasureServiceTest.cs" />
     <Compile Include="Test\UserProfileTest.cs" />
     <Compile Include="Test\ProductProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

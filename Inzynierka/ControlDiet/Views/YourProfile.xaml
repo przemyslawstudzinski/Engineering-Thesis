@@ -33,10 +33,10 @@
                         <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
                         <ComboBox Name="ActivityBox" SelectedValuePath="Tag" >
                             <ComboBoxItem Content="Sedentary" Tag="Sedentary" />
-                            <ComboBoxItem Content="Lightly active" Tag="LightlyActive" />
-                            <ComboBoxItem Content="Moderately active" Tag="ModeratelyActive" IsSelected="True"/>
-                            <ComboBoxItem Content="Very active" Tag="VeryActive" />
-                            <ComboBoxItem Content="Extremely active" Tag="ExtremelyActive" />
+                            <ComboBoxItem Content="Lightly" Tag="Lightly" />
+                            <ComboBoxItem Content="Moderately" Tag="Moderately" IsSelected="True"/>
+                            <ComboBoxItem Content="Very" Tag="Very" />
+                            <ComboBoxItem Content="Extremely" Tag="Extremely" />
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">

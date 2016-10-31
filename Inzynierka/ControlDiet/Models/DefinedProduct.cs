@@ -7,6 +7,7 @@ using SQLite;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 using System.Collections.ObjectModel;
+using ApplicationToSupportAndControlDiet.ViewModels;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
@@ -14,7 +15,10 @@ namespace ApplicationToSupportAndControlDiet.Models
     public class DefinedProduct : Product
     {
         [Column("quantity")]
-        public int Quantity { set; get; }
+        public float Quantity { set; get; }
+
+        [Column("measure")]
+        public Measure Measure { set; get; }
 
         [ForeignKey(typeof(Product))]
         public int ProductId { set; get; }
@@ -30,16 +34,10 @@ namespace ApplicationToSupportAndControlDiet.Models
             Meals = new List<Meal>();
         }
 
-        public DefinedProduct(Product product, int quantity)
+        public DefinedProduct(Product product, float quantity, Measure measure)
         {
             this.Name = product.Name;
             this.Code = product.Code;
-            this.Energy = product.Energy;
-            this.Protein = product.Protein;
-            this.Carbohydrate = product.Carbohydrate;
-            this.Fat = product.Fat;
-            this.Fiber = product.Fiber;
-            this.Sugar = product.Sugar;
             this.Category = product.Category;
             this.Favourite = product.Favourite;
             this.DisLike = product.DisLike;
@@ -47,6 +45,11 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.ProductId = product.Id;
             this.Product = product;
             this.Quantity = quantity;
+            this.Measure = measure;
+
+            MeasureService measureService = new MeasureService();
+            measureService.Calculate(this, product);
+
             Meals = new List<Meal>();
         }
     }

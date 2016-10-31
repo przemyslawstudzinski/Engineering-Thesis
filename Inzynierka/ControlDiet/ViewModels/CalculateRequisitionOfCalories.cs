@@ -82,16 +82,16 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                 case ActivityLevel.Sedentary:
                     basalMetabolicRate = basalMetabolicRate * SEDENTARY_FACTOR;
                     break;
-                case ActivityLevel.LightlyActive:
+                case ActivityLevel.Lightly:
                     basalMetabolicRate = basalMetabolicRate * LIGHT_FACTOR_MEN;
                     break;
-                case ActivityLevel.ModeratelyActive:
+                case ActivityLevel.Moderately:
                     basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_MEN;
                     break;
-                case ActivityLevel.VeryActive:
+                case ActivityLevel.Very:
                     basalMetabolicRate = basalMetabolicRate * VERY_FACTOR_MEN;
                     break;
-                case ActivityLevel.ExtremelyActive:
+                case ActivityLevel.Extremely:
                     basalMetabolicRate = basalMetabolicRate * EXTREMELY_FACTOR_MEN;
                     break;
                 default:
@@ -108,16 +108,16 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                 case ActivityLevel.Sedentary:
                     basalMetabolicRate = basalMetabolicRate * SEDENTARY_FACTOR;
                     break;
-                case ActivityLevel.LightlyActive:
+                case ActivityLevel.Lightly:
                     basalMetabolicRate = basalMetabolicRate * LIGHT_FACTOR_WOMEN;
                     break;
-                case ActivityLevel.ModeratelyActive:
+                case ActivityLevel.Moderately:
                     basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_WOMEN;
                     break;
-                case ActivityLevel.VeryActive:
+                case ActivityLevel.Very:
                     basalMetabolicRate = basalMetabolicRate * VERY_FACTOR_WOMEN;
                     break;
-                case ActivityLevel.ExtremelyActive:
+                case ActivityLevel.Extremely:
                     basalMetabolicRate = basalMetabolicRate * EXTREMELY_FACTOR_WOMEN;
                     break;
                 default:

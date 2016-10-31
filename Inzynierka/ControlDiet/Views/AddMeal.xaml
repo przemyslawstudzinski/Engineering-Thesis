@@ -42,9 +42,7 @@
                                 </AutoSuggestBox.ItemTemplate>
                             </AutoSuggestBox>
                             <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
-                            <ComboBox Header="Measure" Margin="10, 0, 20, 0">
-                                <!--TODO-->
-                            </ComboBox>
+                            <ComboBox x:Name="MeasureBox" Header="Measure" Margin="10, 0, 20, 0" SelectedValuePath="Tag"/>
                             <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click" VerticalAlignment="Bottom">
                                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
                                     <SymbolIcon Symbol="Add" Foreground="White" />

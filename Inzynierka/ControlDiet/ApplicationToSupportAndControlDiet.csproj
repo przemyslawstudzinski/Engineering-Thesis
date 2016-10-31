@@ -106,6 +106,7 @@
     <Compile Include="Models\DefinedProduct.cs" />
     <Compile Include="Models\DefinedProductMeal.cs" />
     <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\Measure.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Sex.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="ViewModels\DatabaseConnection.cs" />
     <Compile Include="ViewModels\Converters\FloatToStringConverter.cs" />
     <Compile Include="ViewModels\Globals.cs" />
+    <Compile Include="ViewModels\MeasureService.cs" />
     <Compile Include="ViewModels\Repository.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />

@@ -13,17 +13,17 @@ namespace TestsControlDiet
     public class SaveDayWithMealsAndProductsTest
     {
         [TestMethod]
-        public void getDayWithMealsAndProductsTest()
+        public void GetDayWithMealsAndProductsTest()
         {
             Repository<Day> repository = new Repository<Day>();
 
             Product productOne = new Product();
             productOne.Name = "name 1";
-            DefinedProduct definiedProductOne = new DefinedProduct(productOne, 5);
+            DefinedProduct definiedProductOne = new DefinedProduct(productOne, 5, Measure.Gram);
 
             Product productTwo = new Product();
             productTwo.Name = "name 2";
-            DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 5);
+            DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 5, Measure.Spoon);
 
             Meal mealOne = new Meal();
             mealOne.Name = "mealname 1";

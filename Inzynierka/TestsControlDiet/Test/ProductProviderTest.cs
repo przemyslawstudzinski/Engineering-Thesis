@@ -19,15 +19,15 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void getAllProductsTest()
+        public void GetAllProductsTest()
         {
             var productProvider = new ProductProvider();
             List<Product> allProducts = productProvider.GetAllProducts();
-            Assert.AreEqual(allProducts.Count, 960, "There should be 960 products in database");
+            Assert.AreEqual(allProducts.Count, 941, "There should be 941 products in database");
         }
 
         [TestMethod]
-        public void getProductsWithPatternTest()
+        public void GetProductsWithPatternTest()
         {
             var productProvider = new ProductProvider();
             List<Product> allProducts = productProvider.GetProductsLike("bev");
