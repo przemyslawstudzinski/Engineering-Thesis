@@ -94,6 +94,27 @@ namespace ApplicationToSupportAndControlDiet
             this.InitializeComponent();
             RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
             DefaultStyle = null;
+            var repo = new Repository<User>();
+            User user = repo.FindUser();
+            if (user != null)
+            {
+                if (user.Sex == Models.Sex.Male)
+                {
+                    Male.IsChecked = true;
+                }
+                else
+                {
+                    Female.IsChecked = true;
+                }
+                AgeBox.Text = user.Age.ToString();
+                HeightBox.Text = user.Height.ToString();
+                weightBox.Text = user.Weight.ToString();
+                ActivityBox.SelectedValue = user.Activity.ToString();
+                GoalBox.SelectedValue = user.Goal.ToString();
+                CaloriesBox.Text = user.TotalDailyEnergyExpenditure.ToString();
+            }
+
+
         }
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
@@ -203,7 +224,7 @@ namespace ApplicationToSupportAndControlDiet
 
         private void ClearTextBoxesAndSetConfirmMessage(int dailyCaloriesExpenditure)
         {
-            ClearText();
+            //ClearText();
             ClearStyles();
             AddConfirm.Text = String.Format(CONFIRMMESSAGE,dailyCaloriesExpenditure);
         }

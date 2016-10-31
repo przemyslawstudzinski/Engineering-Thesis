@@ -77,12 +77,14 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidateEmptyDefinedProduct()) return;
             int quantity;
             Int32.TryParse(this.QuantityBox.Text, out quantity);
             DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
             choosenProducts.Add(definedProduct);
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
+            this.selectedProduct = null; 
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -96,6 +98,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
+            if (selectedProduct.DisLike == true) return;
             selectedProduct.Product.Favourite = true;
             selectedProduct.Favourite = true;
             RefreshListView();
@@ -117,6 +120,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
+            if (selectedProduct.Favourite == true) return;
             selectedProduct.Product.DisLike = true;
             selectedProduct.DisLike = true;
             productRepository.Update(selectedProduct.Product);
@@ -224,6 +228,11 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 return true;
             }
+        }
+
+        private Boolean ValidateEmptyDefinedProduct() {
+            if (selectedProduct == null) return false;
+            return true;
         }
 
         private bool ValidateChoosenProducts()

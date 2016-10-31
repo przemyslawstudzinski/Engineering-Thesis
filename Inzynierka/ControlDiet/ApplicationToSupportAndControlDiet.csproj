@@ -19,8 +19,8 @@
     <PackageCertificateKeyFile>ApplicationToSupportAndControlDiet.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <AppxPackageDir>C:\Users\Michal\Desktop\paczka\</AppxPackageDir>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxPackageDir>E:\</AppxPackageDir>
     <PackageCertificateThumbprint>2408E3FF50665DECC63BA382AB66C18FA3ABDA32</PackageCertificateThumbprint>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
   </PropertyGroup>

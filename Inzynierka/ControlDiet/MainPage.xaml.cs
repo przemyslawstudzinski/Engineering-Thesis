@@ -30,7 +30,7 @@ namespace ApplicationToSupportAndControlDiet
         public MainPage()
         {
             this.InitializeComponent();
-            DatabaseConnection.CreateSqliteDatabase();
+            DatabaseConnection.CreateSqliteDatabases();
             Globals.MainPage = this;
         }
 

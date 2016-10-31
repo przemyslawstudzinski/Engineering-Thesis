@@ -10,8 +10,9 @@ using ApplicationToSupportAndControlDiet.ViewModels;
 namespace TestsControlDiet
 {
     [TestClass]
-    class UserProfileTest
+    public class UserProfileTest
     {
+
         [TestMethod]
         public void addTwoUserProfiles()
         {
@@ -22,14 +23,14 @@ namespace TestsControlDiet
             user.Age = firstAgeToSave;
             userRepo.SaveOneOrReplace(user);
             User userFromDb = userRepo.FindUser();
-            Assert.AreEqual(1, userFromDb.Id, "User ID should be equal to 1");
-            Assert.AreEqual(firstAgeToSave, userFromDb.Id, "User Age should be equal to "+firstAgeToSave);
+            Assert.AreEqual(0, userFromDb.Id, "User ID should be equal to 0");
+            Assert.AreEqual(firstAgeToSave, userFromDb.Age, "User Age should be equal to "+firstAgeToSave);
             User secondUser = new User();
-            user.Age = secondAgeToSave;
+            secondUser.Age = secondAgeToSave;
             userRepo.SaveOneOrReplace(secondUser);
             userFromDb = userRepo.FindUser();
-            Assert.AreEqual(1, userFromDb.Id, "User ID should be equal to 1");
-            Assert.AreEqual(secondAgeToSave, userFromDb.Id, "User Age should be equal to "+secondAgeToSave);
+            Assert.AreEqual(0, userFromDb.Id, "User ID should be equal to 0");
+            Assert.AreEqual(secondAgeToSave, userFromDb.Age, "User Age should be equal to "+secondAgeToSave);
         }
     }
     

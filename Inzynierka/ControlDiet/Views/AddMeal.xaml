@@ -107,41 +107,21 @@
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
                                         <SymbolIcon Symbol="Favorite" Foreground="Black" />
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <TextBlock Text="Added to fovourite products!"/>
-                                            </Flyout>
-                                        </Button.Flyout>
                                     </Button>
                                     <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
                                         <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <TextBlock Text="Removed from fovourite products!"/>
-                                            </Flyout>
-                                        </Button.Flyout>
                                     </Button>
                                     <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
                                         <SymbolIcon Symbol="Dislike" Foreground="Black" />
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <TextBlock Text="Added to dislike products!"/>
-                                            </Flyout>
-                                        </Button.Flyout>
                                     </Button>
                                     <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
                                         <SymbolIcon Symbol="Like" Foreground="Black" />
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <TextBlock Text="Added to like products!"/>
-                                            </Flyout>
-                                        </Button.Flyout>
                                     </Button>
                                     <Button Grid.Column="7" Grid.Row="1" VerticalContentAlignment="Center" VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" 

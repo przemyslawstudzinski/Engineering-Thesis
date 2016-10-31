@@ -15,7 +15,7 @@ namespace TestsControlDiet
         [AssemblyInitialize]
         public static void AssemblyInit(TestContext context)
         {
-            DatabaseConnection.CreateSqliteDatabase();
+            DatabaseConnection.CreateSqliteDatabases();
         }
 
         [TestMethod]

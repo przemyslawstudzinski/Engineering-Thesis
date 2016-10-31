@@ -14,7 +14,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public MainViewModel()
         {
             WelcomeMessage = "Hi, it's main page";
-            DatabaseConnection.CreateSqliteDatabase();
+            DatabaseConnection.CreateSqliteDatabases();
         }
 
         private string _welcomeMessage;
