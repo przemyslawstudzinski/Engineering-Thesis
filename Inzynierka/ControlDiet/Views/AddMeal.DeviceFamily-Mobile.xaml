@@ -22,12 +22,12 @@
                     <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel x:Name="Header">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,0">
-                            <TextBox x:Name="NameBox" Width="300" Header="Name" Padding="5"/>
+                            <TextBox x:Name="NameBox" Width="300" Header="Name"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                            <CalendarDatePicker x:Name="DataPicker" Header="Day" Padding="5" 
-                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
-                            <TimePicker x:Name = "TimePicker" Header = "Time" Margin="50,0,0,0"  Padding="5"/>
+                            <CalendarDatePicker x:Name="DataPicker" Header="Day" 
+                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
+                            <TimePicker x:Name = "TimePicker" Header = "Time" Margin="50,0,0,0"/>
                             <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -42,11 +42,11 @@
                                     </DataTemplate>
                                 </AutoSuggestBox.ItemTemplate>
                             </AutoSuggestBox>
-                            <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity:" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
-                            <ComboBox Header="Measure:" Margin="10, 0, 20, 0">
+                            <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
+                            <ComboBox Header="Measure" Margin="10, 0, 20, 0">
                                 <!--TODO-->
                             </ComboBox>
-                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click">
+                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click" VerticalAlignment="Bottom">
                                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
                                     <SymbolIcon Symbol="Add" Foreground="White" />
                                 </StackPanel>
@@ -161,10 +161,15 @@
                     </ListView>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                         <TextBlock x:Name="ValidationMessages" Foreground="Red" />
-                        <TextBlock Name="AddConfirm" Text="" Foreground="Green" />
+                        <TextBlock Name="AddConfirm" FontSize="20" Foreground="Green" />
                     </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock x:Name="TotalText" TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"
+                                   RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
+                            <LineBreak/>Total in meal: 
+                            <Run  x:Name="TotalRunText" />
+                            <LineBreak/>
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
                         <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Accept" Foreground="White" />

@@ -32,6 +32,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
         Meal newMeal;
+        String totalValues;
 
         private Repository<Product> productRepository = new Repository<Product>();
 
@@ -61,6 +62,19 @@ namespace ApplicationToSupportAndControlDiet.Views
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
+            this.TotalRunText.Text = "0";
+        }
+
+        private void CalculateValuesFromAllChoosenProducts()
+        {
+            Meal abstractFutureMeal = new Meal();
+            abstractFutureMeal.ProductsInMeal.Clear();
+            List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
+            abstractFutureMeal.ProductsInMeal = nowProductList;
+            totalValues = "  kcal =  " + abstractFutureMeal.Energy + "  protein =  " + abstractFutureMeal.Protein +
+                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate + "  fat =  " + abstractFutureMeal.Fat + "  sugar =  " + 
+                abstractFutureMeal.Sugar + "  fiber =  " + abstractFutureMeal.Fiber;
+            this.TotalRunText.Text = totalValues;
         }
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
@@ -85,6 +99,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
             this.selectedProduct = null; 
+            CalculateValuesFromAllChoosenProducts();
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -92,6 +107,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             var baseObject = sender as FrameworkElement;
             var productToDelete = baseObject.DataContext as DefinedProduct;
             choosenProducts.Remove(productToDelete);
+            CalculateValuesFromAllChoosenProducts();
         }
 
         private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
@@ -310,6 +326,8 @@ namespace ApplicationToSupportAndControlDiet.Views
             NameBox.Text = String.Empty;
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
+            this.TotalRunText.Text = String.Empty;
+            this.TotalText.Text = String.Empty;
         }
 
         private void ClearList()
@@ -350,6 +368,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                 {
                     newMeal = mealFromMealsPage;
                 }
+                CalculateValuesFromAllChoosenProducts();
             }
         }
     }

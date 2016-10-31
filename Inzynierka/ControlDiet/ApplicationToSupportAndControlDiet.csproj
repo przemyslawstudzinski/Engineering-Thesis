@@ -111,11 +111,12 @@
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGoal.cs" />
-    <Compile Include="ViewModels\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\CalculateRequisitionOfCalories.cs" />
-    <Compile Include="ViewModels\Converters.cs" />
+    <Compile Include="ViewModels\Converters\DateTimeOffsetToDateTimeConverter.cs" />
     <Compile Include="ViewModels\CsvExport.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
+    <Compile Include="ViewModels\Converters\FloatToStringConverter.cs" />
     <Compile Include="ViewModels\Globals.cs" />
     <Compile Include="ViewModels\Repository.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />

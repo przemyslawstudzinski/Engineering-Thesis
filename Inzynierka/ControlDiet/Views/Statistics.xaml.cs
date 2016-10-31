@@ -7,6 +7,7 @@ using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using Windows.UI;
 using ApplicationToSupportAndControlDiet.ViewModels;
 using Windows.UI.Xaml;
+using System.Collections.ObjectModel;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -14,6 +15,7 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// private ObservableCollection<Day> dayStatistics;
     public class Microelements
     {
         public string Name { get; set; }
@@ -35,12 +37,12 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
 
         }
-
+        
         public Statistics()
         {
             this.InitializeComponent();
             Repository<Day> repo = new Repository<Day>();
-            DateTime dateTime = Converters.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
+            DateTime dateTime = DateTimeOffsetToDateTimeConverter.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
             Day day = repo.FindDayByDate(dateTime);
 
             Repository<User> repo2 = new Repository<User>();
@@ -70,6 +72,13 @@ namespace ApplicationToSupportAndControlDiet.Views
             financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });
             (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
 
+            //Table nutritions
+
+            ProteinRow.Text= day.Protein.ToString();
+            FatRow.Text = day.Fat.ToString();
+            CarbohydronateRow.Text = day.Fat.ToString();
+            FiberRow.Text = day.Fiber.ToString();
+            SugarRow.Text = day.Sugar.ToString();
             //PROGRESSBAR
 
             EnergyBar.Maximum = maxValue;

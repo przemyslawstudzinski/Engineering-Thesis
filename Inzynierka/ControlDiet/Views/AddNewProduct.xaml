@@ -40,9 +40,9 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                         <TextBlock x:Name="ValidationMessages" Foreground="Red" />
-                        <TextBlock Name="AddConfirm" Text=""  Foreground="Green"/>
+                        <TextBlock Name="AddConfirm" FontSize="20"  Foreground="Green"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
                         <Button Tag="SaveProduct" x:Name="SaveProduct" Width="150" Background="Black" Click="SaveProduct_Click">
                             <StackPanel Orientation="Horizontal" >
                                 <SymbolIcon Symbol="Accept" Foreground="White" />

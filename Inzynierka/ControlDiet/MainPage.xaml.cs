@@ -51,10 +51,6 @@ namespace ApplicationToSupportAndControlDiet
 
            this.WorkSpace.Navigate(typeof(AddMeal));
         }
-        private void SearchPaneItem_Click(object sender, RoutedEventArgs e)
-        {
-            ApplicationName.Text = "SEARCH";
-        }
         private void ProfilePaneItem_Click(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "YOUR PROFILE";
@@ -79,10 +75,6 @@ namespace ApplicationToSupportAndControlDiet
         {
             ApplicationName.Text = "ABOUT";
             WorkSpace.Navigate(typeof(About));
-        }
-        public void SelectedDay_Click(object sender, RoutedEventArgs e)
-        {
-            this.WorkSpace.Navigate(typeof(MealsPage));
         }
 
         public void NavigateTo<T>(T sourcePage) {

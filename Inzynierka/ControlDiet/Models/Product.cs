@@ -15,11 +15,9 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [NotNull]
         [Column("id")]
         public int Id { set; get; }
 
-        [Unique]
         [Column("code")]
         public string Code { get; set; }
 
@@ -53,6 +51,9 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("dislike")]
         public bool DisLike { set; get; }
 
+        [Column("weight_in_teaspoon")]
+        public float WeightInTeaspoon { set; get; }
+
         public Product() { }
 
         public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue,
@@ -68,6 +69,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Category = categoryValue;
             this.Favourite = false;
             this.DisLike = false;
+            this.WeightInTeaspoon = 0;
         }
 
         public override string ToString()
