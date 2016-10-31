@@ -115,12 +115,13 @@ namespace ApplicationToSupportAndControlDiet.Views
 
                 DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
 
-            choosenProducts.Add(definedProduct);
-            this.QuantityBox.Text = String.Empty;
-            this.SuggestProductsBox.Text = String.Empty;
-            this.MeasureBox.ItemsSource = null;
-            this.selectedProduct = null;
-            CalculateValuesFromAllChoosenProducts();
+                choosenProducts.Add(definedProduct);
+                this.QuantityBox.Text = String.Empty;
+                this.SuggestProductsBox.Text = String.Empty;
+                this.MeasureBox.ItemsSource = null;
+                this.selectedProduct = null;
+                CalculateValuesFromAllChoosenProducts();
+            }
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
