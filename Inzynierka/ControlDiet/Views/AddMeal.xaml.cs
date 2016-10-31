@@ -74,9 +74,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
-            totalValues = "  kcal =  " + abstractFutureMeal.Energy + "  protein =  " + abstractFutureMeal.Protein +
-                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate + "  fat =  " + abstractFutureMeal.Fat + "  sugar =  " + 
-                abstractFutureMeal.Sugar + "  fiber =  " + abstractFutureMeal.Fiber;
+            totalValues = "  kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") +
+                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") + "  sugar =  " + 
+                abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
             this.TotalRunText.Text = totalValues;
         }
 
@@ -104,21 +104,22 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
         {
+            ClearTextBoxesStylesAndMessages();
             float quantity = DEFAULT_QUANTITY;
             if (ValidateAndCheckInRange(QuantityBox, 0, 1000))
             {
                 quantity = Convert.ToSingle(this.QuantityBox.Text);
+                Measure measure;
+                Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
+
+                DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
+
+                choosenProducts.Add(definedProduct);
+                this.QuantityBox.Text = String.Empty;
+                this.SuggestProductsBox.Text = String.Empty;
+                this.MeasureBox.ItemsSource = null;
+                CalculateValuesFromAllChoosenProducts();
             }         
-            Measure measure;
-            Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
-
-            DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
-
-            choosenProducts.Add(definedProduct);
-            this.QuantityBox.Text = String.Empty;
-            this.SuggestProductsBox.Text = String.Empty;
-            this.MeasureBox.ItemsSource = null;
-            CalculateValuesFromAllChoosenProducts();
         }
 
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -328,6 +329,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void ClearStyles()
         {
             NameBox.Style = DefaultStyle;
+            QuantityBox.Style = DefaultStyle;
             SuggestProductsBox.Style = DefaultStyle;
         }
 

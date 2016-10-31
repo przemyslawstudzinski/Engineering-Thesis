@@ -81,7 +81,6 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -100,9 +99,11 @@
                                     <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
                                     <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
                                     <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
-                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.Row="1" FontWeight="Bold"
+                                    <TextBox Name="MeasureTextBox" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0" TextAlignment="Center" Header=" "
+                                             Text="{x:Bind Measure}" IsReadOnly="True"/>
+                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
                                         <SymbolIcon Symbol="Favorite" Foreground="Black" />
@@ -112,7 +113,7 @@
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
                                         <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
@@ -122,7 +123,7 @@
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
                                         <SymbolIcon Symbol="Dislike" Foreground="Black" />
@@ -132,7 +133,7 @@
                                             </Flyout>
                                         </Button.Flyout>
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
                                         <SymbolIcon Symbol="Like" Foreground="Black" />
