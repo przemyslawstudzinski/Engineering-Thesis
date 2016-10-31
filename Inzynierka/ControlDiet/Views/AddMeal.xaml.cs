@@ -74,9 +74,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
-            totalValues = "  kcal =  " + abstractFutureMeal.Energy + "  protein =  " + abstractFutureMeal.Protein +
-                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate + "  fat =  " + abstractFutureMeal.Fat + "  sugar =  " + 
-                abstractFutureMeal.Sugar + "  fiber =  " + abstractFutureMeal.Fiber;
+            totalValues = "  kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
+                + "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") 
+                + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
             this.TotalRunText.Text = totalValues;
         }
 
@@ -104,16 +104,16 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
         {
+            ClearTextBoxesStylesAndMessages();
             if (!ValidateEmptyDefinedProduct()) return;
             float quantity = DEFAULT_QUANTITY;
-            if (ValidateAndCheckInRange(QuantityBox, 0, 1000))
+            if (ValidateAndCheckInRange(QuantityBox, 0, 1000) && this.MeasureBox.SelectedItem != null)
             {
                 quantity = Convert.ToSingle(this.QuantityBox.Text);
-            }         
-            Measure measure;
-            Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
+                Measure measure;
+                Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
 
-            DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
+                DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
 
             choosenProducts.Add(definedProduct);
             this.QuantityBox.Text = String.Empty;
@@ -178,13 +178,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             this.ItemsList.ItemsSource = null;
             this.ItemsList.ItemsSource = choosenProducts;
-        }
-
-        private void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            //ListView listView = (ListView)sender;
-            //allContactsMenuFlyout.ShowAt(listView, e.GetPosition(listView));
-            //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
         private Meal FindMeal()
@@ -337,6 +330,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void ClearStyles()
         {
             NameBox.Style = DefaultStyle;
+            QuantityBox.Style = DefaultStyle;
             SuggestProductsBox.Style = DefaultStyle;
         }
 

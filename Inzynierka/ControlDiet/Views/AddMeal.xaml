@@ -55,26 +55,16 @@
                     </StackPanel>
 
                     <ListView Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0, 20, 0, 0" MaxHeight="400"
-                              SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled"
-                            RightTapped="ListView_RightTapped">
+                              SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
-                        <!--<ListView.Resources>
-                        <MenuFlyout x:Name="allContactsMenuFlyout">
-                            <MenuFlyout.Items>
-                                <MenuFlyoutItem x:Name="Edit"  Text="Edit"/>
-                                <MenuFlyoutItem x:Name="Remove" Text="Remove"  />
-                            </MenuFlyout.Items>
-                        </MenuFlyout>
-                    </ListView.Resources>-->
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:DefinedProduct">
                                 <Grid  Padding="5" Margin="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
@@ -100,24 +90,26 @@
                                     <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
                                     <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
                                     <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
-                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="6" Grid.Row="1" FontWeight="Bold"
+                                    <TextBox Name="MeasureTextBox" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0" TextAlignment="Center" Header=" "
+                                             Text="{x:Bind Measure}" IsReadOnly="True"/>
+                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
                                         <SymbolIcon Symbol="Favorite" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
                                         <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
                                         <SymbolIcon Symbol="Dislike" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="7" Grid.Row="0" 
+                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
                                         <SymbolIcon Symbol="Like" Foreground="Black" />

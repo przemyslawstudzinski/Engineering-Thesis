@@ -9,15 +9,11 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public static class RequisitionOfCalories
     {
-        private const float SEDENTARY_FACTOR = 0.3F;
-        private const float LIGHT_FACTOR_WOMEN = 0.5F;
-        private const float LIGHT_FACTOR_MEN = 0.6F;
-        private const float MODERATELY_FACTOR_WOMEN = 0.6F;
-        private const float MODERATELY_FACTOR_MEN = 0.7F;
-        private const float VERY_FACTOR_WOMEN = 0.9F;
-        private const float VERY_FACTOR_MEN = 1.1F;
-        private const float EXTREMELY_FACTOR_WOMEN = 1.2F;
-        private const float EXTREMELY_FACTOR_MEN = 1.4F;
+        private const float SEDENTARY_FACTOR = 0.2F;
+        private const float LIGHT_FACTOR = 0.375F;
+        private const float MODERATELY_FACTOR = 0.55F;
+        private const float VERY_FACTOR = 0.725F;
+        private const float EXTREMELY_FACTOR = 0.9F;
         private const float THERMIC_EFFECT_OF_FOOD_FACTOR = 0.1F;
         private const float CHANGE_WEIGHT_FACTOR = 0.15F;
 
@@ -25,14 +21,8 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             float basalMetabolicRate = GetBasalMetabolicRate(user.Sex, user.Weight, user.Height, user.Age);
             float thermicEffectOfExercise;
-            if(user.Sex.Equals(Sex.Female))
-            {
-                thermicEffectOfExercise = GetThermicEffectOfExerciseForWomen(basalMetabolicRate, user.Activity);
-            }
-            else
-            {
-                thermicEffectOfExercise = GetThermicEffectOfExerciseForMen(basalMetabolicRate, user.Activity);
-            }
+            thermicEffectOfExercise = GetThermicEffectOfExercise(basalMetabolicRate, user.Activity);
+            
             float thermicEffectOfFood = GetThermicEffectOfFood(basalMetabolicRate, thermicEffectOfExercise);
             float totalDailyEnergyExpenditure = GetTotalDailyEnergyExpenditure(basalMetabolicRate,
                 thermicEffectOfExercise, thermicEffectOfFood);
@@ -61,6 +51,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             return (basalMetabolicRate + thermicEffectOfExercise) * THERMIC_EFFECT_OF_FOOD_FACTOR;
         }
+
         private static float GetBasalMetabolicRate(Sex sex, float weight, float height, float age)
         {
             double result;
@@ -75,7 +66,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             return Convert.ToSingle(result);
         }
 
-        private static float GetThermicEffectOfExerciseForMen(float basalMetabolicRate, ActivityLevel userActivity)
+        private static float GetThermicEffectOfExercise(float basalMetabolicRate, ActivityLevel userActivity)
         {
             switch (userActivity)
             {
@@ -83,45 +74,19 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                     basalMetabolicRate = basalMetabolicRate * SEDENTARY_FACTOR;
                     break;
                 case ActivityLevel.Lightly:
-                    basalMetabolicRate = basalMetabolicRate * LIGHT_FACTOR_MEN;
+                    basalMetabolicRate = basalMetabolicRate * LIGHT_FACTOR;
                     break;
                 case ActivityLevel.Moderately:
-                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_MEN;
+                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR;
                     break;
                 case ActivityLevel.Very:
-                    basalMetabolicRate = basalMetabolicRate * VERY_FACTOR_MEN;
+                    basalMetabolicRate = basalMetabolicRate * VERY_FACTOR;
                     break;
                 case ActivityLevel.Extremely:
-                    basalMetabolicRate = basalMetabolicRate * EXTREMELY_FACTOR_MEN;
+                    basalMetabolicRate = basalMetabolicRate * EXTREMELY_FACTOR;
                     break;
                 default:
-                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_MEN;
-                    break;
-            }
-            return basalMetabolicRate;
-        }
-
-        private static float GetThermicEffectOfExerciseForWomen(float basalMetabolicRate, ActivityLevel userActivity)
-        {
-            switch (userActivity)
-            {
-                case ActivityLevel.Sedentary:
-                    basalMetabolicRate = basalMetabolicRate * SEDENTARY_FACTOR;
-                    break;
-                case ActivityLevel.Lightly:
-                    basalMetabolicRate = basalMetabolicRate * LIGHT_FACTOR_WOMEN;
-                    break;
-                case ActivityLevel.Moderately:
-                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_WOMEN;
-                    break;
-                case ActivityLevel.Very:
-                    basalMetabolicRate = basalMetabolicRate * VERY_FACTOR_WOMEN;
-                    break;
-                case ActivityLevel.Extremely:
-                    basalMetabolicRate = basalMetabolicRate * EXTREMELY_FACTOR_WOMEN;
-                    break;
-                default:
-                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR_WOMEN;
+                    basalMetabolicRate = basalMetabolicRate * MODERATELY_FACTOR;
                     break;
             }
             return basalMetabolicRate;
