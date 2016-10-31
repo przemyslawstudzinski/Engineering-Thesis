@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    public enum ActivityLevel
+    public enum Measure
     {
-        Sedentary,
-        Lightly,
-        Moderately,
-        Very,
-        Extremely
+        Teaspoon,
+        Spoon,
+        Gram,
+        Glass
     }
 }

@@ -19,6 +19,8 @@ namespace ApplicationToSupportAndControlDiet.Views
     /// </summary>
     public sealed partial class AddMeal : Page
     {
+        private const int DEFAULT_QUANTITY = 100; 
+
         private ObservableCollection<Product> items;
         private ObservableCollection<DefinedProduct> choosenProducts;
 
@@ -27,7 +29,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string CONFIRMMESSAGE = "Adding meal successful.";
-        private Style RedBorderStyleTextbox;
+        private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
+        private Style RedBorderStyle;
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
@@ -58,7 +61,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
             this.ItemsList.ItemsSource = choosenProducts;
-            RedBorderStyleTextbox = Application.Current.Resources["TextBoxError"] as Style;
+            RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
@@ -80,6 +83,16 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             selectedProduct = args.SelectedItem as Product;
+            List<Measure> measures = new List<Measure>();
+            measures.Add(Models.Measure.Gram);
+            if (selectedProduct.WeightInTeaspoon != 0)
+            {
+                measures.Add(Models.Measure.Teaspoon);
+                measures.Add(Models.Measure.Spoon);
+                measures.Add(Models.Measure.Glass);
+            }
+            this.MeasureBox.ItemsSource = measures;
+            this.MeasureBox.SelectedItem = Models.Measure.Gram;
         }
 
         private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -91,12 +104,20 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
         {
-            int quantity;
-            Int32.TryParse(this.QuantityBox.Text, out quantity);
-            DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity);
+            float quantity = DEFAULT_QUANTITY;
+            if (ValidateAndCheckInRange(QuantityBox, 0, 1000))
+            {
+                quantity = Convert.ToSingle(this.QuantityBox.Text);
+            }         
+            Measure measure;
+            Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
+
+            DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
+
             choosenProducts.Add(definedProduct);
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
+            this.MeasureBox.ItemsSource = null;
             CalculateValuesFromAllChoosenProducts();
         }
 
@@ -233,7 +254,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                     IsFailMessageSet = true;
                     AppendToMessages(EMPTYMESSAGE);
                 }
-                textBox.Style = RedBorderStyleTextbox;
+                textBox.Style = RedBorderStyle;
                 return false;
             }
             else
@@ -335,6 +356,35 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void AppendToMessages(string message)
         {
             ValidationMessages.Text += (message + Environment.NewLine);
+        }
+
+        private Boolean ValidateAndCheckInRange(TextBox textBox, float min, float max)
+        {
+            if (textBox.Text.Length == 0)
+            {
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                    AppendToMessages(EMPTYMESSAGE);
+                }
+                textBox.Style = RedBorderStyle;
+                return false;
+            }
+            float value = float.Parse(textBox.Text);
+            if (value >= min && value <= max)
+            {
+                return true;
+            }
+            else
+            {
+                textBox.Style = RedBorderStyle;
+                AppendToMessages(String.Format(VALUESMESSAGE, textBox.Tag, min, max));
+                if (!IsFailMessageSet)
+                {
+                    IsFailMessageSet = true;
+                }
+                return false;
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
