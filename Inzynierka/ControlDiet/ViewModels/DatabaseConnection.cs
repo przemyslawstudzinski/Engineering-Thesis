@@ -61,6 +61,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             if (!TableExists("Products", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Product>();
+                Repository<Product> repo = new Repository<Product>();
+                int count = repo.CountAllLocal();
+                string query = "INSERT INTO SQLITE_SEQUENCE(name,seq) VALUES (\"Products\"," + count +")";
+                int modified = connectionToDatabase.Execute(query);
             }
             if (!TableExists("Users", connectionToDatabase))
             {

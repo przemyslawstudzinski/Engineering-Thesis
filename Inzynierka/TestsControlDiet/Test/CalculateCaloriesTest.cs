@@ -20,18 +20,18 @@ namespace TestsControlDiet
         {
             Product productOne = new Product();
             productOne.Name = "name One";
-            productOne.Energy = 2000;
+            productOne.Energy = 2500;
             DefinedProduct definiedProductOne = new DefinedProduct(productOne, 125, Measure.Gram);
 
             Product productTwo = new Product();
             productTwo.Name = "name Two";
-            productTwo.Energy = 1000;
+            productTwo.Energy = 1400;
             DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 50, Measure.Gram);
 
             Product productThree = new Product();
             productThree.Name = "name Three";
             productThree.Energy = 3000;
-            DefinedProduct definedProductThree = new DefinedProduct(productThree, 100, Measure.Gram);
+            DefinedProduct definedProductThree = new DefinedProduct(productThree, 80, Measure.Gram);
 
             mealOne = new Meal();
             mealOne.Name = "mealname 1";
@@ -47,7 +47,8 @@ namespace TestsControlDiet
         [TestMethod]
         public void CalculateCaloriesFromMeal()
         {
-            Assert.AreEqual(3000, mealOne.Energy);
+            Assert.AreEqual(3825, mealOne.Energy, "Calculated calories from two products in one meal should be equal to 3825");
+            Assert.AreEqual(2400, mealTwo.Energy, "Calculated calories from two products in one meal should be equal to 2400");
         }
 
         [TestMethod]
@@ -56,7 +57,7 @@ namespace TestsControlDiet
             Day day = new Day();
             day.MealsInDay.Add(mealOne);
             day.MealsInDay.Add(mealTwo);
-            Assert.AreEqual(6000, day.Energy);
+            Assert.AreEqual(6225, day.Energy, "Calculated calories from both meals in one day should be equal to 6000");
         }
     }
 }

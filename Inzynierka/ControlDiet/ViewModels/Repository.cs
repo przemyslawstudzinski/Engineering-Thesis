@@ -12,40 +12,62 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
     public class Repository<T> where T : class
     {
         private static SQLiteConnection connectionToDatabase { set; get; }
+        private static SQLiteConnection connectionToRoamingDatabase { set; get; }
 
         public Repository()
         {
             connectionToDatabase = DatabaseConnection.GetConnection();
+            connectionToRoamingDatabase = DatabaseConnection.GetRoamingConnection();
         }
 
         public int Save(T item)
         {
+            connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
             connectionToDatabase.InsertWithChildren(item, recursive: true);
             return 1;
         }
 
         public int SaveOneOrReplace(T item)
         {
+            connectionToRoamingDatabase.InsertOrReplace(item);
             return connectionToDatabase.InsertOrReplace(item);
         }
 
         public int Delete(T item)
         {
             connectionToDatabase.Delete(item, recursive: true);
+            connectionToRoamingDatabase.Delete(item, recursive: true);
             return 1;
         }
 
         public int Update(T item)
         {
+            connectionToRoamingDatabase.InsertOrReplaceWithChildren(item, recursive: true);
             connectionToDatabase.InsertOrReplaceWithChildren(item, recursive: true);
             return 1;
         }
 
-        public List<T> FindAll()
+        public List<T> FindAllLocal()
         {
             List<T> items = connectionToDatabase.GetAllWithChildren<T>().ToList();
             return items;
         }
+
+        public List<T> FindAllRoaming()
+        {
+            List<T> items = connectionToRoamingDatabase.GetAllWithChildren<T>().ToList();
+            return items;
+        }
+
+        public int CountAllLocal() {
+            return connectionToDatabase.Table<T>().Count();
+        }
+
+        public int CountAllRoaming()
+        {
+            return connectionToRoamingDatabase.Table<T>().Count();
+        }
+
 
         public Day FindDayByDate(DateTime dateTime)
         {
