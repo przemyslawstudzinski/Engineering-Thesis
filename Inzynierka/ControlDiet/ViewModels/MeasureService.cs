@@ -13,6 +13,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public void Calculate(DefinedProduct definedProduct, Product product)
         {
+            if (product == null || definedProduct == null) return;
             Measure measure = definedProduct.Measure;
             switch (measure)
             {
