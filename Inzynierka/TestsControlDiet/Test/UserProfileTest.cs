@@ -14,7 +14,7 @@ namespace TestsControlDiet
     {
 
         [TestMethod]
-        public void addTwoUserProfiles()
+        public void AddTwoUserProfiles()
         {
             Repository<User> userRepo = new Repository<User>();
             int firstAgeToSave = 60;
