@@ -6,12 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <RelativePanel>
                 <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                    <TextBlock x:Name="Title" Text="Complete your profile" FontSize="20" FontStretch="Expanded" Foreground="Black"  />
-                    <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel Orientation="Horizontal" Margin="0,30,0,15">
                         <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
                         <RadioButton Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0" IsChecked="True" Tag="Male"/>

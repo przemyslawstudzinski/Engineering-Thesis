@@ -24,7 +24,10 @@
                 <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center">
                 <Hyperlink NavigateUri="http://www.eti.pg.edu.pl">Contact</Hyperlink>
                 </TextBlock>
-                
+                <TextBlock></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Text="Source of database: ">
+                           <Hyperlink NavigateUri="http://www.usda.gov/wps/portal/usda/usdahome"> USDA </Hyperlink>
+                </TextBlock>
             </StackPanel>
         </RelativePanel>
     </Grid>

@@ -7,13 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <RelativePanel>
                 <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                    <TextBlock x:Name="Title" Text="Add your food product to database" FontSize="20" FontStretch="Expanded" Foreground="Black" Margin="0,0,0,20"  />
+                    <TextBlock x:Name="Title" Text="Add your food product to database: " FontSize="20" FontStretch="Expanded" Foreground="Black" FontWeight="Medium" Margin="0,0,0,20"  />
                     <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140"/>

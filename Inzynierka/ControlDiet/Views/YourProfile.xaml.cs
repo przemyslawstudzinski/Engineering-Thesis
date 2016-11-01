@@ -1,38 +1,20 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
 using ApplicationToSupportAndControlDiet.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class YourProfile : Page
     {
-
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
         private const string CONFIRMMESSAGE = "Adding user info successful. Daily calories requisition set: {0}";
         private Style RedBorderStyle;
         private Style DefaultStyle;
-
-
+    
         private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -81,7 +63,6 @@ namespace ApplicationToSupportAndControlDiet
                         string value = (string)button.Tag;
                         return (T)Convert.ChangeType(value, typeof(T));
                     }
-
                     return (T)button.Tag;
                 }
             }
@@ -113,8 +94,6 @@ namespace ApplicationToSupportAndControlDiet
                 GoalBox.SelectedValue = user.Goal.ToString();
                 CaloriesBox.Text = user.TotalDailyEnergyExpenditure.ToString();
             }
-
-
         }
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
@@ -148,7 +127,7 @@ namespace ApplicationToSupportAndControlDiet
             Enum.TryParse(goalValue, out userGoalChoice);
             User user = new User(1,sexChoice, ageValue, heightValue, weightValue, userGoalChoice, activityChoice);
             string caloriesValue = SelectedRadioValue<string>("Automatic", Automatic, Manual);
-            int totalDailyEnergyExpenditure=0;
+            int totalDailyEnergyExpenditure = 0;
             if (caloriesValue.Equals("Automatic"))
             {
                 if (IsFailMessageSet == true) return;
@@ -224,7 +203,6 @@ namespace ApplicationToSupportAndControlDiet
 
         private void ClearTextBoxesAndSetConfirmMessage(int dailyCaloriesExpenditure)
         {
-            //ClearText();
             ClearStyles();
             AddConfirm.Text = String.Format(CONFIRMMESSAGE,dailyCaloriesExpenditure);
         }
@@ -235,7 +213,6 @@ namespace ApplicationToSupportAndControlDiet
             ClearStyles();
             IsFailMessageSet = false;
         }
-
 
         private void ClearStyles()
         {
