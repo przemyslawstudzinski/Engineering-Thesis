@@ -10,6 +10,54 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="650" >
+                <PivotItem Header="Meals" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="In this section you can see meals on selected date and make some operations."/>
+                        <TextBlock Text="How to do this?" FontWeight="Bold" />
+                        <TextBlock>
+                            You should only choose date. Application shows you every meals added to this day. 
+                        </TextBlock>
+                        <TextBlock Text="What does the button?" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <SymbolIcon Symbol="SetTile"  Foreground="Black"/>
+                            <TextBlock Margin="10,0,0,0"> You can save your meal as a product and use them later</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <SymbolIcon Symbol="Send"  Foreground="Black"/>
+                            <TextBlock Margin="10,0,0,0"> You can create new meal with product from choosen meal </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <SymbolIcon Symbol="Download"  Foreground="Black"/>
+                            <TextBlock Margin="10,0,0,0"> You can download meal details as a CSV file and e.g. print them </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <SymbolIcon Symbol="Edit"  Foreground="Black"/>
+                            <TextBlock Margin="10,0,0,0"> You can edit meal e.g. add some new products, change quantity</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <SymbolIcon Symbol="Delete"  Foreground="Black"/>
+                            <TextBlock Margin="10,0,0,0"> You can delete meal</TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="Why I see red information on the page top?" FontWeight="Bold" />
+                        <TextBlock>
+                            You should complete information about your profile
+                        </TextBlock>
+
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Statistics" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="In this section you can see some statistics about your day."/>
+                        <TextBlock Text="How to do this?" FontWeight="Bold" />
+                        <TextBlock>
+                                You should only choose date. Application shows you statistics.
+                        </TextBlock>
+                        <TextBlock Text="Why the page is empty?" FontWeight="Bold" />
+                        <TextBlock>
+                                Propably you should add meal to this day. When you make this you can see the changes.
+                        </TextBlock>
+                    </StackPanel>
+                </PivotItem>
                 <PivotItem Header="Add meal" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="In this section you can Add Meal to day"/>
