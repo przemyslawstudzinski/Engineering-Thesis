@@ -27,6 +27,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         public int ProductId { set; get; }
 
         private Product product;
+
         [OneToOne]
         public Product Product {
             set
@@ -45,40 +46,22 @@ namespace ApplicationToSupportAndControlDiet.Models
         public List<Meal> Meals { set; get; }
 
         [Ignore]
-        public double Energy {
-            get; set;
-        }
-
+        public double Energy { get; set; }
 
         [Ignore]
-        public double Protein
-        {
-            get; set;
-        }
+        public double Protein { get; set; }
 
         [Ignore]
-        public double Fat
-        {
-            get; set;
-        }
+        public double Fat { get; set; }
 
         [Ignore]
-        public double Carbohydrate
-        {
-            get; set;
-        }
+        public double Carbohydrate { get; set; }
 
         [Ignore]
-        public double Fiber
-        {
-            get; set;
-        }
+        public double Fiber { get; set; }
 
         [Ignore]
-        public double Sugar
-        {
-            get; set;
-        }
+        public double Sugar { get; set; }
 
         public DefinedProduct()
         { 
