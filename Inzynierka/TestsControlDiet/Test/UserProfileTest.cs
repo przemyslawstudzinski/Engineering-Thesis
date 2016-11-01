@@ -22,14 +22,14 @@ namespace TestsControlDiet
             User userFromDb = userRepo.FindUser();
             userCountStart = userRepo.CountAllLocal();
             Assert.AreEqual(1, userCountStart, "There should be only one user in database");
-            Assert.AreEqual(firstAgeToSave, userFromDb.Age, "User Age should be equal to "+firstAgeToSave);
+            Assert.AreEqual(firstAgeToSave, userFromDb.Age, "User Age should be equal to " + firstAgeToSave);
             User secondUser = new User();
             secondUser.Age = secondAgeToSave;
             userRepo.SaveOneOrReplace(secondUser);
             userFromDb = userRepo.FindUser();
             userCountAfter = userRepo.CountAllLocal();
             Assert.AreEqual(1, userCountAfter, "There should be only one user in database");
-            Assert.AreEqual(secondAgeToSave, userFromDb.Age, "User Age should be equal to "+secondAgeToSave);
+            Assert.AreEqual(secondAgeToSave, userFromDb.Age, "User Age should be equal to " + secondAgeToSave);
         }
     }
 }

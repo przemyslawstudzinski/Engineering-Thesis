@@ -26,7 +26,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
-        Meal newMeal;      
+        private Meal newMeal;      
 
         private Repository<Product> productRepository = new Repository<Product>();
 

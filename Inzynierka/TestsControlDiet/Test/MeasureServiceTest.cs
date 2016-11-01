@@ -11,7 +11,7 @@ namespace TestsControlDiet.Test
     [TestClass]
     public class MeasureServiceTest
     {
-        public const double GRAM_OF_PRODUCT_IN_DB = 100;
+        private const double GRAM_OF_PRODUCT_IN_DB = 100;
 
         private Product product;
 

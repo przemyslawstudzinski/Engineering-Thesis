@@ -12,7 +12,7 @@ namespace TestsControlDiet
     [TestClass]
     public class SaveDayWithMealsAndProductsTest
     {
-        Day dayAfterSave;
+        private Day dayAfterSave;
 
         [TestInitialize]
         public void SetUp()

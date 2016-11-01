@@ -10,13 +10,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {
-        enum Parameters
+        private enum Parameters
         {
             Normal, Inverted
         }
 
-        public Visibility OnTrue { get; set; }
-        public Visibility OnFalse { get; set; }
+        private Visibility OnTrue { get; set; }
+        private Visibility OnFalse { get; set; }
 
         public BooleanToVisibilityConverter()
         {
