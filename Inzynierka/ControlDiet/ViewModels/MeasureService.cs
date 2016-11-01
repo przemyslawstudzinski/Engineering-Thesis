@@ -5,9 +5,9 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class MeasureService
     {
-        public const float GRAM_OF_PRODUCT_IN_DB = 100;
-        public const float TEASPOON_IN_SPOON = 3;
-        public const float TEASPOON_IN_GLASS = 16 * TEASPOON_IN_SPOON;
+        public const double GRAM_OF_PRODUCT_IN_DB = 100;
+        public const double TEASPOON_IN_SPOON = 3;
+        public const double TEASPOON_IN_GLASS = 16 * TEASPOON_IN_SPOON;
 
         public MeasureService() { }
 

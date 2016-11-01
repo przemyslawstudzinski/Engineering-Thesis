@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
-        <converters:FloatToStringConverter x:Key="FloatToString"/>
+        <converters:DoubleToStringConverter x:Key="FloatToString"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

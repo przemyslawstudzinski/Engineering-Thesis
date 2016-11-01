@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <converters:FloatToStringConverter x:Key="FloatToString"/>
+        <converters:DoubleToStringConverter x:Key="FloatToString"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

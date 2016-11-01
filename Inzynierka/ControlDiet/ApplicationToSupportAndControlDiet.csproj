@@ -117,7 +117,7 @@
     <Compile Include="ViewModels\Converters\DateTimeOffsetToDateTimeConverter.cs" />
     <Compile Include="ViewModels\CsvExport.cs" />
     <Compile Include="ViewModels\DatabaseConnection.cs" />
-    <Compile Include="ViewModels\Converters\FloatToStringConverter.cs" />
+    <Compile Include="ViewModels\Converters\DoubleToStringConverter.cs" />
     <Compile Include="ViewModels\Globals.cs" />
     <Compile Include="ViewModels\MeasureService.cs" />
     <Compile Include="ViewModels\Repository.cs" />

@@ -22,22 +22,22 @@ namespace ApplicationToSupportAndControlDiet.Models
         public string Name { set; get; }
 
         [Column("energy")]
-        public float Energy { set; get; }
+        public double Energy { set; get; }
 
         [Column("protein")]
-        public float Protein { set; get; }
+        public double Protein { set; get; }
 
         [Column("fat")]
-        public float Fat { set; get; }
+        public double Fat { set; get; }
 
         [Column("carbohydrate")]
-        public float Carbohydrate { set; get; }
+        public double Carbohydrate { set; get; }
 
         [Column("fiber")]
-        public float Fiber { set; get; }
+        public double Fiber { set; get; }
 
         [Column("sugar")]
-        public float Sugar { set; get; }
+        public double Sugar { set; get; }
 
         [Column("category")]
         public ProductCategory Category { set; get; }

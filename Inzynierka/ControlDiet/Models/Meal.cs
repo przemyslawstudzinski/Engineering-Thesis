@@ -39,9 +39,9 @@ namespace ApplicationToSupportAndControlDiet.Models
         [ManyToMany(typeof(DefinedProductMeal), CascadeOperations = CascadeOperation.All)]
         public List<DefinedProduct> ProductsInMeal { set; get; }
 
-        private float energy;
+        private double energy;
 
-        public float Energy
+        public double Energy
         {
             get
             {
@@ -54,9 +54,9 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        private float protein;
+        private double protein;
 
-        public float Protein
+        public double Protein
         {
             get
             {
@@ -69,9 +69,9 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        private float carbohydrate;
+        private double carbohydrate;
 
-        public float Carbohydrate
+        public double Carbohydrate
         {
             get
             {
@@ -84,9 +84,9 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        private float fat;
+        private double fat;
 
-        public float Fat
+        public double Fat
         {
             get
             {
@@ -99,9 +99,9 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        private float sugar;
+        private double sugar;
 
-        public float Sugar
+        public double Sugar
         {
             get
             {
@@ -114,9 +114,9 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        private float fiber;
+        private double fiber;
 
-        public float Fiber
+        public double Fiber
         {
             get
             {

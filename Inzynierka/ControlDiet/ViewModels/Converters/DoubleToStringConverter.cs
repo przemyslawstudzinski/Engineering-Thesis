@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Data;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
-    class FloatToStringConverter : IValueConverter
+    class DoubleToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -16,7 +16,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 return 0;
             }
-            float number = (float)value;
+            double number = (double)value;
             return number.ToString("N1");
         }
 
@@ -27,7 +27,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                 return 0F;
             }
             String number = value as String;
-            return float.Parse(number, CultureInfo.InvariantCulture.NumberFormat);
+            return double.Parse(number, CultureInfo.InvariantCulture.NumberFormat);
         }
     }
 }

@@ -45,37 +45,37 @@ namespace ApplicationToSupportAndControlDiet.Models
         public List<Meal> Meals { set; get; }
 
         [Ignore]
-        public float Energy {
+        public double Energy {
             get; set;
         }
 
 
         [Ignore]
-        public float Protein
+        public double Protein
         {
             get; set;
         }
 
         [Ignore]
-        public float Fat
+        public double Fat
         {
             get; set;
         }
 
         [Ignore]
-        public float Carbohydrate
+        public double Carbohydrate
         {
             get; set;
         }
 
         [Ignore]
-        public float Fiber
+        public double Fiber
         {
             get; set;
         }
 
         [Ignore]
-        public float Sugar
+        public double Sugar
         {
             get; set;
         }

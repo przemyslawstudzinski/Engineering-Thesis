@@ -44,7 +44,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             else
             {
-                float dayValue = day.Energy;
+                double dayValue = day.Energy;
                 InitializeProgressBar(user, maxValue, dayValue);
             }
             InitializeTable(day);
@@ -95,12 +95,12 @@ namespace ApplicationToSupportAndControlDiet.Views
             return day;
         }
 
-        private void InitializeProgressBar(User user, float maxValue, float dayValue)
+        private void InitializeProgressBar(User user, double maxValue, double dayValue)
         {
             EnergyBar.Maximum = maxValue;
             EnergyBar.Value = dayValue;
             EnergyText.Text = dayValue.ToString("N0") + "/" + maxValue.ToString("N0");
-            float difference = maxValue - dayValue;
+            double difference = maxValue - dayValue;
 
             if (difference > 100)
             {
@@ -148,7 +148,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private class Microelements
         {
             public string Name { get; set; }
-            public float Amount { get; set; }
+            public double Amount { get; set; }
         }
     }
 }
