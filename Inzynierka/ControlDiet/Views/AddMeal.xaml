@@ -55,21 +55,12 @@
                     </StackPanel>
 
                     <ListView Name="ItemsList" d:LayoutOverrides="TopPosition, BottomPosition" Margin="0, 20, 0, 0" MaxHeight="400"
-                              SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled"
-                            RightTapped="ListView_RightTapped">
+                              SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollMode="Enabled">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             </Style>
                         </ListView.ItemContainerStyle>
-                        <!--<ListView.Resources>
-                        <MenuFlyout x:Name="allContactsMenuFlyout">
-                            <MenuFlyout.Items>
-                                <MenuFlyoutItem x:Name="Edit"  Text="Edit"/>
-                                <MenuFlyoutItem x:Name="Remove" Text="Remove"  />
-                            </MenuFlyout.Items>
-                        </MenuFlyout>
-                    </ListView.Resources>-->
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:DefinedProduct">
                                 <Grid  Padding="5" Margin="0">

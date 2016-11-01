@@ -74,9 +74,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
-            totalValues = "  kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") +
-                "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") + "  sugar =  " + 
-                abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
+            totalValues = "  kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
+                + "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") 
+                + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
             this.TotalRunText.Text = totalValues;
         }
 
@@ -106,7 +106,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             ClearTextBoxesStylesAndMessages();
             float quantity = DEFAULT_QUANTITY;
-            if (ValidateAndCheckInRange(QuantityBox, 0, 1000))
+            if (ValidateAndCheckInRange(QuantityBox, 0, 1000) && this.MeasureBox.SelectedItem != null)
             {
                 quantity = Convert.ToSingle(this.QuantityBox.Text);
                 Measure measure;
@@ -175,13 +175,6 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             this.ItemsList.ItemsSource = null;
             this.ItemsList.ItemsSource = choosenProducts;
-        }
-
-        private void ListView_RightTapped(object sender, RightTappedRoutedEventArgs e)
-        {
-            //ListView listView = (ListView)sender;
-            //allContactsMenuFlyout.ShowAt(listView, e.GetPosition(listView));
-            //var a = ((FrameworkElement)e.OriginalSource).DataContext;
         }
 
         private Meal FindMeal()
