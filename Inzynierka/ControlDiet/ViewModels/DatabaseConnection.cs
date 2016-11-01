@@ -113,7 +113,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public static void initializeDatabase(SQLiteConnection connectionToDatabase) {
             string insertproducts = System.IO.File.ReadAllText(Path.Combine(
-Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
+            Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
             connectionToDatabase.Execute(insertproducts);
         }
 

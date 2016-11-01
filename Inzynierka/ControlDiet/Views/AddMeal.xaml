@@ -20,14 +20,12 @@
             <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <StackPanel x:Name="MainStackPanel" Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
                         RelativePanel.AlignVerticalCenterWithPanel="True" >
-                    <!--<TextBlock x:Name="ValidationMessages" Foreground="Red" />-->
                     <StackPanel x:Name="Header">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                             <TextBox x:Name="NameBox" Width="300" Header="Name" Margin="0,0,5,0"/>
                             <CalendarDatePicker x:Name="DataPicker" Margin="0,0,5,0" Header="Day"  
                                             DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
                             <TimePicker x:Name = "TimePicker" Header = "Time"  />
-                            <TextBlock x:Name = "Control1Output" FontSize = "24"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
@@ -43,14 +41,14 @@
                             </AutoSuggestBox>
                             <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
                             <ComboBox x:Name="MeasureBox" Header="Measure" Margin="10, 0, 20, 0" SelectedValuePath="Tag"/>
-                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" Background="Black" Click="AddDefinedProduct_Click" VerticalAlignment="Bottom">
+                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" ToolTipService.ToolTip="Add product" Background="Black" Click="AddDefinedProduct_Click" VerticalAlignment="Bottom">
                                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
                                     <SymbolIcon Symbol="Add" Foreground="White" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,15,0,5">
-                            <TextBlock x:Name="FoodProducts" Text="Food products:" FontStretch="Expanded" Foreground="Black" />
+                            <TextBlock x:Name="FoodProducts" Text="Food products: " TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -94,35 +92,30 @@
                                              Text="{x:Bind Measure}" IsReadOnly="True"/>
                                     <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
+                                    <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
                                         <SymbolIcon Symbol="Favorite" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
+                                    <Button ToolTipService.ToolTip="Remove from favorites" Visibility="{Binding Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
                                         <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
+                                    <Button ToolTipService.ToolTip="DisLike" Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
                                         <SymbolIcon Symbol="Dislike" Foreground="Black" />
                                     </Button>
-                                    <Button Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
+                                    <Button ToolTipService.ToolTip="Like" Visibility="{Binding DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
                                         Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
                                         <SymbolIcon Symbol="Like" Foreground="Black" />
                                     </Button>
-                                    <Button Grid.Column="7" Grid.Row="1" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                                    <Button Grid.Column="7" Grid.Row="1" ToolTipService.ToolTip="Delete" VerticalContentAlignment="Center" VerticalAlignment="Center" 
                                             HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" 
                                             Background="Black" Click="DeleteProduct_Click">
                                         <SymbolIcon Symbol="Delete" Foreground="White" />
-                                        <Button.Flyout>
-                                            <Flyout>
-                                                <TextBlock Text="Deleted product from meal!"/>
-                                            </Flyout>
-                                        </Button.Flyout>
                                     </Button>
                                 </Grid>
                             </DataTemplate>
@@ -135,7 +128,7 @@
 
                         <TextBlock x:Name="TotalText" TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"
                                    RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
-                            <LineBreak/>Total in meal: 
+                            <LineBreak/>
                             <Run  x:Name="TotalRunText" />
                             <LineBreak/>
                         </TextBlock>

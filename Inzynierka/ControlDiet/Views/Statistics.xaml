@@ -14,59 +14,64 @@
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <RelativePanel HorizontalAlignment="Center" >
                 <RelativePanel x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="White">
-                    <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True"  Date="{x:Bind Path=Date, Mode=TwoWay}" DateChanged="DataPicker2_DateChanged"/>
+                    <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" 
+                                        BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}" DateChanged="DataPicker2_DateChanged"/>
                 </RelativePanel>
-                <Button x:Name="PreviousDay" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black" Click="PreviousDay_Click">
+                <Button x:Name="PreviousDay" ToolTipService.ToolTip="Previous day" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black" Click="PreviousDay_Click">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Previous" Foreground="White" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="NextDay" Tag="NextDay" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black" Click="NextDay_Click">
+                <Button x:Name="NextDay" Tag="NextDay" ToolTipService.ToolTip="Next day" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black" Click="NextDay_Click">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Next" Foreground="White" />
                     </StackPanel>
                 </Button>
                 <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
                 <TextBlock Name="WarningCal" RelativePanel.Below="Border" Text="" FontSize="20" Foreground="Red" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                <StackPanel x:Name="chart" Orientation="Vertical" RelativePanel.Below="WarningCal" Width="600">
-                    <TextBlock Margin="25,0,0,0" Text="Day energy(kcal):"/>
-                    <Grid>
-                        <ProgressBar x:Name="EnergyBar" Height="25" Width="550" Minimum="0" HorizontalAlignment="Center" />
-                        <TextBlock x:Name="EnergyText" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <StackPanel x:Name="chart" Orientation="Vertical" RelativePanel.Below="WarningCal" Padding="20">
+                    <StackPanel Padding="20">
+                        <TextBlock Margin="25,0,0,0" Text="Daily intake of calories." HorizontalAlignment="Left"/>
+                        <Grid>
+                            <ProgressBar x:Name="EnergyBar" Height="20" Width="550" Minimum="0" HorizontalAlignment="Center" />
+                            <TextBlock x:Name="EnergyText" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>                 
+                    <TextBlock Name="NutritionsTableTitle"  Text="Daily intake of macronutrients in grams." 
+                               RelativePanel.AlignHorizontalCenterWithPanel="True" HorizontalAlignment="Center"/>
+                    <Grid  x:Name="Nutritions" Padding="5" Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="TextBox">
+                                <Setter Property="FontWeight" Value="Medium"/>
+                            </Style>
+                        </Grid.Resources>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" FontWeight="Bold" TextWrapping="Wrap" 
+                                            MaxLines="2" HorizontalAlignment="Left" />
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="ProteinRow" Header="Protein" IsReadOnly="True"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="CarbohydronateRow" Header="Carbohydrate" IsReadOnly="True"/>
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="FatRow" Header="Fat" IsReadOnly="True"/>
+                        <TextBox Grid.Column="3" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="FiberRow" Header="Fiber" IsReadOnly="True"/>
+                        <TextBox Grid.Column="4" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="SugarRow" Header="Sugar" IsReadOnly="True"/>
                     </Grid>
-                    <Charting:Chart x:Name="PieChart" Height="300" Width="550" Title="Daily intake of macronutrients"  HorizontalAlignment="Center">
+
+                    <Charting:Chart x:Name="PieChart" Height="300" Width="550" Title="Daily intake of macronutrients as percent of all calories."  HorizontalAlignment="Center">
                         <Charting:PieSeries Margin="0" IndependentValuePath="Name" DependentValuePath="Amount" IsSelectionEnabled="False"/>
                     </Charting:Chart>
-                    
-                   
-                        <Grid  x:Name="Nutritions" Padding="5" Margin="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="5,0" />
-                                </Style>
-                            </Grid.Resources>
-                            <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300"  FontWeight="Bold" TextWrapping="Wrap" 
-                                            MaxLines="2" HorizontalAlignment="Left" />
-                            <TextBox Grid.Column="0" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="ProteinRow" Header="Protein" IsReadOnly="True"/>
-                            <TextBox Grid.Column="1" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="CarbohydronateRow" Header="Carb" IsReadOnly="True"/>
-                            <TextBox Grid.Column="2" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="FatRow" Header="Fat" IsReadOnly="True"/>
-                            <TextBox Grid.Column="3" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="FiberRow" Header="Fiber" IsReadOnly="True"/>
-                            <TextBox Grid.Column="4" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="SugarRow" Header="Sugar" IsReadOnly="True"/>
-                        </Grid>
-                  
+
                 </StackPanel>
-               
             </RelativePanel>
         </ScrollViewer>
     </Grid>

@@ -7,23 +7,14 @@ using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 using Windows.UI;
 using ApplicationToSupportAndControlDiet.ViewModels;
 using Windows.UI.Xaml;
-using System.Collections.ObjectModel;
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    /// private ObservableCollection<Day> dayStatistics;
-    public class Microelements
-    {
-        public string Name { get; set; }
-        public float Amount { get; set; }
-    }
-
     public sealed partial class Statistics : Page
     {
+        private const int CALORIES_OF_PROTEIN_IN_GRAM = 4;
+        private const int CALORIES_OF_CARBOHYDRATE_IN_GRAM = 4;
+        private const int CALORIES_OF_FAT_IN_GRAM = 9;
 
         public Nullable<DateTimeOffset> Date
         {
@@ -35,20 +26,57 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 Globals.Date = value;
             }
-
         }
         
         public Statistics()
         {
             this.InitializeComponent();
-            Repository<Day> repo = new Repository<Day>();
-            DateTime dateTime = DateTimeOffsetToDateTimeConverter.ConvertDateTimeOffsetToDateTime(Globals.Date.Value); 
-            Day day = repo.FindDayByDate(dateTime);
-
-            Repository<User> repo2 = new Repository<User>();
-            User user = repo2.FindUser();
+            Day day = FindDay();
+            User user;
             float maxValue;
-            if (user ==null)
+            FindUser(out user, out maxValue);
+
+            if (day == null)
+            {
+                EnergyBar.Value = 0;
+                EnergyText.Text = "0 /" + maxValue.ToString("N0");
+                return;
+            }
+            else
+            {
+                float dayValue = day.Energy;
+                InitializeProgressBar(user, maxValue, dayValue);
+            }
+            InitializeTable(day);
+            InitializePieChart(day);
+        }
+
+        private void InitializeTable(Day day)
+        {
+            ProteinRow.Text = day.Protein.ToString("N1");
+            FatRow.Text = day.Fat.ToString("N1");
+            CarbohydronateRow.Text = day.Carbohydrate.ToString("N1");
+            FiberRow.Text = day.Fiber.ToString("N1");
+            SugarRow.Text = day.Sugar.ToString("N1");
+        }
+
+        private void InitializePieChart(Day day)
+        {
+            List<Microelements> financialStuffList = new List<Microelements>();
+            financialStuffList.Add(new Microelements() { Name = "Protein",
+                Amount = day.Protein *  CALORIES_OF_PROTEIN_IN_GRAM});
+            financialStuffList.Add(new Microelements() { Name = "Fat",
+                Amount = day.Fat * CALORIES_OF_FAT_IN_GRAM });
+            financialStuffList.Add(new Microelements() { Name = "Carbohydronate",
+                Amount = day.Carbohydrate * CALORIES_OF_CARBOHYDRATE_IN_GRAM });
+            (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
+        }
+
+        private void FindUser(out User user, out float maxValue)
+        {
+            Repository<User> repo2 = new Repository<User>();
+            user = repo2.FindUser();
+            if (user == null)
             {
                 maxValue = 0;
                 WarningCal.Text = "Complete information about your profile";
@@ -57,39 +85,27 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 maxValue = user.TotalDailyEnergyExpenditure;
             }
+        }
 
-            if (day == null) {
-                EnergyBar.Value = 0;
-                EnergyText.Text = "0 /" + Convert.ToString(maxValue);
-                return;
-            }
-            //User user = new User();
-            //PIECHART
-            float dayValue = day.Energy;
-            List<Microelements> financialStuffList = new List<Microelements>();
-            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein * 4 });    
-            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydrate", Amount = day.Carbohydrate * 4 });
-            (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
+        private static Day FindDay()
+        {
+            Repository<Day> repo = new Repository<Day>();
+            DateTime dateTime = DateTimeOffsetToDateTimeConverter.ConvertDateTimeOffsetToDateTime(Globals.Date.Value);
+            Day day = repo.FindDayByDate(dateTime);
+            return day;
+        }
 
-            //Table nutritions
-
-            ProteinRow.Text= day.Protein.ToString();
-            FatRow.Text = day.Fat.ToString();
-            CarbohydronateRow.Text = day.Carbohydrate.ToString();
-            FiberRow.Text = day.Fiber.ToString();
-            SugarRow.Text = day.Sugar.ToString();
-            //PROGRESSBAR
-
+        private void InitializeProgressBar(User user, float maxValue, float dayValue)
+        {
             EnergyBar.Maximum = maxValue;
             EnergyBar.Value = dayValue;
-            EnergyText.Text = Convert.ToString(dayValue) + "/" + Convert.ToString(maxValue);
+            EnergyText.Text = dayValue.ToString("N0") + "/" + maxValue.ToString("N0");
             float difference = maxValue - dayValue;
 
             if (difference > 100)
             {
                 EnergyBar.Foreground = new SolidColorBrush(Colors.Yellow);
-                 WarningCal.Text = "";
+                WarningCal.Text = "";
             }
             else if (difference <= 100 && difference >= 0)
             {
@@ -107,8 +123,6 @@ namespace ApplicationToSupportAndControlDiet.Views
                 {
                     WarningCal.Text = "You eat too many calories";
                 }
-                
-               
             }
         }
 
@@ -129,6 +143,12 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (!sender.Date.Equals(Globals.Date)) { 
             Globals.MainPage.NavigateTo(this);
             }
+        }
+
+        private class Microelements
+        {
+            public string Name { get; set; }
+            public float Amount { get; set; }
         }
     }
 }

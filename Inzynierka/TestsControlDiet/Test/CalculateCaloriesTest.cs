@@ -43,7 +43,6 @@ namespace TestsControlDiet
             mealTwo.ProductsInMeal.Add(definedProductThree);
         }
 
-
         [TestMethod]
         public void CalculateCaloriesFromMeal()
         {

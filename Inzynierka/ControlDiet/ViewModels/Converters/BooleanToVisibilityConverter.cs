@@ -40,12 +40,18 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             if (value is Visibility == false)
+            {
                 return DependencyProperty.UnsetValue;
+            }
 
             if ((Visibility)value == OnTrue)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }

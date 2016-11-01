@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using ApplicationToSupportAndControlDiet.Models;
 using ApplicationToSupportAndControlDiet.ViewModels;
@@ -12,9 +8,8 @@ namespace TestsControlDiet
     [TestClass]
     public class UserProfileTest
     {
-
         [TestMethod]
-        public void addTwoUserProfiles()
+        public void AddTwoUserProfiles()
         {
             Repository<User> userRepo = new Repository<User>();
             int firstAgeToSave = 60;
@@ -37,5 +32,4 @@ namespace TestsControlDiet
             Assert.AreEqual(secondAgeToSave, userFromDb.Age, "User Age should be equal to "+secondAgeToSave);
         }
     }
-    
 }

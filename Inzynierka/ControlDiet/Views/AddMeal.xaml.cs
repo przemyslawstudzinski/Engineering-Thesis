@@ -1,22 +1,14 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
 using ApplicationToSupportAndControlDiet.ViewModels;
-using SQLite.Net;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ApplicationToSupportAndControlDiet.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class AddMeal : Page
     {
         private const int DEFAULT_QUANTITY = 100; 
@@ -34,8 +26,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
-        Meal newMeal;
-        String totalValues;
+        Meal newMeal;      
 
         private Repository<Product> productRepository = new Repository<Product>();
 
@@ -48,8 +39,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             set
             {
                 Globals.Date = value;
-            }
-                
+            }             
         }
 
         public AddMeal()
@@ -65,7 +55,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
             DefaultStyle = null;
-            this.TotalRunText.Text = "0";
         }
 
         private void CalculateValuesFromAllChoosenProducts()
@@ -74,7 +63,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.ProductsInMeal.Clear();
             List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
             abstractFutureMeal.ProductsInMeal = nowProductList;
-            totalValues = "  kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
+            String totalValues = "Total in meal: kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
                 + "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") 
                 + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
             this.TotalRunText.Text = totalValues;
