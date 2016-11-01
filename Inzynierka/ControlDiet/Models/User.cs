@@ -47,6 +47,5 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Goal = goal;
             this.Activity = activity;
         }
-
     }
 }

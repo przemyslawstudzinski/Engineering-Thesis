@@ -12,6 +12,9 @@ namespace ApplicationToSupportAndControlDiet.Views
 {
     public sealed partial class Statistics : Page
     {
+        private const int CALORIES_OF_PROTEIN_IN_GRAM = 4;
+        private const int CALORIES_OF_CARBOHYDRATE_IN_GRAM = 4;
+        private const int CALORIES_OF_FAT_IN_GRAM = 9;
 
         public Nullable<DateTimeOffset> Date
         {
@@ -60,9 +63,12 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void InitializePieChart(Day day)
         {
             List<Microelements> financialStuffList = new List<Microelements>();
-            financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein * 4 });
-            financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });
+            financialStuffList.Add(new Microelements() { Name = "Protein",
+                Amount = day.Protein *  CALORIES_OF_PROTEIN_IN_GRAM});
+            financialStuffList.Add(new Microelements() { Name = "Fat",
+                Amount = day.Fat * CALORIES_OF_FAT_IN_GRAM });
+            financialStuffList.Add(new Microelements() { Name = "Carbohydronate",
+                Amount = day.Carbohydrate * CALORIES_OF_CARBOHYDRATE_IN_GRAM });
             (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
         }
 

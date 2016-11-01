@@ -92,7 +92,6 @@
                 </StackPanel>
             </SplitView.Pane>
 
-
             <Grid x:Name="Content"  Background="White"  Margin="0,0,0,0">
                 <RelativePanel Background="Black">
                     <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="White"  RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,10,0,0"/>
