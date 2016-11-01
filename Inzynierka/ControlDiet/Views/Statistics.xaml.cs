@@ -52,7 +52,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             ProteinRow.Text = day.Protein.ToString("N1");
             FatRow.Text = day.Fat.ToString("N1");
-            CarbohydronateRow.Text = day.Fat.ToString("N1");
+            CarbohydronateRow.Text = day.Carbohydrate.ToString("N1");
             FiberRow.Text = day.Fiber.ToString("N1");
             SugarRow.Text = day.Sugar.ToString("N1");
         }
