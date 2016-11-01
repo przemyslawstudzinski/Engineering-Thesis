@@ -5,17 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Class="ApplicationToSupportAndControlDiet.Views.Help"
-    mc:Ignorable="d"
-    >
+    mc:Ignorable="d">
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
-            <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="650" >
+            <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="600" >
                 <PivotItem Header="Meals" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="In this section you can see meals on selected date and make some operations."/>
                         <TextBlock Text="How to do this?" FontWeight="Bold" />
                         <TextBlock>
-                            You should only choose date. Application shows you every meals added to this day. 
+                            You should only choose date. Application shows you every meals added to this day.
                         </TextBlock>
                         <TextBlock Text="What does the button?" FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
@@ -24,11 +24,11 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                             <SymbolIcon Symbol="Send"  Foreground="Black"/>
-                            <TextBlock Margin="10,0,0,0"> You can create new meal with product from choosen meal </TextBlock>
+                            <TextBlock Margin="10,0,0,0"> You can create new meal with product from choosen meal</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                             <SymbolIcon Symbol="Download"  Foreground="Black"/>
-                            <TextBlock Margin="10,0,0,0"> You can download meal details as a CSV file and e.g. print them </TextBlock>
+                            <TextBlock Margin="10,0,0,0"> You can download meal details as a CSV file and e.g. print them</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                             <SymbolIcon Symbol="Edit"  Foreground="Black"/>
@@ -42,7 +42,41 @@
                         <TextBlock>
                             You should complete information about your profile
                         </TextBlock>
-
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Add meal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="In this section you can Add Meal to day"/>
+                        <TextBlock Text="How to do this?" FontWeight="Bold" />
+                        <TextBlock>
+                        Go to -->  Add Meal<LineBreak/>Enter meal name<LineBreak/>Select date and time of meal
+                        <LineBreak/>Search product and enter quantity<LineBreak/>Click Plus button to add product to meal<LineBreak/>
+                            You can repeat last 2 steps many times
+                        <LineBreak/>When you select all product click Save button
+                        </TextBlock>
+                        <TextBlock Text="Product not found?"  FontWeight="Bold" />
+                        <TextBlock > You can use Add product section</TextBlock>
+                        <TextBlock Text="Can I remove some product from meal?"  FontWeight="Bold" />
+                        <TextBlock>Yes, You can remove product by pressing bin button next to the product</TextBlock>
+                        <TextBlock Text="Can I change product quantity?"  FontWeight="Bold" />
+                        <TextBlock>Yes, You can change quantity.
+                    <LineBreak/> You should only enter new value next to the product list</TextBlock>
+                        <TextBlock Text="Can I leave some box empty?" FontWeight="Bold" />
+                        <TextBlock > No, You have to fill all fields</TextBlock>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Save Product" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="In this section you can Add New Product to database"/>
+                        <TextBlock Text="How to do this?"  FontWeight="Bold" />
+                        <TextBlock>
+                        Go to -->  Add New Product<LineBreak/>Enter product name<LineBreak/>Enter all informations about the product
+                            <LineBreak/>Click Save button<LineBreak/>If everything is ok, You will see information about that
+                        </TextBlock>
+                        <TextBlock Text="Where I find information about product?"  FontWeight="Bold" />
+                        <TextBlock>Product informations are usually located on the packaging</TextBlock>
+                        <TextBlock Text="Can I leave some box empty?"  FontWeight="Bold" />
+                        <TextBlock> No, You have to fill all fields</TextBlock>
                     </StackPanel>
                 </PivotItem>
                 <PivotItem Header="Statistics" HorizontalAlignment="Center">
@@ -58,40 +92,7 @@
                         </TextBlock>
                     </StackPanel>
                 </PivotItem>
-                <PivotItem Header="Add meal" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="In this section you can Add Meal to day"/>
-                        <TextBlock Text="How to do this?" FontWeight="Bold" />
-                        <TextBlock>
-                        Go to -->  Add Meal<LineBreak/>Enter meal name<LineBreak/>Select date and time of meal
-                        <LineBreak/>Search product and enter quantity<LineBreak/>Click Plus button to add product to meal<LineBreak/>You can repeat last 2 steps many times
-                        <LineBreak/>When you select all product click Save button
-                        </TextBlock>
-                        <TextBlock Text="Product not found?"  FontWeight="Bold" />
-                        <TextBlock > You can use Add product section</TextBlock>
-                        <TextBlock Text="Can I remove some product from meal?"  FontWeight="Bold" />
-                        <TextBlock>Yes, You can remove product by pressing bin button next to the product</TextBlock>
-                        <TextBlock Text="Can I change product quantity?"  FontWeight="Bold" />
-                        <TextBlock>Yes, You can change quantity.
-                    <LineBreak/> You should only enter new value next to the product list</TextBlock>
-                        <TextBlock Text="Can I leave some box empty?" FontWeight="Bold" />
-                        <TextBlock > No, You have to fill all fields</TextBlock>
-                    </StackPanel>
-                </PivotItem>
-                <PivotItem Header="Add new product" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="In this section you can Add New Product to database"/>
-                        <TextBlock Text="How to do this?"  FontWeight="Bold" />
-                        <TextBlock>
-                        Go to -->  Add New Product<LineBreak/>Enter product name<LineBreak/>Enter all informations about the product<LineBreak/>Click Save button<LineBreak/>If everything is ok, You will see information about that
-                        </TextBlock>
-                        <TextBlock Text="Where I find information about product?"  FontWeight="Bold" />
-                        <TextBlock>Product informations are usually located on the packaging</TextBlock>
-                        <TextBlock Text="Can I leave some box empty?"  FontWeight="Bold" />
-                        <TextBlock> No, You have to fill all fields</TextBlock>
-                    </StackPanel>
-                </PivotItem>
-                <PivotItem Header="Your profile" HorizontalAlignment="Center">
+                <PivotItem Header="Your Profile" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="In this section you can save your personal data and calculate daily calorie requirement"/>
                         <TextBlock Text="How to do this?" FontWeight="Bold" />
@@ -112,7 +113,7 @@
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Moderately Active"/>
                         <TextBlock>
                         Most persons in light industry, electrical,carpentry and building trades,<LineBreak/>many farmworkers, soldiers not in active service, commercial fishermen,<LineBreak/>
-housewives/househusbands without mechanical appliances
+                        housewives/househusbands without mechanical appliances
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique"  Text="Very Active"/>
                         <TextBlock>

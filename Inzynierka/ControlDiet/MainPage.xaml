@@ -53,7 +53,7 @@
                             <TextBlock Text="Meals"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
-                    <Button Tag="AddMeal"  Click="AddMealPaneItem_Click" >
+                    <Button Tag="AddMeal" Click="AddMealPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Add" Foreground="White" />
                             <TextBlock Text="Add Meal"  Margin="30,0,0,0" Foreground="White" />
@@ -62,7 +62,7 @@
                     <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="SaveLocal" Foreground="White" />
-                            <TextBlock Text="Save New Product"  Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Save Product"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
