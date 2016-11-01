@@ -9,7 +9,6 @@ namespace ApplicationToSupportAndControlDiet.Views
 {
     public sealed partial class AddNewProduct : Page
     {
-
         private Boolean IsFailMessageSet;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string CONFIRMMESSAGE = "Adding product successful.";
