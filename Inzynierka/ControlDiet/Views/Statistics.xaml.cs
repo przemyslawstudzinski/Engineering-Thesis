@@ -69,14 +69,14 @@ namespace ApplicationToSupportAndControlDiet.Views
             List<Microelements> financialStuffList = new List<Microelements>();
             financialStuffList.Add(new Microelements() { Name = "Protein", Amount = day.Protein * 4 });    
             financialStuffList.Add(new Microelements() { Name = "Fat", Amount = day.Fat * 9 });
-            financialStuffList.Add(new Microelements() { Name = "Carbohydronate", Amount = day.Carbohydrate * 4 });
+            financialStuffList.Add(new Microelements() { Name = "Carbohydrate", Amount = day.Carbohydrate * 4 });
             (PieChart.Series[0] as PieSeries).ItemsSource = financialStuffList;
 
             //Table nutritions
 
             ProteinRow.Text= day.Protein.ToString();
             FatRow.Text = day.Fat.ToString();
-            CarbohydronateRow.Text = day.Fat.ToString();
+            CarbohydronateRow.Text = day.Carbohydrate.ToString();
             FiberRow.Text = day.Fiber.ToString();
             SugarRow.Text = day.Sugar.ToString();
             //PROGRESSBAR

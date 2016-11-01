@@ -38,7 +38,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             sb.AppendLine();
             foreach (DefinedProduct product in meal.ProductsInMeal)
             {
-                sb.Append(EditValue(product.Name));
+                sb.Append(EditValue(product.Product.Name));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
                 sb.AppendLine();
             }           

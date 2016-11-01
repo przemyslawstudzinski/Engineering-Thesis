@@ -47,6 +47,8 @@ namespace TestsControlDiet
         [TestMethod]
         public void CalculateCaloriesFromMeal()
         {
+            Assert.AreEqual(3125, mealOne.ProductsInMeal[0].Energy);
+            Assert.AreEqual(700, mealOne.ProductsInMeal[1].Energy);
             Assert.AreEqual(3825, mealOne.Energy, "Calculated calories from two products in one meal should be equal to 3825");
             Assert.AreEqual(2400, mealTwo.Energy, "Calculated calories from two products in one meal should be equal to 2400");
         }

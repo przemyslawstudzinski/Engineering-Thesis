@@ -75,6 +75,15 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                 .Where(item => item.Date.Date == dateTime.Date).ToList();
             if (list.Count != 0)
             {
+                Repository<Product> repo = new Repository<Product>();
+                foreach (Meal meal in list[0].MealsInDay)
+                {
+                    foreach (DefinedProduct element in meal.ProductsInMeal) {
+
+                        element.Product = repo.FindById(element.ProductId);
+                    }
+                }
+                
                 return list[0];
             }
             return null;
@@ -86,6 +95,14 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                 .Where(x => x.Id == day.Id).ToList();
             if (list.Count != 0)
             {
+                Repository<Product> repo = new Repository<Product>();
+                foreach (Meal meal in list[0].MealsInDay)
+                {
+                    foreach (DefinedProduct element in meal.ProductsInMeal)
+                    {
+                        element.Product = repo.FindById(element.ProductId);
+                    }
+                }
                 return list[0];
             }
             return null;
@@ -94,6 +111,11 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public User FindUser() {
             User user = connectionToDatabase.Table<User>().FirstOrDefault();
             return user;
+        }
+
+        public T FindById(int id) {
+           T returnedObject = connectionToDatabase.Find<T>(id);
+           return returnedObject;
         }
     }
 }

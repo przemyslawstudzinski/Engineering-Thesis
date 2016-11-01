@@ -136,9 +136,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
-            if (selectedProduct.DisLike == true) return;
+            if (selectedProduct.Product.DisLike == true) return;
             selectedProduct.Product.Favourite = true;
-            selectedProduct.Favourite = true;
             RefreshListView();
             productRepository.Update(selectedProduct.Product);
             
@@ -149,7 +148,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
             selectedProduct.Product.Favourite = false;
-            selectedProduct.Favourite = false;
             productRepository.Update(selectedProduct.Product);
             RefreshListView();           
         }
@@ -158,9 +156,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
-            if (selectedProduct.Favourite == true) return;
+            if (selectedProduct.Product.Favourite == true) return;
             selectedProduct.Product.DisLike = true;
-            selectedProduct.DisLike = true;
             productRepository.Update(selectedProduct.Product);
             RefreshListView();
         }
@@ -170,7 +167,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as DefinedProduct;
             selectedProduct.Product.DisLike = false;
-            selectedProduct.DisLike = false;
             productRepository.Update(selectedProduct.Product);
             RefreshListView();
         }
