@@ -4,12 +4,14 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ApplicationToSupportAndControlDiet.Models;
 using ApplicationToSupportAndControlDiet.ViewModels;
+using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.Views
 {
     public sealed partial class AddNewProduct : Page
     {
         private Boolean IsFailMessageSet;
+        private Boolean IsSuccessMessageSet = false;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string CONFIRMMESSAGE = "Adding product successful.";
         private Style RedBorderStyle;
@@ -24,6 +26,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
             Int32 selectionStart = textBox.SelectionStart;
             Int32 selectionLength = textBox.SelectionLength;
@@ -40,6 +43,11 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             textBox.Text = newText;
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ClearConfirmValidationAndStyles();
         }
 
         private void SaveProduct_Click(object sender, RoutedEventArgs e)
@@ -114,10 +122,13 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text = String.Empty;
         }
 
-        private void ClearTextBoxesAndSetConfirmMessage() {
+        private async void ClearTextBoxesAndSetConfirmMessage() {
             ClearText();
             ClearStyles();
+            IsSuccessMessageSet = true;
             AddConfirm.Text = CONFIRMMESSAGE;
+            await Task.Delay(2000);
+            IsSuccessMessageSet = false;
         }
 
         private void ClearTextBoxesAndStyles()
@@ -158,6 +169,16 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
+        }
+
+        private void ClearConfirmValidationAndStyles()
+        {
+            if (!IsSuccessMessageSet)
+            {
+                AddConfirm.Text = String.Empty;
+            }
+            ValidationMessages.Text = String.Empty;
+            ClearStyles();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

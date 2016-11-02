@@ -3,6 +3,8 @@ using ApplicationToSupportAndControlDiet.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -19,6 +21,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private ProductProvider productProvider;
         private Product selectedProduct;
         private Boolean IsFailMessageSet;
+        private Boolean IsSuccessMessageSet = false;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string CONFIRMMESSAGE = "Adding meal successful.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
@@ -26,7 +29,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
-        private Meal newMeal;      
+        private Meal newMeal;
 
         private Repository<Product> productRepository = new Repository<Product>();
 
@@ -86,6 +89,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
+            ClearConfirmValidationAndStyles();
             items.Clear();
             List<Product> result = productProvider.GetProductsLike(sender.Text);
             result.ForEach(x => items.Add(x));
@@ -271,6 +275,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
             Int32 selectionStart = textBox.SelectionStart;
             Int32 selectionLength = textBox.SelectionLength;
@@ -297,12 +302,15 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text = String.Empty;
         }
 
-        private void ClearTextBoxesAndSetConfirmMessage()
+        private async void ClearTextBoxesAndSetConfirmMessage()
         {
             ClearText();
             ClearList();
             ClearStyles();
+            IsSuccessMessageSet = true;
             AddConfirm.Text = CONFIRMMESSAGE;
+            await Task.Delay(2000);
+            IsSuccessMessageSet = false;
         }
 
         private void ClearTextBoxesAndStyles()
@@ -318,6 +326,15 @@ namespace ApplicationToSupportAndControlDiet.Views
             NameBox.Style = DefaultStyle;
             QuantityBox.Style = DefaultStyle;
             SuggestProductsBox.Style = DefaultStyle;
+        }
+
+        private void ClearConfirmValidationAndStyles() {
+            if (!IsSuccessMessageSet)
+            {
+                AddConfirm.Text = String.Empty;
+            }
+            ValidationMessages.Text = String.Empty;
+            ClearStyles();
         }
 
         private void ClearText()
@@ -400,6 +417,11 @@ namespace ApplicationToSupportAndControlDiet.Views
                 }
                 CalculateValuesFromAllChoosenProducts();
             }
+        }
+
+        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ClearConfirmValidationAndStyles();
         }
     }
 }

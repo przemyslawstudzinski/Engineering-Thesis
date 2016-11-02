@@ -9,6 +9,7 @@ namespace ApplicationToSupportAndControlDiet
     public sealed partial class YourProfile : Page
     {
         private Boolean IsFailMessageSet;
+        private Boolean IsSuccessMessageSet = false;
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
         private const string CONFIRMMESSAGE = "Adding user info successful. Daily calories requisition set: {0}";
@@ -17,6 +18,7 @@ namespace ApplicationToSupportAndControlDiet
     
         private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
             Int32 selectionStart = textBox.SelectionStart;
             Int32 selectionLength = textBox.SelectionLength;
@@ -37,6 +39,7 @@ namespace ApplicationToSupportAndControlDiet
 
         private void TextBoxInteger_TextChanged(object sender, TextChangedEventArgs e)
         {
+            ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
             Int32 selectionStart = textBox.SelectionStart;
             Int32 selectionLength = textBox.SelectionLength;
@@ -204,7 +207,11 @@ namespace ApplicationToSupportAndControlDiet
         private void ClearTextBoxesAndSetConfirmMessage(int dailyCaloriesExpenditure)
         {
             ClearStyles();
-            AddConfirm.Text = String.Format(CONFIRMMESSAGE,dailyCaloriesExpenditure);
+            if (!IsSuccessMessageSet)
+            {
+                AddConfirm.Text = String.Format(CONFIRMMESSAGE, dailyCaloriesExpenditure);
+            }
+           
         }
 
         private void ClearTextBoxesAndStyles()
@@ -247,6 +254,16 @@ namespace ApplicationToSupportAndControlDiet
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
+        }
+
+        private void ClearConfirmValidationAndStyles()
+        {
+            if (!IsSuccessMessageSet)
+            {
+                AddConfirm.Text = String.Empty;
+            }
+            ValidationMessages.Text = String.Empty;
+            ClearStyles();
         }
     }
 }

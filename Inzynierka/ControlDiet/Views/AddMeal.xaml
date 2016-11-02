@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
-        <converters:DoubleToStringConverter x:Key="FloatToString"/>
+        <converters:DoubleToStringConverter x:Key="DoubleToString"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -22,9 +22,9 @@
                         RelativePanel.AlignVerticalCenterWithPanel="True" >
                     <StackPanel x:Name="Header">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <TextBox x:Name="NameBox" Width="300" Header="Name" Margin="0,0,5,0"/>
+                            <TextBox x:Name="NameBox" Width="300" Header="Name" Margin="0,0,5,0" TextChanged="NameBox_TextChanged"/>
                             <CalendarDatePicker x:Name="DataPicker" Margin="0,0,5,0" Header="Day"  
-                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
+                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}" />
                             <TimePicker x:Name = "TimePicker" Header = "Time"  />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -82,12 +82,12 @@
                                     </Grid.Resources>
                                     <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Product.Name}" FontWeight="Bold" TextWrapping="Wrap" 
                                             MaxLines="2" HorizontalAlignment="Left" />
-                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource FloatToString}}"  MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
-                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource DoubleToString}}"  MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
+                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
                                     <TextBox Name="MeasureTextBox" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0" TextAlignment="Center" Header=" "
                                              Text="{x:Bind Measure}" IsReadOnly="True"/>
                                     <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
@@ -126,20 +126,20 @@
                         <TextBlock Name="AddConfirm" FontSize="20" Foreground="Green"/>
                     </StackPanel>
 
-                        <TextBlock x:Name="TotalText" TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"
+                    <TextBlock x:Name="TotalText" TextWrapping="WrapWholeWords" Foreground="Black" FontStyle="Normal" FontWeight="Black"
                                    RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="ItemsList">
                             <LineBreak/>
                             <Run  x:Name="TotalRunText" />
                             <LineBreak/>
-                        </TextBlock>
+                    </TextBlock>
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
-                            <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="Accept" Foreground="White" />
-                                    <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
-                                </StackPanel>
-                            </Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
+                        <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Accept" Foreground="White" />
+                                <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
+                            </StackPanel>
+                        </Button>
                         <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMeal_Click">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Cancel" Foreground="White" />

@@ -14,7 +14,7 @@
                     <TextBlock x:Name="Title" Text="Add your food product to database: " FontSize="20" FontStretch="Expanded" Foreground="Black" FontWeight="Medium" Margin="0,0,0,20" />
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140"/>
-                        <TextBox Name="NameBox" Width="370"/>
+                        <TextBox Name="NameBox" Width="370" TextChanged="NameBox_TextChanged"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
