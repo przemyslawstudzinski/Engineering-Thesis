@@ -30,6 +30,17 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             SQLiteConnection connectionToRoamingDatabase = new SQLiteConnection(
                 new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), roamingDatabaseFilePath);
             CreateTablesRoaming(connectionToRoamingDatabase);
+
+            connectionToDatabase.Execute("ATTACH ? as dba", roamingDatabaseFilePath);
+            connectionToDatabase.Execute("BEGIN");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Products select * from dba.Products");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Days select * from dba.Days");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Meals select * from dba.Meals");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Defined_products select * from dba.Defined_products");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO DefinedProduct_meal select * from dba.DefinedProduct_meal");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Users select * from dba.Users");
+            connectionToDatabase.Execute("COMMIT");
+            connectionToDatabase.Execute("DETACH dba");
         }
 
         public static SQLiteConnection GetConnection() {
