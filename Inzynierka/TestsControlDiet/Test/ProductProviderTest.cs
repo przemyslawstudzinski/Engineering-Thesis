@@ -23,7 +23,7 @@ namespace TestsControlDiet
         {
             var productProvider = new ProductProvider();
             List<Product> allProducts = productProvider.GetAllProducts();
-            Assert.AreEqual(allProducts.Count, 941, "There should be 941 products in database");
+            Assert.AreEqual(allProducts.Count, 934, "There should be 934 products in database");
         }
 
         [TestMethod]
