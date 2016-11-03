@@ -75,5 +75,11 @@ namespace ApplicationToSupportAndControlDiet.Models
 
             Meals = new List<Meal>();
         }
+
+        public void Update(Measure measure)
+        {
+            MeasureService measureService = new MeasureService();
+            measureService.Calculate(this, product, measure);
+        }
     }
 }

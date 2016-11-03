@@ -73,17 +73,22 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            selectedProduct = args.SelectedItem as Product;
+            selectedProduct = args.SelectedItem as Product;         
+            this.MeasureBox.ItemsSource = InitializeMeasureComboBox(selectedProduct);
+            this.MeasureBox.SelectedItem = Models.Measure.Gram;
+        }
+
+        private List<Measure> InitializeMeasureComboBox(Product product)
+        {
             List<Measure> measures = new List<Measure>();
             measures.Add(Models.Measure.Gram);
-            if (selectedProduct.WeightInTeaspoon != 0)
+            if (product.WeightInTeaspoon != 0)
             {
                 measures.Add(Models.Measure.Teaspoon);
                 measures.Add(Models.Measure.Spoon);
                 measures.Add(Models.Measure.Glass);
             }
-            this.MeasureBox.ItemsSource = measures;
-            this.MeasureBox.SelectedItem = Models.Measure.Gram;
+            return measures;
         }
 
         private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -421,6 +426,35 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
+        }
+
+        private void MeasureComboBoxInList_Loaded(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var product = baseObject.DataContext as DefinedProduct;          
+            ComboBox comboBoxInList = baseObject as ComboBox;
+            comboBoxInList.ItemsSource = InitializeMeasureComboBox(product.Product);
+            comboBoxInList.SelectedItem = product.Measure;
+        }
+
+        private void MeasureComboBoxInList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var product = baseObject.DataContext as DefinedProduct;
+            ComboBox comboBoxInList = baseObject as ComboBox;
+            Measure measure;
+            if (comboBoxInList.SelectedItem != null)
+            {
+                Enum.TryParse<Measure>(comboBoxInList.SelectedItem.ToString(), out measure);
+                if (measure != product.Measure)
+                {
+                    product.Update(measure);
+                    product.Measure = measure;
+                    //comboBoxInList.SelectedItem = measure;
+                    CalculateValuesFromAllChoosenProducts();
+                    RefreshListView();
+                }
+            }
         }
     }
 }

@@ -10,15 +10,22 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public MeasureService() { }
 
-        public void Calculate(DefinedProduct definedProduct, Product product)
+        public void Calculate(DefinedProduct definedProduct, Product product, Measure? otherMeasure = null)
         {
             if (product == null || definedProduct == null)
             {
                 return;
             }
-
-            Measure measure = definedProduct.Measure;
-
+            Measure measure;
+            if (otherMeasure != null)
+            {
+                measure = (Measure) otherMeasure;
+            }
+            else
+            {
+                measure = definedProduct.Measure;
+            }
+           
             switch (measure)
             {
                 case Measure.Teaspoon:

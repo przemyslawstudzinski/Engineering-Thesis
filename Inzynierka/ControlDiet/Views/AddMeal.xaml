@@ -88,8 +88,7 @@
                                     <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
                                     <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
                                     <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
-                                    <TextBox Name="MeasureTextBox" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0" TextAlignment="Center" Header=" "
-                                             Text="{x:Bind Measure}" IsReadOnly="True"/>
+                                    <ComboBox x:Name="MeasureComboBoxInList" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0"  Header=" " Loaded="MeasureComboBoxInList_Loaded" SelectionChanged="MeasureComboBoxInList_SelectionChanged" />
                                     <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False"/>
                                     <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
