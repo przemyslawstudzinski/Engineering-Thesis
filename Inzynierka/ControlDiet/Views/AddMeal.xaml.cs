@@ -448,13 +448,31 @@ namespace ApplicationToSupportAndControlDiet.Views
                 Enum.TryParse<Measure>(comboBoxInList.SelectedItem.ToString(), out measure);
                 if (measure != product.Measure)
                 {
-                    product.Update(measure);
                     product.Measure = measure;
-                    //comboBoxInList.SelectedItem = measure;
+                    product.Update();     
                     CalculateValuesFromAllChoosenProducts();
                     RefreshListView();
                 }
             }
         }
+
+        private void QuantityTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var baseObject = sender as FrameworkElement;
+            var product = baseObject.DataContext as DefinedProduct;
+            TextBox quantityTextBoxInList = baseObject as TextBox;
+            if (ValidateAndCheckInRange(quantityTextBoxInList, 0, 1000))
+            {
+                float quantity = Convert.ToSingle(quantityTextBoxInList.Text);
+                if (quantity != product.Quantity)
+                {
+                    product.Quantity = quantity;
+                    product.Update();
+                    CalculateValuesFromAllChoosenProducts();
+                    RefreshListView();
+                }
+            }
+        }
+
     }
 }
