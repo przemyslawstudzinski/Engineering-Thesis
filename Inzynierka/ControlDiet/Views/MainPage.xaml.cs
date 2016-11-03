@@ -1,9 +1,8 @@
-﻿using ApplicationToSupportAndControlDiet.Views;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ApplicationToSupportAndControlDiet.ViewModels;
 
-namespace ApplicationToSupportAndControlDiet
+namespace ApplicationToSupportAndControlDiet.Views
 {
     public sealed partial class MainPage : Page
     {     

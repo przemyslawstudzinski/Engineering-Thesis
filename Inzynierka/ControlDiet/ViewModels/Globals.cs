@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationToSupportAndControlDiet.Views;
+using System;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
