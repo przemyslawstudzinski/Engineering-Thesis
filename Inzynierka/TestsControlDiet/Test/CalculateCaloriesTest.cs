@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ApplicationToSupportAndControlDiet.Models;
-using ApplicationToSupportAndControlDiet.ViewModels;
+﻿using ApplicationToSupportAndControlDiet.Models;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace TestsControlDiet

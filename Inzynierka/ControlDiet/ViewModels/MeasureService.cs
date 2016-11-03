@@ -1,5 +1,4 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
-using System;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
@@ -13,8 +12,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public void Calculate(DefinedProduct definedProduct, Product product)
         {
-            if (product == null || definedProduct == null) return;
+            if (product == null || definedProduct == null)
+            {
+                return;
+            }
+
             Measure measure = definedProduct.Measure;
+
             switch (measure)
             {
                 case Measure.Teaspoon:
@@ -25,6 +29,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                     definedProduct.Fiber = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Sugar = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
+
                 case Measure.Spoon:
                     definedProduct.Energy = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Protein = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
@@ -33,6 +38,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                     definedProduct.Fiber = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Sugar = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
+
                 case Measure.Gram:
                     definedProduct.Energy = definedProduct.Quantity * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Protein = definedProduct.Quantity * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
@@ -41,6 +47,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
                     definedProduct.Fiber = definedProduct.Quantity * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Sugar = definedProduct.Quantity * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
+
                 case Measure.Glass:
                     definedProduct.Energy = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
                     definedProduct.Protein = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);

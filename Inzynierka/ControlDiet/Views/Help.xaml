@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Class="ApplicationToSupportAndControlDiet.Views.Help"
     mc:Ignorable="d">
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="600" >
@@ -97,22 +97,28 @@
                         <TextBlock Text="In this section you can save your personal data and calculate daily calorie requirement"/>
                         <TextBlock Text="How to do this?" FontWeight="Bold" />
                         <TextBlock>
-                        Go to -->  Your Profile<LineBreak/>Choose your sex<LineBreak/>Enter stadard information abou you<LineBreak/>Select correct value from Activity and Goal box
+                        Go to -->  Your Profile<LineBreak/>Choose your sex<LineBreak/>Enter stadard information abou you
+                            <LineBreak/>Select correct value from Activity and Goal box
                         </TextBlock>
                         <TextBlock>
-                        Select way to calculate daily calorie requirment<LineBreak/>If you choose Manual Way, You must insert value in text box on the right side<LineBreak/>Click Save button to insert this informations in database
+                        Select way to calculate daily calorie requirment<LineBreak/>
+                            If you choose Manual Way, You must insert value in text box on the right side
+                            <LineBreak/>Click Save button to insert this informations in database
                         </TextBlock>
                         <TextBlock Text="What kind of activity  shoul I select?" FontWeight="Bold" />
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Sedentary"/>
                         <TextBlock>Somebody under the care of someone else</TextBlock>
                         <TextBlock FontWeight="Bold" Text="Lightly Active"/>
                         <TextBlock>
-                        Most students, office workers, and professionals,lawyers, doctors, shop workers,<LineBreak/>teachers, drivers, lab workers, playing a
-                        musical instrument, <LineBreak/>housewives/househusbands with mechanical appliances, unemployed persons
+                        Most students, office workers, and professionals,lawyers, doctors, shop workers,
+                            <LineBreak/>teachers, drivers, lab workers, playing a
+                        musical instrument, 
+                            <LineBreak/>housewives/househusbands with mechanical appliances, unemployed persons
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Moderately Active"/>
                         <TextBlock>
-                        Most persons in light industry, electrical,carpentry and building trades,<LineBreak/>many farmworkers, soldiers not in active service, commercial fishermen,<LineBreak/>
+                        Most persons in light industry, electrical,carpentry and building trades,
+                            <LineBreak/>many farmworkers, soldiers not in active service, commercial fishermen,<LineBreak/>
                         housewives/househusbands without mechanical appliances
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique"  Text="Very Active"/>

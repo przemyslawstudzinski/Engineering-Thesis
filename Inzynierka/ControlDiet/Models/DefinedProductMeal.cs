@@ -1,14 +1,9 @@
 ﻿using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("DefinedProduct_Meal")]
+    [Table("Defined_product_meals")]
     public class DefinedProductMeal
     {
         [PrimaryKey]

@@ -2,7 +2,6 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ApplicationToSupportAndControlDiet.ViewModels;
-using ApplicationToSupportAndControlDiet.Models;
 
 namespace ApplicationToSupportAndControlDiet
 {

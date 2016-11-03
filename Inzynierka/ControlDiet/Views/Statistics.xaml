@@ -38,7 +38,7 @@
                             <ProgressBar x:Name="EnergyBar" Height="20" Width="550" Minimum="0" HorizontalAlignment="Center" />
                             <TextBlock x:Name="EnergyText" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
-                    </StackPanel>                 
+                    </StackPanel>
                     <TextBlock Name="NutritionsTableTitle"  Text="Daily intake of macronutrients in grams." 
                                RelativePanel.AlignHorizontalCenterWithPanel="True" HorizontalAlignment="Center"/>
                     <Grid  x:Name="Nutritions" Padding="5" Margin="0">

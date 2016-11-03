@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Windows.UI;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 
 namespace ApplicationToSupportAndControlDiet.Views
@@ -9,8 +6,7 @@ namespace ApplicationToSupportAndControlDiet.Views
     public sealed partial class Help : Page
     {
         public Help()
-        {
-          
+        {        
             this.InitializeComponent();
         }
 

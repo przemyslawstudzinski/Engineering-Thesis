@@ -1,20 +1,14 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Storage;
 using SQLite.Net;
-using SQLiteNetExtensions.Extensions;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class DatabaseConnection
     {
-        private const string NAME_OF_DATABASE_FILE = "db.sqlite";
-        private const string NAME_OF_DATABASE_ROAMING_FILE = "roamingDB.sqlite";
+        private const string NAME_OF_DATABASE_FILE = "localDb.sqlite";
+        private const string NAME_OF_DATABASE_ROAMING_FILE = "roamingDb.sqlite";
         private const string NAME_OF_DIRECTORY = "Resources";
 
         public static void CreateSqliteDatabases()
@@ -37,7 +31,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             connectionToDatabase.Execute("INSERT OR REPLACE INTO Days select * from dba.Days");
             connectionToDatabase.Execute("INSERT OR REPLACE INTO Meals select * from dba.Meals");
             connectionToDatabase.Execute("INSERT OR REPLACE INTO Defined_products select * from dba.Defined_products");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO DefinedProduct_meal select * from dba.DefinedProduct_meal");
+            connectionToDatabase.Execute("INSERT OR REPLACE INTO Defined_product_meals select * from dba.Defined_product_meals");
             connectionToDatabase.Execute("INSERT OR REPLACE INTO Users select * from dba.Users");
             connectionToDatabase.Execute("COMMIT");
             connectionToDatabase.Execute("DETACH dba");
@@ -81,11 +75,11 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 connectionToDatabase.CreateTable<User>();
             }
-            if (!TableExists("DefinedProduct", connectionToDatabase))
+            if (!TableExists("Defined_products", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<DefinedProduct>();
             }
-            if (!TableExists("DefinedProductMeal", connectionToDatabase))
+            if (!TableExists("Defined_product_meals", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<DefinedProductMeal>();
             }
@@ -111,11 +105,11 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 connectionToDatabase.CreateTable<User>();
             }
-            if (!TableExists("DefinedProduct", connectionToDatabase))
+            if (!TableExists("Defined_products", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<DefinedProduct>();
             }
-            if (!TableExists("DefinedProductMeal", connectionToDatabase))
+            if (!TableExists("Defined_product_meals", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<DefinedProductMeal>();
             }
