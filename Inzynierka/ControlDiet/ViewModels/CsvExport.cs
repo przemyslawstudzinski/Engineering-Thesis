@@ -40,6 +40,10 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 sb.Append(EditValue(product.Product.Name));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
+                sb.Append(product.Quantity.ToString("N1"));
+                sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
+                sb.Append(product.Measure.ToString());
+                sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
                 sb.AppendLine();
             }           
             return sb.ToString();
