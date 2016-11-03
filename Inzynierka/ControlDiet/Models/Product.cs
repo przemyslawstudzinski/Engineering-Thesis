@@ -15,9 +15,6 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("id")]
         public int Id { set; get; }
 
-        [Column("code")]
-        public string Code { get; set; }
-
         [Column("name")]
         public string Name { set; get; }
 
@@ -39,9 +36,6 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("sugar")]
         public double Sugar { set; get; }
 
-        [Column("category")]
-        public ProductCategory Category { set; get; }
-
         [Column("favourite")]
         public bool Favourite { set; get; }
 
@@ -54,7 +48,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         public Product() { }
 
         public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue,
-            float fatValue, float fiberValue, float sugarValue, ProductCategory categoryValue)
+            float fatValue, float fiberValue, float sugarValue)
         {
             this.Name = name;
             this.Energy = kcalValue;
@@ -63,7 +57,6 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Fat = fatValue;
             this.Fiber = fiberValue;
             this.Sugar = sugarValue;
-            this.Category = categoryValue;
             this.Favourite = false;
             this.DisLike = false;
             this.WeightInTeaspoon = 0;

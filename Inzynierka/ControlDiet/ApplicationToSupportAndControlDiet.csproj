@@ -108,7 +108,6 @@
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Enums\Measure.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Enums\ProductCategory.cs" />
     <Compile Include="Models\Enums\Sex.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Enums\UserGoal.cs" />

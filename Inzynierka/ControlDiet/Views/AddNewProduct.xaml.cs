@@ -89,8 +89,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                 float.TryParse(SugarBox.Text, out sugarvalue);
             }
             if (IsFailMessageSet) return;
-            Product product = new Product(userName, kcalValue, proteinValue, carbohydrateValue, fatValue,
-                fiberValue, sugarvalue, ProductCategory.UserProducts);
+            Product product = new Product(userName, kcalValue, proteinValue, carbohydrateValue, fatValue, fiberValue, sugarvalue);
             Repository<Product> productCreator = new Repository<Product>();
             if (productCreator.Save(product) > -1) {
                 ClearTextBoxesAndSetConfirmMessage();
