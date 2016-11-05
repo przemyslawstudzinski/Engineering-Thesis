@@ -79,17 +79,36 @@
                                         <Style TargetType="TextBlock">
                                             <Setter Property="Margin" Value="5,0" />
                                         </Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="HeaderTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding}" FontWeight="Thin" FontStretch="Condensed" FontStyle="Italic"></TextBlock>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                        <Style TargetType="ComboBox">
+                                            <Setter Property="HeaderTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding}" FontWeight="Thin" FontStretch="Condensed" FontStyle="Italic"></TextBlock>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
                                     </Grid.Resources>
                                     <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Product.Name}" FontWeight="Bold" TextWrapping="Wrap" 
                                             MaxLines="2" HorizontalAlignment="Left" />
                                     <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource DoubleToString}}"  MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
                                     <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Carb" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Carbohydrate" IsReadOnly="True"/>
                                     <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
                                     <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
                                     <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource DoubleToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
-                                    <ComboBox x:Name="MeasureComboBoxInList" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0"  Header=" " Loaded="MeasureComboBoxInList_Loaded" SelectionChanged="MeasureComboBoxInList_SelectionChanged" />
-                                    <TextBox Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
+                                    <ComboBox x:Name="MeasureComboBoxInList" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0"  Header="Measure" FontWeight="Bold" 
+                                              Loaded="MeasureComboBoxInList_Loaded" SelectionChanged="MeasureComboBoxInList_SelectionChanged" />
+                                    <TextBox x:Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
                                              Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False" LostFocus="QuantityTextBox_LostFocus" />
                                     <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
