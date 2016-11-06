@@ -120,7 +120,8 @@
     <Compile Include="ViewModels\Globals.cs" />
     <Compile Include="ViewModels\MeasureService.cs" />
     <Compile Include="ViewModels\Repository.cs" />
-    <Compile Include="ViewModels\ProductProvider.cs" />
+    <Compile Include="ViewModels\ProductService.cs" />
+    <Compile Include="ViewModels\RoamingService.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

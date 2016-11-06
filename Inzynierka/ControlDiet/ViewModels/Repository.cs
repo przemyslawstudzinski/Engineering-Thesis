@@ -9,31 +9,52 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 {
     public class Repository<T> where T : class
     {
-        private static SQLiteConnection connectionToDatabase { set; get; }
-        private static SQLiteConnection connectionToRoamingDatabase { set; get; }
+        private static SQLiteConnection connectionToLocalDatabase;
+        private static SQLiteConnection connectionToRoamingDatabase;
+        private RoamingService roaming;
 
         public Repository()
         {
-            connectionToDatabase = DatabaseConnection.GetConnection();
-            connectionToRoamingDatabase = DatabaseConnection.GetRoamingConnection();
+            connectionToLocalDatabase = DatabaseConnection.ConnectionToLocalDatabase;
+            connectionToRoamingDatabase = RoamingService.ConnectionToRoamingDatabase;
+            roaming = new RoamingService();
         }
 
         public int Save(T item)
         {
-            connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
-            connectionToDatabase.InsertWithChildren(item, recursive: true);
+            connectionToLocalDatabase.InsertWithChildren(item, recursive: true);
+            if (RoamingService.RoamingDbFile.Length < RoamingService.MAX_SIZE_OF_ROAMING_DB)
+            {
+                connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
+            }
+            else
+            {
+                roaming.RemoveOldDays();
+                if (RoamingService.RoamingDbFile.Length < RoamingService.MAX_SIZE_OF_ROAMING_DB)
+                {
+                    connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
+                }
+                else
+                {
+                    roaming.RemoveOldProducts();
+                    if (RoamingService.RoamingDbFile.Length < RoamingService.MAX_SIZE_OF_ROAMING_DB)
+                    {
+                        connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
+                    }
+                }
+            }
             return 1;
         }
 
         public int SaveOneOrReplace(T item)
         {
             connectionToRoamingDatabase.InsertOrReplace(item);
-            return connectionToDatabase.InsertOrReplace(item);
+            return connectionToLocalDatabase.InsertOrReplace(item);
         }
 
         public int Delete(T item)
         {
-            connectionToDatabase.Delete(item, recursive: true);
+            connectionToLocalDatabase.Delete(item, recursive: true);
             connectionToRoamingDatabase.Delete(item, recursive: true);
             return 1;
         }
@@ -41,13 +62,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public int Update(T item)
         {
             connectionToRoamingDatabase.InsertOrReplaceWithChildren(item, recursive: true);
-            connectionToDatabase.InsertOrReplaceWithChildren(item, recursive: true);
+            connectionToLocalDatabase.InsertOrReplaceWithChildren(item, recursive: true);
             return 1;
         }
 
         public List<T> FindAllLocal()
         {
-            List<T> items = connectionToDatabase.GetAllWithChildren<T>().ToList();
+            List<T> items = connectionToLocalDatabase.GetAllWithChildren<T>().ToList();
             return items;
         }
 
@@ -58,7 +79,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         }
 
         public int CountAllLocal() {
-            return connectionToDatabase.Table<T>().Count();
+            return connectionToLocalDatabase.Table<T>().Count();
         }
 
         public int CountAllRoaming()
@@ -69,7 +90,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public Day FindDayByDate(DateTime dateTime)
         {
-            List<Day> list = connectionToDatabase.GetAllWithChildren<Day>(recursive: true)
+            List<Day> list = connectionToLocalDatabase.GetAllWithChildren<Day>(recursive: true)
                 .Where(item => item.Date.Date == dateTime.Date).ToList();
             if (list.Count != 0)
             {
@@ -89,7 +110,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public Day FindDay(Day day)
         {
-            List<Day> list = connectionToDatabase.GetAllWithChildren<Day>(recursive: true)
+            List<Day> list = connectionToLocalDatabase.GetAllWithChildren<Day>(recursive: true)
                 .Where(x => x.Id == day.Id).ToList();
             if (list.Count != 0)
             {
@@ -107,12 +128,12 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         }
 
         public User FindUser() {
-            User user = connectionToDatabase.Table<User>().FirstOrDefault();
+            User user = connectionToLocalDatabase.Table<User>().FirstOrDefault();
             return user;
         }
 
         public T FindById(int id) {
-           T returnedObject = connectionToDatabase.Find<T>(id);
+           T returnedObject = connectionToLocalDatabase.Find<T>(id);
            return returnedObject;
         }
     }

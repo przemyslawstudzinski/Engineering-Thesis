@@ -8,86 +8,40 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
     public class DatabaseConnection
     {
         private const string NAME_OF_DATABASE_FILE = "localDb.sqlite";
-        private const string NAME_OF_DATABASE_ROAMING_FILE = "roamingDb.sqlite";
         private const string NAME_OF_DIRECTORY = "Resources";
+
+        public static string LocalDatabaseFilePath
+        {
+            get
+            {
+                return Path.Combine(ApplicationData.
+                    Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
+            }
+        }
+
+        public static SQLiteConnection ConnectionToLocalDatabase
+        {
+            get
+            {
+                return new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), 
+                    LocalDatabaseFilePath);
+            }
+        }
 
         public static void CreateSqliteDatabases()
         {
-            string databaseFilePath = Path.Combine(ApplicationData.
-                    Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
-            SQLiteConnection connectionToDatabase = new SQLiteConnection(
-                new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
-            CreateTablesLocal(connectionToDatabase);
+            if (CreateTables(ConnectionToLocalDatabase))
+            {
+                InsertProducts();
+            }
 
-            string roamingDatabaseFilePath = Path.Combine(ApplicationData.
-            Current.RoamingFolder.Path, NAME_OF_DATABASE_ROAMING_FILE);
-            SQLiteConnection connectionToRoamingDatabase = new SQLiteConnection(
-                new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), roamingDatabaseFilePath);
-            CreateTablesRoaming(connectionToRoamingDatabase);
-
-            connectionToDatabase.Execute("ATTACH ? as dba", roamingDatabaseFilePath);
-            connectionToDatabase.Execute("BEGIN");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Products select * from dba.Products");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Days select * from dba.Days");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Meals select * from dba.Meals");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Defined_products select * from dba.Defined_products");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Defined_product_meals select * from dba.Defined_product_meals");
-            connectionToDatabase.Execute("INSERT OR REPLACE INTO Users select * from dba.Users");
-            connectionToDatabase.Execute("COMMIT");
-            connectionToDatabase.Execute("DETACH dba");
+            RoamingService.InitializeRoamingDb();
+            RoamingService.MergeDb(ConnectionToLocalDatabase);
         }
 
-        public static SQLiteConnection GetConnection() {
-            string databaseFilePath = Path.Combine(Windows.Storage.ApplicationData.
-        Current.LocalFolder.Path, NAME_OF_DATABASE_FILE);
-            SQLiteConnection connectionToDatabase = new SQLiteConnection(
-                new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
-            return connectionToDatabase;
-        }
-
-        public static SQLiteConnection GetRoamingConnection() {
-            string databaseFilePath = Path.Combine(Windows.Storage.ApplicationData.
-            Current.RoamingFolder.Path, NAME_OF_DATABASE_ROAMING_FILE);
-            SQLiteConnection connectionToDatabase = new SQLiteConnection(
-                new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), databaseFilePath);
-            return connectionToDatabase;
-        }
-
-        public static void CreateTablesRoaming(SQLiteConnection connectionToDatabase)
+        public static bool CreateTables(SQLiteConnection connectionToDatabase)
         {
-            if(!TableExists("Days", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<Day>();
-            }
-            if (!TableExists("Meals", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<Meal>();
-            }
-            if (!TableExists("Products", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<Product>();
-                Repository<Product> repo = new Repository<Product>();
-                int count = repo.CountAllLocal();
-                string query = "INSERT INTO SQLITE_SEQUENCE(name,seq) VALUES (\"Products\"," + count +")";
-                int modified = connectionToDatabase.Execute(query);
-            }
-            if (!TableExists("Users", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<User>();
-            }
-            if (!TableExists("Defined_products", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<DefinedProduct>();
-            }
-            if (!TableExists("Defined_product_meals", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<DefinedProductMeal>();
-            }
-
-        }
-
-        public static void CreateTablesLocal(SQLiteConnection connectionToDatabase)
-        {
+            bool productsTableCreated = false;
             if (!TableExists("Days", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Day>();
@@ -99,7 +53,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             if (!TableExists("Products", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Product>();
-                initializeDatabase(connectionToDatabase);
+                productsTableCreated = true;
             }
             if (!TableExists("Users", connectionToDatabase))
             {
@@ -113,16 +67,17 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 connectionToDatabase.CreateTable<DefinedProductMeal>();
             }
-
+            return productsTableCreated;
         }
 
-        public static void initializeDatabase(SQLiteConnection connectionToDatabase) {
-            string insertproducts = System.IO.File.ReadAllText(Path.Combine(
+        private static void InsertProducts()
+        {
+            string insertproducts = File.ReadAllText(Path.Combine(
             Directory.GetCurrentDirectory(), NAME_OF_DIRECTORY + "\\inserts.sql"));
-            connectionToDatabase.Execute(insertproducts);
+            ConnectionToLocalDatabase.Execute(insertproducts);
         }
 
-        public static bool TableExists(string tableName, SQLiteConnection connetionToDatabase)
+        private static bool TableExists(string tableName, SQLiteConnection connetionToDatabase)
         {
             var tableInfo = connetionToDatabase.GetTableInfo(tableName);
             if(tableInfo.Count == 0)
@@ -131,5 +86,6 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             }
             return true;
         }
+
     }
 }

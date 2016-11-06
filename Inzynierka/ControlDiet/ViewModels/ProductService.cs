@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
-    public class ProductProvider
+    public class ProductService
     {
         private static SQLiteConnection connectionToDatabase { set; get; }
 
-        public ProductProvider() {
-            connectionToDatabase = DatabaseConnection.GetConnection();
+        public ProductService() {
+            connectionToDatabase = DatabaseConnection.ConnectionToLocalDatabase;
         }
 
         public List<Product> GetAllProducts() {

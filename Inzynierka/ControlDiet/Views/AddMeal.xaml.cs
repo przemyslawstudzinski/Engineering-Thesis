@@ -12,25 +12,25 @@ namespace ApplicationToSupportAndControlDiet.Views
 {
     public sealed partial class AddMeal : Page
     {
-        private const int DEFAULT_QUANTITY = 100; 
+        private const int DEFAULT_QUANTITY = 100;
+        private const string EMPTYMESSAGE = "Fill all the blank fields.";
+        private const string CONFIRMMESSAGE = "Adding meal successful.";
+        private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
 
         private ObservableCollection<Product> items;
         private ObservableCollection<DefinedProduct> choosenProducts;
 
-        private ProductProvider productProvider;
+        private Repository<Product> productRepository;
+        private ProductService productService;
         private Product selectedProduct;
+        private Meal newMeal;
+
         private Boolean IsFailMessageSet;
         private Boolean IsSuccessMessageSet = false;
-        private const string EMPTYMESSAGE = "Fill all the blank fields.";
-        private const string CONFIRMMESSAGE = "Adding meal successful.";
-        private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
         private Style RedBorderStyle;
         private Style RedBorderStyleDate;
         private Style RedBorderStyleAutoSuggest;
         private Style DefaultStyle;
-        private Meal newMeal;
-
-        private Repository<Product> productRepository = new Repository<Product>();
 
         public Nullable<DateTimeOffset> Date
         {
@@ -48,7 +48,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             this.InitializeComponent();
 
-            productProvider = new ProductProvider();
+            productService = new ProductService();
+            productRepository = new Repository<Product>();
             items = new ObservableCollection<Product>();
             choosenProducts = new ObservableCollection<DefinedProduct>();
             this.SuggestProductsBox.ItemsSource = items;
@@ -95,7 +96,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             ClearConfirmValidationAndStyles();
             items.Clear();
-            List<Product> result = productProvider.GetProductsLike(sender.Text);
+            List<Product> result = productService.GetProductsLike(sender.Text);
             result.ForEach(x => items.Add(x));
         }
 
