@@ -88,6 +88,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             while (RoamingDbFile.Length < MAX_SIZE_OF_ROAMING_DB)
             {
                 ConnectionToRoamingDatabase.Delete<Product>(allProducts[removeOldestUserProduct]);
+                //TODO compact database file
             }
 
             foreach (Day day in lastWeek)

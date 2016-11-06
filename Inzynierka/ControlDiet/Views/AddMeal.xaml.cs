@@ -429,13 +429,17 @@ namespace ApplicationToSupportAndControlDiet.Views
             ClearConfirmValidationAndStyles();
         }
 
-        private void MeasureComboBoxInList_Loaded(object sender, RoutedEventArgs e)
+        private async void MeasureComboBoxInList_Loaded(object sender, RoutedEventArgs e)
         {
+            await Task.Delay(100);
             var baseObject = sender as FrameworkElement;
-            var product = baseObject.DataContext as DefinedProduct;          
-            ComboBox comboBoxInList = baseObject as ComboBox;
-            comboBoxInList.ItemsSource = InitializeMeasureComboBox(product.Product);
-            comboBoxInList.SelectedItem = product.Measure;
+            var product = baseObject.DataContext as DefinedProduct;
+            if (product != null)
+            {
+                ComboBox comboBoxInList = baseObject as ComboBox;
+                comboBoxInList.ItemsSource = InitializeMeasureComboBox(product.Product);
+                comboBoxInList.SelectedItem = product.Measure;
+            }         
         }
 
         private void MeasureComboBoxInList_SelectionChanged(object sender, SelectionChangedEventArgs e)
