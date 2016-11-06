@@ -48,7 +48,8 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             connectionToDatabase.Delete(item, recursive: true);
             connectionToRoamingDatabase.Delete(item, recursive: true);
             if (item.GetType() == typeof(Day)) {
-                string query = "delete from Defined_product_meals where meal_id not in (select id from Meals)";
+                string query = "delete from Defined_product_meals where meal_id not in (select id from Meals)"; //Delete function from SQLITE.net library cant deal 
+                                                                                                                //with cross tabulation as is implemented in defined_product_meals
                 connectionToDatabase.Execute(query);
                 connectionToRoamingDatabase.Execute(query);
             }
