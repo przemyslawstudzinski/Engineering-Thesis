@@ -79,7 +79,7 @@ namespace ApplicationToSupportAndControlDiet
             RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
             DefaultStyle = null;
             var repo = new Repository<User>();
-            User user = repo.FindUser();
+            User user = repo.FindFirst();
             if (user != null)
             {
                 if (user.Sex == Models.Sex.Male)

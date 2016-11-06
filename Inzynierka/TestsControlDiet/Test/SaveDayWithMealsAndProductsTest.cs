@@ -42,7 +42,7 @@ namespace TestsControlDiet
             day.MealsInDay.Add(mealTwo);
 
             repository.Save(day);
-            dayAfterSave = repository.FindDay(day);
+            dayAfterSave = repository.FindById(day.Id);
         }
 
         [TestMethod]

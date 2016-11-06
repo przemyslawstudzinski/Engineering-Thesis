@@ -12,8 +12,9 @@ namespace ApplicationToSupportAndControlDiet
     public sealed partial class MealsPage : Page
     {
         private ObservableCollection<Meal> items;
-        private Repository<Day> dayRepository;
+        private DayService dayService;
         private Repository<Meal> mealRepository;
+        private Repository<Day> dayRepository;
         private Day choosenDay;
 
         public Nullable<DateTimeOffset> Date
@@ -31,8 +32,9 @@ namespace ApplicationToSupportAndControlDiet
         public MealsPage()
         {
             this.InitializeComponent();
-            dayRepository = new Repository<Day>();
+            dayService = new DayService();
             mealRepository = new Repository<Meal>();
+            dayRepository = new Repository<Day>();
             UpdateDay();
             if (choosenDay != null)
             {
@@ -40,7 +42,7 @@ namespace ApplicationToSupportAndControlDiet
             }
 
             Repository<User> repo2 = new Repository<User>();
-            User user = repo2.FindUser();
+            User user = repo2.FindFirst();
             if (user == null)
             {
                 WarningCal.Text = "Complete information about your profile";
@@ -50,7 +52,7 @@ namespace ApplicationToSupportAndControlDiet
 
         private void UpdateDay()
         {
-            choosenDay = dayRepository.FindDayByDate(Globals.Date.Value.DateTime);
+            choosenDay = dayService.FindDayByDate(Globals.Date.Value.DateTime);
         }
 
         private void NextDay_Click(object sender, RoutedEventArgs e)
@@ -100,7 +102,6 @@ namespace ApplicationToSupportAndControlDiet
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;
-            Repository<Meal> mealRepository = new Repository<Meal>();
             if (mealRepository.Delete(thisMeal) > -1)
             {
                 items.Remove(thisMeal);

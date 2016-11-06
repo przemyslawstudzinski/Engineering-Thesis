@@ -1,5 +1,7 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
 using SQLite.Net;
+using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +29,17 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 return new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(),
                     RoamingDatabaseFilePath);
+            }
+        }
+
+        public static SQLiteAsyncConnection AsyncConnectionToRoamingDatabase
+        {
+            get
+            {
+                var connectionString = new SQLiteConnectionString(RoamingDatabaseFilePath, true);
+                var connectionWithLock = new SQLiteConnectionWithLock(
+                    new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), connectionString);
+                return new SQLiteAsyncConnection(() => connectionWithLock);
             }
         }
 
@@ -62,7 +75,31 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             connectionToLocalDatabase.Execute("DETACH dba");
         }
 
-        public void RemoveOldDays()
+        public void Save(object item, bool update)
+        {
+            if (RoamingDbFile.Length < MAX_SIZE_OF_ROAMING_DB)
+            {
+                if (update) AsyncConnectionToRoamingDatabase.InsertOrReplaceWithChildrenAsync(item, recursive: true);
+                else AsyncConnectionToRoamingDatabase.InsertWithChildrenAsync(item, recursive: true);
+            }
+            else
+            {
+                RemoveOldDays();
+                if (RoamingDbFile.Length < MAX_SIZE_OF_ROAMING_DB)
+                {
+                    if (update) AsyncConnectionToRoamingDatabase.InsertOrReplaceWithChildrenAsync(item, recursive: true);
+                    else AsyncConnectionToRoamingDatabase.InsertWithChildrenAsync(item, recursive: true);
+                }
+                else
+                {
+                    RemoveOldProducts();
+                    if (update) AsyncConnectionToRoamingDatabase.InsertOrReplaceWithChildrenAsync(item, recursive: true);
+                    else AsyncConnectionToRoamingDatabase.InsertWithChildrenAsync(item, recursive: true);
+                }
+            }
+        }
+
+        private void RemoveOldDays()
         {
             Repository<Day> repository = new Repository<Day>();
             List<Day> lastWeek = GetLastWeek();
@@ -77,7 +114,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             }
         }
 
-        public void RemoveOldProducts()
+        private void RemoveOldProducts()
         {
             Repository<Product> repository = new Repository<Product>();
             List<Day> lastWeek = GetLastWeek();
@@ -107,11 +144,12 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             DateTime actualDate = DateTime.Now;
             Repository<Day> repository = new Repository<Day>();
+            DayService dayService = new DayService();
             int count = repository.CountAllRoaming();
             List<Day> lastWeek = new List<Day>();
             for (int i = 0; i < 7; i++)
             {
-                Day day = repository.FindDayByDate(actualDate.AddDays(-i));
+                Day day = dayService.FindDayByDate(actualDate.AddDays(-i));
                 lastWeek.Add(day);
             }
             return lastWeek;

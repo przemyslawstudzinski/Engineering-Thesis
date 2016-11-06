@@ -185,6 +185,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private async void SaveMealAsync()
         {
             Repository<Day> repository = new Repository<Day>();
+            DayService dayService = new DayService();
             bool newItem = false;
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, () =>
@@ -192,7 +193,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                     ValidateBeforeSaveMeal();
                     DateTime dateTime = GetDateTimeFromUi();
                     newMeal.DateTimeOfMeal = dateTime;
-                    Day day = repository.FindDayByDate(dateTime);
+                    Day day = dayService.FindDayByDate(dateTime);
                     if (day == null)
                     {
                         day = new Day();

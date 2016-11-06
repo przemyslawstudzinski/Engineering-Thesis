@@ -2,6 +2,7 @@
 using System.IO;
 using Windows.Storage;
 using SQLite.Net;
+using SQLite.Net.Async;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
@@ -23,8 +24,19 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             get
             {
-                return new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), 
+                return new SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(),
                     LocalDatabaseFilePath);
+            }
+        }
+
+        public static SQLiteAsyncConnection AsyncConnectionToLocalDatabase
+        {
+            get
+            {
+                var connectionString = new SQLiteConnectionString(LocalDatabaseFilePath, true);
+                var connectionWithLock = new SQLiteConnectionWithLock(
+                    new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), connectionString);
+                return new SQLiteAsyncConnection(() => connectionWithLock);
             }
         }
 

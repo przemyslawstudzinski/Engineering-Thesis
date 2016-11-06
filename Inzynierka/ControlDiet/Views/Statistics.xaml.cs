@@ -75,7 +75,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void FindUser(out User user, out float maxValue)
         {
             Repository<User> repo2 = new Repository<User>();
-            user = repo2.FindUser();
+            user = repo2.FindFirst();
             if (user == null)
             {
                 maxValue = 0;
@@ -89,9 +89,9 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private static Day FindDay()
         {
-            Repository<Day> repo = new Repository<Day>();
+            DayService dayService = new DayService();
             DateTime dateTime = DateTimeOffsetToDateTimeConverter.ConvertDateTimeOffsetToDateTime(Globals.Date.Value);
-            Day day = repo.FindDayByDate(dateTime);
+            Day day = dayService.FindDayByDate(dateTime);
             return day;
         }
 
