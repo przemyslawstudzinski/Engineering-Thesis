@@ -21,6 +21,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public int Save(T item)
         {
             connectionToRoamingDatabase.InsertWithChildren(item, recursive: true);
+            SaveSpaceOnRoamingDB(item);
             connectionToDatabase.InsertWithChildren(item, recursive: true);
             return 1;
         }
@@ -28,19 +29,36 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public int SaveOneOrReplace(T item)
         {
             connectionToRoamingDatabase.InsertOrReplace(item);
+            SaveSpaceOnRoamingDB(item);
             return connectionToDatabase.InsertOrReplace(item);
+        }
+
+        private void SaveSpaceOnRoamingDB(T item) {
+            if (item.GetType() == typeof(Product))
+            {
+                RoamingSpaceManager.LeaveLastNProducts(connectionToRoamingDatabase);
+            }
+            else if (item.GetType() == typeof(Day)) {
+                RoamingSpaceManager.ClearMeals(connectionToRoamingDatabase);
+            }
         }
 
         public int Delete(T item)
         {
             connectionToDatabase.Delete(item, recursive: true);
             connectionToRoamingDatabase.Delete(item, recursive: true);
+            if (item.GetType() == typeof(Day)) {
+                string query = "delete from Defined_product_meals where meal_id not in (select id from Meals)";
+                connectionToDatabase.Execute(query);
+                connectionToRoamingDatabase.Execute(query);
+            }
             return 1;
         }
 
         public int Update(T item)
         {
             connectionToRoamingDatabase.InsertOrReplaceWithChildren(item, recursive: true);
+            SaveSpaceOnRoamingDB(item);
             connectionToDatabase.InsertOrReplaceWithChildren(item, recursive: true);
             return 1;
         }

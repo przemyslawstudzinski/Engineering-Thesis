@@ -11,6 +11,12 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         private const string NAME_OF_DATABASE_ROAMING_FILE = "roamingDb.sqlite";
         private const string NAME_OF_DIRECTORY = "Resources";
 
+        public static string RoamingDbPath {
+            get {
+                return Path.Combine(ApplicationData.
+             Current.RoamingFolder.Path, NAME_OF_DATABASE_ROAMING_FILE);
+            }
+        }
         public static void CreateSqliteDatabases()
         {
             string databaseFilePath = Path.Combine(ApplicationData.

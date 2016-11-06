@@ -121,6 +121,7 @@
     <Compile Include="ViewModels\MeasureService.cs" />
     <Compile Include="ViewModels\Repository.cs" />
     <Compile Include="ViewModels\ProductProvider.cs" />
+    <Compile Include="ViewModels\RoamingSpaceManager.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
