@@ -10,6 +10,12 @@ namespace TestsControlDiet
     {
         private Day dayAfterSave;
 
+        [AssemblyInitialize]
+        public static void AssemblyInit(TestContext context)
+        {
+            DatabaseConnection.CreateSqliteDatabases();
+        }
+
         [TestInitialize]
         public void SetUp()
         {

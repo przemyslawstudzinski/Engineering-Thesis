@@ -4,6 +4,7 @@ using SQLite.Net;
 using SQLiteNetExtensions.Extensions;
 using SQLite.Net.Async;
 using SQLiteNetExtensionsAsync.Extensions;
+using ApplicationToSupportAndControlDiet.Models;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
@@ -33,8 +34,8 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public int SaveOneOrReplace(T item)
         {
-            connectionToRoamingDatabaseAsync.InsertOrReplaceAsync(item);
-            connectionToLocalDatabaseAsync.InsertOrReplaceAsync(item);
+            connectionToRoamingDatabaseAsync.InsertOrReplaceWithChildrenAsync(item, recursive: true);
+            connectionToLocalDatabaseAsync.InsertOrReplaceWithChildrenAsync(item, recursive: true);
             return 1;
         }
 
@@ -54,33 +55,34 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public List<T> FindAllLocal()
         {
-            List<T> items = connectionToLocalDatabase.GetAllWithChildren<T>().ToList();
+            List<T> items = connectionToLocalDatabase.GetAllWithChildren<T>(recursive: true).ToList();
             return items;
         }
 
         public List<T> FindAllRoaming()
         {
-            List<T> items = connectionToRoamingDatabase.GetAllWithChildren<T>().ToList();
+            List<T> items = connectionToRoamingDatabase.GetAllWithChildren<T>(recursive: true).ToList();
             return items;
         }
 
-        public int CountAllLocal() {
-            return connectionToLocalDatabase.Table<T>().Count();
+        public int CountAllLocal()
+        {
+            return connectionToLocalDatabase.Table<T>().Count<T>();
         }
 
         public int CountAllRoaming()
         {
-            return connectionToRoamingDatabase.Table<T>().Count();
+            return connectionToRoamingDatabase.Table<T>().Count<T>();
         }
 
-        public T FindFirst() {
-            T returnedObject = connectionToLocalDatabase.Table<T>().FirstOrDefault();
-            return returnedObject;
+        public T FindFirst()
+        {
+            return connectionToLocalDatabase.Table<T>().FirstOrDefault<T>();
         }
 
-        public T FindById(int id) {
-           T returnedObject = connectionToLocalDatabase.Find<T>(id);
-           return returnedObject;
+        public T FindById(int id)
+        {
+           return connectionToLocalDatabase.FindWithChildren<T>(id, recursive: true);          
         }
     }
 }

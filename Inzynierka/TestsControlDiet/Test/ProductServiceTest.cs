@@ -6,14 +6,8 @@ using System.Collections.Generic;
 namespace TestsControlDiet
 {
     [TestClass]
-    public class ProductProviderTest
+    public class ProductServiceTest
     {
-        [AssemblyInitialize]
-        public static void AssemblyInit(TestContext context)
-        {
-            DatabaseConnection.CreateSqliteDatabases();
-        }
-
         [TestMethod]
         public void GetAllProductsTest()
         {

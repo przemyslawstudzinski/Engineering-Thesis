@@ -98,7 +98,7 @@
     <Compile Include="Test\CalculateCaloriesTest.cs" />
     <Compile Include="Test\MeasureServiceTest.cs" />
     <Compile Include="Test\UserProfileTest.cs" />
-    <Compile Include="Test\ProductProviderTest.cs" />
+    <Compile Include="Test\ProductServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\SaveDayWithMealsAndProductsTest.cs" />
     <Compile Include="UnitTestApp.xaml.cs">

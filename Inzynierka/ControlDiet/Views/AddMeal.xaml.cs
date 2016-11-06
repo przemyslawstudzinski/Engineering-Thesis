@@ -178,6 +178,12 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
         {
+            Repository<User> userRepo = new Repository<User>();
+            Repository<Day> epo = new Repository<Day>();
+
+            User userFromDb = userRepo.FindFirst();
+            int userCountStart = userRepo.CountAllLocal();
+            Day dayAfterSave = epo.FindById(1);
             Task task = new Task(() => SaveMealAsync());
             task.Start();
         }
