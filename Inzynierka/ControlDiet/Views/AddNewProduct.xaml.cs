@@ -126,7 +126,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             ClearStyles();
             IsSuccessMessageSet = true;
             AddConfirm.Text = CONFIRMMESSAGE;
-            await Task.Delay(2000);
+            await Task.Delay(500);
             IsSuccessMessageSet = false;
         }
 

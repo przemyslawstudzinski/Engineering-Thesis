@@ -187,7 +187,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             Repository<Day> repository = new Repository<Day>();
             bool newItem = false;
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,() =>
+                CoreDispatcherPriority.Normal, () =>
                 {
                     ValidateBeforeSaveMeal();
                     DateTime dateTime = GetDateTimeFromUi();
@@ -334,7 +334,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             ClearStyles();
             IsSuccessMessageSet = true;
             AddConfirm.Text = CONFIRMMESSAGE;
-            await Task.Delay(2000);
+            await Task.Delay(500);
             IsSuccessMessageSet = false;
         }
 
