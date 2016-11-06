@@ -13,6 +13,7 @@ namespace ApplicationToSupportAndControlDiet
         private const string EMPTYMESSAGE = "Fill all the blank fields.";
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
         private const string CONFIRMMESSAGE = "Adding user info successful. Daily calories requisition set: {0}";
+        private const string KCAL_INFO = "Daily calories requisition set: {0}";
         private Style RedBorderStyle;
         private Style DefaultStyle;
     
@@ -95,7 +96,7 @@ namespace ApplicationToSupportAndControlDiet
                 weightBox.Text = user.Weight.ToString();
                 ActivityBox.SelectedValue = user.Activity.ToString();
                 GoalBox.SelectedValue = user.Goal.ToString();
-                CaloriesBox.Text = user.TotalDailyEnergyExpenditure.ToString();
+                AddConfirm.Text = String.Format(KCAL_INFO, user.TotalDailyEnergyExpenditure.ToString());
             }
         }
 
