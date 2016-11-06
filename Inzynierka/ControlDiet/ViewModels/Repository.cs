@@ -4,7 +4,6 @@ using SQLite.Net;
 using SQLiteNetExtensions.Extensions;
 using SQLite.Net.Async;
 using SQLiteNetExtensionsAsync.Extensions;
-using ApplicationToSupportAndControlDiet.Models;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
@@ -32,10 +31,17 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             return 1;
         }
 
+        public int SaveOneOrReplaceWithChildren(T item)
+        {
+            connectionToRoamingDatabase.InsertOrReplaceWithChildren(item, recursive: true);
+            connectionToLocalDatabase.InsertOrReplaceWithChildren(item, recursive: true);
+            return 1;
+        }
+
         public int SaveOneOrReplace(T item)
         {
-            connectionToRoamingDatabaseAsync.InsertOrReplaceWithChildrenAsync(item, recursive: true);
-            connectionToLocalDatabaseAsync.InsertOrReplaceWithChildrenAsync(item, recursive: true);
+            connectionToRoamingDatabase.InsertOrReplace(item);
+            connectionToLocalDatabase.InsertOrReplace(item);
             return 1;
         }
 

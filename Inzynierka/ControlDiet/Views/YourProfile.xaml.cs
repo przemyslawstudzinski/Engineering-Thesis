@@ -78,8 +78,8 @@ namespace ApplicationToSupportAndControlDiet
             this.InitializeComponent();
             RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
             DefaultStyle = null;
-            var repo = new Repository<User>();
-            User user = repo.FindFirst();
+            var repository = new Repository<User>();
+            User user = repository.FindFirst();
             if (user != null)
             {
                 if (user.Sex == Models.Sex.Male)
@@ -146,8 +146,8 @@ namespace ApplicationToSupportAndControlDiet
             if (IsFailMessageSet == true) return;
             user.TotalDailyEnergyExpenditure = totalDailyEnergyExpenditure;
 
-            Repository<User> userCreator = new Repository<User>();
-            if (userCreator.SaveOneOrReplace(user) > -1) {
+            Repository<User> userRepository = new Repository<User>();
+            if (userRepository.SaveOneOrReplace(user) > -1) {
                 ClearTextBoxesAndSetConfirmMessage(totalDailyEnergyExpenditure);
             }
         }

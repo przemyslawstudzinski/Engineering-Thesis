@@ -47,13 +47,13 @@ namespace TestsControlDiet
             day.MealsInDay.Add(mealOne);
             day.MealsInDay.Add(mealTwo);
 
-            repository.Save(day);
+            repository.SaveOneOrReplaceWithChildren(day);
             dayAfterSave = repository.FindById(day.Id);
         }
 
         [TestMethod]
         public void GetDayWithMealsAndProductsTest()
-        {
+        {           
             Assert.AreEqual(dayAfterSave.MealsInDay.Count, 2);
         }
 
