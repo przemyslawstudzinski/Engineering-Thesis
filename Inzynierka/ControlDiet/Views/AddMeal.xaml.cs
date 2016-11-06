@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -175,18 +176,71 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.ItemsList.ItemsSource = choosenProducts;
         }
 
+        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        {
+            Task task = new Task(() => SaveMealAsync());
+            task.Start();
+        }
+
+        private async void SaveMealAsync()
+        {
+            Repository<Day> repository = new Repository<Day>();
+            bool newItem = false;
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,() =>
+                {
+                    ValidateBeforeSaveMeal();
+                    DateTime dateTime = GetDateTimeFromUi();
+                    newMeal.DateTimeOfMeal = dateTime;
+                    Day day = repository.FindDayByDate(dateTime);
+                    if (day == null)
+                    {
+                        day = new Day();
+                        day.Date = dateTime;
+                        newItem = true;
+                    }
+                    day.MealsInDay.Add(newMeal);
+                    newMeal.Day = day;
+                    newMeal.DayId = day.Id;
+
+                    if (IsFailMessageSet) return;
+                    if (newItem == true)
+                    {
+                        if (repository.Save(day) > -1)
+                        {
+                            ClearTextBoxesAndSetConfirmMessage();
+                        }
+                    }
+                    else
+                    {
+                        if (repository.Update(day) > -1)
+                        {
+                            ClearTextBoxesAndSetConfirmMessage();
+                        }
+                    }
+                    newMeal = null;
+                });
+        }
+
+        private DateTime GetDateTimeFromUi()
+        {
+            TimeSpan time = this.TimePicker.Time;
+            DateTimeOffset date = this.DataPicker.Date.Value;
+            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+            return dateTime;
+        }
+
         private Meal FindMeal()
         {
-            if(newMeal == null)
+            if (newMeal == null)
             {
                 newMeal = new Meal();
             }
             return newMeal;
         }
 
-        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private void ValidateBeforeSaveMeal()
         {
-            Repository<Day> repository = new Repository<Day>();
             ClearTextBoxesStylesAndMessages();
             FindMeal();
             if (ValidateEmpty(NameBox))
@@ -198,43 +252,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                 foreach (DefinedProduct element in choosenProducts)
                 {
                     newMeal.ProductsInMeal.Add(element);
-                    element.Meals.Add(newMeal); 
+                    element.Meals.Add(newMeal);
                 }
             }
-            Day day = null;
-            bool newItem = false;
-
-            TimeSpan time = this.TimePicker.Time;
-            DateTimeOffset date = this.DataPicker.Date.Value;
-            DateTime dateTime = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-            newMeal.DateTimeOfMeal = dateTime;
-            day = repository.FindDayByDate(dateTime);
-            if (day == null)
-            {
-                day = new Day();
-                day.Date = dateTime;
-                newItem = true;
-            }
-            day.MealsInDay.Add(newMeal);
-            newMeal.Day = day;
-            newMeal.DayId = day.Id;
-
-            if (IsFailMessageSet) return;
-            if (newItem == true)
-            {
-                if (repository.Save(day) > -1)
-                {
-                    ClearTextBoxesAndSetConfirmMessage();
-                }
-            }
-            else
-            {
-                if (repository.Update(day) > -1)
-                {
-                    ClearTextBoxesAndSetConfirmMessage();
-                }
-            }
-            newMeal = null;
         }
 
         private Boolean ValidateEmpty(TextBox textBox)
