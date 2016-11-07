@@ -3,7 +3,7 @@ using System;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
 {
-    public static class RequisitionOfCalories
+    public static class CaloriesRequisitionCalculator
     {
         private const float SEDENTARY_FACTOR = 0.2F;
         private const float LIGHT_FACTOR = 0.375F;

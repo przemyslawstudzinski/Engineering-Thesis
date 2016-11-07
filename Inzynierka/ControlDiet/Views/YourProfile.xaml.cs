@@ -135,7 +135,7 @@ namespace ApplicationToSupportAndControlDiet
             if (caloriesValue.Equals("Automatic"))
             {
                 if (IsFailMessageSet == true) return;
-                totalDailyEnergyExpenditure = RequisitionOfCalories.CalculateRequisitionOfCalories(user);
+                totalDailyEnergyExpenditure = CaloriesRequisitionCalculator.CalculateRequisitionOfCalories(user);
             }
             else
             {
