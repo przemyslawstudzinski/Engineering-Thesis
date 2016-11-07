@@ -24,7 +24,7 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         private Product product;
 
-        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        [OneToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Product Product {
             set
             {
