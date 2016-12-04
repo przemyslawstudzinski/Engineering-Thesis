@@ -27,7 +27,7 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void AddTwoUserProfiles()
+        public void ShouldAddTwoUserProfiles()
         {
             User userFromDb = userRepo.FindFirst();
             userCountStart = userRepo.CountAllLocal();

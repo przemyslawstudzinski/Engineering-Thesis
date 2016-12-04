@@ -38,7 +38,7 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void CalculateCaloriesFromMeal()
+        public void ShouldCalculateCaloriesFromMeal()
         {
             Assert.AreEqual(3125, mealOne.IngridientsInMeal[0].Energy);
             Assert.AreEqual(700, mealOne.IngridientsInMeal[1].Energy);
@@ -47,7 +47,7 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void CalculateCaloriesFromDay()
+        public void ShouldCalculateCaloriesFromDay()
         {
             Day day = new Day();
             day.MealsInDay.Add(mealOne);

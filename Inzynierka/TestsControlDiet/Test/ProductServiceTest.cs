@@ -9,7 +9,7 @@ namespace TestsControlDiet
     public class ProductServiceTest
     {
         [TestMethod]
-        public void GetAllProductsTest()
+        public void ShouldGetAllProductsTest()
         {
             var productProvider = new ProductService();
             List<Product> allProducts = productProvider.GetAllProducts();
@@ -17,7 +17,7 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void GetProductsWithPatternTest()
+        public void ShouldGetProductsWithPatternTest()
         {
             var productProvider = new ProductService();
             List<Product> allProducts = productProvider.GetProductsLike("bev");

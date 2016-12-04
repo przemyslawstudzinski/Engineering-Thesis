@@ -52,13 +52,13 @@ namespace TestsControlDiet
         }
 
         [TestMethod]
-        public void GetDayWithMealsAndProductsTest()
+        public void ShouldGetDayWithMealsAndProductsTest()
         {           
             Assert.AreEqual(dayAfterSave.MealsInDay.Count, 2);
         }
 
         [TestMethod]
-        public void GetMealWithProductsTest()
+        public void ShouldGetMealWithProductsTest()
         {
             Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).IngridientsInMeal.Count, 1);
         }
