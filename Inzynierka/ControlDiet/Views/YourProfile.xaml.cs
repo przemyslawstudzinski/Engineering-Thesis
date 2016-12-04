@@ -94,8 +94,8 @@ namespace ApplicationToSupportAndControlDiet
                 AgeBox.Text = user.Age.ToString();
                 HeightBox.Text = user.Height.ToString();
                 weightBox.Text = user.Weight.ToString();
-                ActivityBox.SelectedValue = user.Activity.ToString();
-                GoalBox.SelectedValue = user.Goal.ToString();
+                ActivityBox.SelectedValue = user.DailyActivity.ToString();
+                GoalBox.SelectedValue = user.GoalOfWeightToAchieve.ToString();
                 AddConfirm.Text = String.Format(KCAL_INFO, user.TotalDailyEnergyExpenditure.ToString());
             }
         }

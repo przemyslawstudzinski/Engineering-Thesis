@@ -17,13 +17,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             float basalMetabolicRate = GetBasalMetabolicRate(user.Sex, user.Weight, user.Height, user.Age);
             float thermicEffectOfExercise;
-            thermicEffectOfExercise = GetThermicEffectOfExercise(basalMetabolicRate, user.Activity);
+            thermicEffectOfExercise = GetThermicEffectOfExercise(basalMetabolicRate, user.DailyActivity);
             
             float thermicEffectOfFood = GetThermicEffectOfFood(basalMetabolicRate, thermicEffectOfExercise);
             float totalDailyEnergyExpenditure = GetTotalDailyEnergyExpenditure(basalMetabolicRate,
                 thermicEffectOfExercise, thermicEffectOfFood);
 
-            totalDailyEnergyExpenditure = AddUserGoal(user.Goal, totalDailyEnergyExpenditure);
+            totalDailyEnergyExpenditure = AddUserGoal(user.GoalOfWeightToAchieve, totalDailyEnergyExpenditure);
             return Convert.ToInt32(totalDailyEnergyExpenditure);
         }
 

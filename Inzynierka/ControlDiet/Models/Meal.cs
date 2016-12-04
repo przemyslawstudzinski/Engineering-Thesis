@@ -10,13 +10,13 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("Id")]
-        public int Id { set; get; }
+        [Column("MealId")]
+        public int MealId { set; get; }
 
-        [Column("Name")]
-        public string Name { set; get; }
+        [Column("MealName")]
+        public string MealName { set; get; }
 
-        [Column("Time")]
+        [Column("TimeOfMeal")]
         public DateTime DateTimeOfMeal { set; get; }
 
         public String Time
@@ -27,6 +27,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
+        [Column("DayId")]
         [ForeignKey(typeof(Day))]
         public int DayId { set; get; }
 

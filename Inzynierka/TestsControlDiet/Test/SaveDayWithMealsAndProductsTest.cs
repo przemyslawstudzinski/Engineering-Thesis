@@ -30,25 +30,25 @@ namespace TestsControlDiet
             Ingridient definiedProductTwo = new Ingridient(productTwo, 5, Measure.Spoon);
 
             Meal mealOne = new Meal();
-            mealOne.Name = "mealname 1";
+            mealOne.MealName = "mealname 1";
             definiedProductOne.Meal = mealOne;
             mealOne.IngridientsInMeal.Add(definiedProductOne);
 
             Meal mealTwo = new Meal();
-            mealTwo.Name = "mealname 2";
+            mealTwo.MealName = "mealname 2";
             definiedProductTwo.Meal = mealTwo;
             mealTwo.IngridientsInMeal.Add(definiedProductTwo);
 
             Day day = new Day();
-            mealOne.DayId = day.Id;
+            mealOne.DayId = day.DayId;
             mealOne.Day = day;
-            mealTwo.DayId = day.Id;
+            mealTwo.DayId = day.DayId;
             mealTwo.Day = day;
             day.MealsInDay.Add(mealOne);
             day.MealsInDay.Add(mealTwo);
 
             repository.SaveOneOrReplaceWithChildren(day);
-            dayAfterSave = repository.FindById(day.Id);
+            dayAfterSave = repository.FindById(day.DayId);
         }
 
         [TestMethod]

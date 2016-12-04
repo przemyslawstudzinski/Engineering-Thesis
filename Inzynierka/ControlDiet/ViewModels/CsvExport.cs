@@ -32,16 +32,16 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         private string ExportMeal()
         {
             var sb = new StringBuilder();
-            sb.Append("List of products in " + meal.Name + ": ");
+            sb.Append("List of products in " + meal.MealName + ": ");
             sb.AppendLine();
             sb.AppendLine();
             foreach (Ingridient ingridient in meal.IngridientsInMeal)
             {
                 sb.Append(EditValue(ingridient.Product.Name));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-                sb.Append(ingridient.Quantity.ToString("N1"));
+                sb.Append(ingridient.QuantityInMeal.ToString("N1"));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-                sb.Append(ingridient.Measure.ToString());
+                sb.Append(ingridient.MeasureOfQuantity.ToString());
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
                 sb.AppendLine();
             }           

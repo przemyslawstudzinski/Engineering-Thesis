@@ -185,7 +185,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (e.Parameter != null)
             {
                 Meal mealFromMealsPage = e.Parameter as Meal;
-                this.NameBox.Text = mealFromMealsPage.Name;
+                this.NameBox.Text = mealFromMealsPage.MealName;
                 this.CarbohydrateBox.Text = mealFromMealsPage.Carbohydrate.ToString();
                 this.FatBox.Text = mealFromMealsPage.Fat.ToString();
                 this.ProteinBox.Text = mealFromMealsPage.Protein.ToString();

@@ -202,7 +202,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                     }
                     day.MealsInDay.Add(newMeal);
                     newMeal.Day = day;
-                    newMeal.DayId = day.Id;
+                    newMeal.DayId = day.DayId;
 
                     if (IsFailMessageSet) return;
                     if (newItem == true)
@@ -248,7 +248,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
             if (ValidateEmpty(NameBox))
             {
-                newMeal.Name = NameBox.Text;
+                newMeal.MealName = NameBox.Text;
             }
             if (ValidateChoosenProducts())
             {
@@ -258,9 +258,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                     newMeal.IngridientsInMeal.Add(element);
                     if (newItem == true)
                     {
-                        element.Id = 0;
+                        element.IngridientId = 0;
                         element.Meal = newMeal;
-                        element.MealId = newMeal.Id;
+                        element.MealId = newMeal.MealId;
                     }
                 }
             }
@@ -439,7 +439,7 @@ namespace ApplicationToSupportAndControlDiet.Views
                 {
                     this.ingridients.Add(product);
                 }
-                this.NameBox.Text = mealFromMealsPage.Name;
+                this.NameBox.Text = mealFromMealsPage.MealName;
                 TimeSpan time = new TimeSpan(mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Hour, mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Minute,
                     mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Second);
                 this.TimePicker.Time = time;
@@ -467,7 +467,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             {
                 ComboBox comboBoxInList = baseObject as ComboBox;
                 comboBoxInList.ItemsSource = InitializeMeasureComboBox(product.Product);
-                comboBoxInList.SelectedItem = product.Measure;
+                comboBoxInList.SelectedItem = product.MeasureOfQuantity;
             }         
         }
 
@@ -480,9 +480,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (comboBoxInList.SelectedItem != null)
             {
                 Enum.TryParse<Measure>(comboBoxInList.SelectedItem.ToString(), out measure);
-                if (measure != product.Measure)
+                if (measure != product.MeasureOfQuantity)
                 {
-                    product.Measure = measure;
+                    product.MeasureOfQuantity = measure;
                     product.Update();     
                     CalculateValuesFromAllChoosenProducts();
                     RefreshListView();
@@ -498,9 +498,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             if (ValidateAndCheckInRange(quantityTextBoxInList, 0, 1000))
             {
                 float quantity = Convert.ToSingle(quantityTextBoxInList.Text);
-                if (quantity != product.Quantity)
+                if (quantity != product.QuantityInMeal)
                 {
-                    product.Quantity = quantity;
+                    product.QuantityInMeal = quantity;
                     product.Update();
                     CalculateValuesFromAllChoosenProducts();
                     RefreshListView();

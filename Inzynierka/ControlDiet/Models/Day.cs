@@ -10,8 +10,8 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("Id")]
-        public int Id { set; get; }
+        [Column("DayId")]
+        public int DayId { set; get; }
 
         [Column("Date")]
         public DateTime Date { set; get; }

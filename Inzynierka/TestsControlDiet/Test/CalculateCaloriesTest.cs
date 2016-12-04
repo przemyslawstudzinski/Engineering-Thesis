@@ -28,12 +28,12 @@ namespace TestsControlDiet
             Ingridient ingridientOne = new Ingridient(productThree, 80, Measure.Gram);
 
             mealOne = new Meal();
-            mealOne.Name = "mealname 1";
+            mealOne.MealName = "mealname 1";
             mealOne.IngridientsInMeal.Add(definiedProductOne);
             mealOne.IngridientsInMeal.Add(ingridientTwo);
 
             mealTwo = new Meal();
-            mealTwo.Name = "mealname 2";
+            mealTwo.MealName = "mealname 2";
             mealTwo.IngridientsInMeal.Add(ingridientOne);
         }
 

@@ -9,8 +9,8 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("Id")]
-        public int Id { get; set; }
+        [Column("IngridientId")]
+        public int IngridientId { get; set; }
 
         [Column("MealId")]
         [ForeignKey(typeof(Meal))]
@@ -40,11 +40,11 @@ namespace ApplicationToSupportAndControlDiet.Models
             }
         }
 
-        [Column("Quantity")]
-        public float Quantity { set; get; }
+        [Column("QuantityInMeal")]
+        public float QuantityInMeal { set; get; }
 
-        [Column("Measure")]
-        public Measure Measure { set; get; }
+        [Column("MeasureOfQuantity")]
+        public Measure MeasureOfQuantity { set; get; }
 
         [Ignore]
         public double Energy { get; set; }
@@ -68,10 +68,10 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         public Ingridient(Product product, float quantity, Measure measure)
         {
-            this.ProductId = product.Id;
+            this.ProductId = product.ProductId;
             this.Product = product;
-            this.Quantity = quantity;
-            this.Measure = measure;
+            this.QuantityInMeal = quantity;
+            this.MeasureOfQuantity = measure;
             MeasureService measureService = new MeasureService();
             measureService.Calculate(this, product);
         }

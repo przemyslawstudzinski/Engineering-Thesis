@@ -9,8 +9,8 @@ namespace ApplicationToSupportAndControlDiet.Models
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("Id")]
-        public int Id { set; get; }
+        [Column("ProductId")]
+        public int ProductId { set; get; }
 
         [Column("Name")]
         public string Name { set; get; }
