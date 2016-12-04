@@ -54,30 +54,26 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         public static bool CreateTables(SQLiteConnection connectionToDatabase)
         {
             bool productsTableCreated = false;
-            if (!TableExists("Days", connectionToDatabase))
+            if (!TableExists("Day", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Day>();
             }
-            if (!TableExists("Meals", connectionToDatabase))
+            if (!TableExists("Meal", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Meal>();
             }
-            if (!TableExists("Products", connectionToDatabase))
+            if (!TableExists("Product", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<Product>();
                 productsTableCreated = true;
             }
-            if (!TableExists("Users", connectionToDatabase))
+            if (!TableExists("User", connectionToDatabase))
             {
                 connectionToDatabase.CreateTable<User>();
             }
-            if (!TableExists("Defined_products", connectionToDatabase))
+            if (!TableExists("Ingridient", connectionToDatabase))
             {
-                connectionToDatabase.CreateTable<DefinedProduct>();
-            }
-            if (!TableExists("Defined_product_meals", connectionToDatabase))
-            {
-                connectionToDatabase.CreateTable<DefinedProductMeal>();
+                connectionToDatabase.CreateTable<Ingridient>();
             }
             return productsTableCreated;
         }
@@ -92,7 +88,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         private static bool TableExists(string tableName, SQLiteConnection connetionToDatabase)
         {
             var tableInfo = connetionToDatabase.GetTableInfo(tableName);
-            if(tableInfo.Count == 0)
+            if (tableInfo.Count == 0)
             {
                 return false;
             }

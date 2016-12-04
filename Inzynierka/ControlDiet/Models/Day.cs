@@ -5,15 +5,15 @@ using SQLiteNetExtensions.Attributes;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("Days")]
+    [Table("Day")]
     public class Day
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("id")]
+        [Column("Id")]
         public int Id { set; get; }
 
-        [Column("date")]
+        [Column("Date")]
         public DateTime Date { set; get; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

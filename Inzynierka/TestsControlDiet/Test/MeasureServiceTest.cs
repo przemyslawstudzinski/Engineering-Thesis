@@ -26,7 +26,7 @@ namespace TestsControlDiet.Test
         [TestMethod]
         public void CalculateValuesWithMeasureGramTest()
         {
-            DefinedProduct definiedProduct = new DefinedProduct(product, 200, Measure.Gram);
+            Ingridient definiedProduct = new Ingridient(product, 200, Measure.Gram);
             Assert.AreEqual((int) definiedProduct.Energy, (int) (2 * product.Energy));
             Assert.AreEqual((int) definiedProduct.Protein, (int) (2 * product.Protein));
             Assert.AreEqual((int) definiedProduct.Fat, (int) (2 * product.Fat));
@@ -38,7 +38,7 @@ namespace TestsControlDiet.Test
         [TestMethod]
         public void CalculateValuesWithMeasureTeaspoonTest()
         {
-            DefinedProduct definiedProduct = new DefinedProduct(product, 2, Measure.Teaspoon);
+            Ingridient definiedProduct = new Ingridient(product, 2, Measure.Teaspoon);
             Assert.AreEqual((int) definiedProduct.Energy, (int) ((product.Energy / GRAM_OF_PRODUCT_IN_DB) * 2 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Protein, (int) ((product.Protein / GRAM_OF_PRODUCT_IN_DB) * 2 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Fiber, (int) ((product.Fiber / GRAM_OF_PRODUCT_IN_DB) * 2 * product.WeightInTeaspoon));
@@ -50,7 +50,7 @@ namespace TestsControlDiet.Test
         [TestMethod]
         public void CalculateValuesWithMeasureSpoonTest()
         {
-            DefinedProduct definiedProduct = new DefinedProduct(product, 2, Measure.Spoon);
+            Ingridient definiedProduct = new Ingridient(product, 2, Measure.Spoon);
             Assert.AreEqual((int) definiedProduct.Energy, (int) ((product.Energy / GRAM_OF_PRODUCT_IN_DB) * 6 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Protein, (int) ((product.Protein / GRAM_OF_PRODUCT_IN_DB) * 6 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Fat, (int) ((product.Fat / GRAM_OF_PRODUCT_IN_DB) * 6 * product.WeightInTeaspoon));
@@ -62,7 +62,7 @@ namespace TestsControlDiet.Test
         [TestMethod]
         public void CalculateValuesWithMeasureGlassTest()
         {
-            DefinedProduct definiedProduct = new DefinedProduct(product, 1, Measure.Glass);
+            Ingridient definiedProduct = new Ingridient(product, 1, Measure.Glass);
             Assert.AreEqual((int) definiedProduct.Energy, (int) ((product.Energy / GRAM_OF_PRODUCT_IN_DB) * 16 * 3 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Protein, (int) ((product.Protein / GRAM_OF_PRODUCT_IN_DB) * 16 * 3 * product.WeightInTeaspoon));
             Assert.AreEqual((int) definiedProduct.Sugar, (int) ((product.Sugar / GRAM_OF_PRODUCT_IN_DB) * 16 * 3 * product.WeightInTeaspoon));

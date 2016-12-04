@@ -19,7 +19,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private const string VALUESMESSAGE = "{0} field value must be between {1} and {2}";
 
         private ObservableCollection<Product> items;
-        private ObservableCollection<DefinedProduct> choosenProducts;
+        private ObservableCollection<Ingridient> ingridients;
 
         private Repository<Product> productRepository;
         private ProductService productService;
@@ -52,9 +52,9 @@ namespace ApplicationToSupportAndControlDiet.Views
             productService = new ProductService();
             productRepository = new Repository<Product>();
             items = new ObservableCollection<Product>();
-            choosenProducts = new ObservableCollection<DefinedProduct>();
+            ingridients = new ObservableCollection<Ingridient>();
             this.SuggestProductsBox.ItemsSource = items;
-            this.ItemsList.ItemsSource = choosenProducts;
+            this.ItemsList.ItemsSource = ingridients;
             RedBorderStyle = Application.Current.Resources["TextBoxError"] as Style;
             RedBorderStyleDate = Application.Current.Resources["CalendarError"] as Style;
             RedBorderStyleAutoSuggest = Application.Current.Resources["AutoSuggestError"] as Style;
@@ -64,9 +64,9 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void CalculateValuesFromAllChoosenProducts()
         {
             Meal abstractFutureMeal = new Meal();
-            abstractFutureMeal.ProductsInMeal.Clear();
-            List<DefinedProduct> nowProductList = new List<DefinedProduct>(choosenProducts);
-            abstractFutureMeal.ProductsInMeal = nowProductList;
+            abstractFutureMeal.IngridientsInMeal.Clear();
+            List<Ingridient> nowProductList = new List<Ingridient>(ingridients);
+            abstractFutureMeal.IngridientsInMeal = nowProductList;
             String totalValues = "Total in meal: kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
                 + "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") 
                 + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
@@ -101,10 +101,10 @@ namespace ApplicationToSupportAndControlDiet.Views
             result.ForEach(x => items.Add(x));
         }
 
-        private void AddDefinedProduct_Click(object sender, RoutedEventArgs e)
+        private void AddIngridient_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesStylesAndMessages();
-            if (!ValidateEmptyDefinedProduct()) return;
+            if (!ValidateEmptyIngridient()) return;
             float quantity = DEFAULT_QUANTITY;
             if (ValidateAndCheckInRange(QuantityBox, 0, 1000) && this.MeasureBox.SelectedItem != null)
             {
@@ -112,9 +112,9 @@ namespace ApplicationToSupportAndControlDiet.Views
                 Measure measure;
                 Enum.TryParse<Measure>(this.MeasureBox.SelectedItem.ToString(), out measure);
 
-                DefinedProduct definedProduct = new DefinedProduct(selectedProduct, quantity, measure);
+                Ingridient ingridient = new Ingridient(selectedProduct, quantity, measure);
 
-                choosenProducts.Add(definedProduct);
+                ingridients.Add(ingridient);
                 this.QuantityBox.Text = String.Empty;
                 this.SuggestProductsBox.Text = String.Empty;
                 this.MeasureBox.ItemsSource = null;
@@ -126,15 +126,15 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var productToDelete = baseObject.DataContext as DefinedProduct;
-            choosenProducts.Remove(productToDelete);
+            var productToDelete = baseObject.DataContext as Ingridient;
+            ingridients.Remove(productToDelete);
             CalculateValuesFromAllChoosenProducts();
         }
 
         private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            var selectedProduct = baseObject.DataContext as Ingridient;
             if (selectedProduct.Product.DisLike == true) return;
             selectedProduct.Product.Favourite = true;
             RefreshListView();
@@ -145,7 +145,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            var selectedProduct = baseObject.DataContext as Ingridient;
             selectedProduct.Product.Favourite = false;
             productRepository.Update(selectedProduct.Product);
             RefreshListView();           
@@ -154,7 +154,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void DislikeProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            var selectedProduct = baseObject.DataContext as Ingridient;
             if (selectedProduct.Product.Favourite == true) return;
             selectedProduct.Product.DisLike = true;
             productRepository.Update(selectedProduct.Product);
@@ -164,7 +164,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void LikeProduct_Click(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var selectedProduct = baseObject.DataContext as DefinedProduct;
+            var selectedProduct = baseObject.DataContext as Ingridient;
             selectedProduct.Product.DisLike = false;
             productRepository.Update(selectedProduct.Product);
             RefreshListView();
@@ -173,7 +173,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void RefreshListView()
         {
             this.ItemsList.ItemsSource = null;
-            this.ItemsList.ItemsSource = choosenProducts;
+            this.ItemsList.ItemsSource = ingridients;
         }
 
         private void SaveMeal_Click(object sender, RoutedEventArgs e)
@@ -231,29 +231,37 @@ namespace ApplicationToSupportAndControlDiet.Views
             return dateTime;
         }
 
-        private Meal FindMeal()
+        private Meal CreateMeal()
         {
-            if (newMeal == null)
-            {
-                newMeal = new Meal();
-            }
+            newMeal = new Meal();
             return newMeal;
         }
 
         private void ValidateBeforeSaveMeal()
         {
             ClearTextBoxesStylesAndMessages();
-            FindMeal();
+            bool newItem = false;
+            if (newMeal == null)
+            {
+                newMeal = CreateMeal();
+                newItem = true;
+            }
             if (ValidateEmpty(NameBox))
             {
                 newMeal.Name = NameBox.Text;
             }
             if (ValidateChoosenProducts())
             {
-                foreach (DefinedProduct element in choosenProducts)
+                newMeal.IngridientsInMeal.Clear();
+                foreach (Ingridient element in ingridients)
                 {
-                    newMeal.ProductsInMeal.Add(element);
-                    element.Meals.Add(newMeal);
+                    newMeal.IngridientsInMeal.Add(element);
+                    if (newItem == true)
+                    {
+                        element.Id = 0;
+                        element.Meal = newMeal;
+                        element.MealId = newMeal.Id;
+                    }
                 }
             }
         }
@@ -276,14 +284,14 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private Boolean ValidateEmptyDefinedProduct() {
+        private Boolean ValidateEmptyIngridient() {
             if (selectedProduct == null) return false;
             return true;
         }
 
         private bool ValidateChoosenProducts()
         {
-            if (choosenProducts.Count == 0)
+            if (ingridients.Count == 0)
             {
                 if (!IsFailMessageSet)
                 {
@@ -376,8 +384,8 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void ClearList()
         {
-            choosenProducts = new ObservableCollection<DefinedProduct>();
-            this.ItemsList.ItemsSource = choosenProducts;
+            ingridients = new ObservableCollection<Ingridient>();
+            this.ItemsList.ItemsSource = ingridients;
         }
 
         private void ClearMeal_Click(object sender, RoutedEventArgs e)
@@ -426,10 +434,10 @@ namespace ApplicationToSupportAndControlDiet.Views
                 KeyValuePair<bool, Meal> parameters = (KeyValuePair<bool, Meal>)e.Parameter;
                 bool itsNewMeal = parameters.Key;
                 Meal mealFromMealsPage = parameters.Value;
-                this.choosenProducts.Clear();
-                foreach(DefinedProduct product in mealFromMealsPage.ProductsInMeal)
+                this.ingridients.Clear();
+                foreach(Ingridient product in mealFromMealsPage.IngridientsInMeal)
                 {
-                    this.choosenProducts.Add(product);
+                    this.ingridients.Add(product);
                 }
                 this.NameBox.Text = mealFromMealsPage.Name;
                 TimeSpan time = new TimeSpan(mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Hour, mealFromMealsPage.DateTimeOfMeal.ToLocalTime().Minute,
@@ -454,7 +462,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             await Task.Delay(100);
             var baseObject = sender as FrameworkElement;
-            var product = baseObject.DataContext as DefinedProduct;
+            var product = baseObject.DataContext as Ingridient;
             if (product != null)
             {
                 ComboBox comboBoxInList = baseObject as ComboBox;
@@ -466,7 +474,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void MeasureComboBoxInList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var product = baseObject.DataContext as DefinedProduct;
+            var product = baseObject.DataContext as Ingridient;
             ComboBox comboBoxInList = baseObject as ComboBox;
             Measure measure;
             if (comboBoxInList.SelectedItem != null)
@@ -485,7 +493,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         private void QuantityTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
-            var product = baseObject.DataContext as DefinedProduct;
+            var product = baseObject.DataContext as Ingridient;
             TextBox quantityTextBoxInList = baseObject as TextBox;
             if (ValidateAndCheckInRange(quantityTextBoxInList, 0, 1000))
             {

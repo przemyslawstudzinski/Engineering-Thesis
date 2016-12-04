@@ -107,9 +107,12 @@ namespace ApplicationToSupportAndControlDiet
                 items.Remove(thisMeal);
             }
             UpdateDay();
-            if (choosenDay.MealsInDay.Count == 0)
+            if (choosenDay != null)
             {
-                dayRepository.Delete(choosenDay);
+                if (choosenDay.MealsInDay.Count == 0)
+                {
+                    dayRepository.Delete(choosenDay);
+                }
             }
         }
     }

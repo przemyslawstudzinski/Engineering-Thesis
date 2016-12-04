@@ -17,10 +17,10 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ApplicationToSupportAndControlDiet.pfx</PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
-    <AppxPackageDir>E:\</AppxPackageDir>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxPackageDir>C:\Users\Przemo\Desktop\</AppxPackageDir>
     <PackageCertificateThumbprint>2408E3FF50665DECC63BA382AB66C18FA3ABDA32</PackageCertificateThumbprint>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
   </PropertyGroup>
@@ -103,8 +103,7 @@
     </Compile>
     <Compile Include="Models\Enums\ActivityLevel.cs" />
     <Compile Include="Models\Day.cs" />
-    <Compile Include="Models\DefinedProduct.cs" />
-    <Compile Include="Models\DefinedProductMeal.cs" />
+    <Compile Include="Models\Ingridient.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Enums\Measure.cs" />
     <Compile Include="Models\Product.cs" />

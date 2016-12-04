@@ -15,33 +15,33 @@ namespace TestsControlDiet
             Product productOne = new Product();
             productOne.Name = "name One";
             productOne.Energy = 2500;
-            DefinedProduct definiedProductOne = new DefinedProduct(productOne, 125, Measure.Gram);
+            Ingridient definiedProductOne = new Ingridient(productOne, 125, Measure.Gram);
 
             Product productTwo = new Product();
             productTwo.Name = "name Two";
             productTwo.Energy = 1400;
-            DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 50, Measure.Gram);
+            Ingridient ingridientTwo = new Ingridient(productTwo, 50, Measure.Gram);
 
             Product productThree = new Product();
             productThree.Name = "name Three";
             productThree.Energy = 3000;
-            DefinedProduct definedProductThree = new DefinedProduct(productThree, 80, Measure.Gram);
+            Ingridient ingridientOne = new Ingridient(productThree, 80, Measure.Gram);
 
             mealOne = new Meal();
             mealOne.Name = "mealname 1";
-            mealOne.ProductsInMeal.Add(definiedProductOne);
-            mealOne.ProductsInMeal.Add(definiedProductTwo);
+            mealOne.IngridientsInMeal.Add(definiedProductOne);
+            mealOne.IngridientsInMeal.Add(ingridientTwo);
 
             mealTwo = new Meal();
             mealTwo.Name = "mealname 2";
-            mealTwo.ProductsInMeal.Add(definedProductThree);
+            mealTwo.IngridientsInMeal.Add(ingridientOne);
         }
 
         [TestMethod]
         public void CalculateCaloriesFromMeal()
         {
-            Assert.AreEqual(3125, mealOne.ProductsInMeal[0].Energy);
-            Assert.AreEqual(700, mealOne.ProductsInMeal[1].Energy);
+            Assert.AreEqual(3125, mealOne.IngridientsInMeal[0].Energy);
+            Assert.AreEqual(700, mealOne.IngridientsInMeal[1].Energy);
             Assert.AreEqual(3825, mealOne.Energy, "Calculated calories from two products in one meal should be equal to 3825");
             Assert.AreEqual(2400, mealTwo.Energy, "Calculated calories from two products in one meal should be equal to 2400");
         }

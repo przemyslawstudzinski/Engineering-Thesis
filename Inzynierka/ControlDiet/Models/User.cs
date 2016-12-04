@@ -2,38 +2,39 @@
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("Users")]
+    [Table("User")]
     public class User
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("id")]
+        [Column("Id")]
         public int Id { set; get; }
 
-        [Column("sex")]
+        [Column("Sex")]
         public Sex Sex { set; get; }
 
-        [Column("age")]
+        [Column("Age")]
         public int Age { set; get; }
 
-        [Column("height")]
+        [Column("Height")]
         public float Height { set; get; }
 
-        [Column("weight")]
+        [Column("Weight")]
         public float Weight { set; get; }
 
-        [Column("goal")]
+        [Column("Goal")]
         public UserGoal Goal { set; get; }
 
-        [Column("activity")]
+        [Column("Activity")]
         public ActivityLevel Activity { set; get; }
 
-        [Column("total_daily_energy_expenditure")]
+        [Column("TotalDailyEnergyExpenditure")]
         public int TotalDailyEnergyExpenditure { set; get; }
 
         public User() { }
 
-        public User(int id, Sex sex, int age, float height, float weight, UserGoal goal, ActivityLevel activity) {
+        public User(int id, Sex sex, int age, float height, float weight, 
+            UserGoal goal, ActivityLevel activity) {
             this.Id = id;
             this.Sex = sex;
             this.Age = age;

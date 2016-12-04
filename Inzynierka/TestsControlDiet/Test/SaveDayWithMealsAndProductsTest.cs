@@ -23,21 +23,21 @@ namespace TestsControlDiet
 
             Product productOne = new Product();
             productOne.Name = "name 1";
-            DefinedProduct definiedProductOne = new DefinedProduct(productOne, 5, Measure.Gram);
+            Ingridient definiedProductOne = new Ingridient(productOne, 5, Measure.Gram);
 
             Product productTwo = new Product();
             productTwo.Name = "name 2";
-            DefinedProduct definiedProductTwo = new DefinedProduct(productTwo, 5, Measure.Spoon);
+            Ingridient definiedProductTwo = new Ingridient(productTwo, 5, Measure.Spoon);
 
             Meal mealOne = new Meal();
             mealOne.Name = "mealname 1";
-            definiedProductOne.Meals.Add(mealOne);
-            mealOne.ProductsInMeal.Add(definiedProductOne);
+            definiedProductOne.Meal = mealOne;
+            mealOne.IngridientsInMeal.Add(definiedProductOne);
 
             Meal mealTwo = new Meal();
             mealTwo.Name = "mealname 2";
-            definiedProductTwo.Meals.Add(mealTwo);
-            mealTwo.ProductsInMeal.Add(definiedProductTwo);
+            definiedProductTwo.Meal = mealTwo;
+            mealTwo.IngridientsInMeal.Add(definiedProductTwo);
 
             Day day = new Day();
             mealOne.DayId = day.Id;
@@ -60,7 +60,7 @@ namespace TestsControlDiet
         [TestMethod]
         public void GetMealWithProductsTest()
         {
-            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).ProductsInMeal.Count, 1);
+            Assert.AreEqual(dayAfterSave.MealsInDay.ElementAt(0).IngridientsInMeal.Count, 1);
         }
     }
 }

@@ -35,13 +35,13 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             sb.Append("List of products in " + meal.Name + ": ");
             sb.AppendLine();
             sb.AppendLine();
-            foreach (DefinedProduct product in meal.ProductsInMeal)
+            foreach (Ingridient ingridient in meal.IngridientsInMeal)
             {
-                sb.Append(EditValue(product.Product.Name));
+                sb.Append(EditValue(ingridient.Product.Name));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-                sb.Append(product.Quantity.ToString("N1"));
+                sb.Append(ingridient.Quantity.ToString("N1"));
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
-                sb.Append(product.Measure.ToString());
+                sb.Append(ingridient.Measure.ToString());
                 sb.Append(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator);
                 sb.AppendLine();
             }           

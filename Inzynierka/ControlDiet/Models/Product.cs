@@ -1,46 +1,54 @@
 ﻿using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System.Collections.Generic;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("Products")]
+    [Table("Product")]
     public class Product
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("id")]
+        [Column("Id")]
         public int Id { set; get; }
 
-        [Column("name")]
+        [Column("Name")]
         public string Name { set; get; }
 
-        [Column("energy")]
+        [Column("Energy")]
         public double Energy { set; get; }
 
-        [Column("protein")]
+        [Column("Protein")]
         public double Protein { set; get; }
 
-        [Column("fat")]
+        [Column("Fat")]
         public double Fat { set; get; }
 
-        [Column("carbohydrate")]
+        [Column("Carbohydrate")]
         public double Carbohydrate { set; get; }
 
-        [Column("fiber")]
+        [Column("Fiber")]
         public double Fiber { set; get; }
 
-        [Column("sugar")]
+        [Column("Sugar")]
         public double Sugar { set; get; }
 
-        [Column("favourite")]
+        [Column("Favourite")]
         public bool Favourite { set; get; }
 
-        [Column("dislike")]
+        [Column("Dislike")]
         public bool DisLike { set; get; }
 
-        [Column("weight_in_teaspoon")]
+        [Column("WeightInTeaspoon")]
         public float WeightInTeaspoon { set; get; }
 
-        public Product() { }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Ingridient> Ingridients { get; set; }
+
+        public Product()
+        {
+            Ingridients = new List<Ingridient>();
+        }
 
         public Product(string name, float kcalValue, float proteinValue, float carbohydrateValue,
             float fatValue, float fiberValue, float sugarValue)
@@ -55,6 +63,8 @@ namespace ApplicationToSupportAndControlDiet.Models
             this.Favourite = false;
             this.DisLike = false;
             this.WeightInTeaspoon = 0;
+
+            Ingridients = new List<Ingridient>();
         }
 
         public override string ToString()

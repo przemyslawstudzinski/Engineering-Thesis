@@ -88,8 +88,8 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             return basalMetabolicRate;
         }
 
-        private static float GetTotalDailyEnergyExpenditure(float basalMetabolicRate, float thermicEffectOfExercise,
-            float thermicEffectOfFood)
+        private static float GetTotalDailyEnergyExpenditure(float basalMetabolicRate, 
+            float thermicEffectOfExercise, float thermicEffectOfFood)
         {
             return basalMetabolicRate + thermicEffectOfExercise + thermicEffectOfFood;
         }

@@ -14,17 +14,17 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         }
 
         public List<Product> GetAllProducts() {
-            string query = @"SELECT * FROM Products";
+            string query = @"SELECT * FROM Product";
             List<Product> allProducts = connectionToLocalDatabase.Query<Product>(query);
             return allProducts;
         }
 
         public List<Product> GetProductsLike(string input) {
-            string queryWithName = @"SELECT * FROM Products product where product.name LIKE '%" + input + "%'" ;
+            string queryWithName = @"SELECT * FROM Product product where Product.Name LIKE '%" + input + "%'" ;
             List<Product> allProducts = connectionToLocalDatabase.Query<Product>(queryWithName);
             var query = from x in allProducts
-                         orderby x.Favourite descending, x.DisLike ascending
-                         select x;            
+                        orderby x.Favourite descending, x.DisLike ascending
+                        select x;            
             return query.ToList();
         }
     }

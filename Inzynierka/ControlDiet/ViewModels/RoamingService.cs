@@ -65,12 +65,11 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
         {
             connectionToLocalDatabase.Execute("ATTACH ? as dba", RoamingDatabaseFilePath);
             connectionToLocalDatabase.Execute("BEGIN");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Users select * from dba.Users");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Products select * from dba.Products");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Days select * from dba.Days");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Meals select * from dba.Meals");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Defined_products select * from dba.Defined_products");
-            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Defined_product_meals select * from dba.Defined_product_meals");
+            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO User select * from dba.User");
+            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Product select * from dba.Product");
+            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Day select * from dba.Day");
+            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Meal select * from dba.Meal");
+            connectionToLocalDatabase.Execute("INSERT OR REPLACE INTO Ingridient select * from dba.Ingridient");
             connectionToLocalDatabase.Execute("COMMIT");
             connectionToLocalDatabase.Execute("DETACH dba");
         }
@@ -105,8 +104,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             List<Day> lastWeek = GetLastWeek();
             ConnectionToRoamingDatabase.DeleteAll<Day>();
             ConnectionToRoamingDatabase.DeleteAll<Meal>();
-            ConnectionToRoamingDatabase.DeleteAll<DefinedProduct>();
-            ConnectionToRoamingDatabase.DeleteAll<DefinedProductMeal>();
+            ConnectionToRoamingDatabase.DeleteAll<Ingridient>();
 
             foreach (Day day in lastWeek)
             {
@@ -132,7 +130,7 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             {
                 foreach (Meal meal in day.MealsInDay)
                 {
-                    foreach (DefinedProduct definiedProduct in meal.ProductsInMeal)
+                    foreach (Ingridient definiedProduct in meal.IngridientsInMeal)
                     {
                         repository.SaveOneOrReplace(definiedProduct.Product);
                     }

@@ -5,18 +5,18 @@ using SQLiteNetExtensions.Attributes;
 
 namespace ApplicationToSupportAndControlDiet.Models
 {
-    [Table("Meals")]
+    [Table("Meal")]
     public class Meal
     {
         [PrimaryKey]
         [AutoIncrement]
-        [Column("id")]
+        [Column("Id")]
         public int Id { set; get; }
 
-        [Column("name")]
+        [Column("Name")]
         public string Name { set; get; }
 
-        [Column("time")]
+        [Column("Time")]
         public DateTime DateTimeOfMeal { set; get; }
 
         public String Time
@@ -30,11 +30,11 @@ namespace ApplicationToSupportAndControlDiet.Models
         [ForeignKey(typeof(Day))]
         public int DayId { set; get; }
 
-        [ManyToOne]
+        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Day Day { set; get; }
 
-        [ManyToMany(typeof(DefinedProductMeal), CascadeOperations = CascadeOperation.All)]
-        public List<DefinedProduct> ProductsInMeal { set; get; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Ingridient> IngridientsInMeal { get; set; }
 
         private double energy;
 
@@ -43,7 +43,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 energy = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     energy += element.Energy;
                 }
@@ -58,7 +58,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 protein = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     protein += element.Protein;
                 }
@@ -73,7 +73,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 carbohydrate = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     carbohydrate += element.Carbohydrate;
                 }
@@ -88,7 +88,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 fat = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     fat += element.Fat;
                 }
@@ -103,7 +103,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 sugar = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     sugar += element.Sugar;
                 }
@@ -118,7 +118,7 @@ namespace ApplicationToSupportAndControlDiet.Models
             get
             {
                 fiber = 0;
-                foreach (DefinedProduct element in ProductsInMeal)
+                foreach (Ingridient element in IngridientsInMeal)
                 {
                     fiber += element.Fiber;
                 }
@@ -128,7 +128,7 @@ namespace ApplicationToSupportAndControlDiet.Models
 
         public Meal()
         {
-            ProductsInMeal = new List<DefinedProduct>();
+            IngridientsInMeal = new List<Ingridient>();
         }
     }
 }

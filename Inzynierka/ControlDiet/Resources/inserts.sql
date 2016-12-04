@@ -1,4 +1,4 @@
-INSERT INTO 'Products' (Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar, Favourite, DisLike, Weight_in_teaspoon) VALUES 
+INSERT INTO 'Product' (Name,Energy,Protein,Fat,Carbohydrate,Fiber,Sugar, Favourite, DisLike, WeightInTeaspoon) VALUES 
  ('Alcoholic beverage, beer, light, BUD LIGHT',29.0,0.25,0.0,1.3,0.0,0.0,NULL,NULL,NULL),
  ('Alcoholic beverage, daiquiri, canned',125.0,0.0,0.0,15.7,0.0,0.0,NULL,NULL,NULL),
  ('Alcoholic beverage, liqueur, coffee, 63 proof',308.0,0.1,0.3,32.2,0.0,0.0,NULL,NULL,NULL),

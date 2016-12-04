@@ -10,9 +10,9 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
 
         public MeasureService() { }
 
-        public void Calculate(DefinedProduct definedProduct, Product product, Measure? otherMeasure = null)
+        public void Calculate(Ingridient ingridient, Product product, Measure? otherMeasure = null)
         {
-            if (product == null || definedProduct == null)
+            if (product == null || ingridient == null)
             {
                 return;
             }
@@ -23,45 +23,45 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             }
             else
             {
-                measure = definedProduct.Measure;
+                measure = ingridient.Measure;
             }
            
             switch (measure)
             {
                 case Measure.Teaspoon:
-                    definedProduct.Energy = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Protein = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Carbohydrate = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fat = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fiber = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Sugar = (definedProduct.Quantity * product.WeightInTeaspoon) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Energy = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Protein = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Carbohydrate = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fat = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fiber = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Sugar = (ingridient.Quantity * product.WeightInTeaspoon) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
 
                 case Measure.Spoon:
-                    definedProduct.Energy = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Protein = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Carbohydrate = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fat = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fiber = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Sugar = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Energy = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Protein = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Carbohydrate = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fat = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fiber = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Sugar = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_SPOON)) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
 
                 case Measure.Gram:
-                    definedProduct.Energy = definedProduct.Quantity * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Protein = definedProduct.Quantity * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Carbohydrate = definedProduct.Quantity * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fat = definedProduct.Quantity * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fiber = definedProduct.Quantity * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Sugar = definedProduct.Quantity * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Energy = ingridient.Quantity * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Protein = ingridient.Quantity * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Carbohydrate = ingridient.Quantity * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fat = ingridient.Quantity * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fiber = ingridient.Quantity * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Sugar = ingridient.Quantity * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
 
                 case Measure.Glass:
-                    definedProduct.Energy = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Protein = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Carbohydrate = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fat = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Fiber = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
-                    definedProduct.Sugar = (definedProduct.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Energy = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Energy / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Protein = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Protein / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Carbohydrate = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Carbohydrate / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fat = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Fat / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Fiber = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Fiber / GRAM_OF_PRODUCT_IN_DB);
+                    ingridient.Sugar = (ingridient.Quantity * (product.WeightInTeaspoon * TEASPOON_IN_GLASS)) * (product.Sugar / GRAM_OF_PRODUCT_IN_DB);
                     break;
             }
         }

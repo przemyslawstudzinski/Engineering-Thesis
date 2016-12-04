@@ -43,7 +43,7 @@
                             </AutoSuggestBox>
                             <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
                             <ComboBox x:Name="MeasureBox" Header="Measure" Margin="10, 0, 20, 0" SelectedValuePath="Tag"/>
-                            <Button Tag="AddProduct" x:Name="AddDefinedProduct" ToolTipService.ToolTip="Add product" Background="Black" Click="AddDefinedProduct_Click" VerticalAlignment="Bottom">
+                            <Button Tag="AddProduct" x:Name="AddIngridient" ToolTipService.ToolTip="Add product" Background="Black" Click="AddIngridient_Click" VerticalAlignment="Bottom">
                                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
                                     <SymbolIcon Symbol="Add" Foreground="White" />
                                 </StackPanel>
@@ -62,7 +62,7 @@
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="data:DefinedProduct">
+                            <DataTemplate x:DataType="data:Ingridient">
                                 <Grid  Padding="5" Margin="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
