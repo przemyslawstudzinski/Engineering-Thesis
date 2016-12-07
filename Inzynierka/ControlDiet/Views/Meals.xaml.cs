@@ -36,18 +36,40 @@ namespace ApplicationToSupportAndControlDiet
             dayService = new DayService();
             mealRepository = new Repository<Meal>();
             dayRepository = new Repository<Day>();
-            UpdateDay();
-            if (choosenDay != null)
-            {
-                items = new ObservableCollection<Meal>(choosenDay.MealsInDay.OrderBy(x => x.DateTimeOfMeal));
-            }
-
             Repository<User> repo2 = new Repository<User>();
             User user = repo2.FindFirst();
             if (user == null)
             {
                 WarningCal.Text = "Complete information about your profile";
             }
+            items = new ObservableCollection<Meal>();
+            InitializeMeals();
+        }
+
+        private void InitializeMeals()
+        {
+            UpdateDay();
+            if (choosenDay != null)
+            {
+                items = new ObservableCollection<Meal>(choosenDay.MealsInDay.OrderBy(x => x.DateTimeOfMeal));
+                if (items != null)
+                {
+                    this.ItemsList.ItemsSource = items;
+                }
+            }
+            else
+            {
+                RefreshListWithMeals();
+            }
+        }
+
+        private void RefreshListWithMeals()
+        {
+            this.ItemsList.ItemsSource = null;
+            if (items != null)
+            {
+                items.Clear();
+            }         
             this.ItemsList.ItemsSource = items;
         }
 
@@ -114,6 +136,15 @@ namespace ApplicationToSupportAndControlDiet
                 {
                     dayRepository.Delete(choosenDay);
                 }
+            }
+        }
+
+        private void DataPicker2_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            if (!sender.Date.Equals(Globals.Date))
+            {
+                Date = sender.Date;
+                InitializeMeals();
             }
         }
     }
