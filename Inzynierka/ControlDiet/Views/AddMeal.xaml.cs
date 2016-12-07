@@ -69,7 +69,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             abstractFutureMeal.IngridientsInMeal = nowProductList;
             String totalValues = "Total in meal: kcal =  " +  abstractFutureMeal.Energy.ToString("N1") + "  protein =  " + abstractFutureMeal.Protein.ToString("N1") 
                 + "  carbohydrate =  " + abstractFutureMeal.Carbohydrate.ToString("N1") + "  fat =  " + abstractFutureMeal.Fat.ToString("N1") 
-                + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1") + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1");
+                + "  fiber =  " + abstractFutureMeal.Fiber.ToString("N1") + "  sugar =  " + abstractFutureMeal.Sugar.ToString("N1");
             this.TotalRunText.Text = totalValues;
         }
 

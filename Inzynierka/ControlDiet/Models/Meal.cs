@@ -19,7 +19,7 @@ namespace ApplicationToSupportAndControlDiet.Models
         [Column("TimeOfMeal")]
         public DateTime DateTimeOfMeal { set; get; }
 
-        public String Time
+        public String TimeOfMeal
         {
             get
             {

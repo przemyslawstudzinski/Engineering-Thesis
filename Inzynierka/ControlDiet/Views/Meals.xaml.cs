@@ -6,6 +6,7 @@ using ApplicationToSupportAndControlDiet.Models;
 using System.Collections.ObjectModel;
 using ApplicationToSupportAndControlDiet.Views;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ApplicationToSupportAndControlDiet
 {
@@ -38,7 +39,7 @@ namespace ApplicationToSupportAndControlDiet
             UpdateDay();
             if (choosenDay != null)
             {
-                items = new ObservableCollection<Meal>(choosenDay.MealsInDay);
+                items = new ObservableCollection<Meal>(choosenDay.MealsInDay.OrderBy(x => x.DateTimeOfMeal));
             }
 
             Repository<User> repo2 = new Repository<User>();

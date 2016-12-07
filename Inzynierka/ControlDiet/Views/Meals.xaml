@@ -87,7 +87,7 @@
                                         </Grid.Resources>
                                         <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind MealName}" FontWeight="Bold" TextWrapping="Wrap" Foreground="White" Visibility="Visible"
                                             MaxLines="2" HorizontalAlignment="Left" FontSize="20" />
-                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind DateTimeOfMeal}" FontWeight="Bold" TextWrapping="Wrap" Visibility="Visible" Foreground="White"
+                                        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" Text="{x:Bind TimeOfMeal}" FontWeight="Bold" TextWrapping="Wrap" Visibility="Visible" Foreground="White"
                                             MaxLines="2" HorizontalAlignment="Right" FontSize="18"/>
                                         <Viewbox Grid.Row="1"  Grid.Column="0" Stretch="None">
                                             <TextBlock TextWrapping="WrapWholeWords" FontStyle="Italic" Foreground="White">
