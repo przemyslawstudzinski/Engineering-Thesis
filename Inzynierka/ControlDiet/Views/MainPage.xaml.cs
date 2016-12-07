@@ -48,7 +48,7 @@ namespace ApplicationToSupportAndControlDiet.Views
         }
         private void AddNewProductPaneItem_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationName.Text = "ADD PRODUCT";
+            ApplicationName.Text = "ADD NEW PRODUCT";
             WorkSpace.Navigate(typeof(AddNewProduct));
         }
         private void StatisticsPaneItem_Click(object sender, RoutedEventArgs e)

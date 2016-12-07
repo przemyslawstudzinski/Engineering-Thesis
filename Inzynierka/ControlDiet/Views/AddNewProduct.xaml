@@ -16,7 +16,7 @@
                         <TextBox Name="NameBox" Width="370" TextChanged="NameBox_TextChanged"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
-                        <TextBlock x:Name="Information" Text="Calories and macronutrients per 100 grams: " FontSize="16" Foreground="Black" />
+                        <TextBlock x:Name="Information" Text="Calories and macronutrients per 100 grams:" FontSize="18" Foreground="Black" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
                         <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
