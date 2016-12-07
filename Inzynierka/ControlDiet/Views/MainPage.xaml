@@ -62,7 +62,7 @@
                     <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="SaveLocal" Foreground="White" />
-                            <TextBlock Text="Save Product"  Margin="30,0,0,0" Foreground="White" />
+                            <TextBlock Text="Add New Product"  Margin="30,0,0,0" Foreground="White" />
                         </StackPanel>
                     </Button>
                     <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
