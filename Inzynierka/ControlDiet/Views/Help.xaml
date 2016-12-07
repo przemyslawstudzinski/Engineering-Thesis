@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
-            <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="600" >
+            <Pivot x:Name="rootPivot" HorizontalContentAlignment="Right" Width="600">
                 <PivotItem Header="Meals" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="In this section you can see meals on selected date and make some operations."/>
@@ -49,10 +49,13 @@
                         <TextBlock Text="In this section you can Add Meal to day"/>
                         <TextBlock Text="How to do this?" FontWeight="Bold" />
                         <TextBlock>
-                        Go to -->  Add Meal<LineBreak/>Enter meal name<LineBreak/>Select date and time of meal
-                        <LineBreak/>Search product and enter quantity<LineBreak/>Click Plus button to add product to meal<LineBreak/>
-                            You can repeat last 2 steps many times
-                        <LineBreak/>When you select all product click Save button
+                            Go to -->  Add Meal<LineBreak/>
+                            Enter meal name<LineBreak/>
+                            Select date and time of meal<LineBreak/>
+                            Search product and enter quantity<LineBreak/>
+                            Click Plus button to add product to meal<LineBreak/>
+                            You can repeat last 2 steps many times<LineBreak/>
+                            When you select all product click Save button
                         </TextBlock>
                         <TextBlock Text="Product not found?"  FontWeight="Bold" />
                         <TextBlock > You can use Add product section</TextBlock>
@@ -65,13 +68,16 @@
                         <TextBlock > No, You have to fill all fields</TextBlock>
                     </StackPanel>
                 </PivotItem>
-                <PivotItem Header="Save Product" HorizontalAlignment="Center">
+                <PivotItem Header="Add new product" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="In this section you can Add New Product to database"/>
                         <TextBlock Text="How to do this?"  FontWeight="Bold" />
                         <TextBlock>
-                        Go to -->  Add New Product<LineBreak/>Enter product name<LineBreak/>Enter all informations about the product
-                            <LineBreak/>Click Save button<LineBreak/>If everything is ok, You will see information about that
+                            Go to -->  Add New Product<LineBreak/>
+                            Enter product name<LineBreak/>
+                            Enter all informations about the product<LineBreak/>
+                            Click Save button<LineBreak/>
+                            If everything is ok, You will see information about that
                         </TextBlock>
                         <TextBlock Text="Where I find information about product?"  FontWeight="Bold" />
                         <TextBlock>Product informations are usually located on the packaging</TextBlock>
@@ -97,38 +103,39 @@
                         <TextBlock Text="In this section you can save your personal data and calculate daily calorie requirement"/>
                         <TextBlock Text="How to do this?" FontWeight="Bold" />
                         <TextBlock>
-                        Go to -->  Your Profile<LineBreak/>Choose your sex<LineBreak/>Enter stadard information abou you
-                            <LineBreak/>Select correct value from Activity and Goal box
-                        </TextBlock>
-                        <TextBlock>
-                        Select way to calculate daily calorie requirment<LineBreak/>
-                            If you choose Manual Way, You must insert value in text box on the right side
-                            <LineBreak/>Click Save button to insert this informations in database
+                            Go to -->  Your Profile <LineBreak/>
+                            Choose your sex <LineBreak/>
+                            Enter stadard information abou you <LineBreak/>
+                            Select correct value from Activity and Goal box <LineBreak/>
+                            Select way to calculate daily calorie requirment <LineBreak/>
+                            If you choose Manual Way, You must insert value in text box on the right side <LineBreak/>
+                            Click Save button to insert this informations in database
                         </TextBlock>
                         <TextBlock Text="What kind of activity  shoul I select?" FontWeight="Bold" />
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Sedentary"/>
                         <TextBlock>Somebody under the care of someone else</TextBlock>
                         <TextBlock FontWeight="Bold" Text="Lightly Active"/>
                         <TextBlock>
-                        Most students, office workers, and professionals,lawyers, doctors, shop workers,
+                            Most students, office workers, and professionals,lawyers, doctors, shop workers,
                             <LineBreak/>teachers, drivers, lab workers, playing a
-                        musical instrument, 
+                            musical instrument, 
                             <LineBreak/>housewives/househusbands with mechanical appliances, unemployed persons
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Moderately Active"/>
                         <TextBlock>
-                        Most persons in light industry, electrical,carpentry and building trades,
+                            Most persons in light industry, electrical,carpentry and building trades,
                             <LineBreak/>many farmworkers, soldiers not in active service, commercial fishermen,<LineBreak/>
-                        housewives/househusbands without mechanical appliances
+                            housewives/househusbands without mechanical appliances
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique"  Text="Very Active"/>
                         <TextBlock>
-                        Full time athletes, unskilled laborers, some agricultural workers,<LineBreak/>forestry workers, army recruits and
-                        soldiers in active service, mine workers
+                            Full time athletes, unskilled laborers, some agricultural workers,<LineBreak/>
+                            forestry workers, army recruits and soldiers in active service, mine workers
                         </TextBlock>
                         <TextBlock FontWeight="Bold" FontStyle="Oblique" Text="Extremely Active"/>
                         <TextBlock>
-                        Lumberjacks, blacksmiths, female construction workers, heavy manual digging, <LineBreak/>rickshaw pullers, and coal mining
+                            Lumberjacks, blacksmiths, female construction workers, heavy manual digging, <LineBreak/>
+                            rickshaw pullers, and coal mining
                         </TextBlock>
                         <TextBlock Text="Can I leave some box empty?" FontWeight="Bold" />
                         <TextBlock> No, You have to fill all fields and select value from Activity and Goal box</TextBlock>
