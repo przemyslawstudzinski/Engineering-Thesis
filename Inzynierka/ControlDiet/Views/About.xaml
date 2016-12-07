@@ -9,25 +9,28 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel>
-            <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="This application was created within the engineering project"></TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="on Gdansk Univeristy of Technology"></TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Faculty Of Electronics, Telecomunications And Informatics">
+            <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                        RelativePanel.AlignVerticalCenterWithPanel="True">
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Control Diet 1.0 (beta)"/>
+                <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontSize="16">
+                <LineBreak/>
+                    This application was created within the engineering project<LineBreak/>
+                    on Gdansk Univeristy of Technology<LineBreak/>
+                    Faculty Of Electronics, Telecomunications And Informatics<LineBreak/>
                     <LineBreak/>
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Supervisor of the project: dr Adam Przybyłek">
+                    Supervisor of the project: dr Adam Przybyłek<LineBreak/>
                     <LineBreak/>
+                    Developers:<LineBreak/>
+                    Przemysław Studziński<LineBreak/>
+                    Mikołaj Stobiński<LineBreak/>
+                    Michał Kołacki<LineBreak/>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Developers: "></TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Przemysław Studziński"></TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Mikołaj Stobiński"></TextBlock>
-                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Michał Kołacki"></TextBlock>
                 <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center">
-                <Hyperlink NavigateUri="http://www.eti.pg.edu.pl">Contact</Hyperlink>
+                    <Hyperlink NavigateUri="http://www.eti.pg.edu.pl">Contact</Hyperlink>
                     <LineBreak/>
                 </TextBlock>
                 <TextBlock HorizontalAlignment="Center" Text="Source of database: ">
-                           <Hyperlink NavigateUri="http://www.usda.gov/wps/portal/usda/usdahome"> USDA </Hyperlink>
+                    <Hyperlink NavigateUri="http://www.usda.gov/wps/portal/usda/usdahome">USDA</Hyperlink>
                 </TextBlock>
             </StackPanel>
         </RelativePanel>
