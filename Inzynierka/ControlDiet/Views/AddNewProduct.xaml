@@ -41,20 +41,20 @@
                         <TextBlock x:Name="ValidationMessages" Foreground="Red" />
                         <TextBlock Name="AddConfirm" FontSize="20"  Foreground="DarkGreen"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
-                        <Button Tag="SaveProduct" x:Name="SaveProduct" Width="150" Background="Black" Click="SaveProduct_Click">
+                    <RelativePanel  Margin="0,0,0,25">
+                        <Button Tag="SaveProduct" x:Name="SaveProduct" Width="150" Background="Black" Click="SaveProduct_Click" RelativePanel.AlignLeftWithPanel="True">
                             <StackPanel Orientation="Horizontal" >
                                 <SymbolIcon Symbol="Accept" Foreground="White" />
                                 <TextBlock Text="Save" Margin="30,0,0,0" Foreground="White" />
                             </StackPanel>
                         </Button>
-                        <Button Tag="Clear" Background="Black" Width="150"   Margin="100,0,0,0" Click="Clear_Click">
+                        <Button Tag="Clear" Background="Black" Width="150" Click="Clear_Click" RelativePanel.AlignRightWithPanel="True">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Cancel" Foreground="White" />
                                 <TextBlock Text="Clear"  Margin="30,0,0,0" Foreground="White" />
                             </StackPanel>
                         </Button>
-                    </StackPanel>
+                    </RelativePanel>
                 </StackPanel>
             </RelativePanel>
         </ScrollViewer>
