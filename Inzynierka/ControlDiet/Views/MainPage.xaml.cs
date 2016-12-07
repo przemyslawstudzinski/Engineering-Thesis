@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using ApplicationToSupportAndControlDiet.ViewModels;
 using Windows.UI.ViewManagement;
+using Windows.System.Profile;
 
 namespace ApplicationToSupportAndControlDiet.Views
 {
@@ -10,8 +11,15 @@ namespace ApplicationToSupportAndControlDiet.Views
         public MainPage()
         {
             this.InitializeComponent();
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
-            Window.Current.SetTitleBar(null);
+            if (AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile")
+            {
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+                Window.Current.SetTitleBar(null);
+            }
+            else
+            {
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            }
             DatabaseConnection.CreateSqliteDatabases();
             Globals.MainPage = this;
         }
