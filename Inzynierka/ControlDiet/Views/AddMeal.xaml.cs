@@ -379,7 +379,6 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.QuantityBox.Text = String.Empty;
             this.SuggestProductsBox.Text = String.Empty;
             this.TotalRunText.Text = String.Empty;
-            this.TotalText.Text = String.Empty;
         }
 
         private void ClearList()
