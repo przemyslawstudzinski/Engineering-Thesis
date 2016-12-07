@@ -109,7 +109,7 @@
                                     <ComboBox x:Name="MeasureComboBoxInList" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0"  Header="Measure" FontWeight="Bold" 
                                               Loaded="MeasureComboBoxInList_Loaded" SelectionChanged="MeasureComboBoxInList_SelectionChanged" />
                                     <TextBox x:Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
-                                             Text="{x:Bind Quantity, Mode=TwoWay}" Header="Quantity" IsReadOnly="False" LostFocus="QuantityTextBox_LostFocus" />
+                                             Text="{x:Bind QuantityInMeal, Mode=TwoWay}" Header="Quantity" IsReadOnly="False" LostFocus="QuantityTextBox_LostFocus" />
                                     <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
                                         VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
                                         Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
