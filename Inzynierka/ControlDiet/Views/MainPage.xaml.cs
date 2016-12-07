@@ -1,6 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using ApplicationToSupportAndControlDiet.ViewModels;
+using Windows.UI.ViewManagement;
 
 namespace ApplicationToSupportAndControlDiet.Views
 {
@@ -9,6 +10,8 @@ namespace ApplicationToSupportAndControlDiet.Views
         public MainPage()
         {
             this.InitializeComponent();
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+            Window.Current.SetTitleBar(null);
             DatabaseConnection.CreateSqliteDatabases();
             Globals.MainPage = this;
         }
