@@ -140,7 +140,7 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void DataPicker2_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            if (!sender.Date.Equals(Globals.Date))
+            if (!sender.Date.Equals(Globals.Date) && sender.Date != null)
             {
                 Date = sender.Date;
                 Globals.MainPage.NavigateTo(this);
