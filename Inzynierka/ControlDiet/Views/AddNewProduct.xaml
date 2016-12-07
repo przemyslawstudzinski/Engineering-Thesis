@@ -11,12 +11,14 @@
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <RelativePanel>
                 <StackPanel Orientation="Vertical"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                    <TextBlock x:Name="Title" Text="Add your food product to database: " FontSize="20" FontStretch="Expanded" Foreground="Black" FontWeight="Medium" Margin="0,0,0,20" />
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
                         <TextBlock x:Name="Name" Text="Name:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140"/>
                         <TextBox Name="NameBox" Width="370" TextChanged="NameBox_TextChanged"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,20">
+                        <TextBlock x:Name="Information" Text="Calories and macronutrients per 100 grams: " FontSize="16" Foreground="Black" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
                         <TextBlock x:Name="Kcal" Text="Kcal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="140" />
                         <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="KcalBox" />
                         <TextBlock x:Name="Protein" Text="Protein:" FontSize="20" Foreground="Black" Margin="100,0,0,0" Width="140" />
