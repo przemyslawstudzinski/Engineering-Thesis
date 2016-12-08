@@ -84,11 +84,14 @@ namespace ApplicationToSupportAndControlDiet.Views
         {
             List<Measure> measures = new List<Measure>();
             measures.Add(Models.Measure.Gram);
-            if (product.WeightInTeaspoon != 0)
+            if (product != null)
             {
-                measures.Add(Models.Measure.Teaspoon);
-                measures.Add(Models.Measure.Spoon);
-                measures.Add(Models.Measure.Glass);
+                if (product.WeightInTeaspoon != 0)
+                {
+                    measures.Add(Models.Measure.Teaspoon);
+                    measures.Add(Models.Measure.Spoon);
+                    measures.Add(Models.Measure.Glass);
+                }
             }
             return measures;
         }

@@ -1,10 +1,12 @@
 ﻿using ApplicationToSupportAndControlDiet.Models;
 using SQLite.Net;
 using SQLite.Net.Async;
+using SQLiteNetExtensions.Extensions;
 using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Windows.Storage;
 
 namespace ApplicationToSupportAndControlDiet.ViewModels
@@ -12,6 +14,9 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
     public class RoamingService
     {
         public const int MAX_SIZE_OF_ROAMING_DB = 92160;
+        public const int INITIAL_PRODUCT_QUANTITY_IN_DB = 934;
+        public const int DAYS_TO_SAVE = 7;
+
         public const string NAME_OF_DATABASE_ROAMING_FILE = "roamingDb.sqlite";
 
         public static string RoamingDatabaseFilePath
@@ -83,74 +88,49 @@ namespace ApplicationToSupportAndControlDiet.ViewModels
             }
             else
             {
-                RemoveOldDays();
+                RemoveOldData();
                 if (RoamingDbFile.Length < MAX_SIZE_OF_ROAMING_DB)
                 {
                     if (update) AsyncConnectionToRoamingDatabase.InsertOrReplaceWithChildrenAsync(item, recursive: true);
                     else AsyncConnectionToRoamingDatabase.InsertWithChildrenAsync(item, recursive: true);
                 }
-                else
-                {
-                    RemoveOldProducts();
-                    if (update) AsyncConnectionToRoamingDatabase.InsertOrReplaceWithChildrenAsync(item, recursive: true);
-                    else AsyncConnectionToRoamingDatabase.InsertWithChildrenAsync(item, recursive: true);
-                }
             }
         }
 
-        private void RemoveOldDays()
+        private void RemoveOldData()
         {
-            Repository<Day> repository = new Repository<Day>();
-            List<Day> lastWeek = GetLastWeek();
-            ConnectionToRoamingDatabase.DeleteAll<Day>();
-            ConnectionToRoamingDatabase.DeleteAll<Meal>();
-            ConnectionToRoamingDatabase.DeleteAll<Ingridient>();
-
-            foreach (Day day in lastWeek)
-            {
-                repository.Save(day);
-            }
-        }
-
-        private void RemoveOldProducts()
-        {
-            Repository<Product> repository = new Repository<Product>();
-            List<Day> lastWeek = GetLastWeek();
-            int removeOldestUserProduct = 0;
-            ProductService productservice = new ProductService();
-            List<Product> allProducts = productservice.GetAllProducts();
-
-            while (RoamingDbFile.Length < MAX_SIZE_OF_ROAMING_DB)
-            {
-                ConnectionToRoamingDatabase.Delete<Product>(allProducts[removeOldestUserProduct]);
-                //TODO compact database file
-            }
-
-            foreach (Day day in lastWeek)
-            {
-                foreach (Meal meal in day.MealsInDay)
-                {
-                    foreach (Ingridient definiedProduct in meal.IngridientsInMeal)
-                    {
-                        repository.SaveOneOrReplace(definiedProduct.Product);
-                    }
-                }
-            }
-        }
-
-        private List<Day> GetLastWeek()
-        {
+            Repository<Day> dayRepository = new Repository<Day>();
+            Repository<Product> productRepository = new Repository<Product>();
             DateTime actualDate = DateTime.Now;
-            Repository<Day> repository = new Repository<Day>();
-            DayService dayService = new DayService();
-            int count = repository.CountAllRoaming();
-            List<Day> lastWeek = new List<Day>();
-            for (int i = 0; i < 7; i++)
+
+            List<Day> list = ConnectionToRoamingDatabase.GetAllWithChildren<Day>(recursive: true)
+            .Where(item => item.Date.Date < actualDate.Date.AddDays(-DAYS_TO_SAVE)).ToList();
+            if (list.Count != 0)
             {
-                Day day = dayService.FindDayByDate(actualDate.AddDays(-i));
-                lastWeek.Add(day);
+                foreach (Day day in list)
+                {
+                    foreach (Meal meal in day.MealsInDay)
+                    {
+                        foreach (Ingridient ingridient in meal.IngridientsInMeal)
+                        {
+                            if (ingridient.ProductId < INITIAL_PRODUCT_QUANTITY_IN_DB)
+                            {
+                                productRepository.Delete(ingridient.Product);
+                            }
+                        }
+                    }
+                    dayRepository.Delete(day);
+                }
             }
-            return lastWeek;
+            ConnectionToRoamingDatabase.Execute("vacuum"); //Force clear on database after deleting  
+            if (RoamingDbFile.Length > MAX_SIZE_OF_ROAMING_DB)
+            {
+                ConnectionToRoamingDatabase.DeleteAll<Product>();
+                ConnectionToRoamingDatabase.DeleteAll<Day>();
+                ConnectionToRoamingDatabase.DeleteAll<Meal>();
+                ConnectionToRoamingDatabase.DeleteAll<Ingridient>();
+                ConnectionToRoamingDatabase.Execute("vacuum");
+            }
         }
 
         private static void SetSequenceOfProductsTable()
