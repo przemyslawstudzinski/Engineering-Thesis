@@ -131,9 +131,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControlDiet\ApplicationToSupportAndControlDiet.csproj">
+    <ProjectReference Include="..\ControlDiet\ControlDiet.csproj">
       <Project>{cc5382aa-14ca-4821-b69d-23605acce7f9}</Project>
-      <Name>ApplicationToSupportAndControlDiet</Name>
+      <Name>ControlDiet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

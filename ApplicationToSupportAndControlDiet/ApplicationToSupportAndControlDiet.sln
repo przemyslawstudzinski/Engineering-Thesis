@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationToSupportAndControlDiet", "ControlDiet\ApplicationToSupportAndControlDiet.csproj", "{CC5382AA-14CA-4821-B69D-23605ACCE7F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlDiet", "ControlDiet\ControlDiet.csproj", "{CC5382AA-14CA-4821-B69D-23605ACCE7F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsControlDiet", "TestsControlDiet\TestsControlDiet.csproj", "{CD609E54-87D1-4E8A-A28E-2A207A00C535}"
 EndProject
@@ -62,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63CA5451-CAFD-4188-A860-83257F457F10}
 	EndGlobalSection
 EndGlobal
