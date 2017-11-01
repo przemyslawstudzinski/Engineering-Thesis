@@ -73,7 +73,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.TotalRunText.Text = totalValues;
         }
 
-        private void SuggestProducts_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private void SuggestProductsSuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             selectedProduct = args.SelectedItem as Product;         
             this.MeasureBox.ItemsSource = InitializeMeasureComboBox(selectedProduct);
@@ -96,7 +96,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             return measures;
         }
 
-        private void SuggestProducts_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void SuggestProductsTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             ClearConfirmValidationAndStyles();
             items.Clear();
@@ -104,7 +104,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             result.ForEach(x => items.Add(x));
         }
 
-        private void AddIngridient_Click(object sender, RoutedEventArgs e)
+        private void AddIngridientClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesStylesAndMessages();
             if (!ValidateEmptyIngridient()) return;
@@ -126,7 +126,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        private void DeleteProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var productToDelete = baseObject.DataContext as Ingridient;
@@ -134,7 +134,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             CalculateValuesFromAllChoosenProducts();
         }
 
-        private void FavouriteProduct_Click(object sender, RoutedEventArgs e)
+        private void FavouriteProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as Ingridient;
@@ -145,7 +145,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             
         }
 
-        private void UnFavoriteProduct_Click(object sender, RoutedEventArgs e)
+        private void UnFavoriteProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as Ingridient;
@@ -154,7 +154,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             RefreshListView();           
         }
 
-        private void DislikeProduct_Click(object sender, RoutedEventArgs e)
+        private void DislikeProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as Ingridient;
@@ -164,7 +164,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             RefreshListView();
         }
 
-        private void LikeProduct_Click(object sender, RoutedEventArgs e)
+        private void LikeProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var selectedProduct = baseObject.DataContext as Ingridient;
@@ -179,7 +179,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.ItemsList.ItemsSource = ingridients;
         }
 
-        private void SaveMeal_Click(object sender, RoutedEventArgs e)
+        private void SaveMealClick(object sender, RoutedEventArgs e)
         {
             Task task = new Task(() => SaveMealAsync());
             task.Start();
@@ -310,7 +310,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxNumericTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
@@ -390,7 +390,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.ItemsList.ItemsSource = ingridients;
         }
 
-        private void ClearMeal_Click(object sender, RoutedEventArgs e)
+        private void ClearMealClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
         }
@@ -455,12 +455,12 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NameBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
         }
 
-        private async void MeasureComboBoxInList_Loaded(object sender, RoutedEventArgs e)
+        private async void MeasureComboBoxInListLoaded(object sender, RoutedEventArgs e)
         {
             await Task.Delay(100);
             var baseObject = sender as FrameworkElement;
@@ -473,7 +473,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }         
         }
 
-        private void MeasureComboBoxInList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MeasureComboBoxInListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var product = baseObject.DataContext as Ingridient;
@@ -492,7 +492,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void QuantityTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void QuantityTextBoxLostFocus(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             var product = baseObject.DataContext as Ingridient;

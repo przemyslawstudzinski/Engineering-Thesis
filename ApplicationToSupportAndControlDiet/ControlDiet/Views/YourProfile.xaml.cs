@@ -17,7 +17,7 @@ namespace ApplicationToSupportAndControlDiet
         private Style RedBorderStyle;
         private Style DefaultStyle;
     
-        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxNumericTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
@@ -38,7 +38,7 @@ namespace ApplicationToSupportAndControlDiet
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
         }
 
-        private void TextBoxInteger_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxIntegerTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
@@ -100,7 +100,7 @@ namespace ApplicationToSupportAndControlDiet
             }
         }
 
-        private void SaveProfile_Click(object sender, RoutedEventArgs e)
+        private void SaveProfileClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndMessages();
             int ageValue=0;
@@ -212,7 +212,6 @@ namespace ApplicationToSupportAndControlDiet
             {
                 AddConfirm.Text = String.Format(CONFIRMMESSAGE, dailyCaloriesExpenditure);
             }
-           
         }
 
         private void ClearTextBoxesAndStyles()
@@ -242,17 +241,17 @@ namespace ApplicationToSupportAndControlDiet
             ValidationMessages.Text += (message + Environment.NewLine);
         }
 
-        private void Manual_Click(object sender, RoutedEventArgs e)
+        private void ManualClick(object sender, RoutedEventArgs e)
         {
             CaloriesBox.Visibility = Visibility.Visible;
         }
 
-        private void Automatic_Click(object sender, RoutedEventArgs e)
+        private void AutomaticClick(object sender, RoutedEventArgs e)
         {
             CaloriesBox.Visibility = Visibility.Collapsed;
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void ClearClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
         }

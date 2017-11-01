@@ -78,26 +78,26 @@ namespace ApplicationToSupportAndControlDiet
             choosenDay = dayService.FindDayByDate(Globals.Date.Value.DateTime);
         }
 
-        private void NextDay_Click(object sender, RoutedEventArgs e)
+        private void NextDayClick(object sender, RoutedEventArgs e)
         {
             Date = Date.Value.AddDays(1);
             Globals.MainPage.NavigateTo(this);
         }
 
-        private void PreviousDay_Click(object sender, RoutedEventArgs e)
+        private void PreviousDayClick(object sender, RoutedEventArgs e)
         {
             Date = Date.Value.AddDays(-1);
             Globals.MainPage.NavigateTo(this);
         }
 
-        private void SaveAsProduct_Click(object sender, RoutedEventArgs e)
+        private void SaveAsProductClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;
             Frame.Navigate(typeof(AddNewProduct), thisMeal);
         }
 
-        private void SaveAsCsv_Click(object sender, RoutedEventArgs e)
+        private void SaveAsCsvClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;
@@ -105,7 +105,7 @@ namespace ApplicationToSupportAndControlDiet
             mealToCsv.ExportMealToCsvFile();
         }
 
-        private void CreateNewFromThisMeal_Click(object sender, RoutedEventArgs e)
+        private void CreateNewFromThisMealClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;
@@ -113,7 +113,7 @@ namespace ApplicationToSupportAndControlDiet
             Frame.Navigate(typeof(AddMeal), parameters);
         }
 
-        private void EditMeal_Click(object sender, RoutedEventArgs e)
+        private void EditMealClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;       
@@ -121,7 +121,7 @@ namespace ApplicationToSupportAndControlDiet
             Frame.Navigate(typeof(AddMeal), parameters);
         }
 
-        private void DeleteMeal_Click(object sender, RoutedEventArgs e)
+        private void DeleteMealClick(object sender, RoutedEventArgs e)
         {
             var baseObject = sender as FrameworkElement;
             Meal thisMeal = baseObject.DataContext as Meal;
@@ -139,7 +139,7 @@ namespace ApplicationToSupportAndControlDiet
             }
         }
 
-        private void DataPicker2_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        private void DataPickerDateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             if (!sender.Date.Equals(Globals.Date) && sender.Date != null)
             {

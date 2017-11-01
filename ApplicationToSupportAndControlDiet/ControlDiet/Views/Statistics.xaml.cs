@@ -74,8 +74,8 @@ namespace ApplicationToSupportAndControlDiet.Views
 
         private void FindUser(out User user, out float maxValue)
         {
-            Repository<User> repo2 = new Repository<User>();
-            user = repo2.FindFirst();
+            Repository<User> repoUser = new Repository<User>();
+            user = repoUser.FindFirst();
             if (user == null)
             {
                 maxValue = 0;
@@ -126,19 +126,19 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void NextDay_Click(object sender, RoutedEventArgs e)
+        private void NextDayClick(object sender, RoutedEventArgs e)
         {
             Date = Date.Value.AddDays(1);
             Globals.MainPage.NavigateTo(this);
         }
 
-        private void PreviousDay_Click(object sender, RoutedEventArgs e)
+        private void PreviousDayClick(object sender, RoutedEventArgs e)
         {
             Date = Date.Value.AddDays(-1);
             Globals.MainPage.NavigateTo(this);
         }
 
-        private void DataPicker2_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        private void DataPicker2DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             if (!sender.Date.Equals(Globals.Date) && sender.Date != null)
             {

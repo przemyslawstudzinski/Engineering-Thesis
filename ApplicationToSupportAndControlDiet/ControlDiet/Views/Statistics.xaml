@@ -2,40 +2,39 @@
     x:Class="ApplicationToSupportAndControlDiet.Views.Statistics"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet.Views"
-    xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting" 
-    xmlns:DataVisualization="using:WinRTXamlToolkit.Controls.DataVisualization"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollMode="Auto" Visibility="Visible">
             <RelativePanel HorizontalAlignment="Center" >
                 <RelativePanel x:Name="SelectedDay" Tag="Day" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,15,0,0" Background="White">
-                    <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White" 
-                                        BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}" DateChanged="DataPicker2_DateChanged"/>
+                    <CalendarDatePicker x:Name="DataPicker2" DateFormat = "{}{dayofweek.full}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" 
+                                        Foreground="Black" Background="White" BorderBrush="Black"  DisplayMode="Month" IsTodayHighlighted="True" 
+                                        Date="{x:Bind Path=Date, Mode=TwoWay}" DateChanged="DataPicker2DateChanged"/>
                 </RelativePanel>
                 <Button x:Name="PreviousDay" ToolTipService.ToolTip="Previous day" Tag="PreviousDay" RelativePanel.AlignHorizontalCenterWithPanel="True" 
-                        RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black" Click="PreviousDay_Click">
+                        RelativePanel.LeftOf="SelectedDay" Margin="0,15,30,0"  Background="Black" Click="PreviousDayClick">
                     <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Previous" Foreground="White" />
+                        <SymbolIcon Symbol="Previous" Foreground="White"/>
                     </StackPanel>
                 </Button>
                 <Button x:Name="NextDay" Tag="NextDay" ToolTipService.ToolTip="Next day" RelativePanel.AlignHorizontalCenterWithPanel="True" 
-                        RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black" Click="NextDay_Click">
+                        RelativePanel.RightOf="SelectedDay" Margin="30,15,0,0" Background="Black" Click="NextDayClick">
                     <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Next" Foreground="White" />
+                        <SymbolIcon Symbol="Next" Foreground="White"/>
                     </StackPanel>
                 </Button>
-                <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
+                <Border x:Name="Border" BorderBrush="Black" BorderThickness="1" Width="600" Height="1" Margin="0,10,0,0" 
+                        RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="SelectedDay"/>
                 <TextBlock Name="WarningCal" RelativePanel.Below="Border" Text="" FontSize="20" Foreground="Red" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
                 <StackPanel x:Name="chart" Orientation="Vertical" RelativePanel.Below="WarningCal" Padding="20">
                     <StackPanel Padding="20">
                         <TextBlock Margin="25,0,0,0" Text="Daily intake of calories." HorizontalAlignment="Left"/>
                         <Grid>
-                            <ProgressBar x:Name="EnergyBar" Height="20" Width="550" Minimum="0" HorizontalAlignment="Center" />
+                            <ProgressBar x:Name="EnergyBar" Height="20" Width="550" Minimum="0" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="EnergyText" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </StackPanel>
@@ -59,7 +58,7 @@
                             </Style>
                         </Grid.Resources>
                         <TextBlock Grid.Row="0" Grid.ColumnSpan="6" FontWeight="Bold" TextWrapping="Wrap" 
-                                            MaxLines="2" HorizontalAlignment="Left" />
+                                            MaxLines="2" HorizontalAlignment="Left"/>
                         <TextBox Grid.Column="0" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="ProteinRow" Header="Protein" IsReadOnly="True"/>
                         <TextBox Grid.Column="1" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="CarbohydronateRow" Header="Carbohydrate" IsReadOnly="True"/>
                         <TextBox Grid.Column="2" Grid.Row="1" Text="0" MaxHeight="50" FontSize="12" Name="FatRow" Header="Fat" IsReadOnly="True"/>

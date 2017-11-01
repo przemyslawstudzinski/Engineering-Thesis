@@ -2,7 +2,6 @@
     x:Class="ApplicationToSupportAndControlDiet.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -12,20 +11,20 @@
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="MySplitView.DisplayMode" Value="Overlay" />
-                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                        <Setter Target="MySplitView.DisplayMode" Value="Overlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Compact">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
+                        <AdaptiveTrigger MinWindowWidth="720"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
-                        <Setter Target="MySplitView.IsPaneOpen" Value="False" />
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -33,60 +32,60 @@
                         <AdaptiveTrigger MinWindowWidth="1024"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline" />
-                        <Setter Target="MySplitView.IsPaneOpen" Value="True" />
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         
-        <SplitView x:Name="MySplitView" Margin="0,0,0,0" DisplayMode="CompactInline" IsPaneOpen="True" OpenPaneLength="200" > 
+        <SplitView x:Name="MySplitView" Margin="0,0,0,0" DisplayMode="CompactInline" IsPaneOpen="True" OpenPaneLength="200"> 
             <SplitView.PaneBackground>
-                <SolidColorBrush Color="White" Opacity="0.0" />
+                <SolidColorBrush Color="White" Opacity="0.0"/>
             </SplitView.PaneBackground>
             <SplitView.Pane >
 
-                <StackPanel Background="Black" HorizontalAlignment="Left" Width="200" >
-                    <Button Tag="Meals" Margin="0,50,0,0"  Click="MealsPaneItem_Click" >
+                <StackPanel Background="Black" HorizontalAlignment="Left" Width="200">
+                    <Button Tag="Meals" Margin="0,50,0,0"  Click="MealsPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Foreground="White" />
-                            <TextBlock Text="Meals"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Home" Foreground="White"/>
+                            <TextBlock Text="Meals"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="AddMeal" Click="AddMealPaneItem_Click" >
+                    <Button Tag="AddMeal" Click="AddMealPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Add" Foreground="White" />
-                            <TextBlock Text="Add Meal"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Add" Foreground="White"/>
+                            <TextBlock Text="Add Meal"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="AddNewProduct" Click="AddNewProductPaneItem_Click" >
+                    <Button Tag="AddNewProduct" Click="AddNewProductPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="SaveLocal" Foreground="White" />
-                            <TextBlock Text="Add New Product"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="SaveLocal" Foreground="White"/>
+                            <TextBlock Text="Add New Product"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="Statistics" Click="StatisticsPaneItem_Click">
+                    <Button Tag="Statistics" Click="StatisticsPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="FourBars" Foreground="White" />
-                            <TextBlock Text="Statistics" Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="FourBars" Foreground="White"/>
+                            <TextBlock Text="Statistics" Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="Profile"  Click="ProfilePaneItem_Click" >
+                    <Button Tag="Profile"  Click="ProfilePaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Contact" Foreground="White" />
-                            <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Contact" Foreground="White"/>
+                            <TextBlock Text="Your Profile"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="Help" Click="HelpPaneItem_Click">
+                    <Button Tag="Help" Click="HelpPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Help" Foreground="White" />
-                            <TextBlock Text="Help"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="Help" Foreground="White"/>
+                            <TextBlock Text="Help"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
-                    <Button Tag="About" Click="AboutPaneItem_Click">
+                    <Button Tag="About" Click="AboutPaneItemClick">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="People" Foreground="White" />
-                            <TextBlock Text="About"  Margin="30,0,0,0" Foreground="White" />
+                            <SymbolIcon Symbol="People" Foreground="White"/>
+                            <TextBlock Text="About"  Margin="30,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -94,17 +93,18 @@
 
             <Grid x:Name="Content"  Background="White"  Margin="0,0,0,0">
                 <RelativePanel Background="Black">
-                    <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="White"  RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,10,0,0"/>
+                    <TextBlock x:Name="ApplicationName" Text="CONTROL DIET" FontSize="20" Foreground="White"  
+                               RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,10,0,0"/>
                 </RelativePanel>
-                <Frame Background="White" x:Name="WorkSpace" Margin="0,50,0,0" />
+                <Frame Background="White" x:Name="WorkSpace" Margin="0,50,0,0"/>
 
             </Grid>
         </SplitView>
-        <Button x:Name="HamburgerButton"  VerticalAlignment="Top" Margin="0,10,0,0" Click="HamburgerButton_Click" Background="Black">
+        <Button x:Name="HamburgerButton"  VerticalAlignment="Top" Margin="0,10,0,0" Click="HamburgerButtonClick" Background="Black">
             <StackPanel>
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
-                <Rectangle Width="15" Height="2" Margin="2" Fill="White" />
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White"/>
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White"/>
+                <Rectangle Width="15" Height="2" Margin="2" Fill="White"/>
             </StackPanel>
         </Button>
     </Grid>

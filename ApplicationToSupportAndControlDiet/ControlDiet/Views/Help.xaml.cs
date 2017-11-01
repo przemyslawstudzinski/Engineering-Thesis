@@ -10,7 +10,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             this.InitializeComponent();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void BackButtonClick(object sender, RoutedEventArgs e)
         {
             if (rootPivot.SelectedIndex > 0)
             {
@@ -24,7 +24,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             }
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private void NextButtonClick(object sender, RoutedEventArgs e)
         {
             if (rootPivot.SelectedIndex < rootPivot.Items.Count - 1)
             {

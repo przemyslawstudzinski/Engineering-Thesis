@@ -24,44 +24,44 @@ namespace ApplicationToSupportAndControlDiet.Views
             Globals.MainPage = this;
         }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        private void HamburgerButtonClick(object sender, RoutedEventArgs e)
         {
             this.MySplitView.IsPaneOpen = this.MySplitView.IsPaneOpen ? false : true;
         }
        
-        private void MealsPaneItem_Click(object sender, RoutedEventArgs e)
+        private void MealsPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "CONTROL DIET";
             this.WorkSpace.Navigate(typeof(MealsPage));
         }
 
-        private void AddMealPaneItem_Click(object sender, RoutedEventArgs e)
+        private void AddMealPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "ADD MEAL";
 
            this.WorkSpace.Navigate(typeof(AddMeal));
         }
-        private void ProfilePaneItem_Click(object sender, RoutedEventArgs e)
+        private void ProfilePaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "YOUR PROFILE";
             WorkSpace.Navigate(typeof(YourProfile));
         }
-        private void AddNewProductPaneItem_Click(object sender, RoutedEventArgs e)
+        private void AddNewProductPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "ADD NEW PRODUCT";
             WorkSpace.Navigate(typeof(AddNewProduct));
         }
-        private void StatisticsPaneItem_Click(object sender, RoutedEventArgs e)
+        private void StatisticsPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "STATISTICS";
             WorkSpace.Navigate(typeof(Statistics));
         }
-        private void HelpPaneItem_Click(object sender, RoutedEventArgs e)
+        private void HelpPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "HELP";
             WorkSpace.Navigate(typeof(Help));
         }
-        private void AboutPaneItem_Click(object sender, RoutedEventArgs e)
+        private void AboutPaneItemClick(object sender, RoutedEventArgs e)
         {
             ApplicationName.Text = "ABOUT";
             WorkSpace.Navigate(typeof(About));

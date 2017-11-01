@@ -2,7 +2,6 @@
     x:Class="ApplicationToSupportAndControlDiet.YourProfile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -12,62 +11,62 @@
             <RelativePanel>
                 <StackPanel Orientation="Vertical" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
                     <StackPanel Orientation="Horizontal" Margin="0,30,0,15">
-                        <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0" />
+                        <TextBlock x:Name="Sex" Text="Sex:" FontSize="20" Foreground="Black" RelativePanel.LeftOf="Male" Margin="0,0,50,0"/>
                         <RadioButton Name="Male" Content="Male" GroupName="SexChoose" Margin="30,0,0,0" IsChecked="True" Tag="Male"/>
                         <RadioButton Name="Female" Content="Female" GroupName="SexChoose" RelativePanel.RightOf="Male" Margin="30,0,0,0" Tag="Female"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
                         <TextBlock x:Name="Age" Text="Age:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
-                        <TextBox TextChanged="TextBoxInteger_TextChanged" Name="AgeBox" Tag="Age"/>
+                        <TextBox TextChanged="TextBoxIntegerTextChanged" Name="AgeBox" Tag="Age"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                        <TextBlock x:Name="Height" Text="Height:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="HeightBox" Tag="Height" />
+                        <TextBlock x:Name="Height" Text="Height:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
+                        <TextBox TextChanged="TextBoxNumericTextChanged" Name="HeightBox" Tag="Height" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                        <TextBlock x:Name="weight" Text="Weight:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                        <TextBox TextChanged="TextBoxNumeric_TextChanged" Name="weightBox" Tag="Weight" />
+                        <TextBlock x:Name="weight" Text="Weight:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
+                        <TextBox TextChanged="TextBoxNumericTextChanged" Name="weightBox" Tag="Weight"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                        <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                        <ComboBox Name="ActivityBox" SelectedValuePath="Tag" >
-                            <ComboBoxItem Content="Sedentary" Tag="Sedentary" />
-                            <ComboBoxItem Content="Lightly" Tag="Lightly" />
+                        <TextBlock Text="Activity:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
+                        <ComboBox Name="ActivityBox" SelectedValuePath="Tag">
+                            <ComboBoxItem Content="Sedentary" Tag="Sedentary"/>
+                            <ComboBoxItem Content="Lightly" Tag="Lightly"/>
                             <ComboBoxItem Content="Moderately" Tag="Moderately" IsSelected="True"/>
-                            <ComboBoxItem Content="Very" Tag="Very" />
-                            <ComboBoxItem Content="Extremely" Tag="Extremely" />
+                            <ComboBoxItem Content="Very" Tag="Very"/>
+                            <ComboBoxItem Content="Extremely" Tag="Extremely"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                        <TextBlock Text="Goal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120" />
-                        <ComboBox Name="GoalBox" SelectedValuePath="Tag" >
-                            <ComboBoxItem Content="Lose weight" Tag="LoseWeight" />
+                        <TextBlock Text="Goal:" FontSize="20" Foreground="Black" Margin="0,0,0,0" Width="120"/>
+                        <ComboBox Name="GoalBox" SelectedValuePath="Tag">
+                            <ComboBoxItem Content="Lose weight" Tag="LoseWeight"/>
                             <ComboBoxItem Content="Maintain weight" Tag="MaintainWeight" IsSelected="True"/>
-                            <ComboBoxItem Content="Gain weight" Tag="GainWeight" />
+                            <ComboBoxItem Content="Gain weight" Tag="GainWeight"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel  Orientation="Horizontal" Margin="0,15,0,15">
                         <TextBlock Text="Way to calculate calories :" FontSize="20" Foreground="Black" Margin="0,0,40,0"/>
-                        <RadioButton Name="Automatic" Content="Automatic" GroupName="CaloriesChoose" IsChecked="True" Tag="Automatic" Click="Automatic_Click"/>
-                        <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual" Click="Manual_Click"/>
+                        <RadioButton Name="Automatic" Content="Automatic" GroupName="CaloriesChoose" IsChecked="True" Tag="Automatic" Click="AutomaticClick"/>
+                        <RadioButton Name="Manual" Content="Manual" GroupName="CaloriesChoose" Tag="Manual" Click="ManualClick"/>
                         <TextBox x:Name="CaloriesBox" Visibility="Collapsed" Tag="Manual calories"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                        <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                        <TextBlock x:Name="ValidationMessages" Foreground="Red"/>
                         <TextBlock Name="AddConfirm" FontSize="20"  Foreground="DarkGreen"/>
                     </StackPanel>
 
                     <RelativePanel Margin="0,0,0,25">
-                        <Button Tag="SaveProfile" x:Name="SaveProfile" Width="150"  Background="Black" Click="SaveProfile_Click" RelativePanel.AlignLeftWithPanel="True">
+                        <Button Tag="SaveProfile" x:Name="SaveProfile" Width="150" Background="Black" Click="SaveProfileClick" RelativePanel.AlignLeftWithPanel="True">
                             <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Accept" Foreground="White" />
-                                <TextBlock Text="Save" Margin="30,0,0,0" Foreground="White" />
+                                <SymbolIcon Symbol="Accept" Foreground="White"/>
+                                <TextBlock Text="Save" Margin="30,0,0,0" Foreground="White"/>
                             </StackPanel>
                         </Button>
-                        <Button Tag="Clear" Background="Black" Width="150" Click="Clear_Click" RelativePanel.AlignRightWithPanel="True">
+                        <Button Tag="Clear" Background="Black" Width="150" Click="ClearClick" RelativePanel.AlignRightWithPanel="True">
                             <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Cancel" Foreground="White" />
-                                <TextBlock Text="Clear"  Margin="30,0,0,0" Foreground="White" />
+                                <SymbolIcon Symbol="Cancel" Foreground="White"/>
+                                <TextBlock Text="Clear"  Margin="30,0,0,0" Foreground="White"/>
                             </StackPanel>
                         </Button>
                     </RelativePanel>

@@ -2,7 +2,6 @@
     x:Class="ApplicationToSupportAndControlDiet.Views.About"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -13,17 +12,17 @@
                         RelativePanel.AlignVerticalCenterWithPanel="True">
                 <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Control Diet 1.0 (beta)"/>
                 <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontSize="16">
+                <LineBreak/>This application was created within the engineering project
+                <LineBreak/>on Gdansk Univeristy of Technology
+                <LineBreak/>Faculty Of Electronics, Telecomunications And Informatics
                 <LineBreak/>
-                    This application was created within the engineering project<LineBreak/>
-                    on Gdansk Univeristy of Technology<LineBreak/>
-                    Faculty Of Electronics, Telecomunications And Informatics<LineBreak/>
-                    <LineBreak/>
-                    Supervisor of the project: dr Adam Przybyłek<LineBreak/>
-                    <LineBreak/>
-                    Developers:<LineBreak/>
-                    Przemysław Studziński<LineBreak/>
-                    Mikołaj Stobiński<LineBreak/>
-                    Michał Kołacki<LineBreak/>
+                <LineBreak/>Supervisor of the project: dr Adam Przybyłek
+                <LineBreak/>
+                <LineBreak/>Developers:
+                <LineBreak/>Przemysław Studziński
+                <LineBreak/>Mikołaj Stobiński
+                <LineBreak/>Michał Kołacki
+                <LineBreak/>
                 </TextBlock>
                 <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center">
                     <Hyperlink NavigateUri="http://www.eti.pg.edu.pl">Contact</Hyperlink>

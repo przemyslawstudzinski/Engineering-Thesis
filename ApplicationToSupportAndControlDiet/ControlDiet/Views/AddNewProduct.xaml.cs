@@ -24,7 +24,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             DefaultStyle = NameBox.Style;
         }
 
-        private void TextBoxNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxNumericTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
             TextBox textBox = sender as TextBox;
@@ -45,12 +45,12 @@ namespace ApplicationToSupportAndControlDiet.Views
             textBox.SelectionStart = selectionStart <= textBox.Text.Length ? selectionStart : textBox.Text.Length;
         }
 
-        private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NameBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             ClearConfirmValidationAndStyles();
         }
 
-        private void SaveProduct_Click(object sender, RoutedEventArgs e)
+        private void SaveProductClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesStylesAndMessages();
             string userName="";
@@ -165,7 +165,7 @@ namespace ApplicationToSupportAndControlDiet.Views
             ValidationMessages.Text += (message + Environment.NewLine);
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
+        private void ClearClick(object sender, RoutedEventArgs e)
         {
             ClearTextBoxesAndStyles();
         }

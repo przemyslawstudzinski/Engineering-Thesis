@@ -2,9 +2,7 @@
     x:Class="ApplicationToSupportAndControlDiet.Views.AddMeal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ApplicationToSupportAndControlDiet.Models"
     xmlns:data="using:ApplicationToSupportAndControlDiet.Models"
-    xmlns:view="using:ApplicationToSupportAndControlDiet.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:ApplicationToSupportAndControlDiet.ViewModels"
@@ -22,17 +20,19 @@
                         RelativePanel.AlignVerticalCenterWithPanel="True" >
                     <StackPanel x:Name="Header">
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                            <TextBox x:Name="NameBox" Width="300" Header="Name" Margin="0,0,5,0" TextChanged="NameBox_TextChanged"/>
+                            <TextBox x:Name="NameBox" Width="300" Header="Name" Margin="0,0,5,0" TextChanged="NameBoxTextChanged"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <CalendarDatePicker x:Name="DataPicker" Margin="0,0,5,0" Header="Day"  
-                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" Foreground="Black" Background="White"  DisplayMode="Month" IsTodayHighlighted="True" Date="{x:Bind Path=Date, Mode=TwoWay}"/>
+                                            DateFormat = "{}{dayofweek.abbreviated}‎,  ‎{day.integer}‎ ‎{month.full}‎, ‎{year.full}" 
+                                            Foreground="Black" Background="White"  DisplayMode="Month" IsTodayHighlighted="True" 
+                                            Date="{x:Bind Path=Date, Mode=TwoWay}"/>
                             <TimePicker x:Name = "TimePicker" Header = "Time"  />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <AutoSuggestBox x:Name="SuggestProductsBox" HorizontalAlignment="Left" VerticalAlignment="Top"  QueryIcon="Find"
                                 Width="250" Height="Auto" Header="Add products" PlaceholderText="Search products..." 
-                                TextChanged="SuggestProducts_TextChanged" SuggestionChosen="SuggestProducts_SuggestionChosen">
+                                TextChanged="SuggestProductsTextChanged" SuggestionChosen="SuggestProductsSuggestionChosen">
                                 <AutoSuggestBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock TextWrapping="Wrap">
@@ -41,11 +41,12 @@
                                     </DataTemplate>
                                 </AutoSuggestBox.ItemTemplate>
                             </AutoSuggestBox>
-                            <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumeric_TextChanged"/>
+                            <TextBox x:Name="QuantityBox" Tag="Quantity" Header="Quantity" Margin="10, 0, 0, 0" TextChanged="TextBoxNumericTextChanged"/>
                             <ComboBox x:Name="MeasureBox" Header="Measure" Margin="10, 0, 20, 0" SelectedValuePath="Tag"/>
-                            <Button Tag="AddProduct" x:Name="AddIngridient" ToolTipService.ToolTip="Add product" Background="Black" Click="AddIngridient_Click" VerticalAlignment="Bottom">
+                            <Button Tag="AddProduct" x:Name="AddIngridient" ToolTipService.ToolTip="Add product" 
+                                    Background="Black" Click="AddIngridientClick" VerticalAlignment="Bottom">
                                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0" >
-                                    <SymbolIcon Symbol="Add" Foreground="White" />
+                                    <SymbolIcon Symbol="Add" Foreground="White"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -102,39 +103,44 @@
                                     </Grid.Resources>
                                     <TextBlock Grid.Row="0" Grid.ColumnSpan="6" MaxWidth="300" Text="{x:Bind Product.Name}" FontWeight="Bold" TextWrapping="Wrap" 
                                             MaxLines="2" HorizontalAlignment="Left" />
-                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource FloatToString}}"  MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
-                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Carbohydrate" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
-                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="0" Grid.Row="1" Text="{x:Bind Energy, TargetNullValue=0, Converter={StaticResource FloatToString}}"  
+                                             MaxHeight="50" FontSize="12" Header="Kcal" FontWeight="Light" IsReadOnly="True" />
+                                    <TextBox Grid.Column="1" Grid.Row="1" Text="{x:Bind Protein, TargetNullValue=0, Converter={StaticResource FloatToString}}" 
+                                             MaxHeight="50" FontSize="12" Header="Protein" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="2" Grid.Row="1" Text="{x:Bind Carbohydrate, TargetNullValue=0, Converter={StaticResource FloatToString}}" 
+                                             MaxHeight="50" FontSize="12" Header="Carbohydrate" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="3" Grid.Row="1" Text="{x:Bind Fat, TargetNullValue=0, Converter={StaticResource FloatToString}}" 
+                                             MaxHeight="50" FontSize="12" Header="Fat" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="4" Grid.Row="1" Text="{x:Bind Fiber, TargetNullValue=0, Converter={StaticResource FloatToString}}" 
+                                             MaxHeight="50" FontSize="12" Header="Fiber" IsReadOnly="True"/>
+                                    <TextBox Grid.Column="5" Grid.Row="1" Text="{x:Bind Sugar, TargetNullValue=0, Converter={StaticResource FloatToString}}" 
+                                             MaxHeight="50" FontSize="12" Header="Sugar" IsReadOnly="True"/>
                                     <ComboBox x:Name="MeasureComboBoxInList" Tag="MeasueTextBox" Grid.Column="5" Grid.Row="0"  Header="Measure" FontWeight="Bold" 
-                                              Loaded="MeasureComboBoxInList_Loaded" SelectionChanged="MeasureComboBoxInList_SelectionChanged" />
+                                              Loaded="MeasureComboBoxInListLoaded" SelectionChanged="MeasureComboBoxInListSelectionChanged"/>
                                     <TextBox x:Name="QuantityTextBox" Tag="QuantityTextBox" Grid.Column="4" Grid.Row="0" FontWeight="Bold"
-                                             Text="{x:Bind QuantityInMeal, Mode=TwoWay}" Header="Quantity" IsReadOnly="False" LostFocus="QuantityTextBox_LostFocus" />
-                                    <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
-                                        VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
-                                        Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProduct_Click">
-                                        <SymbolIcon Symbol="Favorite" Foreground="Black" />
+                                             Text="{x:Bind QuantityInMeal, Mode=TwoWay}" Header="Quantity" IsReadOnly="False" LostFocus="QuantityTextBoxLostFocus"/>
+                                    <Button ToolTipService.ToolTip="Add to favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" 
+                                            Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
+                                        Tag="FavouriteProduct" x:Name="FavouriteProduct" Background="White" Click="FavouriteProductClick">
+                                        <SymbolIcon Symbol="Favorite" Foreground="Black"/>
                                     </Button>
-                                    <Button ToolTipService.ToolTip="Remove from favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
-                                        VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
-                                        Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProduct_Click">
+                                    <Button ToolTipService.ToolTip="Remove from favorites" Visibility="{Binding Product.Favourite, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" 
+                                            Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center" 
+                                        Tag="UnFavouriteProduct" x:Name="UnFavoriteProduct" Background="White" Click="UnFavoriteProductClick">
                                         <SymbolIcon Symbol="UnFavorite" Foreground="Black" />
                                     </Button>
-                                    <Button ToolTipService.ToolTip="DisLike" Visibility="{Binding Product.DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" Grid.Column="6" Grid.Row="0" 
-                                        VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
-                                        Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProduct_Click">
+                                    <Button ToolTipService.ToolTip="DisLike" Visibility="{Binding Product.DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Inverted}" 
+                                            Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
+                                        Tag="DislikeProduct" x:Name="DislikeProduct" Background="White" Click="DislikeProductClick">
                                         <SymbolIcon Symbol="Dislike" Foreground="Black" />
                                     </Button>
-                                    <Button ToolTipService.ToolTip="Like" Visibility="{Binding Product.DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" Grid.Column="6" Grid.Row="0" 
-                                        VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
-                                        Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProduct_Click">
+                                    <Button ToolTipService.ToolTip="Like" Visibility="{Binding Product.DisLike, Converter={StaticResource BoolToVisibility}, ConverterParameter=Normal}" 
+                                            Grid.Column="6" Grid.Row="0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalContentAlignment="Center" 
+                                        Tag="LikeProduct" x:Name="LikeProduct" Background="White" Click="LikeProductClick">
                                         <SymbolIcon Symbol="Like" Foreground="Black" />
                                     </Button>
-                                    <Button Grid.Column="7" Grid.Row="1" ToolTipService.ToolTip="Delete" VerticalContentAlignment="Center" VerticalAlignment="Center" 
-                                            HorizontalAlignment="Center" HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" 
-                                            Background="Black" Click="DeleteProduct_Click">
+                                    <Button Grid.Column="7" Grid.Row="1" ToolTipService.ToolTip="Delete" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                            HorizontalContentAlignment="Center" Tag="DeleteProduct" x:Name="DeleteProduct" Background="Black" Click="DeleteProductClick">
                                         <SymbolIcon Symbol="Delete" Foreground="White" />
                                     </Button>
                                 </Grid>
@@ -142,7 +148,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                        <TextBlock x:Name="ValidationMessages" Foreground="Red" />
+                        <TextBlock x:Name="ValidationMessages" Foreground="Red"/>
                         <TextBlock Name="AddConfirm" FontSize="20" Foreground="DarkGreen"/>
                     </StackPanel>
 
@@ -154,13 +160,13 @@
                     </TextBlock>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,25">
-                        <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMeal_Click" >
+                        <Button Tag="SaveMeal" x:Name="SaveMeal"  Width="150" Background="Black" Click="SaveMealClick" >
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Accept" Foreground="White" />
                                 <TextBlock Text="Save Meal"  Margin="30,0,0,0" Foreground="White" />
                             </StackPanel>
                         </Button>
-                        <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMeal_Click">
+                        <Button Tag="CancelMeal" x:Name="ClearMeal"  Width="150" Margin="100,0,0,0" Background="Black" Click="ClearMealClick">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Cancel" Foreground="White" />
                                 <TextBlock Text="Clear" Width="100" Margin="30,0,0,0" Foreground="White" />
